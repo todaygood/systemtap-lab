@@ -1,0 +1,8 @@
+
+//probe kernel.function("netif_receive_skb")
+probe $1
+{
+       printf("---------\n");
+       print_backtrace();
+       printf("---------\n");
+}
