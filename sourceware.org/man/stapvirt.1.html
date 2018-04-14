@@ -1,0 +1,349 @@
+
+<HTML><HEAD><TITLE>Manpage of STAPVIRT</TITLE>
+</HEAD><BODY>
+<H1>STAPVIRT</H1>
+Section: User Commands  (1)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+stapvirt - prepare libvirt domains for systemtap probing
+<P>
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>stapvirt</B>
+[<B>-c</B> <I>URI</I>]
+[<B>-d</B> <I>PATH</I>]
+[<B>-v</B>]
+<I>COMMAND</I>
+<I>ARGUMENTS</I>
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The <I>stapvirt</I> program can be used to add ports to domains managed by
+libvirt (see
+
+&lt;<A HREF="http://libvirt.org/">http://libvirt.org/</A>&gt;).
+
+These ports can then be used by <I>stap</I> to
+run scripts inside the domains (see the '--remote' option in <I><A HREF="stap.1.html">stap</A></I>(1) for
+more information).
+<P>
+
+Ports are added to the definition of the domain using the <B>port-add</B>
+command.  These ports can later be removed using the <B>port-remove</B> command.
+Note that there can only be as many simultaneous <I>stap</I> sessions as there
+are ports.
+<P>
+
+Starting from libvirt v1.1.1 and QEMU v0.10.0, SystemTap ports can be hotplugged
+and thus do not need to be added first using the <B>port-add</B> command.
+However, you need to ensure that there is a virtio-serial controller in place so
+that hotplugged ports can be connected. If creating a domain using virt-install,
+you can do this by adding this option:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>$</B> virt-install [...] --controller=virtio-serial
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+If the domain has already been created, you can simply do <B>port-add</B>
+followed immediately by <B>port-remove</B>, and then power off and restart the
+domain. The port will be removed, but the controller will remain.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+The following options are supported. Any other option prints a short help
+message.
+<P>
+<DL COMPACT>
+<DT><B>-c</B> <I>URI</I><DD>
+Specify the libvirt driver URI to which to connect (e.g. '<A HREF="qemu:///system').">qemu:///system').</A> The
+default value is NULL, which indicates to libvirt to connect to the default
+driver. See the page at &lt;<A HREF="http://libvirt.org/uri.html">http://libvirt.org/uri.html</A>&gt; for supported values.
+<P>
+<DT><B>-d</B> <I>PATH</I><DD>
+Specify the directory in which UNIX sockets should be created when SystemTap
+ports are added. The default directory is '/var/lib/libvirt/qemu'.
+<P>
+<DT><B>-v</B><DD>
+Increase verbosity. This option may be repeated for more verbosity.
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>COMMANDS</H2>
+
+The following commands are recognized by stapvirt. Any other command prints a
+short help message.
+<P>
+<DL COMPACT>
+<DT><B>help</B><DD>
+Display the help message.
+<P>
+<DT><B>list</B><DD>
+List available domains.
+<P>
+<DT><B>port-add</B> <I>DOMAIN</I><DD>
+Add a permanent SystemTap port to the domain's definition. If the domain is
+currently running, it must be powered off before changes take effect.
+<P>
+<DT><B>port-list</B> <I>DOMAIN</I><DD>
+List the UNIX socket paths of the permanent SystemTap ports in the domain's
+definition.
+<P>
+<DT><B>port-remove</B> <I>DOMAIN</I><DD>
+Remove a permanent SystemTap port from the domain's definition. If the domain is
+currently running, it must be powered off before changes take effect.
+<P>
+<DT><B>query</B> <I>DOMAIN</I><DD>
+Display the following information about the domain: its name, its UUID, its
+state, the number of permanent SystemTap ports installed, and whether
+hotplugging is supported.
+<P>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>TUTORIAL</H2>
+
+This tutorial will help you get started with stapvirt. Let's start by listing
+all the privileged domains on the machine with the <B>list</B> command:
+<P>
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>$</B> stapvirt -c '<A HREF="qemu:///system'">qemu:///system'</A> list
+Available domains on URI '<A HREF="qemu:///system':">qemu:///system':</A>
+ID      State     Type        Name
+2       running   persistent  TestVM
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+Note that we specified the libvirt URI using the -c switch. Otherwise libvirt
+might have defaulted to e.g. '<A HREF="qemu:///session'.">qemu:///session'.</A>
+<P>
+
+Rather than typing the URI everytime, it might be easier to instead set the
+
+LIBVIRT_DEFAULT_URI
+
+environment variable and omit the -c switch. Note that this is a libvirt
+functionality (see
+
+&lt;libvirt.org/uri.html&gt;
+
+for more details).
+<P>
+
+The <B>list</B> command indicates that we have a running domain named 'TestVM'
+with ID 2. Let's use the <B>query</B> command to retrieve more information:
+<P>
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>$</B> stapvirt query TestVM # by name
+<B>$</B> stapvirt query 2      # by ID
+
+              Name:  TestVM
+              UUID:  905951c0-fa4f-409b-079c-c91ddda27028
+             State:  running
+                ID:  2
+              Type:  persistent
+   Permanent Ports:  0
+       Hotplugging:  not supported
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+The <B>query</B> command gives us some basic information about the domain, such
+as its name, UUID, and state. More importantly, it gives us two pieces of
+information: the number of permanent ports installed, and whether hotplugging is
+supported.  Technically, hotplugging support depends on libvirt and qemu, and is
+not related to the domain in itself.
+<P>
+
+If hotplugging were supported, we could stop here and run <I>stap</I> directly
+(assuming we have a virtio-serial controller already in place, see
+<B>DESCRIPTION</B>). Since in our case hotplugging is not supported, we need to
+add SystemTap ports. To do this, we use the <B>port-add</B> command:
+<P>
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>$</B> stapvirt port-add TestVM
+Added new port org.systemtap.stapsh.0
+The domain must be powered off before changes take effect.
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+We can confirm that a port was added by running the <B>query</B> command again:
+<P>
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>$</B> stapvirt query TestVM
+<B>...</B>
+   Permanent Ports:  1
+       Hotplugging:  not supported
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+It now indicates that there is 1 permanent port. We can also use the
+<B>port-list</B> command to know exactly where the port will be created:
+<P>
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>$</B> stapvirt port-list TestVM
+/var/lib/libvirt/qemu/TestVM.org.systemtap.stapsh.0.sock
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+After powering off and restarting the domain, we are now ready to use the port
+with <I>stap</I>:
+<P>
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>$</B> stap -e 'probe begin { printf(&quot;Hello from TestVM!\n&quot;); exit() }' \
+       --remote=libvirt://TestVM
+Hello from TestVM!
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+Finally, if we'd like to remove the port, we can use the <B>port-remove</B>
+command:
+<P>
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>$</B> stapvirt port-remove TestVM
+Removed port org.systemtap.stapsh.0
+The domain must be powered off before changes take effect.
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+And that's all there is to it!
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="virt-install.1.html">virt-install</A></I>(1)
+
+</PRE><A NAME="lbAI">&nbsp;</A>
+<H2>BUGS</H2>
+
+Use the Bugzilla link of the project web page or our mailing list.
+
+<B><A HREF="http://sourceware.org/systemtap/">http://sourceware.org/systemtap/</A></B>,<B>&lt;<A HREF="mailto:systemtap@sourceware.org">systemtap@sourceware.org</A>&gt;</B>.
+
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">COMMANDS</A><DD>
+<DT><A HREF="#lbAG">TUTORIAL</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:44 GMT, October 09, 2015
+</BODY>
+</HTML>

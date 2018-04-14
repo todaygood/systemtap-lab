@@ -1,0 +1,62 @@
+
+<HTML><HEAD><TITLE>Manpage of ERROR::PASS3</TITLE>
+</HEAD><BODY>
+<H1>ERROR::PASS3</H1>
+Section: Misc. Reference Manual Pages (7stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+error::pass3 - systemtap pass-3 errors
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Errors during pass 3 (translation) occur only rarely.  
+<P>
+<DL COMPACT>
+<DT>unsupported code generation<DD>
+Some script language constructs are not available in every
+probe point.  For example, the 
+<I>@perf()</I>
+
+counter-reading function may only be used in 
+<I>process.*</I>
+
+probes.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>GATHERING MORE INFORMATION</H2>
+
+Increasing the verbosity of pass-3 with an option such as
+<I>--vp 002</I>
+
+may help pinpoint the problem.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+<I><A HREF="./error::reporting.7stap.html">error::reporting</A></I>(7stap)
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">GATHERING MORE INFORMATION</A><DD>
+<DT><A HREF="#lbAE">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

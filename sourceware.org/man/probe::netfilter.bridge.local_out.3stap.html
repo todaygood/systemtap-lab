@@ -1,0 +1,275 @@
+
+<HTML><HEAD><TITLE>Manpage of PROBE::NETFILTER\&.B</TITLE>
+</HEAD><BODY>
+<H1>PROBE::NETFILTER\&.B</H1>
+Section: Networking Tapset (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+probe::netfilter.bridge.local_out - Called on a bridging packet coming from a local process
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+netfilter.bridge.local_out 
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>VALUES</H2>
+
+<P>
+
+<I>br_vid</I>
+<DL COMPACT><DT><DD>
+Protocol version identifier
+</DL>
+
+<P>
+
+<I>indev_name</I>
+<DL COMPACT><DT><DD>
+Name of network device packet was received on (if known)
+</DL>
+
+<P>
+
+<I>br_msg</I>
+<DL COMPACT><DT><DD>
+Message age in 1/256 secs
+</DL>
+
+<P>
+
+<I>nf_drop</I>
+<DL COMPACT><DT><DD>
+Constant used to signify a 'drop' verdict
+</DL>
+
+<P>
+
+<I>outdev_name</I>
+<DL COMPACT><DT><DD>
+Name of network device packet will be routed to (if known)
+</DL>
+
+<P>
+
+<I>nf_stop</I>
+<DL COMPACT><DT><DD>
+Constant used to signify a 'stop' verdict
+</DL>
+
+<P>
+
+<I>br_bid</I>
+<DL COMPACT><DT><DD>
+Identity of bridge
+</DL>
+
+<P>
+
+<I>nf_queue</I>
+<DL COMPACT><DT><DD>
+Constant used to signify a 'queue' verdict
+</DL>
+
+<P>
+
+<I>br_rid</I>
+<DL COMPACT><DT><DD>
+Identity of root bridge
+</DL>
+
+<P>
+
+<I>br_prid</I>
+<DL COMPACT><DT><DD>
+Protocol identifier
+</DL>
+
+<P>
+
+<I>nf_accept</I>
+<DL COMPACT><DT><DD>
+Constant used to signify an 'accept' verdict
+</DL>
+
+<P>
+
+<I>pf</I>
+<DL COMPACT><DT><DD>
+Protocol family -- always
+"bridge"
+</DL>
+
+<P>
+
+<I>brhdr</I>
+<DL COMPACT><DT><DD>
+Address of bridge header
+</DL>
+
+<P>
+
+<I>outdev</I>
+<DL COMPACT><DT><DD>
+Address of net_device representing output device, 0 if unknown
+</DL>
+
+<P>
+
+<I>indev</I>
+<DL COMPACT><DT><DD>
+Address of net_device representing input device, 0 if unknown
+</DL>
+
+<P>
+
+<I>br_cost</I>
+<DL COMPACT><DT><DD>
+Total cost from transmitting bridge to root
+</DL>
+
+<P>
+
+<I>length</I>
+<DL COMPACT><DT><DD>
+The length of the packet buffer contents, in bytes
+</DL>
+
+<P>
+
+<I>llcpdu</I>
+<DL COMPACT><DT><DD>
+Address of LLC Protocol Data Unit
+</DL>
+
+<P>
+
+<I>br_max</I>
+<DL COMPACT><DT><DD>
+Max age in 1/256 secs
+</DL>
+
+<P>
+
+<I>br_htime</I>
+<DL COMPACT><DT><DD>
+Hello time in 1/256 secs
+</DL>
+
+<P>
+
+<I>nf_repeat</I>
+<DL COMPACT><DT><DD>
+Constant used to signify a 'repeat' verdict
+</DL>
+
+<P>
+
+<I>br_type</I>
+<DL COMPACT><DT><DD>
+BPDU type
+</DL>
+
+<P>
+
+<I>br_flags</I>
+<DL COMPACT><DT><DD>
+BPDU flags
+</DL>
+
+<P>
+
+<I>br_fd</I>
+<DL COMPACT><DT><DD>
+Forward delay in 1/256 secs
+</DL>
+
+<P>
+
+<I>br_mac</I>
+<DL COMPACT><DT><DD>
+Bridge MAC address
+</DL>
+
+<P>
+
+<I>br_poid</I>
+<DL COMPACT><DT><DD>
+Port identifier
+</DL>
+
+<P>
+
+<I>br_rmac</I>
+<DL COMPACT><DT><DD>
+Root bridge MAC address
+</DL>
+
+<P>
+
+<I>protocol</I>
+<DL COMPACT><DT><DD>
+Packet protocol
+</DL>
+
+<P>
+
+<I>nf_stolen</I>
+<DL COMPACT><DT><DD>
+Constant used to signify a 'stolen' verdict
+</DL>
+
+<P>
+
+<I>llcproto_stp</I>
+<DL COMPACT><DT><DD>
+Constant used to signify Bridge Spanning Tree Protocol packet
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::netfilter.3stap.html">tapset::netfilter</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">VALUES</A><DD>
+<DT><A HREF="#lbAE">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:45 GMT, October 09, 2015
+</BODY>
+</HTML>

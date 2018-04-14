@@ -1,0 +1,186 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::netfilter</TITLE>
+</HEAD><BODY>
+<H1>tapset::netfilter</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::netfilter - systemtap netfilter tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>netfilter.ip.pre_routing </B>
+
+<DD>
+Called before an IP packet is routed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::netfilter.ip.pre_routing.3stap.html">probe::netfilter.ip.pre_routing</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>netfilter.ip.local_in </B>
+
+<DD>
+Called on an incoming IP packet addressed to the local computer
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::netfilter.ip.local_in.3stap.html">probe::netfilter.ip.local_in</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>netfilter.ip.forward </B>
+
+<DD>
+Called on an incoming IP packet addressed to some other computer
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::netfilter.ip.forward.3stap.html">probe::netfilter.ip.forward</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>netfilter.ip.local_out </B>
+
+<DD>
+Called on an outgoing IP packet
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::netfilter.ip.local_out.3stap.html">probe::netfilter.ip.local_out</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>netfilter.ip.post_routing </B>
+
+<DD>
+Called immediately before an outgoing IP packet leaves the computer
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::netfilter.ip.post_routing.3stap.html">probe::netfilter.ip.post_routing</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>netfilter.bridge.local_in </B>
+
+<DD>
+Called on a bridging packet destined for the local computer
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::netfilter.bridge.local_in.3stap.html">probe::netfilter.bridge.local_in</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>netfilter.bridge.forward </B>
+
+<DD>
+Called on an incoming bridging packet destined for some other computer
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::netfilter.bridge.forward.3stap.html">probe::netfilter.bridge.forward</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>netfilter.bridge.local_out </B>
+
+<DD>
+Called on a bridging packet coming from a local process
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::netfilter.bridge.local_out.3stap.html">probe::netfilter.bridge.local_out</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./probe::netfilter.ip.pre_routing.3stap.html">probe::netfilter.ip.pre_routing</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.ip.local_in.3stap.html">probe::netfilter.ip.local_in</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.ip.forward.3stap.html">probe::netfilter.ip.forward</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.ip.local_out.3stap.html">probe::netfilter.ip.local_out</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.ip.post_routing.3stap.html">probe::netfilter.ip.post_routing</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.arp.in.3stap.html">probe::netfilter.arp.in</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.arp.out.3stap.html">probe::netfilter.arp.out</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.arp.forward.3stap.html">probe::netfilter.arp.forward</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.bridge.pre_routing.3stap.html">probe::netfilter.bridge.pre_routing</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.bridge.local_in.3stap.html">probe::netfilter.bridge.local_in</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.bridge.forward.3stap.html">probe::netfilter.bridge.forward</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.bridge.local_out.3stap.html">probe::netfilter.bridge.local_out</A></I>(3stap),
+
+
+<I><A HREF="./probe::netfilter.bridge.post_routing.3stap.html">probe::netfilter.bridge.post_routing</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

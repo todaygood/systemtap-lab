@@ -1,0 +1,92 @@
+
+<HTML><HEAD><TITLE>Manpage of WARNING::SYMBOLS</TITLE>
+</HEAD><BODY>
+<H1>WARNING::SYMBOLS</H1>
+Section: Misc. Reference Manual Pages (7stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+warning::symbols - systemtap missing-symbols warnings
+<P>
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+For some probing operations, where DWARF debugging data is not available,
+systemtap needs ELF symbols for the relevant binaries.  This allows at
+least probe addresses to be calculated, some variables resolved, and with
+@cast() and headers, maybe even some types.
+<P>
+<DL COMPACT>
+<DT>kernel symbol table<DD>
+Systemtap may need a linux-build style <B>System.map</B> file to find
+addresses of kernel functions/data.  It may be possible to create it
+by hand:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+% su
+# cp /proc/kallsyms /boot/System.map-`uname -r`
+or
+# nm /lib/modules/`uname -r`/build/vmlinux &gt; /boot/System.map-`uname -r`
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<DT>minisymbols<DD>
+On some systems, binaries may be compiled with a subset of symbols
+useful for function tracing and backtraces.  This 'Minisymbols' is
+a xz compressed section labeled .gnu_debugdata.  Support for
+minisymbols relies on elfutils version 0.156 or later.
+<P>
+<DT>compressed symbols<DD>
+On some systems, symbols may be available, but compressed into
+<I>.zdebug_*</I>
+
+sections.  Support for compressed symbols relies on elfutils
+version 0.153 or later.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="stappaths.7.html">stappaths</A></I>(7),
+<I><A HREF="strip.1.html">strip</A></I>(1),
+<I><A HREF="./warning::debuginfo.7stap.html">warning::debuginfo</A></I>(7stap),
+<I><A HREF="./error::dwarf.7stap.html">error::dwarf</A></I>(7stap),
+<I><A HREF="./error::reporting.7stap.html">error::reporting</A></I>(7stap),
+<I><A HREF="http://fedoraproject.org/wiki/Features/MiniDebugInfo">http://fedoraproject.org/wiki/Features/MiniDebugInfo</A></I>
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

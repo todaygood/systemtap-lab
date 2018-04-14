@@ -1,0 +1,219 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::queue_stats</TITLE>
+</HEAD><BODY>
+<H1>tapset::queue_stats</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::queue_stats - systemtap queue_stats tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>qs_wait </B>
+
+<DD>
+Function to record enqueue requests
+<DT><DD>
+See 
+<I><A HREF="./function::qs_wait.3stap.html">function::qs_wait</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qs_run </B>
+
+<DD>
+Function to record being moved from wait queue to being serviced 
+<DT><DD>
+See 
+<I><A HREF="./function::qs_run.3stap.html">function::qs_run</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qs_done </B>
+
+<DD>
+Function to record finishing request 
+<DT><DD>
+See 
+<I><A HREF="./function::qs_done.3stap.html">function::qs_done</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qsq_start </B>
+
+<DD>
+Function to reset the stats for a queue
+<DT><DD>
+See 
+<I><A HREF="./function::qsq_start.3stap.html">function::qsq_start</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qsq_utilization </B>
+
+<DD>
+Fraction of time that any request was being serviced 
+<DT><DD>
+See 
+<I><A HREF="./function::qsq_utilization.3stap.html">function::qsq_utilization</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qsq_blocked </B>
+
+<DD>
+Returns the time reqest was on the wait queue 
+<DT><DD>
+See 
+<I><A HREF="./function::qsq_blocked.3stap.html">function::qsq_blocked</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qsq_wait_queue_length </B>
+
+<DD>
+length of wait queue 
+<DT><DD>
+See 
+<I><A HREF="./function::qsq_wait_queue_length.3stap.html">function::qsq_wait_queue_length</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qsq_service_time </B>
+
+<DD>
+Amount of time per request service 
+<DT><DD>
+See 
+<I><A HREF="./function::qsq_service_time.3stap.html">function::qsq_service_time</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qsq_wait_time </B>
+
+<DD>
+Amount of time in queue + service per request
+<DT><DD>
+See 
+<I><A HREF="./function::qsq_wait_time.3stap.html">function::qsq_wait_time</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qsq_throughput </B>
+
+<DD>
+Number of requests served per unit time 
+<DT><DD>
+See 
+<I><A HREF="./function::qsq_throughput.3stap.html">function::qsq_throughput</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>qsq_print </B>
+
+<DD>
+Prints a line of statistics for the given queue
+<DT><DD>
+See 
+<I><A HREF="./function::qsq_print.3stap.html">function::qsq_print</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::qs_wait.3stap.html">function::qs_wait</A></I>(3stap),
+
+
+<I><A HREF="./function::qs_run.3stap.html">function::qs_run</A></I>(3stap),
+
+
+<I><A HREF="./function::qs_done.3stap.html">function::qs_done</A></I>(3stap),
+
+
+<I><A HREF="./function::qsq_start.3stap.html">function::qsq_start</A></I>(3stap),
+
+
+<I><A HREF="./function::qsq_utilization.3stap.html">function::qsq_utilization</A></I>(3stap),
+
+
+<I><A HREF="./function::qsq_blocked.3stap.html">function::qsq_blocked</A></I>(3stap),
+
+
+<I><A HREF="./function::qsq_wait_queue_length.3stap.html">function::qsq_wait_queue_length</A></I>(3stap),
+
+
+<I><A HREF="./function::qsq_service_time.3stap.html">function::qsq_service_time</A></I>(3stap),
+
+
+<I><A HREF="./function::qsq_wait_time.3stap.html">function::qsq_wait_time</A></I>(3stap),
+
+
+<I><A HREF="./function::qsq_throughput.3stap.html">function::qsq_throughput</A></I>(3stap),
+
+
+<I><A HREF="./function::qsq_print.3stap.html">function::qsq_print</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

@@ -1,0 +1,89 @@
+
+<HTML><HEAD><TITLE>Manpage of FUNCTION::PROBEFUNC</TITLE>
+</HEAD><BODY>
+<H1>FUNCTION::PROBEFUNC</H1>
+Section: Context Functions (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+function::probefunc - Return the probe point's function name, if known
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+    probefunc:string()
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>ARGUMENTS</H2>
+
+<P>
+
+None
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+This function returns the name of the function being probed based on the current address, as computed by symname(<B>addr</B>) or usymname(<B>uaddr</B>) depending on probe context (whether the probe is a user probe or a kernel probe).
+<A NAME="lbAF">&nbsp;</A>
+<H2>PLEASE NOTE</H2>
+
+<P>
+
+this function's behaviour differs between SystemTap 2.0 and earlier versions. Prior to 2.0,
+<B>probefunc</B>
+obtained the function name from the probe point string as returned by
+<B>pp</B>, and used the current address as a fallback.
+<P>
+
+Consider using
+<B>ppfunc</B>
+instead.
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::context-symbols.3stap.html">tapset::context-symbols</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">ARGUMENTS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">PLEASE NOTE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:44 GMT, October 09, 2015
+</BODY>
+</HTML>

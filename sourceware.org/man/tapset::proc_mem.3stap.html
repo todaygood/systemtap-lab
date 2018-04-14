@@ -1,0 +1,291 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::proc_mem</TITLE>
+</HEAD><BODY>
+<H1>tapset::proc_mem</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::proc_mem - systemtap proc_mem tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;Process&nbsp;memory&nbsp;query&nbsp;and&nbsp;utility&nbsp;functions&nbsp;provide&nbsp;information&nbsp;about
+<BR>&nbsp;the&nbsp;memory&nbsp;usage&nbsp;of&nbsp;the&nbsp;current&nbsp;application.&nbsp;These&nbsp;functions&nbsp;provide
+<BR>&nbsp;information&nbsp;about&nbsp;the&nbsp;full&nbsp;size,&nbsp;resident,&nbsp;shared,&nbsp;code&nbsp;and&nbsp;data&nbsp;used
+<BR>&nbsp;by&nbsp;the&nbsp;current&nbsp;process.&nbsp;And&nbsp;provide&nbsp;utility&nbsp;functions&nbsp;to&nbsp;query&nbsp;the
+<BR>&nbsp;page&nbsp;size&nbsp;of&nbsp;the&nbsp;current&nbsp;architecture&nbsp;and&nbsp;create&nbsp;human&nbsp;readable&nbsp;string
+<BR>&nbsp;representations&nbsp;of&nbsp;bytes&nbsp;and&nbsp;pages&nbsp;used.
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>proc_mem_size </B>
+
+<DD>
+Total program virtual memory size in pages
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_size.3stap.html">function::proc_mem_size</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_size_pid </B>
+
+<DD>
+Total program virtual memory size in pages
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_size_pid.3stap.html">function::proc_mem_size_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_rss </B>
+
+<DD>
+Program resident set size in pages
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_rss.3stap.html">function::proc_mem_rss</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_rss_pid </B>
+
+<DD>
+Program resident set size in pages
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_rss_pid.3stap.html">function::proc_mem_rss_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_shr </B>
+
+<DD>
+Program shared pages (from shared mappings)
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_shr.3stap.html">function::proc_mem_shr</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_shr_pid </B>
+
+<DD>
+Program shared pages (from shared mappings)
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_shr_pid.3stap.html">function::proc_mem_shr_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_txt </B>
+
+<DD>
+Program text (code) size in pages
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_txt.3stap.html">function::proc_mem_txt</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_txt_pid </B>
+
+<DD>
+Program text (code) size in pages
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_txt_pid.3stap.html">function::proc_mem_txt_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_data </B>
+
+<DD>
+Program data size (data + stack) in pages
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_data.3stap.html">function::proc_mem_data</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_data_pid </B>
+
+<DD>
+Program data size (data + stack) in pages
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_data_pid.3stap.html">function::proc_mem_data_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>mem_page_size </B>
+
+<DD>
+Number of bytes in a page for this architecture
+<DT><DD>
+See 
+<I><A HREF="./function::mem_page_size.3stap.html">function::mem_page_size</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>bytes_to_string </B>
+
+<DD>
+Human readable string for given bytes
+<DT><DD>
+See 
+<I><A HREF="./function::bytes_to_string.3stap.html">function::bytes_to_string</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>pages_to_string </B>
+
+<DD>
+Turns pages into a human readable string
+<DT><DD>
+See 
+<I><A HREF="./function::pages_to_string.3stap.html">function::pages_to_string</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_string </B>
+
+<DD>
+Human readable string of current proc memory usage
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_string.3stap.html">function::proc_mem_string</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>proc_mem_string_pid </B>
+
+<DD>
+Human readable string of process memory usage
+<DT><DD>
+See 
+<I><A HREF="./function::proc_mem_string_pid.3stap.html">function::proc_mem_string_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::proc_mem_size.3stap.html">function::proc_mem_size</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_size_pid.3stap.html">function::proc_mem_size_pid</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_rss.3stap.html">function::proc_mem_rss</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_rss_pid.3stap.html">function::proc_mem_rss_pid</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_shr.3stap.html">function::proc_mem_shr</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_shr_pid.3stap.html">function::proc_mem_shr_pid</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_txt.3stap.html">function::proc_mem_txt</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_txt_pid.3stap.html">function::proc_mem_txt_pid</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_data.3stap.html">function::proc_mem_data</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_data_pid.3stap.html">function::proc_mem_data_pid</A></I>(3stap),
+
+
+<I><A HREF="./function::mem_page_size.3stap.html">function::mem_page_size</A></I>(3stap),
+
+
+<I><A HREF="./function::bytes_to_string.3stap.html">function::bytes_to_string</A></I>(3stap),
+
+
+<I><A HREF="./function::pages_to_string.3stap.html">function::pages_to_string</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_string.3stap.html">function::proc_mem_string</A></I>(3stap),
+
+
+<I><A HREF="./function::proc_mem_string_pid.3stap.html">function::proc_mem_string_pid</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

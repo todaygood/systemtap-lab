@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>B. Errors</TITLE>
+<META NAME="description" CONTENT="B. Errors">
+<META NAME="keywords" CONTENT="tutorial">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="tutorial.css">
+
+<LINK REL="next" HREF="C_Acknowledgments.html">
+<LINK REL="previous" HREF="A_Glossary.html">
+<LINK REL="up" HREF="tutorial.html">
+<LINK REL="next" HREF="C_Acknowledgments.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html185"
+  HREF="C_Acknowledgments.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html181"
+  HREF="tutorial.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html175"
+  HREF="A_Glossary.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html183"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html186"
+  HREF="C_Acknowledgments.html">C. Acknowledgments</A>
+<B> Up:</B> <A NAME="tex2html182"
+  HREF="tutorial.html">tutorial</A>
+<B> Previous:</B> <A NAME="tex2html176"
+  HREF="A_Glossary.html">A. Glossary</A>
+ &nbsp; <B>  <A NAME="tex2html184"
+  HREF="Contents.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html187"
+  HREF="B_Errors.html#SECTION00081000000000000000">B..1 Parse errors</A>
+<LI><A NAME="tex2html188"
+  HREF="B_Errors.html#SECTION00082000000000000000">B..2 Type errors</A>
+<LI><A NAME="tex2html189"
+  HREF="B_Errors.html#SECTION00083000000000000000">B..3 Symbol errors</A>
+<LI><A NAME="tex2html190"
+  HREF="B_Errors.html#SECTION00084000000000000000">B..4 Probing errors </A>
+<LI><A NAME="tex2html191"
+  HREF="B_Errors.html#SECTION00085000000000000000">B..5 Runtime errors</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00080000000000000000">
+B. Errors</A>
+</H1>
+
+<P>
+We explain some common systemtap error messages in this section.  Most
+error messages include line/character numbers with which one can
+locate the precise location of error in the script code.  There is
+sometimes a subsequent or prior line that elaborates.
+
+<P>
+<FONT SIZE="+1"><EM>error</EM> <TT>at:</TT> <EM>filename</EM>:<EM>line</EM>:<EM>column</EM>: <EM>details</EM></FONT>
+
+<P>
+
+<H2><A NAME="SECTION00081000000000000000">
+B..1 Parse errors</A>
+</H2>
+
+<P>
+<DL>
+<DT></DT>
+<DD><B>parse error: expected <EM>foo</EM>, saw <EM>bar</EM> <IMG
+ WIDTH="22" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img13.png"
+ ALT="$\ldots$"></B> 
+<BR>
+The script contained a grammar error.  A different type of construct
+was expected in the given context.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>parse error: embedded code in unprivileged script</B> 
+<BR>
+The
+script contained unsafe constructs such as embedded C (section
+<A HREF="Tapsets.html#embedded-c"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>), but was run without the <code>-g</code> (guru mode)
+option.  Confirm that the constructs are used safely, then try
+again with <code>-g</code>.
+</DD>
+</DL>
+
+<P>
+
+<H2><A NAME="SECTION00082000000000000000">
+B..2 Type errors</A>
+</H2>
+
+<P>
+<DL>
+<DT></DT>
+<DD><B>semantic error: type mismatch for identifier '<EM>foo</EM>'
+<IMG
+ WIDTH="22" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img13.png"
+ ALT="$\ldots$"> string vs. long</B> 
+<BR>
+In this case, the identifier <EM>foo</EM>
+was previously inferred as a numeric type (``long''), but at the given
+point is being used as a string.  Similar messages appear if an array
+index or function parameter slot is used with conflicting types.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>semantic error: unresolved type for identifier '<EM>foo</EM>'</B>
+
+<BR>
+The identifier <EM>foo</EM> was used, for example in a <code>print</code>,
+but without any operations that could assign it a type.  Similar
+messages may appear if a symbol is misspelled by a typo.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>semantic error: Expecting symbol or array index expression</B>
+
+<BR>
+Something other than an assignable lvalue was on the left hand sign
+of an assignment.
+</DD>
+</DL>
+
+<P>
+
+<H2><A NAME="SECTION00083000000000000000">
+B..3 Symbol errors</A>
+</H2>
+
+<P>
+<DL>
+<DT></DT>
+<DD><B>while searching for arity <EM>N</EM> function, semantic error:
+unresolved function call</B> 
+<BR>
+The script calls a function with <EM>N</EM>
+arguments that does not exist.  The function may exist with different
+arity.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>semantic error: array locals not supported: <IMG
+ WIDTH="22" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img13.png"
+ ALT="$\ldots$"></B> 
+<BR>
+An
+array operation is present for which no matching global declaration
+was found.  Similar messages appear if an array is used with
+inconsistent arities.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>semantic error: variable '<EM>foo</EM>' modified during 'foreach'</B> 
+<BR>
+The array <EM>foo</EM> is being modified (being assigned to or deleted from)
+within an active <code>foreach</code> loop.  This invalid operation is also
+detected within a function called from within the loop. 
+</DD>
+</DL>
+
+<P>
+
+<H2><A NAME="SECTION00084000000000000000">
+B..4 Probing errors </A>
+</H2>
+
+<P>
+<DL>
+<DT></DT>
+<DD><B>semantic error: probe point mismatch at position <EM>N</EM>,
+while resolving probe point <EM>foo</EM></B> 
+<BR>
+A probe point was named that
+neither directly understood by systemtap, nor defined as an alias by a
+tapset script.  The divergence from the ``tree'' of probe point
+namespace is at position <EM>N</EM> (starting with zero at left).
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>semantic error: no match for probe point, while resolving
+probe point <EM>foo</EM></B> 
+<BR>
+A probe point cannot be resolved for any of
+a variety of reasons.  It may be a debuginfo-based probe point such as
+<code>kernel.function("foobar")</code> where no <code>foobar</code> function was
+found.  This can occur if the script specifies a wildcard on function
+names, or an invalid file name or source line number.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>semantic error: unresolved target-symbol expression</B> 
+<BR>
+A
+target variable was referred to in a probe handler that was not
+resolvable.  Or, a target variable is not valid at all in a context
+such as a script function.  This variable may have been elided by an
+optimizing compiler, or may not have a suitable type, or there might
+just be an annoying bug somewhere.  Try again with a slightly
+different probe point (use <code>statement()</code> instead of
+<code>function()</code>) to search for a more cooperative neighbour in the
+same area.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>semantic error: libdwfl failure <IMG
+ WIDTH="22" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img13.png"
+ ALT="$\ldots$"></B> 
+<BR>
+There was a
+problem processing the debugging information.  It may simply be
+missing, or may have some consistency / correctness problems.  Later
+compilers tend to produce better debugging information, so if you can
+upgrade and recompile your kernel/application, it may help.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>semantic error: cannot find <EM>foo</EM> debuginfo</B> 
+<BR>
+Similarly,
+suitable debugging information was not found.  Check that your kernel
+build/installation includes a matching version of debugging data.
+</DD>
+</DL>
+
+<P>
+
+<H2><A NAME="SECTION00085000000000000000">
+B..5 Runtime errors</A>
+</H2>
+
+<P>
+Usually, run-time errors cause a script to terminate.  Some of these
+may be caught with the <code>try { ... } catch { ... }</code> construct.
+
+<P>
+<DL>
+<DT></DT>
+<DD><B>WARNING: Number of errors: <EM>N</EM>, skipped probes: <EM>M</EM></B> 
+<BR>
+Errors and/or skipped probes occurred during this run.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>division by 0</B> 
+<BR>
+The script code performed an invalid
+division.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>aggregate element not found</B> 
+<BR>
+An statistics extractor
+function other than <code>@count</code> was invoked on an aggregate that has
+not had any values accumulated yet.  This is similar to a division by
+zero.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>aggregation overflow</B> 
+<BR>
+An array containing aggregate
+values contains too many distinct key tuples at this time.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>MAXNESTING exceeded</B> 
+<BR>
+Too many levels of function call nesting
+were attempted.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>MAXACTION exceeded</B> 
+<BR>
+The probe handler attempted to execute
+too many statements.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>kernel/user string copy fault at <EM>0xaddr</EM></B> 
+<BR>
+The probe handler attempted to copy a string from kernel or user space
+at an invalid address. 
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>pointer dereference fault</B> 
+<BR>
+There was a fault encountered during a pointer dereference operation such
+as a target variable evaluation.
+
+<P>
+</DD>
+</DL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html185"
+  HREF="C_Acknowledgments.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html181"
+  HREF="tutorial.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html175"
+  HREF="A_Glossary.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html183"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html186"
+  HREF="C_Acknowledgments.html">C. Acknowledgments</A>
+<B> Up:</B> <A NAME="tex2html182"
+  HREF="tutorial.html">tutorial</A>
+<B> Previous:</B> <A NAME="tex2html176"
+  HREF="A_Glossary.html">A. Glossary</A>
+ &nbsp; <B>  <A NAME="tex2html184"
+  HREF="Contents.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,30 @@
+Kprobes Status
+
+Multi-probes (multiple probes at same address):
+Ananth has posted 4 "takes."
+Prasanna posted 1, but on LKML, and it was pulled into the -mm tree.
+Prasanna, Suparna oppose any approach that significantly changes the
+kprobes base.
+[Update from Ananth at the 4/20 meeting: Ananth has posted a new patch
+to LKML, based on his takes 2 and 3.  Ananth is confident that this
+patch will replace Prasanna's in the -mm tree, and that Prasanna and
+Suparna will go along.]
+
+Return Probes:
+Has evolved some since LKML posting:
+- retprobes registered/unregistered independently of kprobes/jprobes
+- recycling of outstanding instance objects when stack is torn down by
+do_exit, do_exec
+- will be based on multi-probes; waiting for this to settle out
+Non-coexistence of multi-probes with jprobes affects retprobes.
+Prasanna hasn't bought in.
+
+x86_64 RIP-relative addressing bug
+Roland's fix is in 2.6.12-rc2.
+
+x86_64 wart removal
+Multi-probes and return probes keep tripping over this wart.
+Coded, but not tested.  (Drops about 60 lines in x86_64 kprobes.c)
+Need to verify that this isn't a performance hit.
+
+

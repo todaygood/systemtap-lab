@@ -1,0 +1,219 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::tty</TITLE>
+</HEAD><BODY>
+<H1>tapset::tty</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::tty - systemtap tty tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>tty.open </B>
+
+<DD>
+Called when a tty is opened
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.open.3stap.html">probe::tty.open</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.release </B>
+
+<DD>
+Called when the tty is closed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.release.3stap.html">probe::tty.release</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.resize </B>
+
+<DD>
+Called when a terminal resize happens
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.resize.3stap.html">probe::tty.resize</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.ioctl </B>
+
+<DD>
+called when a ioctl is request to the tty
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.ioctl.3stap.html">probe::tty.ioctl</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.init </B>
+
+<DD>
+Called when a tty is being initalized
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.init.3stap.html">probe::tty.init</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.register </B>
+
+<DD>
+Called when a tty device is registred
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.register.3stap.html">probe::tty.register</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.unregister </B>
+
+<DD>
+Called when a tty device is being unregistered
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.unregister.3stap.html">probe::tty.unregister</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.poll </B>
+
+<DD>
+Called when a tty device is being polled
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.poll.3stap.html">probe::tty.poll</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.receive </B>
+
+<DD>
+called when a tty receives a message
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.receive.3stap.html">probe::tty.receive</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.write </B>
+
+<DD>
+write to the tty line
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.write.3stap.html">probe::tty.write</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tty.read </B>
+
+<DD>
+called when a tty line will be read
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tty.read.3stap.html">probe::tty.read</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./probe::tty.open.3stap.html">probe::tty.open</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.release.3stap.html">probe::tty.release</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.resize.3stap.html">probe::tty.resize</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.ioctl.3stap.html">probe::tty.ioctl</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.init.3stap.html">probe::tty.init</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.register.3stap.html">probe::tty.register</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.unregister.3stap.html">probe::tty.unregister</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.poll.3stap.html">probe::tty.poll</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.receive.3stap.html">probe::tty.receive</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.write.3stap.html">probe::tty.write</A></I>(3stap),
+
+
+<I><A HREF="./probe::tty.read.3stap.html">probe::tty.read</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

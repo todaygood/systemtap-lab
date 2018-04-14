@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>8 Statistics (aggregates)</TITLE>
+<META NAME="description" CONTENT="8 Statistics (aggregates)">
+<META NAME="keywords" CONTENT="langref">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="langref.css">
+
+<LINK REL="next" HREF="Formatted_output.html">
+<LINK REL="previous" HREF="Associative_arrays.html">
+<LINK REL="up" HREF="langref.html">
+<LINK REL="next" HREF="Formatted_output.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html473"
+  HREF="Formatted_output.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html467"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html461"
+  HREF="Associative_arrays.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html469"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html471"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html474"
+  HREF="Formatted_output.html">9 Formatted output</A>
+<B> Up:</B> <A NAME="tex2html468"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html462"
+  HREF="Associative_arrays.html">7 Associative arrays</A>
+ &nbsp; <B>  <A NAME="tex2html470"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html472"
+  HREF="Index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html475"
+  HREF="Statistics_aggregates.html#SECTION00091000000000000000">8.1 The aggregation (&lt; &lt; &lt;) operator</A>
+<LI><A NAME="tex2html476"
+  HREF="Statistics_aggregates.html#SECTION00092000000000000000">8.2 Extraction functions</A>
+<LI><A NAME="tex2html477"
+  HREF="Statistics_aggregates.html#SECTION00093000000000000000">8.3 Integer extractors</A>
+<UL>
+<LI><A NAME="tex2html478"
+  HREF="Statistics_aggregates.html#SECTION00093100000000000000">8.3.1 @count(s)</A>
+<LI><A NAME="tex2html479"
+  HREF="Statistics_aggregates.html#SECTION00093200000000000000">8.3.2 @sum(s)</A>
+<LI><A NAME="tex2html480"
+  HREF="Statistics_aggregates.html#SECTION00093300000000000000">8.3.3 @min(s)</A>
+<LI><A NAME="tex2html481"
+  HREF="Statistics_aggregates.html#SECTION00093400000000000000">8.3.4 @max(s)</A>
+<LI><A NAME="tex2html482"
+  HREF="Statistics_aggregates.html#SECTION00093500000000000000">8.3.5 @avg(s)</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html483"
+  HREF="Statistics_aggregates.html#SECTION00094000000000000000">8.4 Histogram extractors</A>
+<UL>
+<LI><A NAME="tex2html484"
+  HREF="Statistics_aggregates.html#SECTION00094100000000000000">8.4.1 @hist_linear</A>
+<LI><A NAME="tex2html485"
+  HREF="Statistics_aggregates.html#SECTION00094200000000000000">8.4.2 @hist_log</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html486"
+  HREF="Statistics_aggregates.html#SECTION00095000000000000000">8.5 Deletion</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00090000000000000000"></A><A NAME="sec:Statistics"></A>
+<A NAME="1064"></A>
+<BR>
+8 Statistics (aggregates)
+</H1>
+Aggregate instances are used to collect statistics on numerical values, when
+it is important to accumulate new data quickly and in large volume. These
+instances operate without exclusive locks, and store only aggregated stream
+statistics. Aggregates make sense only for global variables. They are stored
+individually or as elements of an associative array. For information about 
+wrapping associative arrays with statistics elements, see section&nbsp;<A HREF="Associative_arrays.html#sub:Array-Wrapping"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>
+
+<P>
+
+<H2><A NAME="SECTION00091000000000000000">
+8.1 The aggregation (&lt; &lt; &lt;) operator</A>
+</H2>
+<A NAME="1359"></A>
+The aggregation operator is ``&lt; &lt; &lt;'',
+and its effect is similar to an assignment or a C++ output streaming operation.
+The left operand specifies a scalar or array-index <I>l-value</I>, which
+must be declared global. The right operand is a numeric expression. The meaning
+is intuitive: add the given number as a sample to the set of numbers to compute their
+statistics. The specific list of statistics to gather is given separately
+by the extraction functions. The following is an example.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+a &lt;&lt;&lt; delta_timestamp
+writes[execname()] &lt;&lt;&lt; count
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00092000000000000000"></A>
+<A NAME="1079"></A>
+<BR>
+8.2 Extraction functions
+</H2>
+For each instance of a distinct extraction function operating on a given
+identifier, the translator computes a set of statistics. With each execution
+of an extraction function, the aggregation is computed for that moment across
+all processors. The first argument of each function is the same style of
+l-value as used on the left side of the aggregation operation.
+
+<P>
+
+<H2><A NAME="SECTION00093000000000000000">
+8.3 Integer extractors</A>
+</H2>
+
+<P>
+The following functions provide methods to extract information about aggregate.
+
+<P>
+
+<H3><A NAME="SECTION00093100000000000000"></A>
+<A NAME="1082"></A>
+<BR>
+8.3.1 @count(s)
+</H3>
+This statement returns the number of samples accumulated in aggregate s.
+
+<P>
+
+<H3><A NAME="SECTION00093200000000000000"></A>
+<A NAME="1084"></A>
+<BR>
+8.3.2 @sum(s)
+</H3>
+This statement returns the total sum of all samples in aggregate s.
+
+<P>
+
+<H3><A NAME="SECTION00093300000000000000"></A>
+<A NAME="1086"></A>
+<BR>
+8.3.3 @min(s)
+</H3>
+This statement returns the minimum of all samples in aggregate s.
+
+<P>
+
+<H3><A NAME="SECTION00093400000000000000"></A>
+<A NAME="1088"></A>
+<BR>
+8.3.4 @max(s)
+</H3>
+This statement returns the maximum of all samples in aggregate s.
+
+<P>
+
+<H3><A NAME="SECTION00093500000000000000"></A>
+<A NAME="1090"></A>
+<BR>
+8.3.5 @avg(s)
+</H3>
+This statement returns the average value of all samples in aggregate s.
+
+<P>
+
+<H2><A NAME="SECTION00094000000000000000"></A>
+<A NAME="1092"></A>
+<BR>
+8.4 Histogram extractors
+</H2>
+The following functions provide methods to extract histogram information.
+Printing a histogram with the print family of functions renders a histogram
+object as a tabular "ASCII art" bar chart.
+
+<P>
+
+<H3><A NAME="SECTION00094100000000000000"></A>
+<A NAME="1094"></A>
+<BR>
+8.4.1 @hist_linear
+</H3>
+The statement <TT>@hist_linear(v,L,H,W)</TT> represents a linear histogram
+of aggregate <TT>v</TT>,
+where <I>L</I> and <I>H</I> represent the lower and upper end of
+a range of values and <I>W</I> represents the width (or size) of each bucket
+within the range.  The low and high values can be negative, but the overall
+difference (high minus low) must be positive. The width parameter must also
+be positive.
+
+<P>
+In the output, a range of consecutive empty buckets may be replaced with a tilde
+(~) character.  This can be controlled on the command line
+with -DHIST_ELISION=&lt; num&gt; ,
+where &lt; num&gt;  specifies how many
+empty buckets at the top and bottom of the range to print.
+The default is 2.  A &lt; num&gt;  of 0
+removes all empty buckets. A negative &lt; num&gt; 
+disables removal.
+
+<P>
+For example, if you specify -DHIST_ELISION=3 and the histogram has 10
+consecutive empty buckets, the first 3 and last 3 empty buckets will
+be printed and the middle 4 empty buckets will be represented by a
+tilde (~).
+
+<P>
+The following is an example.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+global reads
+probe netdev.receive {
+    reads &lt;&lt;&lt; length
+}
+probe end {
+    print(@hist_linear(reads, 0, 10240, 200))
+}
+</PRE>
+</DD>
+</DL>This generates the following output.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+value |-------------------------------------------------- count
+    0 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 1650
+  200 |                                                      8
+  400 |                                                      0
+  600 |                                                      0
+      ~
+ 1000 |                                                      0
+ 1200 |                                                      0
+ 1400 |                                                      1
+ 1600 |                                                      0
+ 1800 |                                                      0
+</PRE>
+</DD>
+</DL>
+This shows that 1650 network reads were of a size between 0 and 199 bytes,
+8 reads were between 200 and 399 bytes, and 1 read was between
+1200 and 1399 bytes.  The tilde (~) character indicates
+the bucket for 800 to 999 bytes was removed because it was empty.
+Empty buckets for 2000 bytes and larger were also removed because they
+were empty.
+
+<P>
+
+<H3><A NAME="SECTION00094200000000000000"></A>
+<A NAME="1122"></A>
+<BR>
+8.4.2 @hist_log
+</H3>
+The statement <TT>@hist_log(v)</TT> represents a base-2 logarithmic
+histogram.  Empty buckets are replaced with a tilde (~)
+character in the same way as <TT>@hist_linear()</TT> (see above).
+
+<P>
+The following is an example.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+global reads
+probe netdev.receive {
+    reads &lt;&lt;&lt; length
+}
+probe end {
+    print(@hist_log(reads))
+}
+</PRE>
+</DD>
+</DL>This generates the following output.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+value |-------------------------------------------------- count
+    8 |                                                      0
+   16 |                                                      0
+   32 |                                                    254
+   64 |                                                      3
+  128 |                                                      2
+  256 |                                                      2
+  512 |                                                      4
+ 1024 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 16689
+ 2048 |                                                      0
+ 4096 |                                                      0
+</PRE>
+</DD>
+</DL>
+
+<P>
+
+<H2><A NAME="SECTION00095000000000000000"></A>
+<A NAME="1137"></A>
+<BR>
+8.5 Deletion
+</H2>
+The <TT>delete</TT> statement (subsection <A HREF="Statement_types.html#sub:delete"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>) applied to an
+aggregate variable will reset it to the initial empty state.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html473"
+  HREF="Formatted_output.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html467"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html461"
+  HREF="Associative_arrays.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html469"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html471"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html474"
+  HREF="Formatted_output.html">9 Formatted output</A>
+<B> Up:</B> <A NAME="tex2html468"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html462"
+  HREF="Associative_arrays.html">7 Associative arrays</A>
+ &nbsp; <B>  <A NAME="tex2html470"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html472"
+  HREF="Index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

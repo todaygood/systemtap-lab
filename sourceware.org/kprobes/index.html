@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+	<TITLE>Linux Technology Center  : Welcome</TITLE>
+	<LINK REL="SHORTCUT ICON" HREF="images/ltc.ico">
+	<LINK REL="STYLESHEET" TYPE="text/css" HREF="style.css">
+</HEAD>
+
+<BODY topmargin="0" leftmargin="0" rightmargin="0" marginwidth="0" marginheight="0">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="site_header">
+
+	<td width="20"><img src="images/c.gif" height="1" width="20" alt="" border="0"></td>
+	<td width="272" class="middle"><a href="http://www.ibm.com/linux/ltc"><img src="images/ltc.png" height="24" width="245" alt="Linux Technology Center" border="0"></a></td>
+	<td width="100%"><img src="images/c.gif" height="1" width="1" alt="" border="0"></td>
+	<td width="111" align="right"><img src="images/penguins.png" height="39" width="111" alt="Penguins" border="0"></td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr bgcolor="#000000">
+	<td width="100%" class="middle"><img src="images/c.gif" height="3" width="1" alt="" border="0"></td>
+</tr>
+</table>
+
+<div style="margin: 20">
+
+
+<h2 align="center"><font color="#006699">Kernel Probes</font></h2>
+
+<h3>Kprobes</h3>
+
+<p>Kernel Dynamic Probes (Kprobes) provides a lightweight interface for kernel modules to implant probes and register corresponding probe handlers. A probe is an automated breakpoint that is implanted dynamically in executing (kernel-space) modules without the need to modify their underlying source. Probes are intended to be used as an ad hoc service aid where minimal disruption to the system is required. They are particularly advocated in production environments where the use of interactive debuggers is undesirable. Kprobes also has substantial applicability in test and development environments. During test, faults may be injected or simulated by the probing module. In development, debugging code (for example a printk) may be easily inserted without having to recompile to module under test.</p>
+
+<p>With each probe, a corresponding probe event handler address is specified. Probe event handlers run as extensions to the system breakpoint interrupt handler and are expected to have little or no dependence on system facilities. Because of this design point, probes are able to be implanted in the most hostile environments -- interrupt-time, task-time, disabled, inter-context switch and SMP-enabled code paths -- without adversely skewing system performance.</p>
+
+<p align="center"><img src="/images/news.png" height="16" width="58" alt="News"></p> 
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+<tr><td valign="top" nowrap>November 2, 2004</td><td>&nbsp;&nbsp;</td><td>A single patch combining user-space probes, kernel watchpoint probes, and a Dprobes interface for Linux 2.6.9-final is released.</td></tr>
+<tr><td valign="top" nowrap>November 2, 2004</td><td>&nbsp;&nbsp;</td><td>Individual patches for user-space probes, kernel watchpoint probes and a Dprobes interface for Linux 2.6.9-final is released.</td></tr>
+<tr><td valign="top" nowrap>November 2, 2004</td><td>&nbsp;&nbsp;</td><td>Kprobes is now included in the main line kernel.  No need to apply kprobes base patches. Download Linux version 2.6.9-rc2 and above.</td></tr>
+<tr><td valign="top" nowrap>July 13, 2004</td><td>&nbsp;&nbsp;</td><td>A single patch combining Kprobes and Dprobes for linux-2.6.8-rc1 is released.</td></tr>
+<tr><td valign="top" nowrap>July 13, 2004</td><td>&nbsp;&nbsp;</td><td>Kprobes patches for linux-2.6.8-rc1 is released.</td></tr>
+<tr><td valign="top" nowrap>June 1, 2004</td><td>&nbsp;&nbsp;</td><td>A single patch combining Kprobes and Dprobes for linux-2.6.7-rc2 is released.</td></tr>
+<!--
+<tr><td valign="top" nowrap>April 26, 2004</td><td>&nbsp;&nbsp;</td><td>A single patch combining Kprobes and Dprobes for linux-2.6.5 is released.</td></tr>
+<tr><td valign="top" nowrap>February 10, 2004</td><td>&nbsp;&nbsp;</td><td>A single patch combining Kprobes and Dprobes for linux-2.6.2 is released.</td></tr>
+<tr><td valign="top" nowrap>February 10, 2004</td><td>&nbsp;&nbsp;</td><td>Kprobes patches for linux-2.6.2 is released.</td></tr>
+<tr><td valign="top" nowrap>February 9, 2004</td><td>&nbsp;&nbsp;</td><td>A single patch combining Kprobes and Dprobes for linux-2.6.1 is released.</td></tr>
+<tr><td valign="top" nowrap>February 9, 2004</td><td>&nbsp;&nbsp;</td><td>Kprobes patches for linux-2.6.1 is released.</td></tr>
+<tr><td valign="top" nowrap>December 15, 2003</td><td>&nbsp;&nbsp;</td><td>A single patch combining Kprobes and Dprobes for linux-2.6.0-test11 is released.</td></tr>
+<tr><td valign="top" nowrap>December 15, 2003</td><td>&nbsp;&nbsp;</td><td>Kprobes patches for linux-2.6.0-test11 released.</td></tr>
+<tr><td valign="top" nowrap>November 24, 2003</td><td>&nbsp;&nbsp;</td><td>A single patch combining Kprobes and Dprobes for linux-2.6.0-test9 released.</td></tr>
+<tr><td valign="top" nowrap>November 24, 2003</td><td>&nbsp;&nbsp;</td><td>Kprobes patches for linux-2.6.0-test9 released.</td></tr>
+<tr><td valign="top" nowrap>October 17, 2003</td><td>&nbsp;&nbsp;</td><td>Kprobes patches for linux-2.6.0-test7 released</td></tr>
+<tr><td valign="top" nowrap>October 17, 2003</td><td>&nbsp;&nbsp;</td><td>New feature SysRq key for emergency removal of probes and usability features are included.</td></tr>
+-->
+</table>
+
+<h3>Kprobes Interfaces</h3>
+
+<p>Kprobes provide several interfaces for kernel space probes, user space probes and kernel watchpoint probes.</p>
+
+<p><b>Kernel Space Probes Interface:</b></p>
+
+<p>register_probe:</p>
+
+<p>Registration defines the probe location, which must be at an instruction boundary that precedes any associated opcode prefixes. It also defines three call-back addresses for the probing module:
+</p>
+
+<ul>
+<li>The probe-event handler address, which is called as the
+  probed instruction is about to execute. On return Kprobes
+  will single-step the probed instruction.</li>
+<li>The post-execution handler address, which is called when
+  single-stepping completes.</li>
+<li>The fault handler address, which is called if an exception is generated for any instruction within the fault-handler or when Kprobes single-steps the probed instruction.</li>
+</ul>
+
+<p>register_probe:</p>
+<p>The user has to unregister explicitly all registered probes before removing the probe handling module.</p>
+
+<p><b>User Space Probes Interface:</b></p>
+
+<p>register_kprobe_user:</p>
+<p>Registration of user space probes is defined for a pair of inode and offset within the executable where the probes need to be inserted. It is similar to kernel space probes registration.</p>
+
+<p>unregister_kprobe_user:</p>
+<p>Every registered user space probe must be unregistered. This interface must be called after all the probes for a given pair of inode and offset are removed.</p>
+
+<p>insert_kprobe_user:</p>
+<p>The user space probes can be inserted into the pages existing in the memory or pages read via readpage routine of the inode's address space operations or swapping in of the process private page. User has to ensure that the page containing the specified address (user-&gt;addr) must be present in the memory before calling. User has to first register user space probes for a given pair of of inode and offset before calling this routine to insert probes.</p>
+
+<p>remove_kprobe_user:</p>
+<p>This interface is used to remove user space probe from a page at the given address. User has to ensure that the page containing the specified address (user-&gt;addr) must be present in the memory before calling this routine. Before unregistering, all the probes inserted at a given inode and offset must be removed.</p>
+
+<p><b>Kernel Watchpoint Probes Interface:</b></p>
+
+<p>register_kwatch:</p>
+<p>Register the kernel watchpoints and returns the debug register number allocated/used for setting up this watch point.</p>
+
+<p>unregister_kwatch:</p>
+<p>Unregisters the kernel watchpoint probes.</p>
+
+<h3>Extensions to Kprobes</h3>
+
+<p>Kprobes has been developed from the full Dynamic Probes patch. It includes the essential mechanism to enable probes in kernel space. Additional patches on top of Kprobes provide support for kernel space probes, watchpoints and user space probes are also available. The char device interface for user space probes application and the RPN Language Interpreter are part of the dprobes external module.</p>
+
+<h3>Documentation</h3>
+
+<p><a href="README.kprobes">View the Kprobes README</a></p>
+
+<p><a href="docs.html">View Kprobes and DProbes white papers, presentations, and articles</a></p>
+
+<h3>Download</h3>
+
+<p>Download a <a href="releases/kprobes-dprobes-2.6.9-final-full.patch.bz2">single patch combining user-space probes, kernel watchpoint probes, and a Dprobes interface</a> for Linux 2.6.9-final.</p>
+<p>Download the <a href="releases/kprobes-2.6.9-final.tar.gz">full set of Kprobes patches for the 2.6.9-final kernel</a>. It includes user-space probes and watchpoint probes. Also the Dprobes patches built over Kprobes interface are included.<br>
+<a href="releases/">Older releases</a></p>
+<p>Download the <a href="releases/kprobes-2421-base.tar.gz">Kprobes patches for the 2.4.21 kernel</a>. Only the base kernel space probes patch and dprobes patches built over Kprobes interface are included.</p>
+
+<p><a href="http://www-124.ibm.com/linux/patches/?project_id=141">Initial version of Kprobes patches are also available</a>.</p>
+
+</div>
+
+<table bgcolor="#000000" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+<tr>
+	<td width="100%" height="10"><img src="images/c.gif" height="1" width="1" alt="" border="0"></td>
+
+</tr>
+</table>
+
+</body>
+</html>
+

@@ -1,0 +1,134 @@
+
+<HTML><HEAD><TITLE>Manpage of PROBE::SCSI\&.IODONE</TITLE>
+</HEAD><BODY>
+<H1>PROBE::SCSI\&.IODONE</H1>
+Section: SCSI Tapset (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+probe::scsi.iodone - SCSI command completed by low level driver and enqueued into the done queue.
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+scsi.iodone 
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>VALUES</H2>
+
+<P>
+
+<I>channel</I>
+<DL COMPACT><DT><DD>
+The channel number
+</DL>
+
+<P>
+
+<I>req_addr</I>
+<DL COMPACT><DT><DD>
+The current struct request pointer, as a number
+</DL>
+
+<P>
+
+<I>data_direction</I>
+<DL COMPACT><DT><DD>
+The data_direction specifies whether this command is from/to the device.
+</DL>
+
+<P>
+
+<I>data_direction_str</I>
+<DL COMPACT><DT><DD>
+Data direction, as a string
+</DL>
+
+<P>
+
+<I>device_state_str</I>
+<DL COMPACT><DT><DD>
+The current state of the device, as a string
+</DL>
+
+<P>
+
+<I>host_no</I>
+<DL COMPACT><DT><DD>
+The host number
+</DL>
+
+<P>
+
+<I>lun</I>
+<DL COMPACT><DT><DD>
+The lun number
+</DL>
+
+<P>
+
+<I>dev_id</I>
+<DL COMPACT><DT><DD>
+The scsi device id
+</DL>
+
+<P>
+
+<I>scsi_timer_pending</I>
+<DL COMPACT><DT><DD>
+1 if a timer is pending on this request
+</DL>
+
+<P>
+
+<I>device_state</I>
+<DL COMPACT><DT><DD>
+The current state of the device
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::scsi.3stap.html">tapset::scsi</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">VALUES</A><DD>
+<DT><A HREF="#lbAE">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

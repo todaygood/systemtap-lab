@@ -1,0 +1,85 @@
+
+<HTML><HEAD><TITLE>Manpage of FUNCTION::KERNEL_STR</TITLE>
+</HEAD><BODY>
+<H1>FUNCTION::KERNEL_STR</H1>
+Section: String and data retrieving fun (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+function::kernel_string2_utf32 - Retrieves UTF-32 string from kernel memory with alternative error string
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+    kernel_string2_utf32:string(addr:long,err_msg:string)
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>ARGUMENTS</H2>
+
+<P>
+
+<I>addr</I>
+<DL COMPACT><DT><DD>
+The kernel address to retrieve the string from
+</DL>
+
+<P>
+
+<I>err_msg</I>
+<DL COMPACT><DT><DD>
+The error message to return when data isn't available
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+This function returns a null terminated UTF-8 string converted from the UTF-32 string at a given kernel memory address. Reports the given error message on string copy fault or conversion error.
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::conversions.3stap.html">tapset::conversions</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">ARGUMENTS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:44 GMT, October 09, 2015
+</BODY>
+</HTML>

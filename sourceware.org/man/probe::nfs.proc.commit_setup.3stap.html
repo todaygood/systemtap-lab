@@ -1,0 +1,127 @@
+
+<HTML><HEAD><TITLE>Manpage of PROBE::NFS\&.PROC\&.</TITLE>
+</HEAD><BODY>
+<H1>PROBE::NFS\&.PROC\&.</H1>
+Section: Network File Storage Tapsets (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+probe::nfs.proc.commit_setup - NFS client setting up a commit RPC task
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+nfs.proc.commit_setup 
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>VALUES</H2>
+
+<P>
+
+<I>server_ip</I>
+<DL COMPACT><DT><DD>
+IP address of server
+</DL>
+
+<P>
+
+<I>count</I>
+<DL COMPACT><DT><DD>
+bytes in this commit
+</DL>
+
+<P>
+
+<I>version</I>
+<DL COMPACT><DT><DD>
+NFS version
+</DL>
+
+<P>
+
+<I>bitmask1</I>
+<DL COMPACT><DT><DD>
+V4 bitmask representing the set of attributes supported on this filesystem
+</DL>
+
+<P>
+
+<I>offset</I>
+<DL COMPACT><DT><DD>
+the file offset
+</DL>
+
+<P>
+
+<I>bitmask0</I>
+<DL COMPACT><DT><DD>
+V4 bitmask representing the set of attributes supported on this filesystem
+</DL>
+
+<P>
+
+<I>prot</I>
+<DL COMPACT><DT><DD>
+transfer protocol
+</DL>
+
+<P>
+
+<I>size</I>
+<DL COMPACT><DT><DD>
+bytes in this commit
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+The commit_setup function is used to setup a commit RPC task. Is is not doing the actual commit operation. It does not exist in NFSv2.
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::nfs_proc.3stap.html">tapset::nfs_proc</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">VALUES</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

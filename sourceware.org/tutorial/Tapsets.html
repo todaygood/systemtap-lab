@@ -1,0 +1,404 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>4 Tapsets</TITLE>
+<META NAME="description" CONTENT="4 Tapsets">
+<META NAME="keywords" CONTENT="tutorial">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="tutorial.css">
+
+<LINK REL="next" HREF="Further_information.html">
+<LINK REL="previous" HREF="Analysis.html">
+<LINK REL="up" HREF="tutorial.html">
+<LINK REL="next" HREF="Further_information.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html144"
+  HREF="Further_information.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html140"
+  HREF="tutorial.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html134"
+  HREF="Analysis.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html142"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html145"
+  HREF="Further_information.html">5 Further information</A>
+<B> Up:</B> <A NAME="tex2html141"
+  HREF="tutorial.html">tutorial</A>
+<B> Previous:</B> <A NAME="tex2html135"
+  HREF="Analysis.html">3 Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html143"
+  HREF="Contents.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html146"
+  HREF="Tapsets.html#SECTION00051000000000000000">4.1 Automatic selection</A>
+<LI><A NAME="tex2html147"
+  HREF="Tapsets.html#SECTION00052000000000000000">4.2 Probe point aliases</A>
+<LI><A NAME="tex2html148"
+  HREF="Tapsets.html#SECTION00053000000000000000">4.3 Embedded C</A>
+<LI><A NAME="tex2html149"
+  HREF="Tapsets.html#SECTION00054000000000000000">4.4 Naming conventions</A>
+<LI><A NAME="tex2html150"
+  HREF="Tapsets.html#SECTION00055000000000000000">4.5 Exercises</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00050000000000000000">
+4 Tapsets</A>
+</H1>
+
+<P>
+After writing enough analysis scripts for yourself, you may become
+known as an expert to your colleagues, who will want to use your
+scripts.  Systemtap makes it possible to share in a controlled manner;
+to build libraries of scripts that build on each other.  In fact, all
+of the functions (<code>pid()</code>, etc.) used in the scripts above come
+from tapset scripts like that.  A ``tapset'' is just a script that
+designed for reuse by installation into a special directory.
+
+<P>
+
+<H2><A NAME="SECTION00051000000000000000">
+4.1 Automatic selection</A>
+</H2>
+
+<P>
+Systemtap attempts to resolve references to global symbols (probes,
+functions, variables) that are not defined within the script by a
+systematic search through the tapset library for scripts that define
+those symbols.  Tapset scripts are installed under the default
+directory named <code>/usr/share/systemtap/tapset</code>.  A user may give
+additional directories with the <code>-I DIR</code> option.  Systemtap
+searches these directories for script (<code>.stp</code>) files.
+
+<P>
+The search process includes subdirectories that are specialized for a
+particular kernel version and/or architecture, and ones that name only
+larger kernel families.  Naturally, the search is ordered from
+specific to general, as shown in Figure&nbsp;<A HREF="#fig:tapset-search"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:tapset-search"></A><A NAME="249"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+Listing the tapset search path.</CAPTION>
+<TR><TD><IMG
+ WIDTH="702" HEIGHT="251" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.png"
+ ALT="\begin{center}\begin{Sbox}\begin{minipage}{6in}
+\begin{verbatim}..."></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+When a script file is found that <EM>defines</EM> one of the undefined
+symbols, that <EM>entire file</EM> is added to the probing session being
+analyzed.  This search is repeated until no more references can become
+satisfied.  Systemtap signals an error if any are still unresolved.
+
+<P>
+This mechanism enables several programming idioms.  First, it allows
+some global symbols to be defined only for applicable kernel
+version/architecture pairs, and cause an error if their use is
+attempted on an inapplicable host.  Similarly, the same symbol can be
+defined differently depending on kernels, in much the same way that
+different kernel <code>include/asm/ARCH/</code> files contain macros that
+provide a porting layer.
+
+<P>
+Another use is to separate the default parameters of a tapset routine
+from its implementation.  For example, consider a tapset that defines
+code for relating elapsed time intervals to process scheduling
+activities.  The data collection code can be generic with respect to
+which time unit (jiffies, wall-clock seconds, cycle counts) it can
+use.  It should have a default, but should not require additional
+run-time checks to let a user choose another.
+Figure&nbsp;<A HREF="#fig:tapset-default"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> shows a way.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:tapset-default"></A><A NAME="261"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+Providing an overrideable default.</CAPTION>
+<TR><TD><IMG
+ WIDTH="702" HEIGHT="385" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="\begin{center}\begin{Sbox}\begin{minipage}{6in}
+\begin{verbatim}..."></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+A tapset that exports only <EM>data</EM> may be as useful as ones that
+exports functions or probe point aliases (see below).  Such global
+data can be computed and kept up-to-date using probes internal to the
+tapset.  Any outside reference to the global variable would
+incidentally activate all the required probes.
+
+<P>
+
+<H2><A NAME="SECTION00052000000000000000">
+4.2 Probe point aliases</A>
+</H2>
+
+<P>
+Probe point aliases allow creation of
+new probe points from existing ones.  This is useful if the new probe
+points are named to provide a higher level of abstraction.  For
+example, the system-calls tapset defines probe point aliases of the
+form <code>syscall.open</code> etc., in terms of lower level ones like
+<code>kernel.function("sys_open")</code>.  Even if some future kernel
+renames <code>sys_open</code>, the aliased name can remain valid.
+
+<P>
+A probe point alias definition looks like a normal probe.  Both start
+with the keyword <code>probe</code> and have a probe handler statement block
+at the end.  But where a normal probe just lists its probe points, an
+alias creates a new name using the assignment (<code>=</code>) operator.
+Another probe that names the new probe point will create an actual
+probe, with the handler of the alias <EM>prepended</EM>.
+
+<P>
+This prepending behavior serves several purposes.  It allows the alias
+definition to ``preprocess'' the context of the probe before passing
+control to the user-specified handler.  This has several possible uses:
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="RIGHT"><code>if ($flag1 != $flag2) next</code></TD>
+<TD ALIGN="LEFT">skip probe unless given condition is met</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>name = "foo"</code></TD>
+<TD ALIGN="LEFT">supply probe-describing values</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>var = $var</code></TD>
+<TD ALIGN="LEFT">extract target variable to plain local variable</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+Figure&nbsp;<A HREF="#fig:probe-alias"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> demonstrates a probe point alias
+definition as well as its use.  It demonstrates how a single probe
+point alias can expand to multiple probe points, even to other
+aliases.  It also includes probe point wildcarding.  These functions
+are designed to compose sensibly.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:probe-alias"></A><A NAME="279"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+Classified system call activity.</CAPTION>
+<TR><TD><IMG
+ WIDTH="529" HEIGHT="728" ALIGN="BOTTOM" BORDER="0"
+ SRC="img11.png"
+ ALT="\begin{center}\begin{Sbox}\begin{minipage}{4.5in}
+\begin{verbatim}..."></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<H2><A NAME="SECTION00053000000000000000"></A>
+<A NAME="embedded-c"></A>
+<BR>
+4.3 Embedded C
+</H2>
+
+<P>
+Sometimes, a tapset needs provide data values from the kernel that
+cannot be extracted using ordinary target variables (<code>$var</code>).  This may be because the values are in complicated data structures, may
+require lock awareness, or are defined by layers of macros.  Systemtap
+provides an ``escape hatch'' to go beyond what the language can safely
+offer.  In certain contexts, you may embed plain raw C in tapsets,
+exchanging power for the safety guarantees listed in
+section&nbsp;<A HREF="Analysis.html#sec:safety"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.  End-user scripts <EM>may not</EM> include
+embedded C code, unless systemtap is run with the <code>-g</code> (``guru''
+mode) option.  Tapset scripts get guru mode privileges automatically.
+
+<P>
+Embedded C can be the body of a script function.  Instead enclosing
+the function body statements in <code>{</code> and <code>}</code>, use <code>%{</code>
+and <code>%}</code>.  Any enclosed C code is literally transcribed into the
+kernel module: it is up to you to make it safe and correct.  In order
+to take parameters and return a value, macros <code>STAP_ARG_*</code> and
+<code>STAP_RETVALUE</code> are made available.  The familiar data-gathering
+functions <code>pid()</code>, <code>execname()</code>, and their neighbours are
+all embedded C functions.  Figure&nbsp;<A HREF="#fig:embedded-C"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> contains
+another example.
+
+<P>
+Since systemtap cannot examine the C code to infer these types, an
+optional<A NAME="tex2html14"
+  HREF="footnode.html#foot289"><SUP>5</SUP></A> annotation
+syntax is available to assist the type inference process.  Simply
+suffix parameter names and/or the function name with <code>:string</code> or
+<code>:long</code> to designate the string or numeric type.  In addition,
+the script may include a <code>%{</code> <code>%}</code> block at the outermost
+level of the script, in order to transcribe declarative code like
+<code>#include &lt;linux/foo.h&gt;</code>.  These enable the embedded C functions
+to refer to general kernel types.
+
+<P>
+There are a number of safety-related constraints that should be
+observed by developers of embedded C code.
+
+<OL>
+<LI>Do not dereference pointers that are not known or testable valid.
+</LI>
+<LI>Do not call any kernel routine that may cause a sleep or fault.
+</LI>
+<LI>Consider possible undesirable recursion, where your embedded C
+function calls a routine that may be the subject of a probe.  If that
+probe handler calls your embedded C function, you may suffer infinite
+regress.  Similar problems may arise with respect to non-reentrant
+locks.
+</LI>
+<LI>If locking of a data structure is necessary, use a
+<code>trylock</code> type call to attempt to take the lock.  If that fails,
+give up, do not block.
+</LI>
+</OL>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:embedded-C"></A><A NAME="298"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+Embedded C function.</CAPTION>
+<TR><TD><IMG
+ WIDTH="529" HEIGHT="554" ALIGN="BOTTOM" BORDER="0"
+ SRC="img12.png"
+ ALT="\begin{center}\begin{Sbox}\begin{minipage}{4.5in}
+\begin{verbatim}..."></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<H2><A NAME="SECTION00054000000000000000">
+4.4 Naming conventions</A>
+</H2>
+
+<P>
+Using the tapset search mechanism just described, potentially many
+script files can become selected for inclusion in a single session.
+This raises the problem of name collisions, where different tapsets
+accidentally use the same names for functions/globals.  This can
+result in errors at translate or run time.
+
+<P>
+To control this problem, systemtap tapset developers are advised to
+follow naming conventions.  Here is some of the guidance.
+
+<OL>
+<LI>Pick a unique name for your tapset, and substitute it for
+<EM>TAPSET</EM> below.
+</LI>
+<LI>Separate identifiers meant to be used by tapset users from
+those that are internal implementation artifacts.
+</LI>
+<LI>Document the first set in the appropriate <code>man</code> pages.
+</LI>
+<LI>Prefix the names of external identifiers with <EM>TAPSET</EM>_ if
+there is any likelihood of collision with other tapsets or end-user
+scripts.
+</LI>
+<LI>Prefix any probe point aliases with an appropriate prefix.
+</LI>
+<LI>Prefix the names of internal identifiers with __<EM>TAPSET</EM>_.
+</LI>
+</OL>
+
+<P>
+
+<H2><A NAME="SECTION00055000000000000000">
+4.5 Exercises</A>
+</H2>
+
+<P>
+
+<OL>
+<LI>Write a tapset that implements deferred and ``cancelable''
+logging.  Export a function that enqueues a text string (into some
+private array), returning an id token.  Include a timer-based probe
+that periodically flushes the array to the standard log output.
+Export another function that, if the entry was not already flushed,
+allows a text string to be cancelled from the queue.
+One might speculate that similar functions and tapsets exist.
+
+<P>
+</LI>
+<LI>Create a ``relative timestamp'' tapset with functions return all
+the same values as the ones in the timestamp tapset, except that they
+are made relative to the start time of the script.
+
+<P>
+</LI>
+<LI>Create a tapset that exports a global array that contains a
+mapping of recently seen process ID numbers to process names.
+Intercept key system calls (<code>execve</code>?) to update the list
+incrementally.
+
+<P>
+</LI>
+<LI>Send your tapset ideas to the mailing list!
+</LI>
+</OL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html144"
+  HREF="Further_information.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html140"
+  HREF="tutorial.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html134"
+  HREF="Analysis.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html142"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html145"
+  HREF="Further_information.html">5 Further information</A>
+<B> Up:</B> <A NAME="tex2html141"
+  HREF="tutorial.html">tutorial</A>
+<B> Previous:</B> <A NAME="tex2html135"
+  HREF="Analysis.html">3 Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html143"
+  HREF="Contents.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

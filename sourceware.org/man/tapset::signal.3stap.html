@@ -1,0 +1,578 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::signal</TITLE>
+</HEAD><BODY>
+<H1>tapset::signal</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::signal - systemtap signal tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;&nbsp;This&nbsp;family&nbsp;of&nbsp;probe&nbsp;points&nbsp;is&nbsp;used&nbsp;to&nbsp;probe&nbsp;signal&nbsp;activities.
+<BR>&nbsp;&nbsp;Since&nbsp;there&nbsp;are&nbsp;so&nbsp;many&nbsp;signals&nbsp;sent&nbsp;to&nbsp;processes&nbsp;at&nbsp;any&nbsp;given
+<BR>&nbsp;&nbsp;point,&nbsp;it&nbsp;is&nbsp;advisable&nbsp;to&nbsp;filter&nbsp;the&nbsp;information&nbsp;according&nbsp;to&nbsp;the
+<BR>&nbsp;&nbsp;requirements.&nbsp;&nbsp;For&nbsp;example,&nbsp;filter&nbsp;only&nbsp;for&nbsp;a&nbsp;particular&nbsp;signal
+<BR>&nbsp;&nbsp;(if&nbsp;sig==2)&nbsp;or&nbsp;for&nbsp;a&nbsp;particular&nbsp;process&nbsp;(if&nbsp;pid_name==stap).
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>signal.send </B>
+
+<DD>
+Signal being sent to a process
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.send.3stap.html">probe::signal.send</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.send.return </B>
+
+<DD>
+Signal being sent to a process completed (deprecated in SystemTap 2.1)
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.send.return.3stap.html">probe::signal.send.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.checkperm </B>
+
+<DD>
+Check being performed on a sent signal
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.checkperm.3stap.html">probe::signal.checkperm</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.checkperm.return </B>
+
+<DD>
+Check performed on a sent signal completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.checkperm.return.3stap.html">probe::signal.checkperm.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.wakeup </B>
+
+<DD>
+Sleeping process being wakened for signal
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.wakeup.3stap.html">probe::signal.wakeup</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.check_ignored </B>
+
+<DD>
+Checking to see signal is ignored
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.check_ignored.3stap.html">probe::signal.check_ignored</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.check_ignored.return </B>
+
+<DD>
+Check to see signal is ignored completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.check_ignored.return.3stap.html">probe::signal.check_ignored.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.force_segv </B>
+
+<DD>
+Forcing send of SIGSEGV
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.force_segv.3stap.html">probe::signal.force_segv</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.force_segv.return </B>
+
+<DD>
+Forcing send of SIGSEGV complete
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.force_segv.return.3stap.html">probe::signal.force_segv.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.syskill </B>
+
+<DD>
+Sending kill signal to a process
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.syskill.3stap.html">probe::signal.syskill</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.syskill.return </B>
+
+<DD>
+Sending kill signal completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.syskill.return.3stap.html">probe::signal.syskill.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.sys_tkill </B>
+
+<DD>
+Sending a kill signal to a thread
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.sys_tkill.3stap.html">probe::signal.sys_tkill</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.systkill.return </B>
+
+<DD>
+Sending kill signal to a thread completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.systkill.return.3stap.html">probe::signal.systkill.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.sys_tgkill </B>
+
+<DD>
+Sending kill signal to a thread group
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.sys_tgkill.3stap.html">probe::signal.sys_tgkill</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.sys_tgkill.return </B>
+
+<DD>
+Sending kill signal to a thread group completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.sys_tgkill.return.3stap.html">probe::signal.sys_tgkill.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.send_sig_queue </B>
+
+<DD>
+Queuing a signal to a process
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.send_sig_queue.3stap.html">probe::signal.send_sig_queue</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.send_sig_queue.return  </B>
+
+<DD>
+Queuing a signal to a process completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.send_sig_queue.return.3stap.html">probe::signal.send_sig_queue.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.pending </B>
+
+<DD>
+Examining pending signal
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.pending.3stap.html">probe::signal.pending</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.pending.return </B>
+
+<DD>
+Examination of pending signal completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.pending.return.3stap.html">probe::signal.pending.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.handle </B>
+
+<DD>
+Signal handler being invoked
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.handle.3stap.html">probe::signal.handle</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.handle.return </B>
+
+<DD>
+Signal handler invocation completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.handle.return.3stap.html">probe::signal.handle.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.do_action </B>
+
+<DD>
+Examining or changing a signal action
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.do_action.3stap.html">probe::signal.do_action</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.do_action.return </B>
+
+<DD>
+Examining or changing a signal action completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.do_action.return.3stap.html">probe::signal.do_action.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.procmask </B>
+
+<DD>
+Examining or changing blocked signals
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.procmask.3stap.html">probe::signal.procmask</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.procmask.return </B>
+
+<DD>
+Examining or changing blocked signals completed
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.procmask.return.3stap.html">probe::signal.procmask.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal.flush </B>
+
+<DD>
+Flushing all pending signals for a task
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::signal.flush.3stap.html">probe::signal.flush</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>get_sa_flags </B>
+
+<DD>
+Returns the numeric value of sa_flags
+<DT><DD>
+See 
+<I><A HREF="./function::get_sa_flags.3stap.html">function::get_sa_flags</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>get_sa_flags </B>
+
+<DD>
+Returns the numeric value of sa_handler
+<DT><DD>
+See 
+<I><A HREF="./function::get_sa_flags.3stap.html">function::get_sa_flags</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>get_sa_flags </B>
+
+<DD>
+Returns the string representation of a sigset
+<DT><DD>
+See 
+<I><A HREF="./function::get_sa_flags.3stap.html">function::get_sa_flags</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>is_sig_blocked </B>
+
+<DD>
+Returns 1 if the signal is currently blocked, or 0 if it is not
+<DT><DD>
+See 
+<I><A HREF="./function::is_sig_blocked.3stap.html">function::is_sig_blocked</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>sa_flags_str </B>
+
+<DD>
+Returns the string representation of sa_flags
+<DT><DD>
+See 
+<I><A HREF="./function::sa_flags_str.3stap.html">function::sa_flags_str</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>sa_handler </B>
+
+<DD>
+Returns the string representation of an sa_handler
+<DT><DD>
+See 
+<I><A HREF="./function::sa_handler.3stap.html">function::sa_handler</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>signal_str </B>
+
+<DD>
+Returns the string representation of a signal number
+<DT><DD>
+See 
+<I><A HREF="./function::signal_str.3stap.html">function::signal_str</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::get_sa_flags.3stap.html">function::get_sa_flags</A></I>(3stap),
+
+
+<I><A HREF="./function::get_sa_flags.3stap.html">function::get_sa_flags</A></I>(3stap),
+
+
+<I><A HREF="./function::get_sa_flags.3stap.html">function::get_sa_flags</A></I>(3stap),
+
+
+<I><A HREF="./function::is_sig_blocked.3stap.html">function::is_sig_blocked</A></I>(3stap),
+
+
+<I><A HREF="./function::sa_flags_str.3stap.html">function::sa_flags_str</A></I>(3stap),
+
+
+<I><A HREF="./function::sa_handler.3stap.html">function::sa_handler</A></I>(3stap),
+
+
+<I><A HREF="./function::signal_str.3stap.html">function::signal_str</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.send.3stap.html">probe::signal.send</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.send.return.3stap.html">probe::signal.send.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.checkperm.3stap.html">probe::signal.checkperm</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.checkperm.return.3stap.html">probe::signal.checkperm.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.wakeup.3stap.html">probe::signal.wakeup</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.check_ignored.3stap.html">probe::signal.check_ignored</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.check_ignored.return.3stap.html">probe::signal.check_ignored.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.force_segv.3stap.html">probe::signal.force_segv</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.force_segv.return.3stap.html">probe::signal.force_segv.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.syskill.3stap.html">probe::signal.syskill</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.syskill.return.3stap.html">probe::signal.syskill.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.sys_tkill.3stap.html">probe::signal.sys_tkill</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.systkill.return.3stap.html">probe::signal.systkill.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.sys_tgkill.3stap.html">probe::signal.sys_tgkill</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.sys_tgkill.return.3stap.html">probe::signal.sys_tgkill.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.send_sig_queue.3stap.html">probe::signal.send_sig_queue</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.send_sig_queue.return.3stap.html">probe::signal.send_sig_queue.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.pending.3stap.html">probe::signal.pending</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.pending.return.3stap.html">probe::signal.pending.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.handle.3stap.html">probe::signal.handle</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.handle.return.3stap.html">probe::signal.handle.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.do_action.3stap.html">probe::signal.do_action</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.do_action.return.3stap.html">probe::signal.do_action.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.procmask.3stap.html">probe::signal.procmask</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.procmask.return.3stap.html">probe::signal.procmask.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::signal.flush.3stap.html">probe::signal.flush</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

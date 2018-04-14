@@ -1,0 +1,246 @@
+
+<HTML><HEAD><TITLE>Manpage of STAPEX</TITLE>
+</HEAD><BODY>
+<H1>STAPEX</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+stapex - systemtap examples
+<P>
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>LANGUAGE BASICS</H2>
+
+These examples give a feel for basic systemtap syntax and
+control structures.
+<P>
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+global odds, evens
+
+probe begin {
+  # &quot;no&quot; and &quot;ne&quot; are local integers
+  for (i=0; i&lt;10; i++) {
+    if (i % 2) odds [no++] = i
+    else evens [ne++] = i 
+  }
+  delete odds[2]
+  delete evens[3]
+  exit ()
+}
+
+probe end {
+  foreach (x+ in odds) {
+    printf (&quot;odds[%d] = %d\n&quot;, x, odds[x])
+  }
+  foreach (x in evens-) {
+    printf (&quot;evens[%d] = %d\n&quot;, x, evens[x])
+  }
+}
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+This prints:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+odds[1] = 1
+odds[3] = 5
+odds[4] = 7
+odds[5] = 9
+evens[5] = 8
+evens[4] = 6
+evens[2] = 2
+evens[1] = 0
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+Note that all variables types are inferred, and that all locals
+and globals are automatically initialized.
+<P>
+<P>
+
+This script prints the primes between 0 and 49.
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+function isprime (x) {
+  if (x &lt; 2) return 0
+  for (i=2; i&lt;x; i++) {
+    if (x % i == 0) return 0
+    if (i * i &gt; x) break
+  }
+  return 1
+}
+probe begin {
+  for (i=0; i&lt;50; i++)
+    if (isprime (i)) printf(&quot;%d\n&quot;, i)
+  exit()
+}
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<P>
+
+This script demonstrates recursive functions.
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+function fibonacci(i) {
+  if (i &lt; 1) error (&quot;bad number&quot;)
+  if (i == 1) return 1
+  if (i == 2) return 2
+  return fibonacci (i-1) + fibonacci (i-2)
+}
+probe begin {
+  printf (&quot;11th fibonacci number: %d\n&quot;, fibonacci (11))
+  exit ()
+}
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+Any larger number may exceed the MAXACTION or MAXNESTING
+limits, and result in an error.
+<P>
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>PROBING</H2>
+
+<P>
+To trace entry and exit from a function, use a pair of probes:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+probe kernel.function(&quot;sys_mkdir&quot;) { println (&quot;enter&quot;) }
+probe kernel.function(&quot;sys_mkdir&quot;).return { println (&quot;exit&quot;) }
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+To list the probeable functions in the kernel, use the listings mode.
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+% stap -l 'kernel.function(&quot;*&quot;)'
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+To list the probeable functions and local variables in the kernel, use another listings mode.
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+% stap -L 'kernel.function(&quot;*&quot;)'
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>MORE EXAMPLES</H2>
+
+<P>
+The directory to find more examples can be found in the stappaths (7) manual page,
+and online at
+
+<B><A HREF="http://sourceware.org/systemtap/examples/">http://sourceware.org/systemtap/examples/</A></B>
+
+
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1)
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+<I><A HREF="stappaths.7.html">stappaths</A></I>(7)
+
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">LANGUAGE BASICS</A><DD>
+<DT><A HREF="#lbAD">PROBING</A><DD>
+<DT><A HREF="#lbAE">MORE EXAMPLES</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

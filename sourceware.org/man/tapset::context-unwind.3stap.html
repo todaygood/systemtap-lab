@@ -1,0 +1,112 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::context-unwind</TITLE>
+</HEAD><BODY>
+<H1>tapset::context-unwind</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::context-unwind - systemtap context-unwind tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;Context&nbsp;functions&nbsp;provide&nbsp;additional&nbsp;information&nbsp;about&nbsp;where&nbsp;an&nbsp;event&nbsp;occurred.&nbsp;These&nbsp;functions&nbsp;can&nbsp;
+provide information such as a backtrace to where the event occurred and the current register values for the 
+processor.
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>print_backtrace </B>
+
+<DD>
+Print kernel stack back trace
+<DT><DD>
+See 
+<I><A HREF="./function::print_backtrace.3stap.html">function::print_backtrace</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>sprint_backtrace </B>
+
+<DD>
+Return stack back trace as string
+<DT><DD>
+See 
+<I><A HREF="./function::sprint_backtrace.3stap.html">function::sprint_backtrace</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>backtrace </B>
+
+<DD>
+Hex backtrace of current kernel stack
+<DT><DD>
+See 
+<I><A HREF="./function::backtrace.3stap.html">function::backtrace</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_backtrace </B>
+
+<DD>
+Hex backtrace of an arbitrary task
+<DT><DD>
+See 
+<I><A HREF="./function::task_backtrace.3stap.html">function::task_backtrace</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::print_backtrace.3stap.html">function::print_backtrace</A></I>(3stap),
+
+
+<I><A HREF="./function::sprint_backtrace.3stap.html">function::sprint_backtrace</A></I>(3stap),
+
+
+<I><A HREF="./function::backtrace.3stap.html">function::backtrace</A></I>(3stap),
+
+
+<I><A HREF="./function::task_backtrace.3stap.html">function::task_backtrace</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

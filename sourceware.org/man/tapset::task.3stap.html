@@ -1,0 +1,411 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::task</TITLE>
+</HEAD><BODY>
+<H1>tapset::task</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::task - systemtap task tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>task_current </B>
+
+<DD>
+The current task_struct of the current task
+<DT><DD>
+See 
+<I><A HREF="./function::task_current.3stap.html">function::task_current</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_parent </B>
+
+<DD>
+The task_struct of the parent task
+<DT><DD>
+See 
+<I><A HREF="./function::task_parent.3stap.html">function::task_parent</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_state </B>
+
+<DD>
+The state of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_state.3stap.html">function::task_state</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_execname </B>
+
+<DD>
+The name of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_execname.3stap.html">function::task_execname</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_pid </B>
+
+<DD>
+The process identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_pid.3stap.html">function::task_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_ns_pid </B>
+
+<DD>
+The process identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_ns_pid.3stap.html">function::task_ns_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>pid2task </B>
+
+<DD>
+The task_struct of the given process identifier
+<DT><DD>
+See 
+<I><A HREF="./function::pid2task.3stap.html">function::pid2task</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>pid2execname </B>
+
+<DD>
+The name of the given process identifier
+<DT><DD>
+See 
+<I><A HREF="./function::pid2execname.3stap.html">function::pid2execname</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_tid </B>
+
+<DD>
+The thread identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_tid.3stap.html">function::task_tid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_ns_tid </B>
+
+<DD>
+The thread identifier of the task as seen in a namespace
+<DT><DD>
+See 
+<I><A HREF="./function::task_ns_tid.3stap.html">function::task_ns_tid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_gid </B>
+
+<DD>
+The group identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_gid.3stap.html">function::task_gid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_ns_gid </B>
+
+<DD>
+The group identifier of the task as seen in a namespace
+<DT><DD>
+See 
+<I><A HREF="./function::task_ns_gid.3stap.html">function::task_ns_gid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_egid </B>
+
+<DD>
+The effective group identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_egid.3stap.html">function::task_egid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_ns_egid </B>
+
+<DD>
+The effective group identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_ns_egid.3stap.html">function::task_ns_egid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_uid </B>
+
+<DD>
+The user identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_uid.3stap.html">function::task_uid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_ns_uid </B>
+
+<DD>
+The user identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_ns_uid.3stap.html">function::task_ns_uid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_euid </B>
+
+<DD>
+The effective user identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_euid.3stap.html">function::task_euid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_ns_euid </B>
+
+<DD>
+The effective user identifier of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_ns_euid.3stap.html">function::task_ns_euid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_prio </B>
+
+<DD>
+The priority value of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_prio.3stap.html">function::task_prio</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_nice </B>
+
+<DD>
+The nice value of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_nice.3stap.html">function::task_nice</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_cpu </B>
+
+<DD>
+The scheduled cpu of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_cpu.3stap.html">function::task_cpu</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_open_file_handles </B>
+
+<DD>
+The number of open files of the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_open_file_handles.3stap.html">function::task_open_file_handles</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_max_file_handles </B>
+
+<DD>
+The max number of open files for the task
+<DT><DD>
+See 
+<I><A HREF="./function::task_max_file_handles.3stap.html">function::task_max_file_handles</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::task_current.3stap.html">function::task_current</A></I>(3stap),
+
+
+<I><A HREF="./function::task_parent.3stap.html">function::task_parent</A></I>(3stap),
+
+
+<I><A HREF="./function::task_state.3stap.html">function::task_state</A></I>(3stap),
+
+
+<I><A HREF="./function::task_execname.3stap.html">function::task_execname</A></I>(3stap),
+
+
+<I><A HREF="./function::task_pid.3stap.html">function::task_pid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_ns_pid.3stap.html">function::task_ns_pid</A></I>(3stap),
+
+
+<I><A HREF="./function::pid2task.3stap.html">function::pid2task</A></I>(3stap),
+
+
+<I><A HREF="./function::pid2execname.3stap.html">function::pid2execname</A></I>(3stap),
+
+
+<I><A HREF="./function::task_tid.3stap.html">function::task_tid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_ns_tid.3stap.html">function::task_ns_tid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_gid.3stap.html">function::task_gid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_ns_gid.3stap.html">function::task_ns_gid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_egid.3stap.html">function::task_egid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_ns_egid.3stap.html">function::task_ns_egid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_uid.3stap.html">function::task_uid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_ns_uid.3stap.html">function::task_ns_uid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_euid.3stap.html">function::task_euid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_ns_euid.3stap.html">function::task_ns_euid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_prio.3stap.html">function::task_prio</A></I>(3stap),
+
+
+<I><A HREF="./function::task_nice.3stap.html">function::task_nice</A></I>(3stap),
+
+
+<I><A HREF="./function::task_cpu.3stap.html">function::task_cpu</A></I>(3stap),
+
+
+<I><A HREF="./function::task_open_file_handles.3stap.html">function::task_open_file_handles</A></I>(3stap),
+
+
+<I><A HREF="./function::task_max_file_handles.3stap.html">function::task_max_file_handles</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

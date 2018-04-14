@@ -1,0 +1,92 @@
+
+<HTML><HEAD><TITLE>Manpage of PROBE::SCHEDULER\&.C</TITLE>
+</HEAD><BODY>
+<H1>PROBE::SCHEDULER\&.C</H1>
+Section: Scheduler Tapset (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+probe::scheduler.cpu_on - Process is beginning execution on a cpu
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+scheduler.cpu_on 
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>VALUES</H2>
+
+<P>
+
+<I>idle</I>
+<DL COMPACT><DT><DD>
+- boolean indicating whether current is the idle process
+</DL>
+
+<P>
+
+<I>name</I>
+<DL COMPACT><DT><DD>
+name of the probe point
+</DL>
+
+<P>
+
+<I>task_prev</I>
+<DL COMPACT><DT><DD>
+the process that was previously running on this cpu
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>CONTEXT</H2>
+
+<P>
+
+The resuming process.
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::scheduler.3stap.html">tapset::scheduler</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">VALUES</A><DD>
+<DT><A HREF="#lbAE">CONTEXT</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

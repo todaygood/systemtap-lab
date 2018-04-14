@@ -1,0 +1,909 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>5 Language elements</TITLE>
+<META NAME="description" CONTENT="5 Language elements">
+<META NAME="keywords" CONTENT="langref">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="langref.css">
+
+<LINK REL="next" HREF="Statement_types.html">
+<LINK REL="previous" HREF="Probe_points.html">
+<LINK REL="up" HREF="langref.html">
+<LINK REL="next" HREF="Statement_types.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html375"
+  HREF="Statement_types.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html369"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html363"
+  HREF="Probe_points.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html371"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html373"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html376"
+  HREF="Statement_types.html">6 Statement types</A>
+<B> Up:</B> <A NAME="tex2html370"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html364"
+  HREF="Probe_points.html">4 Probe points</A>
+ &nbsp; <B>  <A NAME="tex2html372"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html374"
+  HREF="Index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html377"
+  HREF="Language_elements.html#SECTION00061000000000000000">5.1 Identifiers</A>
+<LI><A NAME="tex2html378"
+  HREF="Language_elements.html#SECTION00062000000000000000">5.2 Data types</A>
+<UL>
+<LI><A NAME="tex2html379"
+  HREF="Language_elements.html#SECTION00062100000000000000">5.2.1 Literals</A>
+<LI><A NAME="tex2html380"
+  HREF="Language_elements.html#SECTION00062200000000000000">5.2.2 Integers</A>
+<LI><A NAME="tex2html381"
+  HREF="Language_elements.html#SECTION00062300000000000000">5.2.3 Strings</A>
+<LI><A NAME="tex2html382"
+  HREF="Language_elements.html#SECTION00062400000000000000">5.2.4 Associative arrays</A>
+<LI><A NAME="tex2html383"
+  HREF="Language_elements.html#SECTION00062500000000000000">5.2.5 Statistics</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html384"
+  HREF="Language_elements.html#SECTION00063000000000000000">5.3 Semicolons</A>
+<LI><A NAME="tex2html385"
+  HREF="Language_elements.html#SECTION00064000000000000000">5.4 Comments</A>
+<LI><A NAME="tex2html386"
+  HREF="Language_elements.html#SECTION00065000000000000000">5.5 Whitespace</A>
+<LI><A NAME="tex2html387"
+  HREF="Language_elements.html#SECTION00066000000000000000">5.6 Expressions</A>
+<UL>
+<LI><A NAME="tex2html388"
+  HREF="Language_elements.html#SECTION00066100000000000000">5.6.1 Binary numeric operators</A>
+<LI><A NAME="tex2html389"
+  HREF="Language_elements.html#SECTION00066200000000000000">5.6.2 Binary string operators</A>
+<LI><A NAME="tex2html390"
+  HREF="Language_elements.html#SECTION00066300000000000000">5.6.3 Numeric assignment operators</A>
+<LI><A NAME="tex2html391"
+  HREF="Language_elements.html#SECTION00066400000000000000">5.6.4 String assignment operators</A>
+<LI><A NAME="tex2html392"
+  HREF="Language_elements.html#SECTION00066500000000000000">5.6.5 Unary numeric operators</A>
+<LI><A NAME="tex2html393"
+  HREF="Language_elements.html#SECTION00066600000000000000">5.6.6 Numeric &amp; string comparison, regular expression matching operators</A>
+<LI><A NAME="tex2html394"
+  HREF="Language_elements.html#SECTION00066700000000000000">5.6.7 Ternary operator</A>
+<LI><A NAME="tex2html395"
+  HREF="Language_elements.html#SECTION00066800000000000000">5.6.8 Grouping operator</A>
+<LI><A NAME="tex2html396"
+  HREF="Language_elements.html#SECTION00066900000000000000">5.6.9 Function call</A>
+<LI><A NAME="tex2html397"
+  HREF="Language_elements.html#SECTION000661000000000000000">5.6.10 $ptr-&gt;member</A>
+<LI><A NAME="tex2html398"
+  HREF="Language_elements.html#SECTION000661100000000000000">5.6.11 Pointer typecasting</A>
+<LI><A NAME="tex2html399"
+  HREF="Language_elements.html#SECTION000661200000000000000">5.6.12 &lt;value&gt; in &lt;array_name&gt;</A>
+<LI><A NAME="tex2html400"
+  HREF="Language_elements.html#SECTION000661300000000000000">5.6.13 [ &lt;value&gt;, ... ] in &lt;array_name&gt;</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html401"
+  HREF="Language_elements.html#SECTION00067000000000000000">5.7 Literals passed in from the stap command line</A>
+<UL>
+<LI><A NAME="tex2html402"
+  HREF="Language_elements.html#SECTION00067100000000000000">5.7.1 $1 ... $&lt;NN&gt; for literal pasting</A>
+<LI><A NAME="tex2html403"
+  HREF="Language_elements.html#SECTION00067200000000000000">5.7.2 @1 ... @&lt;NN&gt; for strings</A>
+<LI><A NAME="tex2html404"
+  HREF="Language_elements.html#SECTION00067300000000000000">5.7.3 Examples</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html405"
+  HREF="Language_elements.html#SECTION00068000000000000000">5.8 Conditional compilation</A>
+<UL>
+<LI><A NAME="tex2html406"
+  HREF="Language_elements.html#SECTION00068100000000000000">5.8.1 Conditions</A>
+<LI><A NAME="tex2html407"
+  HREF="Language_elements.html#SECTION00068200000000000000">5.8.2 Conditions based on available target variables</A>
+<LI><A NAME="tex2html408"
+  HREF="Language_elements.html#SECTION00068300000000000000">5.8.3 Conditions based on kernel version: kernel_v, kernel_vr</A>
+<LI><A NAME="tex2html409"
+  HREF="Language_elements.html#SECTION00068400000000000000">5.8.4 Conditions based on architecture: arch</A>
+<LI><A NAME="tex2html410"
+  HREF="Language_elements.html#SECTION00068500000000000000">5.8.5 Conditions based on privilege level: systemtap_privilege</A>
+<LI><A NAME="tex2html411"
+  HREF="Language_elements.html#SECTION00068600000000000000">5.8.6 True and False Tokens</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html412"
+  HREF="Language_elements.html#SECTION00069000000000000000">5.9 Preprocessor macros</A>
+<UL>
+<LI><A NAME="tex2html413"
+  HREF="Language_elements.html#SECTION00069100000000000000">5.9.1 Local macros</A>
+<LI><A NAME="tex2html414"
+  HREF="Language_elements.html#SECTION00069200000000000000">5.9.2 Library macros</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00060000000000000000"></A><A NAME="sec:Language-Elements"></A>
+<BR>
+5 Language elements
+</H1>
+
+<H2><A NAME="SECTION00061000000000000000"></A>
+<A NAME="712"></A>
+<BR>
+5.1 Identifiers
+</H2>
+<I>Identifiers</I> are used to name variables and functions. They are an
+alphanumeric sequence that may include the underscore (_) and dollar sign
+($) characters. They have the same syntax as C identifiers, except that
+the dollar sign is also a legal character. Identifiers that begin with a
+dollar sign are interpreted as references to variables in the target software,
+rather than to SystemTap script variables. Identifiers may not start with
+a plain digit.
+
+<P>
+
+<H2><A NAME="SECTION00062000000000000000"></A><A NAME="sub:Data-types"></A>
+<A NAME="715"></A>
+<BR>
+5.2 Data types
+</H2>
+The SystemTap language includes a small number of data types, but no type
+declarations. A variable's type is inferred<A NAME="716"></A> from its use.
+To support this inference, the translator enforces consistent typing of function
+arguments and return values, array indices and values. There are no implicit
+type conversions between strings and numbers. Inconsistent type-related use
+of an identifier signals an error.
+
+<P>
+
+<H3><A NAME="SECTION00062100000000000000"></A>
+<A NAME="718"></A>
+<BR>
+5.2.1 Literals
+</H3>
+Literals are either strings or integers.
+Literal integers can be expressed as decimal,
+octal, or hexadecimal, using C notation. Type suffixes (e.g., <I>L</I> or
+<I>U</I>) are not used.
+
+<P>
+
+<H3><A NAME="SECTION00062200000000000000"></A><A NAME="sub:Integers"></A>
+<A NAME="722"></A> <A NAME="723"></A>
+<BR>
+5.2.2 Integers
+</H3>
+Integers are decimal, hexadecimal, or octal, and use the same notation as
+in C. Integers are 64-bit signed quantities, although the parser also accepts
+(and wraps around) values above positive <IMG
+ WIDTH="25" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$2^{63}$"> but below <IMG
+ WIDTH="25" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$2^{64}$">.
+
+<P>
+
+<H3><A NAME="SECTION00062300000000000000"></A><A NAME="sub:Strings"></A>
+<A NAME="727"></A>
+<BR>
+5.2.3 Strings
+</H3>
+
+<P>
+Strings are enclosed in quotation marks (``string''), and pass
+through standard C escape codes with backslashes. A string literal may
+be split into several pieces, which are glued together, as follows.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+str1 = "foo" "bar"
+  /* --&gt; becomes "foobar" */
+
+str2 = "a good way to do a multi-line\n"
+       "string literal"
+  /* --&gt; becomes "a good way to do a multi-line\nstring literal" */
+
+str3 = "also a good way to " @1 " splice command line args"
+  /* --&gt; becomes "also a good way to foo splice command line args",
+     assuming @1 is given as foo on the command line */
+</PRE>
+</DD>
+</DL>
+<P>
+Observe that script arguments can also be glued into a string literal.
+
+<P>
+Strings are limited in length to MAXSTRINGLEN. For more information
+about this and other limits, see Section&nbsp;<A HREF="SystemTap_overview.html#sub:SystemTap-safety"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.
+
+<P>
+
+<H3><A NAME="SECTION00062400000000000000">
+5.2.4 Associative arrays</A>
+</H3>
+
+<P>
+See Section&nbsp;<A HREF="Associative_arrays.html#sec:Associative-Arrays"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>
+
+<P>
+
+<H3><A NAME="SECTION00062500000000000000">
+5.2.5 Statistics</A>
+</H3>
+
+<P>
+See Section&nbsp;<A HREF="Statistics_aggregates.html#sec:Statistics"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>
+
+<P>
+
+<H2><A NAME="SECTION00063000000000000000"></A>
+<A NAME="739"></A>
+<BR>
+5.3 Semicolons
+</H2>
+The semicolon is the null statement, or do nothing statement. It is optional,
+and useful as a separator between statements to improve detection of syntax
+errors and to reduce ambiguities in grammar.
+
+<P>
+
+<H2><A NAME="SECTION00064000000000000000"></A>
+<A NAME="741"></A>
+<BR>
+5.4 Comments
+</H2>
+Three forms of comments are supported, as follows.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# ... shell style, to the end of line
+// ... C++ style, to the end of line
+/* ... C style ... */
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00065000000000000000"></A>
+<A NAME="747"></A>
+<BR>
+5.5 Whitespace
+</H2>
+As in C, spaces, tabs, returns, newlines, and comments are treated as whitespace.
+Whitespace is ignored by the parser.
+
+<P>
+
+<H2><A NAME="SECTION00066000000000000000"></A>
+<A NAME="749"></A>
+<BR>
+5.6 Expressions
+</H2>
+SystemTap supports a number of operators that use the same general syntax,
+semantics, and precedence as in C and awk. Arithmetic is performed per C
+rules for signed integers. If the parser detects division by zero or an overflow,
+it generates an error. The following subsections list these operators.
+
+<P>
+
+<H3><A NAME="SECTION00066100000000000000"></A>
+<A NAME="751"></A>
+<BR>
+5.6.1 Binary numeric operators
+</H3>
+<TT>* / % + - &gt;&gt; &lt;&lt; &amp; &#94;
+| &amp;&amp; ||</TT>
+
+<P>
+
+<H3><A NAME="SECTION00066200000000000000"></A>
+<A NAME="757"></A>
+<BR>
+5.6.2 Binary string operators
+</H3>
+<TT><B>.</B></TT> (string concatenation)
+
+<P>
+
+<H3><A NAME="SECTION00066300000000000000"></A>
+<A NAME="760"></A>
+<BR>
+5.6.3 Numeric assignment operators
+</H3>
+<TT>= *= /= %= += -= &gt;&gt;= &lt;&lt;=
+&amp;= &#94;= |=</TT>
+
+<P>
+
+<H3><A NAME="SECTION00066400000000000000">
+5.6.4 String assignment operators</A>
+</H3>
+
+<P>
+<TT>= .=</TT>
+
+<P>
+
+<H3><A NAME="SECTION00066500000000000000"></A>
+<A NAME="768"></A>
+<BR>
+5.6.5 Unary numeric operators
+</H3>
+<TT>+ - ! ~ ++ -</TT>
+
+<P>
+
+<H3><A NAME="SECTION00066600000000000000"></A>
+<A NAME="772"></A>
+<BR>
+5.6.6 Numeric &amp; string comparison, regular expression matching operators
+</H3>
+<TT>&lt; &gt; &lt;= &gt;= == !=</TT> <code>=~</code> <code>!~</code>
+
+<P>
+The regular expression matching (<code>=~</code> and <code>!~</code>) is a
+recent feature. The second operand must be a string literal
+containing a syntactically valid regular expression. The regular
+expression syntax supports most of the features of POSIX Extended
+Regular Expressions, except for subexpression reuse (<code>\1</code>)
+functionality. The ability to capture and extract the contents of the
+matched string and subexpressions has not yet been implemented.
+
+<P>
+
+<H3><A NAME="SECTION00066700000000000000"></A><A NAME="sub:Ternary-operator"></A>
+<A NAME="775"></A>
+<BR>
+5.6.7 Ternary operator
+</H3>
+<TT>cond ? exp1 : exp2</TT>
+
+<P>
+
+<H3><A NAME="SECTION00066800000000000000"></A>
+<A NAME="778"></A>
+<BR>
+5.6.8 Grouping operator
+</H3>
+<TT>( exp )</TT>
+
+<P>
+
+<H3><A NAME="SECTION00066900000000000000"></A>
+<A NAME="781"></A>
+<BR>
+5.6.9 Function call
+</H3>
+General syntax:
+
+<P>
+<TT>fn ([ arg1, arg2, ... ])</TT>
+
+<P>
+
+<H3><A NAME="SECTION000661000000000000000"></A>
+<A NAME="784"></A>
+<BR>
+5.6.10 $ptr-&gt;member
+</H3>
+<TT>ptr</TT> is a kernel pointer available in a probed context.
+
+<P>
+
+<H3><A NAME="SECTION000661100000000000000"></A>
+<A NAME="787"></A>
+<BR>
+5.6.11 Pointer typecasting
+</H3>
+
+<P>
+<I>Typecasting</I> is supported using the <TT>@cast()</TT> operator. A
+script can define a pointer type for a <I>long</I> value, then access
+type members using the same syntax as with <TT>$target</TT>
+variables. After a pointer is saved into a script integer variable,
+the translator loses the necessary type information to access members
+from that pointer.  The <TT>@cast()</TT> operator tells the translator
+how to read a pointer.
+
+<P>
+The following statement interprets <TT>p</TT> as a pointer to a struct
+or union named <TT>type_name</TT> and dereferences the
+<TT>member</TT> value:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+@cast(p, "type_name"[, "module"])-&gt;member
+</PRE>
+</DD>
+</DL>
+<P>
+The optional <TT>module</TT> parameter tells the translator where to
+look for information about that type. You can specify multiple modules
+as a list with colon (<TT>:</TT>) separators. If you do not specify
+the module parameter, the translator defaults to either the probe
+module for dwarf probes or to <I>kernel</I> for functions and all
+other probe types.
+
+<P>
+The following statement retrieves the parent PID from a kernel
+task_struct:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+@cast(pointer, "task_struct", "kernel")-&gt;parent-&gt;tgid
+</PRE>
+</DD>
+</DL>
+<P>
+The translator can create its own module with type information from a
+header surrounded by angle brackets (<TT>&lt; &gt;</TT>) if normal debugging
+information is not available.  For kernel headers, prefix it with
+<TT>kernel</TT> to use the appropriate build system.  All other
+headers are built with default GCC parameters into a user module. The
+following statements are examples.
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+@cast(tv, "timeval", "&lt;sys/time.h&gt;")-&gt;tv_sec
+@cast(task, "task_struct", "kernel&lt;linux/sched.h&gt;")-&gt;tgid
+</PRE>
+</DD>
+</DL>
+<P>
+In guru mode, the translator allows scripts to assign new values to
+members of typecasted pointers.
+
+<P>
+Typecasting is also useful in the case of <TT>void*</TT> members whose
+type might be determinable at run time.
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe foo {
+   if ($var-&gt;type == 1) {
+      value = @cast($var-&gt;data, "type1")-&gt;bar
+   } else {
+      value = @cast($var-&gt;data, "type2")-&gt;baz
+   }
+   print(value)
+}
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION000661200000000000000"></A>
+<A NAME="819"></A>
+<BR>
+5.6.12 &lt;value&gt; in &lt;array_name&gt;
+</H3>
+This expression evaluates to true if the array contains an element with the
+specified index.
+
+<P>
+
+<H3><A NAME="SECTION000661300000000000000">
+5.6.13 [ &lt;value&gt;, ... ] in &lt;array_name&gt;</A>
+</H3>
+
+<P>
+The number of index values must match the number of indexes previously specified.
+
+<P>
+
+<H2><A NAME="SECTION00067000000000000000"></A><A NAME="sub:Literals-passed-in"></A>
+<A NAME="822"></A>
+<BR>
+5.7 Literals passed in from the stap command line
+</H2>
+<I>Literals</I> are either strings enclosed in double quotes ('' '') or
+integers. For information about integers, see Section&nbsp;<A HREF="#sub:Integers"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.
+For information about strings, see Section&nbsp;<A HREF="#sub:Strings"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.
+
+<P>
+Script arguments at the end of a command line are expanded as literals. You
+can use these in all contexts where literals are accepted. A reference to
+a nonexistent argument number is an error.
+
+<P>
+
+<H3><A NAME="SECTION00067100000000000000"></A>
+<A NAME="827"></A>
+<BR>
+5.7.1 $1 ... $&lt;NN&gt; for literal pasting
+</H3>
+Use <TT>$1 ... $&lt;NN&gt;</TT> for pasting the entire argument string 
+into the input stream, which will be further lexically tokenized.
+
+<P>
+
+<H3><A NAME="SECTION00067200000000000000">
+5.7.2 @1 ... @&lt;NN&gt; for strings</A>
+</H3>
+
+<P>
+Use <TT>@1 ... @&lt;NN&gt;</TT> for casting an entire argument
+as a string literal.
+
+<P>
+
+<H3><A NAME="SECTION00067300000000000000">
+5.7.3 Examples</A>
+</H3>
+
+<P>
+For example, if the following script named example.stp
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe begin { printf("%d, %s\n", $1, @2) }
+</PRE>
+</DD>
+</DL>is invoked as follows
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# stap example.stp '5+5' mystring
+</PRE>
+</DD>
+</DL>then 5+5 is substituted for $1 and &#34;mystring&#34; for @2. The
+output will be
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+10, mystring
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00068000000000000000">
+5.8 Conditional compilation</A>
+</H2>
+
+<P>
+
+<H3><A NAME="SECTION00068100000000000000"></A>
+<A NAME="848"></A>
+<BR>
+5.8.1 Conditions
+</H3>
+One of the steps of parsing is a simple preprocessing stage.  The
+preprocessor supports conditionals with a general form similar to the
+ternary operator (Section&nbsp;<A HREF="#sub:Ternary-operator"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>).
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+%( CONDITION %? TRUE-TOKENS %)
+%( CONDITION %? TRUE-TOKENS %: FALSE-TOKENS %)
+</PRE>
+</DD>
+</DL>The CONDITION is a limited expression whose format is determined by its first
+keyword. The following is the general syntax.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+%( &lt;condition&gt; %? &lt;code&gt; [ %: &lt;code&gt; ] %)
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00068200000000000000"></A>
+<A NAME="859"></A>
+<BR>
+5.8.2 Conditions based on available target variables
+</H3>
+The predicate @defined() is available for testing whether a
+particular $variable/expression is resolvable at translation time. The
+following is an example of its use:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+  probe foo { if (@defined($bar)) log ("$bar is available here") }
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00068300000000000000"></A>
+<A NAME="865"></A>
+<A NAME="866"></A>
+<A NAME="867"></A>
+<BR>
+5.8.3 Conditions based on kernel version: kernel_v, kernel_vr
+</H3>
+If the first part of a conditional expression is the identifier <TT>kernel_v</TT>
+or <TT>kernel_vr</TT>, the second part must be one of six standard numeric
+comparison operators ``&lt;'', ``&lt;='', ``=='', ``!='', ``&gt;'',
+or ``&gt;='',
+and the third part must be a string literal that contains an RPM-style version-release
+value. The condition returns true if the version of the target kernel (as
+optionally overridden by the <B>-r</B> option) matches the given version
+string. The comparison is performed by the glibc function strverscmp.
+
+<P>
+<TT>kernel_v</TT> refers to the kernel version number only, such as ``2.6.13&#34;.
+
+<P>
+<TT>kernel_vr</TT> refers to the kernel version number including the release
+code suffix, such as ``2.6.13-1.322FC3smp''.
+
+<P>
+
+<H3><A NAME="SECTION00068400000000000000"></A>
+<A NAME="883"></A>
+<BR>
+5.8.4 Conditions based on architecture: arch
+</H3>
+If the first part of the conditional expression is the identifier <TT>arch</TT>
+which refers to the processor architecture, then the second part is a string
+comparison operator ''=='' or ''!='', and the third part is a string
+literal for matching it. This comparison is a simple string equality or inequality.
+The currently supported architecture strings are i386, i686, x86_64, ia64,
+s390, and powerpc.
+
+<P>
+
+<H3><A NAME="SECTION00068500000000000000"></A>
+<A NAME="886"></A>
+<BR>
+5.8.5 Conditions based on privilege level: systemtap_privilege
+</H3>
+
+<P>
+If the first part of the conditional expression is the identifier
+<TT>systemtap_privilege</TT> which refers to the privilege level the
+systemtap script is being compiled with, then the second part is a
+string comparison operator ''=='' or ''!='', and the third part is a
+string literal for matching it. This comparison is a simple string
+equality or inequality.  The possible privilege strings to consider
+are <code>"stapusr"</code> for unprivileged scripts, and <code>"stapsys"</code> or
+<code>"stapdev"</code> for privileged scripts. (In general, to test for a
+privileged script it is best to use <code>!= "stapusr"</code>.)
+
+<P>
+This condition can be used to write scripts that can be run in both
+privileged and unprivileged modes, with additional functionality made
+available in the privileged case.
+
+<P>
+
+<H3><A NAME="SECTION00068600000000000000"></A>
+<A NAME="889"></A>
+<BR>
+5.8.6 True and False Tokens
+</H3>
+TRUE-TOKENS and FALSE-TOKENS are zero or more general parser tokens, possibly
+including nested preprocessor conditionals, that are pasted into the input
+stream if the condition is true or false. For example, the following code
+induces a parse error unless the target kernel version is newer than 2.6.5.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+%( kernel_v &lt;= "2.6.5" %? **ERROR** %) # invalid token sequence
+</PRE>
+</DD>
+</DL>The following code adapts to hypothetical kernel version drift.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe kernel.function (
+    %( kernel_v &lt;= "2.6.12" %? "__mm_do_fault" %:
+        %( kernel_vr == "2.6.13-1.8273FC3smp" %? "do_page_fault" %: UNSUPPORTED %)
+    %)) { /* ... */ }
+
+%( arch == "ia64" %?
+    probe syscall.vliw = kernel.function("vliw_widget") {}
+%)
+</PRE>
+</DD>
+</DL>
+<P>
+The following code adapts to the presence of a kernel CONFIG option.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+%( CONFIG_UTRACE == "y" %?
+    probe process.syscall {}
+%)
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00069000000000000000">
+5.9 Preprocessor macros</A>
+</H2>
+
+<P>
+This feature lets scripts eliminate some types of repetition.
+
+<P>
+
+<H3><A NAME="SECTION00069100000000000000">
+5.9.1 Local macros</A>
+</H3>
+
+<P>
+The preprocessor also supports a simple macro facility.
+
+<P>
+Macros taking zero or more arguments are defined using the following
+construct:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+@define NAME %( BODY %)
+@define NAME(PARAM_1, PARAM_2, ...) %( BODY %)
+</PRE>
+</DD>
+</DL>
+<P>
+Macro arguments are referred to in the body by prefixing the argument
+name with an <TT>@</TT> symbol. Likewise, once defined, macros are
+invoked by prefixing the macro name with an <TT>@</TT> symbol:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+@define foo %( x %)
+@define add(a,b) %( ((@a)+(@b)) %)
+
+   @foo = @add(2,2)
+</PRE>
+</DD>
+</DL>
+<P>
+Macro expansion is currently performed in a separate pass before
+conditional compilation. Therefore, both TRUE- and FALSE-tokens in
+conditional expressions will be macroexpanded regardless of how the
+condition is evaluated. This can sometimes lead to errors:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+// The following results in a conflict:
+%( CONFIG_UTRACE == "y" %?
+    @define foo %( process.syscall %)
+%:
+    @define foo %( **ERROR** %)
+%)
+
+// The following works properly as expected:
+@define foo %(
+  %( CONFIG_UTRACE == "y" %? process.syscall %: **ERROR** %)
+%)
+</PRE>
+</DD>
+</DL>
+<P>
+The first example is incorrect because both <TT>@define</TT>s are
+evaluated in a pass prior to the conditional being evaluated.
+
+<P>
+
+<H3><A NAME="SECTION00069200000000000000">
+5.9.2 Library macros</A>
+</H3>
+
+<P>
+Normally, a macro definition is local to the file it occurs in. Thus,
+defining a macro in a tapset does not make it available to the user of
+the tapset.
+
+<P>
+Publically available library macros can be defined by including
+<TT>.stpm</TT> files on the tapset search path. These files may only
+contain <TT>@define</TT> constructs, which become visible across all
+tapsets and user scripts.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html375"
+  HREF="Statement_types.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html369"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html363"
+  HREF="Probe_points.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html371"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html373"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html376"
+  HREF="Statement_types.html">6 Statement types</A>
+<B> Up:</B> <A NAME="tex2html370"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html364"
+  HREF="Probe_points.html">4 Probe points</A>
+ &nbsp; <B>  <A NAME="tex2html372"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html374"
+  HREF="Index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

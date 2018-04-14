@@ -1,0 +1,299 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::ipmib</TITLE>
+</HEAD><BODY>
+<H1>tapset::ipmib</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::ipmib - systemtap ipmib tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>ipmib_remote_addr </B>
+
+<DD>
+Get the remote ip address
+<DT><DD>
+See 
+<I><A HREF="./function::ipmib_remote_addr.3stap.html">function::ipmib_remote_addr</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib_local_addr </B>
+
+<DD>
+Get the local ip address
+<DT><DD>
+See 
+<I><A HREF="./function::ipmib_local_addr.3stap.html">function::ipmib_local_addr</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib_tcp_remote_port </B>
+
+<DD>
+Get the remote tcp port
+<DT><DD>
+See 
+<I><A HREF="./function::ipmib_tcp_remote_port.3stap.html">function::ipmib_tcp_remote_port</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib_tcp_local_port </B>
+
+<DD>
+Get the local tcp port
+<DT><DD>
+See 
+<I><A HREF="./function::ipmib_tcp_local_port.3stap.html">function::ipmib_tcp_local_port</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib_get_proto </B>
+
+<DD>
+Get the protocol value
+<DT><DD>
+See 
+<I><A HREF="./function::ipmib_get_proto.3stap.html">function::ipmib_get_proto</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.InReceives </B>
+
+<DD>
+Count an arriving packet
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.InReceives.3stap.html">probe::ipmib.InReceives</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.InNoRoutes </B>
+
+<DD>
+Count an arriving packet with no matching socket
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.InNoRoutes.3stap.html">probe::ipmib.InNoRoutes</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.InAddrErrors </B>
+
+<DD>
+Count arriving packets with an incorrect address
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.InAddrErrors.3stap.html">probe::ipmib.InAddrErrors</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.InUnknownProtos </B>
+
+<DD>
+Count arriving packets with an unbound proto
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.InUnknownProtos.3stap.html">probe::ipmib.InUnknownProtos</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.InDiscards </B>
+
+<DD>
+Count discarded inbound packets
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.InDiscards.3stap.html">probe::ipmib.InDiscards</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.ForwDatagrams </B>
+
+<DD>
+Count forwarded packet
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.ForwDatagrams.3stap.html">probe::ipmib.ForwDatagrams</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.OutRequests </B>
+
+<DD>
+Count a request to send a packet
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.OutRequests.3stap.html">probe::ipmib.OutRequests</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.ReasmTimeout </B>
+
+<DD>
+Count Reassembly Timeouts
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.ReasmTimeout.3stap.html">probe::ipmib.ReasmTimeout</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.ReasmReqds </B>
+
+<DD>
+Count number of packet fragments reassembly requests
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.ReasmReqds.3stap.html">probe::ipmib.ReasmReqds</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.FragOKs </B>
+
+<DD>
+Count datagram fragmented successfully
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.FragOKs.3stap.html">probe::ipmib.FragOKs</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ipmib.FragFails </B>
+
+<DD>
+Count datagram fragmented unsuccessfully
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::ipmib.FragFails.3stap.html">probe::ipmib.FragFails</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::ipmib_remote_addr.3stap.html">function::ipmib_remote_addr</A></I>(3stap),
+
+
+<I><A HREF="./function::ipmib_local_addr.3stap.html">function::ipmib_local_addr</A></I>(3stap),
+
+
+<I><A HREF="./function::ipmib_tcp_remote_port.3stap.html">function::ipmib_tcp_remote_port</A></I>(3stap),
+
+
+<I><A HREF="./function::ipmib_tcp_local_port.3stap.html">function::ipmib_tcp_local_port</A></I>(3stap),
+
+
+<I><A HREF="./function::ipmib_get_proto.3stap.html">function::ipmib_get_proto</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.InReceives.3stap.html">probe::ipmib.InReceives</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.InNoRoutes.3stap.html">probe::ipmib.InNoRoutes</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.InAddrErrors.3stap.html">probe::ipmib.InAddrErrors</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.InUnknownProtos.3stap.html">probe::ipmib.InUnknownProtos</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.InDiscards.3stap.html">probe::ipmib.InDiscards</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.ForwDatagrams.3stap.html">probe::ipmib.ForwDatagrams</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.OutRequests.3stap.html">probe::ipmib.OutRequests</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.ReasmTimeout.3stap.html">probe::ipmib.ReasmTimeout</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.ReasmReqds.3stap.html">probe::ipmib.ReasmReqds</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.FragOKs.3stap.html">probe::ipmib.FragOKs</A></I>(3stap),
+
+
+<I><A HREF="./probe::ipmib.FragFails.3stap.html">probe::ipmib.FragFails</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

@@ -1,0 +1,250 @@
+
+<HTML><HEAD><TITLE>Manpage of STAPDYN</TITLE>
+</HEAD><BODY>
+<H1>STAPDYN</H1>
+Section: Maintenance Commands (8)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+stapdyn - systemtap dyninst runtime
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<BR>
+
+<B>stapdyn</B>
+
+[
+<I>OPTIONS</I>
+
+]
+<I>MODULE</I>
+
+[
+<I>MODULE-OPTIONS</I>
+
+]
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+The
+<I>stapdyn</I>
+
+program is the dyninst back-end of the Systemtap tool.  It expects a 
+shared library produced by the front-end
+<I>stap</I>
+
+tool, when run with
+<I>--dyninst</I>.
+
+<P>
+<P>
+
+Splitting the systemtap tool into a front-end and a back-end allows a
+user to compile a systemtap script on a development machine that has
+the debugging information (need to compile the script) and then
+transfer the resulting shared objevct to a production machine that
+doesn't have any development tools or debugging information installed.
+<P>
+
+Please refer to stappaths (7) for the version number, or run
+rpm -q systemtap (fedora/red hat)
+apt-get -v systemtap (ubuntu)
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+The
+<I>stapdyn</I>
+
+program supports the following options.  Any other option
+prints a list of supported options.
+<DL COMPACT>
+<DT><B>-v</B>
+
+<DD>
+Verbose mode.
+<DT><B>-V</B>
+
+<DD>
+Print version number and exit.
+<DT><B>-w</B>
+
+<DD>
+Suppress warnings from the script.
+<DT><B>-c CMD</B>
+
+<DD>
+Command CMD will be run and the
+<I>stapdyn</I>
+
+program will exit when CMD
+does.  The '_stp_target' variable will contain the pid for CMD.
+<DT><B>-x PID</B>
+
+<DD>
+The '_stp_target' variable will be set to PID.
+<DT><B>-o FILE</B>
+
+<DD>
+Send output to FILE. If the module uses bulk mode, the output will
+be in percpu files FILE_x(FILE_cpux in background and bulk mode)
+where 'x' is the cpu number. This supports <A HREF="strftime.3.html">strftime</A>(3) formats
+for FILE.
+<DT><B>-C WHEN</B>
+
+<DD>
+Control coloring of error messages. WHEN must be either
+
+&quot;never&quot;, &quot;always&quot;, or &quot;auto&quot;
+
+(i.e. enable only if at a terminal). If the option is missing, then &quot;auto&quot;
+is assumed. Colors can be modified using the SYSTEMTAP_COLORS environment
+variable. See the
+<I><A HREF="stap.1.html">stap</A></I>(1)
+
+manual page for more information on syntax and behaviour.
+<DT><B>var1=val</B>
+
+<DD>
+Sets the value of global variable var1 to val. Global variables contained 
+within a script are treated as options and can be set from the 
+stapdyn command line.
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>ARGUMENTS</H2>
+
+<B>MODULE</B>
+
+is either a module path or a module name.  If it is a module name,
+the module will be looked for in the following directory
+(where 'VERSION' is the output of &quot;uname -r&quot;):
+<DL COMPACT>
+<DT><DD>
+/lib/modules/VERSION/systemtap
+</DL>
+<P>
+
+<P>
+ $ stap --dyninst -p4 -m mod1 -e&nbsp;'global var1=&quot;foo&quot;; probe begin{printf(&quot;%s\n&quot;, var1); exit()}'
+<BR>
+
+<P>
+
+Running this with an additional module argument:
+<P>
+
+<P>
+ $ stapdyn mod1.so var1=&quot;HelloWorld&quot;
+<BR>
+
+ HelloWorld
+<P>
+
+Spaces and exclamation marks currently cannot be passed into global variables 
+this way.
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+See the 
+<I><A HREF="stapex.3stap.html">stapex</A></I>(3stap)
+
+manual page for a collection of sample scripts.
+<P>
+
+Here is a very basic example of how to use
+<I>stapdyn.</I>
+
+First, use
+<I>stap</I>
+
+to compile a script.  The
+<I>stap</I>
+
+program will report the pathname to the resulting module.
+<P>
+
+ $ stap --dyninst -p4 -e 'probe begin { printf(&quot;Hello World!\n&quot;); exit() }'
+<BR>
+
+ /home/user/.systemtap/cache/85/stap_8553d83f78c_265.so
+<P>
+
+Run
+<I>stapdyn</I>
+
+with the pathname to the module as an argument.
+<P>
+
+ $ stapdyn /home/user/.systemtap/cache/85/stap_8553d83f78c_265.so
+<BR>
+
+ Hello World!
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SAFETY AND SECURITY</H2>
+
+Systemtap, in DynInst mode, is a developer tool, and runs completely
+unprivileged.  The Linux kernel will only permit one's own processes
+to be accessed, which is enforced by the
+<I><A HREF="ptrace.2.html">ptrace</A></I>(2)
+
+system call.
+See the 
+<I><A HREF="stap.1.html">stap</A></I>(1)
+
+manual page for additional information on safety and security.
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap),
+
+<I><A HREF="stap-server.8.html">stap-server</A></I>(8),
+
+<I><A HREF="staprun.8.html">staprun</A></I>(8),
+
+<I><A HREF="stapex.3stap.html">stapex</A></I>(3stap)
+
+<P>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>BUGS</H2>
+
+Use the Bugzilla link of the project web page or our mailing list.
+
+<B><A HREF="http://sourceware.org/systemtap/">http://sourceware.org/systemtap/</A></B>, <B>&lt;<A HREF="mailto:systemtap@sourceware.org">systemtap@sourceware.org</A>&gt;</B>.
+
+
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">ARGUMENTS</A><DD>
+<DT><A HREF="#lbAG">EXAMPLES</A><DD>
+<DT><A HREF="#lbAH">SAFETY AND SECURITY</A><DD>
+<DT><A HREF="#lbAI">SEE ALSO</A><DD>
+<DT><A HREF="#lbAJ">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

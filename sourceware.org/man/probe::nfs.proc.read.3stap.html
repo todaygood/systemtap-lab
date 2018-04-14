@@ -1,0 +1,113 @@
+
+<HTML><HEAD><TITLE>Manpage of PROBE::NFS\&.PROC\&.</TITLE>
+</HEAD><BODY>
+<H1>PROBE::NFS\&.PROC\&.</H1>
+Section: Network File Storage Tapsets (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+probe::nfs.proc.read - NFS client synchronously reads file from server
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+nfs.proc.read 
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>VALUES</H2>
+
+<P>
+
+<I>server_ip</I>
+<DL COMPACT><DT><DD>
+IP address of server
+</DL>
+
+<P>
+
+<I>prot</I>
+<DL COMPACT><DT><DD>
+transfer protocol
+</DL>
+
+<P>
+
+<I>flags</I>
+<DL COMPACT><DT><DD>
+used to set task-&gt;tk_flags in rpc_init_task function
+</DL>
+
+<P>
+
+<I>count</I>
+<DL COMPACT><DT><DD>
+read bytes in this execution
+</DL>
+
+<P>
+
+<I>version</I>
+<DL COMPACT><DT><DD>
+NFS version
+</DL>
+
+<P>
+
+<I>offset</I>
+<DL COMPACT><DT><DD>
+the file offset
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+All the nfs.proc.read kernel functions were removed in kernel commit 8e0969 in December 2006, so these probes do not exist on Linux 2.6.21 and newer kernels.
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::nfs_proc.3stap.html">tapset::nfs_proc</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">VALUES</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

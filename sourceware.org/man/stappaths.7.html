@@ -1,0 +1,186 @@
+
+<HTML><HEAD><TITLE>Manpage of STAP</TITLE>
+</HEAD><BODY>
+<H1>STAP</H1>
+Section: Environments, Tables, and Troff Macros (7)<BR>Updated: Systemtap Team<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<P>
+stappaths - systemtap configurable file paths
+<P>
+<P>
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+This manual page was generated on 2015-10-09 for systemtap 3.0.
+The following section will list the main paths in systemtap that are 
+important to know and may be required to reference.
+<DL COMPACT>
+<DT>share/systemtap/tapset/<DD>
+The directory for the standard probe-alias / function tapset library,
+unless overridden by the
+<I>SYSTEMTAP_TAPSET</I>
+
+environment variable or the
+<I>XDG_DATA_DIRS</I>
+
+environment variable.
+These are described in the
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap),
+
+<I>probe::*</I>(3stap),
+
+and
+<I>function::*</I>(3stap)
+
+manual pages.
+<DT>share/systemtap/runtime/<DD>
+The runtime sources, unless overridden by the
+<I>SYSTEMTAP_RUNTIME</I>
+
+environment variable.
+<DT>bin/staprun<DD>
+The auxiliary program supervising module loading, interaction, and
+unloading.
+<DT>${exec_prefix}/libexec/systemtap/stapio<DD>
+The auxiliary program for module input and output handling.
+<DT>/usr/include/sys/sdt.h<DD>
+Location of the &lt;<A HREF="file:///usr/include/sys/sdt.h">sys/sdt.h</A>&gt; headers.
+<DT>Kernel debuginfo Path: /usr/lib/debug/lib/modules/$(uname -r)/<DD>
+The location of kernel debugging information when packaged into the
+<I>kernel-debuginfo</I>
+
+RPM, unless overridden by the
+<I>SYSTEMTAP_DEBUGINFO_PATH</I>
+
+environment variable.  The default value for this variable is
+<I>+:.debug:/usr/lib/debug:build</I>.
+
+elfutils searches vmlinux in this path and it interprets the path as a base
+directory of which various subdirectories will be searched for finding debuginfo
+for the kernel, kernel modules, and user-space binaries.
+By default, systemtap will also look for vmlinux in these locations:
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+/boot/vmlinux-`uname -r` 
+/lib/modules/`uname -r`/vmlinux
+/lib/modules/`uname -r`/vmlinux.debug
+/lib/modules/`uname -r`/build/vmlinux
+/lib/modules/`uname -r`/.debug/vmlinux.debug
+/usr/lib/debug/lib/modules/`uname -r`/vmlinux.debug
+/var/cache/abrt-di/usr/debug/lib/modules/`uname -r`/
+/var/cache/abrt-di/usr/lib/debug/lib/modules/`uname -r`/vmlinux.debug
+
+
+</PRE>
+
+</DL>
+
+
+<DT><DD>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Corresponding source files are usually located under /usr/src/debug/.
+Further file information on user-space applications can be determined per-basis using
+rpm -ql &lt;package&gt;-debuginfo. For supported user-space applications information please 
+visit the systemtap wiki. 
+<DT>$HOME/.systemtap<DD>
+Systemtap data directory for cached systemtap files, unless overridden
+by the
+<I>SYSTEMTAP_DIR</I>
+
+environment variable.
+<DT>/tmp/stapXXXXXX<DD>
+Temporary directory for systemtap files, including translated C code
+and kernel object.
+<DT>/lib/modules/VERSION/build<DD>
+The location of kernel module building infrastructure.
+<DT>share/doc/systemtap*/examples<DD>
+Examples with greater detail can be found here. Each example comes with a .txt
+or .meta file explaining what the example, sample or demo does and how it is
+ordinarily run.  See also
+
+<I><A HREF="http://sourceware.org/systemtap/examples/">http://sourceware.org/systemtap/examples/</A></I>
+
+
+<DT>$SYSTEMTAP_DIR/ssl/server<DD>
+User's server-side SSL certificate database. If SYSTEMTAP_DIR is not
+set, the default is $HOME/.systemtap.
+<DT>$SYSTEMTAP_DIR/ssl/client<DD>
+User's private client-side SSL certificate database. If SYSTEMTAP_DIR is not
+set, the default is $HOME/.systemtap.
+<DT>${prefix}/etc/systemtap/ssl/client<DD>
+Global client-side SSL certificate database.
+<DT>${prefix}/etc/systemtap/staprun/<DD>
+<I>staprun</I>'s trusted signer certificate database.
+<DT>${prefix}/etc/sysconfig/stap-server/<DD>
+stap-server service global configuration file.
+<DT>${prefix}/etc/stap-server/conf.d/*.conf<DD>
+stap-server service configuration files for default servers.
+<DT>/var/run/stap-server/<DD>
+stap-server service default location of status files for running servers.
+<DT>/var/log/stap-server/log<DD>
+stap-server service default log file.
+<P>
+<P>
+</DL>
+<P>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>FILES</H2>
+
+
+<I>share/systemtap/tapset</I>
+
+
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap),
+<I><A HREF="staprun.8.html">staprun</A></I>(8),
+<I><A HREF="stapvars.3stap.html">stapvars</A></I>(3stap),
+<I><A HREF="stapex.3stap.html">stapex</A></I>(3stap),
+<I><A HREF="stap-server.8.html">stap-server</A></I>(8),
+<I><A HREF="awk.1.html">awk</A></I>(1),
+<I><A HREF="gdb.1.html">gdb</A></I>(1)
+
+
+</PRE><A NAME="lbAF">&nbsp;</A>
+<H2>BUGS</H2>
+
+Use the Bugzilla link of the project web page or our mailing list.
+
+<B><A HREF="http://sourceware.org/systemtap/">http://sourceware.org/systemtap/</A></B>,<B>&lt;<A HREF="mailto:systemtap@sourceware.org">systemtap@sourceware.org</A>&gt;</B>.
+
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">FILES</A><DD>
+<DT><A HREF="#lbAE">SEE ALSO</A><DD>
+<DT><A HREF="#lbAF">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

@@ -1,0 +1,142 @@
+
+<HTML><HEAD><TITLE>Manpage of ERROR::DWARF</TITLE>
+</HEAD><BODY>
+<H1>ERROR::DWARF</H1>
+Section: Misc. Reference Manual Pages (7stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+error::dwarf - dwarf debuginfo quality problems
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+Systemtap sometimes relies on ELF/DWARF debuginfo for programs being
+instrumented to locate places to probe, or context variables to
+read/write, just like a symbolic debugger does.  Even though
+examination of the program's source code may show variables or lines
+where probes may be desired, the compiler must preserve information
+about them for systemtap (or a debugger such as gdb) to get pinpoint
+access to the desired information.  If a script requires such data,
+but the compiler did not preserve enough of it, pass-2 errors may
+result.
+<P>
+
+Common conditions that trigger these problems include;
+<P>
+<DL COMPACT>
+<DT>compiler version<DD>
+Prior to GCC version 4.5, debuginfo quality was fairly limited.
+Often developers were advised to build their programs with 
+<I>-O0 -g</I>
+
+flags to disable optimization.  GCC version 4.5 introduced 
+a facility called &quot;variable-tracking assignments&quot; that allows it
+to generate high-quality debuginfo under full 
+<I>-O2 -g</I>
+
+optimization.  It is not perfect, but much better than before.
+Note that, due to another gcc bug (PR51358)
+<I>-O0 -g</I>
+
+can actually sometimes make debuginfo quality worse than for
+<I>-O2 -g</I>.
+
+<P>
+Another related problem involves debuginfo quality for the
+prologue area of a function (PR15123), wherein a program
+compiled with CFLAGS=-mfentry (especially the kernel, for ftrace)
+may lack accurate debuginfo for the entry instructions for gcc
+prior to version 4.8.  If able, arrange to compile your programs
+with 
+<I>-grecord-gcc-switches</I>
+
+CFLAGS, and/or try rerunning systemtap with
+
+<I>$PR15123_ASSUME_MFENTRY=1</I>.
+
+
+<P>
+<DT>function inlining<DD>
+Even modern gcc sometimes has problems with parameters for inlined functions.
+It may be necessary to change the script to probe at a slightly different place
+(try a 
+<I>.statement()</I> probe, instead of a <I>.function()</I> probe,
+
+somewhere a few source lines into the body of the inlined function.  Or try
+putting a probe at the call site of the inlined function.  Or use the
+
+<I>if @defined($var) { ... }</I>
+
+
+script language construct to test for the resolvability of the context
+variable before using it.
+<P>
+<DT>instruction reordering<DD>
+Heavily optimized code often smears the instructions from
+multiple source statements together.  This can leave systemtap with no place
+to choose to place a probe, especially a statement probe specified by line
+number.  Systemtap may advise to try a nearby line number, but these may
+not work well either.  Consider placing a probe by a statement wildcard
+or line number range.
+<P>
+<DT>elfutils configuration<DD>
+It is possible that the DWARF debuginfo being sought is available, but not in
+a format acceptable to the copy of elfutils used by systemtap.  For example,
+your copy of gcc might produce compressed debuginfo (<I>.zdebug_*</I> ELF
+sections or <I>.xz</I> files) while your copy of elfutils might lack
+appropriate decompression capabilities.  Unfortunately, there is no easy
+way to tell if this is the problem.  If you're building your own copy
+of elfutils, ensure all decompression library headers/libraries are
+available at build time.
+<P>
+<DT>debuginfo configuration<DD>
+Some tools may generate debuginfo that is unsupported by systemtap, such
+as the linux kernel CONFIG_DEBUG_INFO_SPLIT (<I>.dwo</I> files) option.
+Stick with plain ELF/DWARF (optinally split, Fedora-style), if possible.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>ALTERNATIVES</H2>
+
+<P>
+In order to reduce reliance on ELF/DWARF debuginfo, consider the use of
+statically compiled-in instrumentation, such as kernel tracepoints, or
+<I>&lt;<A HREF="file:///usr/include/sys/sdt.h">sys/sdt.h</A>&gt;</I>
+
+userspace markers.  Such instrumentation hook sites are relatively low
+cost (just one NOP instruction for sdt.h), and nearly guarantee the
+availability of parameter data and a reliable probe site,
+all without reliance on debuginfo.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="http://dwarfstd.org/">http://dwarfstd.org/</A></I>,
+<I><A HREF="http://sourceware.org/systemtap/wiki/TipContextVariables">http://sourceware.org/systemtap/wiki/TipContextVariables</A></I>,
+<I><A HREF="http://gcc.gnu.org/wiki/Var_Tracking_Assignments">http://gcc.gnu.org/wiki/Var_Tracking_Assignments</A></I>,
+<I><A HREF="./warning::debuginfo.7stap.html">warning::debuginfo</A></I>(7stap),
+<I><A HREF="./error::reporting.7stap.html">error::reporting</A></I>(7stap)
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">ALTERNATIVES</A><DD>
+<DT><A HREF="#lbAE">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

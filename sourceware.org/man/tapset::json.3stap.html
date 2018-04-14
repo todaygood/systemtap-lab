@@ -1,0 +1,258 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::json</TITLE>
+</HEAD><BODY>
+<H1>tapset::json</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::json - systemtap json tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;The&nbsp;JSON&nbsp;tapset&nbsp;provides&nbsp;probes,&nbsp;functions,&nbsp;and&nbsp;macros&nbsp;to&nbsp;generate
+<BR>&nbsp;a&nbsp;JSON&nbsp;metadata&nbsp;and&nbsp;data&nbsp;file.&nbsp;The&nbsp;JSON&nbsp;metadata&nbsp;file&nbsp;is&nbsp;located&nbsp;in
+<BR>&nbsp;/proc/systemtap/MODULE/metadata.json.&nbsp;The&nbsp;JSON&nbsp;data&nbsp;file&nbsp;is&nbsp;located
+<BR>&nbsp;in&nbsp;/proc/systemtap/MODULE/data.json.&nbsp;The&nbsp;JSON&nbsp;data&nbsp;file&nbsp;is&nbsp;updated
+<BR>&nbsp;with&nbsp;current&nbsp;data&nbsp;every&nbsp;time&nbsp;the&nbsp;file&nbsp;is&nbsp;read.
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>json_set_prefix </B>
+
+<DD>
+Set the metric prefix.
+<DT><DD>
+See 
+<I><A HREF="./function::json_set_prefix.3stap.html">function::json_set_prefix</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>json_add_numeric_metric </B>
+
+<DD>
+Add a numeric metric
+<DT><DD>
+See 
+<I><A HREF="./function::json_add_numeric_metric.3stap.html">function::json_add_numeric_metric</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>json_add_string_metric </B>
+
+<DD>
+Add a string metric
+<DT><DD>
+See 
+<I><A HREF="./function::json_add_string_metric.3stap.html">function::json_add_string_metric</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>json_add_array </B>
+
+<DD>
+Add an array
+<DT><DD>
+See 
+<I><A HREF="./function::json_add_array.3stap.html">function::json_add_array</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>json_add_array_numeric_metric </B>
+
+<DD>
+Add a numeric metric to an array
+<DT><DD>
+See 
+<I><A HREF="./function::json_add_array_numeric_metric.3stap.html">function::json_add_array_numeric_metric</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>json_add_array_string_metric </B>
+
+<DD>
+Add a string metric to an array
+<DT><DD>
+See 
+<I><A HREF="./function::json_add_array_string_metric.3stap.html">function::json_add_array_string_metric</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>json_data </B>
+
+<DD>
+Fires whenever JSON data is wanted by a reader.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::json_data.3stap.html">probe::json_data</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>@json_output_data_start </B>
+
+<DD>
+Start the json output.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="macro::json_output_data_start.3stap.html">macro::json_output_data_start</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>@json_output_string_value </B>
+
+<DD>
+Output a string value.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="macro::json_output_string_value.3stap.html">macro::json_output_string_value</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>@json_output_numeric_value </B>
+
+<DD>
+Output a numeric value.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="macro::json_output_numeric_value.3stap.html">macro::json_output_numeric_value</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>@json_output_array_string_value </B>
+
+<DD>
+Output a string value for metric in an array.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="macro::json_output_array_string_value.3stap.html">macro::json_output_array_string_value</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>@json_output_array_numeric_value </B>
+
+<DD>
+Output a numeric value for metric in an array.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="macro::json_output_array_numeric_value.3stap.html">macro::json_output_array_numeric_value</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>@json_output_data_end </B>
+
+<DD>
+End the json output.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="macro::json_output_data_end.3stap.html">macro::json_output_data_end</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::json_set_prefix.3stap.html">function::json_set_prefix</A></I>(3stap),
+
+
+<I><A HREF="./function::json_add_numeric_metric.3stap.html">function::json_add_numeric_metric</A></I>(3stap),
+
+
+<I><A HREF="./function::json_add_string_metric.3stap.html">function::json_add_string_metric</A></I>(3stap),
+
+
+<I><A HREF="./function::json_add_array.3stap.html">function::json_add_array</A></I>(3stap),
+
+
+<I><A HREF="./function::json_add_array_numeric_metric.3stap.html">function::json_add_array_numeric_metric</A></I>(3stap),
+
+
+<I><A HREF="./function::json_add_array_string_metric.3stap.html">function::json_add_array_string_metric</A></I>(3stap),
+
+
+<I><A HREF="./probe::json_data.3stap.html">probe::json_data</A></I>(3stap),
+
+
+<I><A HREF="macro::json_output_data_start.3stap.html">macro::json_output_data_start</A></I>(3stap),
+
+
+<I><A HREF="macro::json_output_string_value.3stap.html">macro::json_output_string_value</A></I>(3stap),
+
+
+<I><A HREF="macro::json_output_numeric_value.3stap.html">macro::json_output_numeric_value</A></I>(3stap),
+
+
+<I><A HREF="macro::json_output_array_string_value.3stap.html">macro::json_output_array_string_value</A></I>(3stap),
+
+
+<I><A HREF="macro::json_output_array_numeric_value.3stap.html">macro::json_output_array_numeric_value</A></I>(3stap),
+
+
+<I><A HREF="macro::json_output_data_end.3stap.html">macro::json_output_data_end</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

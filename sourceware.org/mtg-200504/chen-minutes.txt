@@ -1,0 +1,476 @@
+
+Morning notes and bin list
+Systemtap F2F
+20 April 2005
+Santa Clara CA
+
+Attendees:
+Brad Chen (Intel)
+Charles Spirakis (Intel)
+Ulrich Drepper (RedHat)
+John Healy (RedHat)
+Frank Eigler (RedHat)
+K. Sridharan (Intel)
+Martin Hunt (RedHat)
+Will Cohen (RedHat)
+Vara Prasad (IBM)
+Rohit Seth (Intel)
+Douglas Armstrong (Intel)
+Karen Bennett (RedHat)
+Elena Zannoni (RedHat)
+Andrew Kleen (RedHat)
+Rusty Lynch (Intel)
+Anil Keshavamurthy (Intel)
+Jim Keniston (IBM)
+Hiam Nguyen (IBM)
+Josh Stone (Intel)
+Sri Doddapaneni (Intel)
+
+Morning Presentations
+ 9:30	Run time and kernel to user data transport (Martin)
+10:00	Kprobes/Jprobes and their enhancements (Jim and Hien)
+10:30	Build and test (Will)
+11:00	Safety (Brad)
+11:30	Scheduler and lock tapset (Doug)
+
+======================================================================
+
+Frank - Systemtap overview and history
+- Solaris DTrace has made a lot of noise in the press
+- Translator-based system, using simple scripting language like awk or
+DTrace
+- compile into kernel modules
+
+Progress since initial concept
+- a number of disposable prototypes
+- RedHat work
+  - Martin's runtime code
+  - translator work
+- IBM side
+  - kprobes extensions
+  - contributions from Jim and others to study open-holes in design
+
+Expectation: something shareable/workable starts in a few weeks.
+
+Q: When did development start in earnest (Rusty)
+Frank: three or four months ago; mid-late January. Coding has mostly 
+been happening in the background, partly because design is still 
+developing. Some of code is throw away, hopefully not all of it.
+
+Q: Is translator optional or required?
+Frank: required.
+
+Karen: If you see key opportunities or things to fix, please speak up.
+
+===========================================================
+
+Martin - Systemtap Runtime
+[see also slides Martin posted to the mailing list]
+
+The Runtime is:
+- C code used by translator
+- compiled into kernel module
+- could be used to write providers (an option that might or might not 
+be supported)
+
+Goals
+- safety. Don't crash or corrupt the system
+- Low system impact. No kernel stack usage. (limited stack usage)
+- High performance
+- flexible
+- Ease of use - least of goals; mostly used by translator.
+
+Uli - May need to use signal stack.
+Martin - exists for all architectures? 
+Uli - Yes.
+[Some detailed discussion with Uli and Rohit about use of signal 
+stack and how to use it and avoid abusing it. Note binlist item
+on figuring out what to do for a stack...]
+Rohit: we might also want to talk about branches vs. breakpoints, 
+at some point.
+
+Possible kprobes work item: worry about use of the signal stack.
+Will: haven't run into this problem in oprofile yet; routine is simple
+and 
+light; 2-3 call levels deep at most.
+Charles: VTune driver is similar in not using too much stack.
+Uli: Some device drivers are il-behaved. Safest bet is to use a separate
+stack
+
+TEST CASE: find the worst-case case signal-stack kernel code 
+(probably a driver), and instrument it kprobes/systemtap to see what 
+happens.
+
+Uli: safest plan: make a new private stack of limited size, don't use 
+the kernel or signal stack.
+Vara: Will kernel folks be okay with a new stack?
+Rohit: kprobes is already there; they shouldn't be overly concerned.
+Jim voluteers to go the next step on this issue.
+
+[back to Martin]
+What's in the Runtime:
+- associative arrays 
+	- "maps"
+	- keys can be 1 or 2 strings or longs
+	- values: int64, string, or statistics
+	- maps have a max size, preallocated
+- K to U transport 
+	- relayfs or netlink, both very fast
+	- Q: Security issues for uplink? (Rusty) [BIN LIST]
+- output formatting
+	- relatively straightforward
+- backtraces
+	- backtrace kernel and user space works today
+	- issue: don't want to do symbolic lookups in user space
+		- might use dcookies; oprofile style
+	- 
+- copy from userspace funcs
+- backtrace and register dump
+- safe strings
+	- strings should not be allocated dynamically
+	- can't use the stack either
+	- soln: runtime uses statically allocated string space
+
+Arch diagram:
+	- stpd daemon interacts with netlink or relayfs, generates files
+	Frank: Why a daemon rather than a command-line tool?
+	Martin: historical
+	- one stpd per loadable systemtap module
+	- multiple stpds can run simultaneously
+	- stpd loads and unloads modules
+	- data saved to per-cpu data files
+	- note: two users can't load the same module at the same time
+	  potential issue: two users who want to run the same module,
+with
+	  pre-compiled modules
+	Q: How big would the maps for modules be? Space is limited (GB)
+	Frank: not nearly that big
+- Postprocessing:
+	- done by stpd
+	- deferred symbolic lookups
+	- per-cpu data files need to be integrated and saved, etc.
+- other things needed by translator
+
+=================================================================
+
+Jim - KProbes
+- a facility for inserting a breakpoint in the kernel; specify a handler
+
+function when the breakpoint is hit.
+- currently suports x86, x86-64, ppc-64
+- Rusty: IPF work underway; no important differences so far between 
+AMD64 and EM64T
+- Key new features for Systemtap: multi probes, return probes
+
+Multi-probes: multiple handlers for the same address
+- two competing implementations: Prasanna:
+- Ananth has posted a patch which seems to be okay to most people
+Will be submitting this patch to MM. Patch is out on lkml.
+
+Return probes: fires when a function returns
+- Basic implementation: probe point at entry replaces RA on stack
+  with address of "trampoline." On return, transfer to trampoline
+  where a probe is waiting. Handler is invoked etc. Trampoline
+  code is a no-op; just a place to install a probe-point (kprobe)
+- Q: Has this been tried on IA64? [Jim - No]. The IA64 might need
+  some special attention...
+- GDB might provide a relevant point of comparison for IA64 support.
+- Vara - x86, x86-64, and PPC all supportable.
+- Brad: Intel folks need to check that API is supportable on Itanium.
+- Jim - refer to design document on systemtap mailing list "return
+  probes" or "exit probes".
+- Ananth on phone: maintains kprobes; in residence at RedHat (Westford)
+  for six months.
+- Performance improvements: smarter locking for SMP support.
+  Ananth talks about specific work he's doing. Simpler locking
+  mechanisms to address outstanding issue...
+
+Last items on Jim's list. Ongoing discussion on mailing list for
+these issues (x86-64 RIP-relative addressing, x86_64 wart removal.)
+
+Rohit: holding a semaphore in the kernel? how would you instrument
+the interrupt path?
+When you register a probe, must acquire a spin-lock...
+Only in the probes setup, not use.
+Current solution: pre-allocate the memory, one "slot" or cache-line per
+CPU.
+- eliminates need for semaphore
+- concern about cache ping-pong: don't want to have processors bouncing
+  cache-lines back and forth as a part of kprobe setup, or (?)
+  singlestepping of probed instructions.
+- basic problem is self-modifying code. Want all self-modifying code
+  to happen in a single unique address that is not shared by other CPUs.
+- issue of allocating multiple locations instead of a single location:
+  execute bit, and 2G relative addressing limitation for x86-64
+- Rohit taking the lead on understanding this issue for Intel
+
+=======================================================================
+
+Will - Testing
+Goals
+- ensure systemtap doesn't crash machines
+- show customers it's tested and safe
+- find and quickly fix faults
+- provide guidiance on instrumentation costs and limitations
+
+Rohit - customer visits. Everybody mentions DTrace, everybody
+expects Systemtap to be as robust as DTrace.
+Will - 
+
+What's checked in:
+Components
+- runtime, parser/translater, kprobes
+system 
+- integrated components
+
+Testing Issues
+- User space environment different than kernel
+	- limited kernel stack space
+	- copy from user
+	- some operations not available in user space, such as accessing
+	  PMU hardware
+- need testing on various hardware and kernel configs, big systems and
+apps
+Frank: (to IBM) To what degree do you expect to be able to stress-test
+system?
+Frank: to what degree is IBM and Intel interested in this system working
+on
+"vanilla upstream" kernels?
+Rohit: we are very interested
+Vara: provides some detail on what kind of testing...
+Rusty: the more public the test repository, the easier it is for Intel
+to 
+help with the testing.
+- non-determinism - fact that kernel is non-deterministic.
+
+Runtime test plan
+- Runtime library user-space function testing
+  - verify arg checking
+  - verify in user space that all paths through code exercised 
+    (use GCC profiling support)
+  - check that memory leaks don't occur
+- Runtime library kernel space testing
+  - individual functions
+  - data transport (only works in the kernel)
+  - failure modes (out of memory, etc.)
+
+Parser/Translator component testing
+- identify invalid input
+- make sure parser/translator generate valid constructs
+  [tap validator might have a role on these]
+
+KProbe and Kernel Instrumentation Component Testing
+- Verify expected functionality of instrumentation
+- torture tests
+  - maximum rate calling instrumented function
+  - repeated activation and deactivation
+  - attempt to create race conditions
+  - attempt to create recursive kprobes
+- non-instrumentable locations
+- get overhead estimates, max number of probes, etc.
+
+RedHat Test Grid
+- internal system to reserve and manage test resources
+- collection of machines
+- remote KVM - allows bios and boot-up config, power-cycle
+- CVS repository for tests (gdb, oprofile, kernel torture (e.g.
+cerberus)
+- Most of the machines are in Westford.
+- not accessible outside
+- problem: testing on really large systems (64-way, terabyte memory...)
+- Roland: might be good to figure out how to share kernel test suites
+- Intel and IBM folks on-site at RedHat do have access to these test
+suites
+
+RPM and RedHat build system
+...
+
+========================================================================
+Brad on Safety
+
+Brad presented the Systemtap plans for safety. Much of
+this has been worked through on the mailing list already.
+Two undecided items:
+- Tap Validator. Disassemble the tap and analyze for
+  safety properties. Brad did a simple demo of how illegal
+  instructions and confusing control flow could be exposed.
+- Memory Portal, and, separating Policy from Mechanism.
+  Brad presented a number of simple policies, including
+  proposals for definitions of "safety" and "guru" modes.
+  separating Policy and Mechanism could be done with or 
+  without the memory portal; Brad will be posting to the
+  mailing list to start a discussion on this topic.
+
+Frank liked this table; suggested we put it into the arch paper.
+
+				       Language Design
+                                 |  Language Implementation
+                                 |  |  insmod checks
+                                 |  |  |  Runtime Checks
+                                 |  |  |  |  Memory Portal
+                                 |  |  |  |  |  Static Validator
+                                 |  |  |  |  |  |
+-------------------------------------------------------
+infinite loops                      x     x     o
+recursion                           x     x     o
+division by zero                    x     x     o
+-------------------------------------------------------
+array bounds errors              x  x     x     o
+invalid pointer errors           x              o
+heap memory bugs                 x              o
+-------------------------------------------------------
+illegal instructions             x           o
+privileged instructions          x           o
+memory read/write restrictions   x        x  o  o
+-------------------------------------------------------
+memory execute restrictions      x        x  o  o
+version alignment                      x
+end-to-end safety                            x  x
+separate policy from mechanism                  x
+-------------------------------------------------------
+
+There are lines to add to this table...
+
+Another suggestion to draft some material for a security
+section; that Systemtap doesn't change security of system,
+possibility of someday supporting unpriviledged users with
+appropriate memory protection etc.
+
+========================================================================
+
+Douglas Armstrong 
+Synchronization and locking tapset
+
+Intel Thread Profiler team
+[other tool is Thread Checker]
+Most requirements derived from Intel Thread Profiler; others
+from Thread Profiler or other general parallel programming needs.
+
+Tool Interface:
+- kernel tools: safety, hard to maintain
+- expensive ring transitions
+- tap events buffered and dumped to file: space issues
+- tap events buffered and sent to user level tools in batches
+- double buffering/memory mapped....
+Vara: relayfs is a memory-mapped kernel buffer
+
+Q from Will: User threads or Kernel threads?
+- We'd like to catch both...
+- Even with kernel threads, there are parts of synchronization that
+  are only implemented in user space.
+
+Q: Frank - why do you want so much raw data, as opposed to aggregation?
+- critical path analysis: requires script
+- why not in kernel? memory usage, existing user-space implementation
+- memory requirements: 500 GB of raw events
+
+Q: Frank, Vara - it would be very helpful to understand the high-level
+goals, instead of just talking about low-level details. Not
+understanding
+why traces are required.
+Douglas: events are commonly calls into pthreads
+
+Synchronization of Interest
+- system synch objects
+- user synch objects implemented by kernel
+- user synch objects implemented in user space
+- user synch objects; multi-level implementation
+
+User synch objects
+- mutex
+- ...
+- some objects have implementation split across user and kernel level
+- 3rd party synchronization libraries
+
+Blocking operations of interest
+- File I/O
+- Standard I/O
+- ...
+
+Synchronization taps:
+- spin
+- block
+- ...
+- notion of a tap that might correspond to a union of a set of
+  kernel events
+
+vs. DTrace: 
+- Dtrace break down is based on object type. It would be nicer to 
+have a generic set, with top of object and particular object 
+available as data
+- different flavors of acquire and release locks to expose contention.
+- also a "cancel" event (timeout waiting on lock)
+
+Sync Tap Data - What you would want (partial list)
+- thread
+- signaled thread
+- call stack
+- pid
+- ...
+
+Frequency of events?
+- mutexes - 10s of thousands per second
+  - mostly user-only, uncontended
+  - would not commonly be seen in well-written applications
+
+Q: How do you confirm that your measurement is not adversely impacting
+  the application behavior?
+  - have seen cases where 100s of microseconds causes big problems
+  - in other cases, milliseconds of events are not a problem
+
+Roland: Overall being able to have zero or tiny overhead for 
+uncontended cases is important.
+
+Frank: Relation of fast instrumentation of non-contested locks and
+DTrace predicates? Are predicates fast enough? Worthy of immitating
+in Systemtap? Possibility of using a predicate to identify
+contended/uncontended, with predicate running at user level?
+
+Process and thread create/destroy/manage events
+- thread needs separate creation and start events
+- internal scheduler events: when scheduler makes internal
+  decisions that impact scheduler policy.
+
+Frank: so far, all this looks easy to implement in script
+
+Scheduler perspective on active/inactive/on/off/yield/switch events
+- contrast to synch perspective
+- aggregating to reduce instrumentation points is a useful optimization
+
+Will: how about interrupts?
+- Worried about accurate accounting for interrupt handling time?
+- Probably should be included in the list
+
+Brad: also would like to expose affinity requests
+
+Random taps:
+- I/O
+- Sampling (with randomization)
+- Module taps - loading/unloading of modules
+- Signal taps - events for signals and handlers
+- begin/end taps
+- Spin - ability to have the user-level probe
+- User function entry/exit
+  - all, rather than selective
+  - it appears that DTrace star notation lets you express this
+- User-code traps...
+  - all, rather than selective
+
+Sri: recently, JVMs exporting hooks that support DTrace
+
+======================================================================
+
+Bin List
+- Stack - "minimal stack usage" vs. alternate stack for kprobles [JK]
+- container/keys larger than long for associative array indexing? [MH]
+  Physical address extension - 36 bits. 
+- Security model - user transport [MH]
+  SE Linux, more complex than root vs. !root (one possible model)
+  deferred; won't be complete for U2
+- kernel models - implications of trying to load same module [FchE]
+  (in some form) twice. Also, other limitations of module address space,
+  vmalloc, static area, etc.
+- IA64 stack & instruction architecture is "unique". Be aware [RS]
+  that traditional IA32 style assumptions will lead to issues.
+
+

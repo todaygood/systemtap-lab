@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+<title>SystemtapOnFedoraArm - Systemtap Wiki</title>
+<script type="text/javascript" src="/moin_static199/common/js/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static199/modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="/moin_static199/modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="/moin_static199/modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="/moin_static199/modern/css/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static199/modern/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Systemtap Wiki: SystemtapOnFedoraArm" href="/systemtap/wiki/SystemtapOnFedoraArm?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=SystemtapOnFedoraArm&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="/systemtap/wiki/HomePage">
+<link rel="Alternate" title="Wiki Markup" href="/systemtap/wiki/SystemtapOnFedoraArm?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/systemtap/wiki/SystemtapOnFedoraArm?action=print">
+<link rel="Search" href="/systemtap/wiki/FindPage">
+<link rel="Index" href="/systemtap/wiki/TitleIndex">
+<link rel="Glossary" href="/systemtap/wiki/WordIndex">
+<link rel="Help" href="/systemtap/wiki/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+<div id="header">
+<div id="logo"><a href="/systemtap/wiki/HomePage"><img src="/systemtap/systemtaplogo.png" alt="systemtap wiki"></a></div>
+
+<form id="searchform" method="get" action="/systemtap/wiki/SystemtapOnFedoraArm">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput">Search:</label>
+<input id="searchinput" type="text" name="value" value="" size="20"
+    onfocus="searchFocus(this)" onblur="searchBlur(this)"
+    onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search">
+<input id="titlesearch" name="titlesearch" type="submit"
+    value="Titles" alt="Search Titles">
+<input id="fullsearch" name="fullsearch" type="submit"
+    value="Text" alt="Search Full Text">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<ul id="username"><li><a href="/systemtap/wiki/SystemtapOnFedoraArm?action=login" id="login" rel="nofollow">Login</a></li></ul>
+<div id="locationline">
+<div id="interwiki"><span><a href="/systemtap/wiki/HomePage" rel="nofollow">Self</a></span></div>
+
+<ul id="pagelocation">
+<li><a href="/systemtap/wiki/SystemtapOnFedoraArm">SystemtapOnFedoraArm</a></li>
+</ul>
+
+</div>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="/systemtap/wiki/HomePage">HomePage</a></li><li class="wikilink"><a href="/systemtap/wiki/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="/systemtap/wiki/FindPage">FindPage</a></li><li class="wikilink"><a href="/systemtap/wiki/HelpContents">HelpContents</a></li><li class="current"><a href="/systemtap/wiki/SystemtapOnFedoraArm">SystemtapOnFedoraArm</a></li>
+</ul>
+
+<div id="pageline"><hr style="display:none;"></div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/systemtap/wiki/SystemtapOnFedoraArm?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/systemtap/wiki/SystemtapOnFedoraArm?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/systemtap/wiki/SystemtapOnFedoraArm">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" lang="en" dir="ltr">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867"><a href="/systemtap/wiki/SystemTap">SystemTap</a> on Fedora ARM <span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line874">The ARM processor is an extremely popular processor with a variety of <span class="anchor" id="line-4"></span>Linux distributions available, including Fedora <span class="anchor" id="line-5"></span>(<a class="http" href="http://fedoraproject.org/wiki/Architectures/ARM">http://fedoraproject.org/wiki/Architectures/ARM</a>). The ARM is a <span class="anchor" id="line-6"></span>secondary architecture for Fedora and currently has a Fedora 13 <span class="anchor" id="line-7"></span>release candidate available rather the Fedora 15 that is available for <span class="anchor" id="line-8"></span>x86 processors. <span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><p class="line862">It is possible to build the current <a href="/systemtap/wiki/SystemTap">SystemTap</a> from the git repository <span class="anchor" id="line-11"></span>for Fedora 13 on arm. It is also possible to build the <a href="/systemtap/wiki/SystemTap">SystemTap</a> <span class="anchor" id="line-12"></span>binary rpms if one turns off the with_crash flag in the systemtap.spec <span class="anchor" id="line-13"></span>files. <span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span><p class="line874">One aspect that the ARM processors differ greatly from x86 processors <span class="anchor" id="line-16"></span>is ARM has been mostly used as an embedded processors.  For these <span class="anchor" id="line-17"></span>applications developer usually configure the ARM kernels features <span class="anchor" id="line-18"></span>during compile. Thus, rather than having a generic kernel that runs on <span class="anchor" id="line-19"></span>AMD, Intel, and VIA X86 processors and dynamically determines which <span class="anchor" id="line-20"></span>features the processor support each ARM platform needs a custom <span class="anchor" id="line-21"></span>configured kernel. The result of this is that there are not usually kernel <span class="anchor" id="line-22"></span>RPMs for ARM platforms. ARM Fedora developers are starting to address this <span class="anchor" id="line-23"></span>(<a class="http" href="http://fedoraproject.org/wiki/Architectures/Fedora_ARM_Kernels">http://fedoraproject.org/wiki/Architectures/Fedora_ARM_Kernels</a>), but <span class="anchor" id="line-24"></span>the kernel-debuginfo and kernel-devel rpm packages are not usually <span class="anchor" id="line-25"></span>available.  The systemtap rpm needs those packages around to be able <span class="anchor" id="line-26"></span>to build the instrumentation module. <span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><p class="line874">Need to build a kernel to make a kernel build tree that can be used by <span class="anchor" id="line-29"></span>systemtap.  This could be cross compiled or natively built. This <span class="anchor" id="line-30"></span>document will limit itself to the cross compiled kernel where the <span class="anchor" id="line-31"></span>kernel is built on a x86_64 host machine machine for an ARM target. <span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span><p class="line874">The cross compiler mentioned in the following Fedora URL is relatively <span class="anchor" id="line-34"></span>old and does not understand the &quot;-mcpu=cortex-a8&quot; option needed to <span class="anchor" id="line-35"></span>build kernels for some of the newer ARM processors: <span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><ul><li style="list-style-type:none"><p class="line891"><a class="http" href="http://fedoraproject.org/wiki/Architectures/ARM/CrossToolchain">http://fedoraproject.org/wiki/Architectures/ARM/CrossToolchain</a> <span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span></li></ul><p class="line874">Ended up install the boostrap arm fedora 15 bootstrap tools and <span class="anchor" id="line-40"></span>building the compiler in there. Information on the tool at: <span class="anchor" id="line-41"></span><span class="anchor" id="line-42"></span><ul><li style="list-style-type:none"><p class="line891"><a class="http" href="http://djdelorie.fedorapeople.org/">http://djdelorie.fedorapeople.org/</a> <span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span></li></ul><p class="line874">The git clone of this will create a bootstrap directory. This tools <span class="anchor" id="line-45"></span>needs srpms. Downloaded the dvd iso of the srpms, loop mount the dvd <span class="anchor" id="line-46"></span>iso, and link to the SRPMs to the dvd iso mount point. Also made a <span class="anchor" id="line-47"></span>SRPMlocal directory. Then in bootstrap directory: <span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span><p class="line867"><span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><pre><span class="anchor" id="line-1"></span>./stage1 kernel-headers
+<span class="anchor" id="line-2"></span>./stage1 binutils
+<span class="anchor" id="line-3"></span>./stage1 gcc-host
+<span class="anchor" id="line-4"></span>./stage1 glibc-headers
+<span class="anchor" id="line-5"></span>./stage1 gcc-libgcc
+<span class="anchor" id="line-6"></span>./stage1 glibc</pre><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><p class="line874">At this point have cross compile tools in bootstrap/install/bin. <span class="anchor" id="line-59"></span>Alternative you might also be able to use cross compiler RPMs mentioned in: <span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span><p class="line867"><a class="http" href="http://lists.fedoraproject.org/pipermail/arm/2011-July/001646.html">http://lists.fedoraproject.org/pipermail/arm/2011-July/001646.html</a> <span class="anchor" id="line-62"></span><span class="anchor" id="line-63"></span><p class="line874">For uImage will also need the uboot-tools so as root: <span class="anchor" id="line-64"></span><span class="anchor" id="line-65"></span><p class="line867"><span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span><pre><span class="anchor" id="line-1-1"></span>yum install uboot-tools</pre><span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><p class="line874">Grab the kernel for my Efika MX smartbook platform at: <span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span><ul><li style="list-style-type:none">git://gitorious.org/efikamx/linux-kernel.git <span class="anchor" id="line-72"></span><span class="anchor" id="line-73"></span></li></ul><p class="line874">Then adding environment variable for the cross compile (adjust as needed): <span class="anchor" id="line-74"></span><span class="anchor" id="line-75"></span><p class="line867"><span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><pre><span class="anchor" id="line-1-2"></span>export PATH=/home/wcohen/stuff/efikamx/bootstrap/install/bin:$PATH
+<span class="anchor" id="line-2-1"></span>export ARCH=arm
+<span class="anchor" id="line-3-1"></span>export CROSS_COMPILE=armv7hl-redhat-linux-gnueabi-</pre><span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><p class="line874">Setup configuration for the efika mx with: <span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span><p class="line867"><span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span><pre><span class="anchor" id="line-1-3"></span>make mx51_efikamx_defconfig</pre><span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span><p class="line874">Make sure the following config entries in the .config are active (=y or =m): <span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><ul><li>CONFIG_DEBUG_FS <span class="anchor" id="line-90"></span></li><li>CONFIG_KPROBES <span class="anchor" id="line-91"></span></li><li>CONFIG_DEBUG_INFO <span class="anchor" id="line-92"></span></li><li>CONFIG_RELAY <span class="anchor" id="line-93"></span></li><li>CONFIG_PROFILING <span class="anchor" id="line-94"></span></li><li>CONFIG_TRACEPOINTS <span class="anchor" id="line-95"></span><span class="anchor" id="line-96"></span></li></ul><p class="line874">Check to see whether there are any additional CONFIG_* that need to be set: <span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span><p class="line867"><span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span><pre><span class="anchor" id="line-1-4"></span>make oldconfig</pre><span class="anchor" id="line-101"></span><span class="anchor" id="line-102"></span><p class="line874">Then start building with (other platforms may use zImage instead of uImage): <span class="anchor" id="line-103"></span><span class="anchor" id="line-104"></span><p class="line867"><span class="anchor" id="line-105"></span><span class="anchor" id="line-106"></span><pre><span class="anchor" id="line-1-5"></span>make vmlinux uImage modules</pre><span class="anchor" id="line-107"></span><span class="anchor" id="line-108"></span><p class="line874">Now time to install the code on an SDcard. The card already has an <span class="anchor" id="line-109"></span>bootable fedora install as in /boot and /root partitions. As root: <span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span><p class="line867"><span class="anchor" id="line-112"></span><span class="anchor" id="line-113"></span><span class="anchor" id="line-114"></span><span class="anchor" id="line-115"></span><span class="anchor" id="line-116"></span><span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span><pre><span class="anchor" id="line-1-6"></span>export PATH=/home/wcohen/stuff/efikamx/bootstrap/install/bin:$PATH
+<span class="anchor" id="line-2-2"></span>export ARCH=arm
+<span class="anchor" id="line-3-2"></span>export CROSS_COMPILE=armv7hl-redhat-linux-gnueabi-
+<span class="anchor" id="line-4-1"></span>export VERSION=2.6.31.14.23-efikamx
+<span class="anchor" id="line-5-1"></span>make modules_install INSTALL_MOD_PATH=/media/root
+<span class="anchor" id="line-6-1"></span>cp arch/arm/boot/uImage /media/boot/uImage-$VERSION</pre><span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span><p class="line874">Unmount all the SDcard partions on host. <span class="anchor" id="line-121"></span>Move SDcard to target machine. <span class="anchor" id="line-122"></span>Boot it up with the old kernel. <span class="anchor" id="line-123"></span><span class="anchor" id="line-124"></span><p class="line874">Time Update to new kernel. Make sure that uboot-tools rpm are <span class="anchor" id="line-125"></span>installed on target.  As root on ARM target machine: <span class="anchor" id="line-126"></span><span class="anchor" id="line-127"></span><p class="line867"><span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span><span class="anchor" id="line-130"></span><span class="anchor" id="line-131"></span><span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span><span class="anchor" id="line-134"></span><span class="anchor" id="line-135"></span><span class="anchor" id="line-136"></span><span class="anchor" id="line-137"></span><pre><span class="anchor" id="line-1-7"></span>cd /boot
+<span class="anchor" id="line-2-3"></span>export VERSION=2.6.31.14.23-efikamx
+<span class="anchor" id="line-3-3"></span>dracut -f uInitrd-$VERSION.img $VERSION
+<span class="anchor" id="line-4-2"></span>mkimage -A arm -O linux -T ramdisk -C none -a 0 -e 0 -n initramfs \
+<span class="anchor" id="line-5-2"></span>-d /boot/uInitrd-$VERSION.img /boot/uInitrd-$VERSION
+<span class="anchor" id="line-6-2"></span>cp uImage-$VERSION  uImage
+<span class="anchor" id="line-7"></span>cp uInitrd-$VERSION uInitrd
+<span class="anchor" id="line-8"></span>mkimage -A arm -O linux -a 0 -e 0 -T script -C none \
+<span class="anchor" id="line-9"></span>-n &quot;EfikaMX Boot Script&quot; -d /boot/boot.scr.in /boot/boot.scr</pre><span class="anchor" id="line-138"></span><span class="anchor" id="line-139"></span><p class="line874">Reboot the machine to start the new kernel. <span class="anchor" id="line-140"></span><span class="anchor" id="line-141"></span><p class="line874">Test out systemtap ability to generate scripts on host for <span class="anchor" id="line-142"></span>a different target architecture based on the information in: <span class="anchor" id="line-143"></span><span class="anchor" id="line-144"></span><ul><li style="list-style-type:none"><p class="line891"><a class="http" href="http://omappedia.org/wiki/Systemtap">http://omappedia.org/wiki/Systemtap</a> <span class="anchor" id="line-145"></span><span class="anchor" id="line-146"></span></li></ul><p class="line874">Build the systemtap instrumentation module with the following command <span class="anchor" id="line-147"></span>run as a normal user: <span class="anchor" id="line-148"></span><span class="anchor" id="line-149"></span><p class="line867"><span class="anchor" id="line-150"></span><span class="anchor" id="line-151"></span><span class="anchor" id="line-152"></span><span class="anchor" id="line-153"></span><span class="anchor" id="line-154"></span><pre><span class="anchor" id="line-1-8"></span>export KERNEL_SRC=/home/wcohen/stuff/efikamx/kernel/linux-kernel
+<span class="anchor" id="line-2-4"></span>stap -a arm -B CROSS_COMPILE=armv7hl-redhat-linux-gnueabi- \
+<span class="anchor" id="line-3-4"></span>-r $KERNEL_SRC \
+<span class="anchor" id="line-4-3"></span>-m vfs_read -e 'probe vfs.read {printf(&quot;read performed\n&quot;); exit()}'</pre><span class="anchor" id="line-155"></span><span class="anchor" id="line-156"></span><p class="line874">Copy the vfs_read.ko file to the target machine.  <span class="anchor" id="line-157"></span>Install the systemtap-runtime rpm from: <span class="anchor" id="line-158"></span><span class="anchor" id="line-159"></span><p class="line867"><a class="http" href="http://arm.koji.fedoraproject.org/koji/taskinfo?taskID=127355">http://arm.koji.fedoraproject.org/koji/taskinfo?taskID=127355</a> <span class="anchor" id="line-160"></span><span class="anchor" id="line-161"></span><p class="line874">Then on ARM target machine run as root the following: <span class="anchor" id="line-162"></span><span class="anchor" id="line-163"></span><p class="line867"><span class="anchor" id="line-164"></span><span class="anchor" id="line-165"></span><pre><span class="anchor" id="line-1-9"></span>staprun vfs_read.ko</pre><span class="anchor" id="line-166"></span><span class="anchor" id="line-167"></span><p class="line874">Will get some thing like the following output on the ARM target system <span class="anchor" id="line-168"></span><span class="anchor" id="line-169"></span><p class="line867"><span class="anchor" id="line-170"></span><span class="anchor" id="line-171"></span><pre><span class="anchor" id="line-1-10"></span>read performed</pre><span class="anchor" id="line-172"></span><span class="anchor" id="line-173"></span><p class="line874">As work progresses on Fedora ARM steps such as cross compiling the <span class="anchor" id="line-174"></span>kernel and building the systemtap module on a separate machine will be <span class="anchor" id="line-175"></span>eliminated. <span class="anchor" id="line-176"></span><span class="anchor" id="bottom"></span></div><p id="pageinfo" class="info" lang="en" dir="ltr">None: SystemtapOnFedoraArm  (last edited 2011-07-15 21:01:02 by <span title="WilliamCohen @ nat-pool-rdu.redhat.com[66.187.233.202]"><a href="/systemtap/wiki/WilliamCohen" title="WilliamCohen @ nat-pool-rdu.redhat.com[66.187.233.202]">WilliamCohen</a></span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/systemtap/wiki/SystemtapOnFedoraArm?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/systemtap/wiki/SystemtapOnFedoraArm?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/systemtap/wiki/SystemtapOnFedoraArm">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+</body>
+</html>
+

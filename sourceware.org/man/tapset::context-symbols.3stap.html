@@ -1,0 +1,256 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::context-symbols</TITLE>
+</HEAD><BODY>
+<H1>tapset::context-symbols</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::context-symbols - systemtap context-symbols tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;Context&nbsp;functions&nbsp;provide&nbsp;additional&nbsp;information&nbsp;about&nbsp;where&nbsp;an&nbsp;event&nbsp;occurred.&nbsp;These&nbsp;functions&nbsp;can&nbsp;
+provide information such as a backtrace to where the event occurred and the current register values for the 
+processor.
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>stack </B>
+
+<DD>
+Return address at given depth of kernel stack backtrace
+<DT><DD>
+See 
+<I><A HREF="./function::stack.3stap.html">function::stack</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>print_stack </B>
+
+<DD>
+Print out kernel stack from string
+<DT><DD>
+See 
+<I><A HREF="./function::print_stack.3stap.html">function::print_stack</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>sprint_stack </B>
+
+<DD>
+Return stack for kernel addresses from string
+<DT><DD>
+See 
+<I><A HREF="./function::sprint_stack.3stap.html">function::sprint_stack</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>probefunc </B>
+
+<DD>
+Return the probe point's function name, if known
+<DT><DD>
+See 
+<I><A HREF="./function::probefunc.3stap.html">function::probefunc</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>probemod </B>
+
+<DD>
+Return the probe point's kernel module name
+<DT><DD>
+See 
+<I><A HREF="./function::probemod.3stap.html">function::probemod</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>modname </B>
+
+<DD>
+Return the kernel module name loaded at the address
+<DT><DD>
+See 
+<I><A HREF="./function::modname.3stap.html">function::modname</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>symname </B>
+
+<DD>
+Return the kernel symbol associated with the given address
+<DT><DD>
+See 
+<I><A HREF="./function::symname.3stap.html">function::symname</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>symdata </B>
+
+<DD>
+Return the kernel symbol and module offset for the address
+<DT><DD>
+See 
+<I><A HREF="./function::symdata.3stap.html">function::symdata</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>print_syms </B>
+
+<DD>
+Print out kernel stack from string
+<DT><DD>
+See 
+<I><A HREF="./function::print_syms.3stap.html">function::print_syms</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>sprint_syms </B>
+
+<DD>
+Return stack for kernel addresses from string
+<DT><DD>
+See 
+<I><A HREF="./function::sprint_syms.3stap.html">function::sprint_syms</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>symfileline </B>
+
+<DD>
+Return the file name and line number of an address.
+<DT><DD>
+See 
+<I><A HREF="./function::symfileline.3stap.html">function::symfileline</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>usymfile </B>
+
+<DD>
+Return the file name of a given address.
+<DT><DD>
+See 
+<I><A HREF="./function::usymfile.3stap.html">function::usymfile</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>usymline </B>
+
+<DD>
+Return the line number of an address.
+<DT><DD>
+See 
+<I><A HREF="./function::usymline.3stap.html">function::usymline</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::stack.3stap.html">function::stack</A></I>(3stap),
+
+
+<I><A HREF="./function::print_stack.3stap.html">function::print_stack</A></I>(3stap),
+
+
+<I><A HREF="./function::sprint_stack.3stap.html">function::sprint_stack</A></I>(3stap),
+
+
+<I><A HREF="./function::probefunc.3stap.html">function::probefunc</A></I>(3stap),
+
+
+<I><A HREF="./function::probemod.3stap.html">function::probemod</A></I>(3stap),
+
+
+<I><A HREF="./function::modname.3stap.html">function::modname</A></I>(3stap),
+
+
+<I><A HREF="./function::symname.3stap.html">function::symname</A></I>(3stap),
+
+
+<I><A HREF="./function::symdata.3stap.html">function::symdata</A></I>(3stap),
+
+
+<I><A HREF="./function::print_syms.3stap.html">function::print_syms</A></I>(3stap),
+
+
+<I><A HREF="./function::sprint_syms.3stap.html">function::sprint_syms</A></I>(3stap),
+
+
+<I><A HREF="./function::symfileline.3stap.html">function::symfileline</A></I>(3stap),
+
+
+<I><A HREF="./function::usymfile.3stap.html">function::usymfile</A></I>(3stap),
+
+
+<I><A HREF="./function::usymline.3stap.html">function::usymline</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

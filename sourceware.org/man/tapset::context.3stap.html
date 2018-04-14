@@ -1,0 +1,736 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::context</TITLE>
+</HEAD><BODY>
+<H1>tapset::context</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::context - systemtap context tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;Context&nbsp;functions&nbsp;provide&nbsp;additional&nbsp;information&nbsp;about&nbsp;where&nbsp;an&nbsp;event&nbsp;occurred.&nbsp;These&nbsp;functions&nbsp;can
+provide information such as a backtrace to where the event occurred and the current register values for the
+processor.
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>print_regs </B>
+
+<DD>
+Print a register dump
+<DT><DD>
+See 
+<I><A HREF="./function::print_regs.3stap.html">function::print_regs</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>pp </B>
+
+<DD>
+Returns the active probe point
+<DT><DD>
+See 
+<I><A HREF="./function::pp.3stap.html">function::pp</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ppfunc </B>
+
+<DD>
+Returns the function name parsed from pp()
+<DT><DD>
+See 
+<I><A HREF="./function::ppfunc.3stap.html">function::ppfunc</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>probe_type </B>
+
+<DD>
+The low level probe handler type of the current probe.
+<DT><DD>
+See 
+<I><A HREF="./function::probe_type.3stap.html">function::probe_type</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>execname </B>
+
+<DD>
+Returns the execname of a target process (or group of processes)
+<DT><DD>
+See 
+<I><A HREF="./function::execname.3stap.html">function::execname</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>pid </B>
+
+<DD>
+Returns the ID of a target process
+<DT><DD>
+See 
+<I><A HREF="./function::pid.3stap.html">function::pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ns_pid </B>
+
+<DD>
+Returns the ID of a target process as seen in a pid namespace
+<DT><DD>
+See 
+<I><A HREF="./function::ns_pid.3stap.html">function::ns_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tid </B>
+
+<DD>
+Returns the thread ID of a target process
+<DT><DD>
+See 
+<I><A HREF="./function::tid.3stap.html">function::tid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ns_tid </B>
+
+<DD>
+Returns the thread ID of a target process as seen in a pid namespace
+<DT><DD>
+See 
+<I><A HREF="./function::ns_tid.3stap.html">function::ns_tid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ppid </B>
+
+<DD>
+Returns the process ID of a target process's parent process
+<DT><DD>
+See 
+<I><A HREF="./function::ppid.3stap.html">function::ppid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ns_ppid </B>
+
+<DD>
+Returns the process ID of a target process's parent process as seen in a pid namespace
+<DT><DD>
+See 
+<I><A HREF="./function::ns_ppid.3stap.html">function::ns_ppid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>pgrp </B>
+
+<DD>
+Returns the process group ID of the current process
+<DT><DD>
+See 
+<I><A HREF="./function::pgrp.3stap.html">function::pgrp</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ns_pgrp </B>
+
+<DD>
+Returns the process group ID of the current process as seen in a pid namespace
+<DT><DD>
+See 
+<I><A HREF="./function::ns_pgrp.3stap.html">function::ns_pgrp</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>sid </B>
+
+<DD>
+Returns the session ID of the current process
+<DT><DD>
+See 
+<I><A HREF="./function::sid.3stap.html">function::sid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ns_sid </B>
+
+<DD>
+Returns the session ID of the current process as seen in a pid namespace
+<DT><DD>
+See 
+<I><A HREF="./function::ns_sid.3stap.html">function::ns_sid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>pexecname </B>
+
+<DD>
+Returns the execname of a target process's parent process
+<DT><DD>
+See 
+<I><A HREF="./function::pexecname.3stap.html">function::pexecname</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>gid </B>
+
+<DD>
+Returns the group ID of a target process
+<DT><DD>
+See 
+<I><A HREF="./function::gid.3stap.html">function::gid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ns_gid </B>
+
+<DD>
+Returns the group ID of a target process as seen in a user namespace
+<DT><DD>
+See 
+<I><A HREF="./function::ns_gid.3stap.html">function::ns_gid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>egid </B>
+
+<DD>
+Returns the effective gid of a target process
+<DT><DD>
+See 
+<I><A HREF="./function::egid.3stap.html">function::egid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ns_egid </B>
+
+<DD>
+Returns the effective gid of a target process as seen in a user namespace
+<DT><DD>
+See 
+<I><A HREF="./function::ns_egid.3stap.html">function::ns_egid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>uid </B>
+
+<DD>
+Returns the user ID of a target process
+<DT><DD>
+See 
+<I><A HREF="./function::uid.3stap.html">function::uid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ns_uid </B>
+
+<DD>
+Returns the user ID of a target process as seen in a user namespace
+<DT><DD>
+See 
+<I><A HREF="./function::ns_uid.3stap.html">function::ns_uid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>euid </B>
+
+<DD>
+Return the effective uid of a target process
+<DT><DD>
+See 
+<I><A HREF="./function::euid.3stap.html">function::euid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>ns_euid </B>
+
+<DD>
+Returns the effective user ID of a target process as seen in a user namespace
+<DT><DD>
+See 
+<I><A HREF="./function::ns_euid.3stap.html">function::ns_euid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>is_myproc </B>
+
+<DD>
+Determines if the current probe point has occurred in the user's own process
+<DT><DD>
+See 
+<I><A HREF="./function::is_myproc.3stap.html">function::is_myproc</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>cpuid </B>
+
+<DD>
+Returns the current cpu number
+<DT><DD>
+See 
+<I><A HREF="./function::cpuid.3stap.html">function::cpuid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>cpu </B>
+
+<DD>
+Returns the current cpu number
+<DT><DD>
+See 
+<I><A HREF="./function::cpu.3stap.html">function::cpu</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>registers_valid </B>
+
+<DD>
+Determines validity of register() and u_register() in current context
+<DT><DD>
+See 
+<I><A HREF="./function::registers_valid.3stap.html">function::registers_valid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>user_mode </B>
+
+<DD>
+Determines if probe point occurs in user-mode
+<DT><DD>
+See 
+<I><A HREF="./function::user_mode.3stap.html">function::user_mode</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>is_return </B>
+
+<DD>
+Whether the current probe context is a return probe
+<DT><DD>
+See 
+<I><A HREF="./function::is_return.3stap.html">function::is_return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>target </B>
+
+<DD>
+Return the process ID of the target process
+<DT><DD>
+See 
+<I><A HREF="./function::target.3stap.html">function::target</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>module_name </B>
+
+<DD>
+The module name of the current script
+<DT><DD>
+See 
+<I><A HREF="./function::module_name.3stap.html">function::module_name</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>stp_pid </B>
+
+<DD>
+The process id of the stapio process
+<DT><DD>
+See 
+<I><A HREF="./function::stp_pid.3stap.html">function::stp_pid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>remote_id </B>
+
+<DD>
+The index of this instance in a remote execution.
+<DT><DD>
+See 
+<I><A HREF="./function::remote_id.3stap.html">function::remote_id</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>remote_uri </B>
+
+<DD>
+The name of this instance in a remote execution.
+<DT><DD>
+See 
+<I><A HREF="./function::remote_uri.3stap.html">function::remote_uri</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>stack_size </B>
+
+<DD>
+Return the size of the kernel stack
+<DT><DD>
+See 
+<I><A HREF="./function::stack_size.3stap.html">function::stack_size</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>stack_used </B>
+
+<DD>
+Returns the amount of kernel stack used
+<DT><DD>
+See 
+<I><A HREF="./function::stack_used.3stap.html">function::stack_used</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>stack_unused </B>
+
+<DD>
+Returns the amount of kernel stack currently available
+<DT><DD>
+See 
+<I><A HREF="./function::stack_unused.3stap.html">function::stack_unused</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>addr </B>
+
+<DD>
+Address of the current probe point.
+<DT><DD>
+See 
+<I><A HREF="./function::addr.3stap.html">function::addr</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>uaddr </B>
+
+<DD>
+User space address of current running task
+<DT><DD>
+See 
+<I><A HREF="./function::uaddr.3stap.html">function::uaddr</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>cmdline_args </B>
+
+<DD>
+Fetch command line arguments from current process
+<DT><DD>
+See 
+<I><A HREF="./function::cmdline_args.3stap.html">function::cmdline_args</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>cmdline_arg </B>
+
+<DD>
+Fetch a command line argument
+<DT><DD>
+See 
+<I><A HREF="./function::cmdline_arg.3stap.html">function::cmdline_arg</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>cmdline_str </B>
+
+<DD>
+Fetch all command line arguments from current process
+<DT><DD>
+See 
+<I><A HREF="./function::cmdline_str.3stap.html">function::cmdline_str</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::print_regs.3stap.html">function::print_regs</A></I>(3stap),
+
+
+<I><A HREF="./function::pp.3stap.html">function::pp</A></I>(3stap),
+
+
+<I><A HREF="./function::ppfunc.3stap.html">function::ppfunc</A></I>(3stap),
+
+
+<I><A HREF="./function::probe_type.3stap.html">function::probe_type</A></I>(3stap),
+
+
+<I><A HREF="./function::execname.3stap.html">function::execname</A></I>(3stap),
+
+
+<I><A HREF="./function::pid.3stap.html">function::pid</A></I>(3stap),
+
+
+<I><A HREF="./function::ns_pid.3stap.html">function::ns_pid</A></I>(3stap),
+
+
+<I><A HREF="./function::tid.3stap.html">function::tid</A></I>(3stap),
+
+
+<I><A HREF="./function::ns_tid.3stap.html">function::ns_tid</A></I>(3stap),
+
+
+<I><A HREF="./function::ppid.3stap.html">function::ppid</A></I>(3stap),
+
+
+<I><A HREF="./function::ns_ppid.3stap.html">function::ns_ppid</A></I>(3stap),
+
+
+<I><A HREF="./function::pgrp.3stap.html">function::pgrp</A></I>(3stap),
+
+
+<I><A HREF="./function::ns_pgrp.3stap.html">function::ns_pgrp</A></I>(3stap),
+
+
+<I><A HREF="./function::sid.3stap.html">function::sid</A></I>(3stap),
+
+
+<I><A HREF="./function::ns_sid.3stap.html">function::ns_sid</A></I>(3stap),
+
+
+<I><A HREF="./function::pexecname.3stap.html">function::pexecname</A></I>(3stap),
+
+
+<I><A HREF="./function::gid.3stap.html">function::gid</A></I>(3stap),
+
+
+<I><A HREF="./function::ns_gid.3stap.html">function::ns_gid</A></I>(3stap),
+
+
+<I><A HREF="./function::egid.3stap.html">function::egid</A></I>(3stap),
+
+
+<I><A HREF="./function::ns_egid.3stap.html">function::ns_egid</A></I>(3stap),
+
+
+<I><A HREF="./function::uid.3stap.html">function::uid</A></I>(3stap),
+
+
+<I><A HREF="./function::ns_uid.3stap.html">function::ns_uid</A></I>(3stap),
+
+
+<I><A HREF="./function::euid.3stap.html">function::euid</A></I>(3stap),
+
+
+<I><A HREF="./function::ns_euid.3stap.html">function::ns_euid</A></I>(3stap),
+
+
+<I><A HREF="./function::is_myproc.3stap.html">function::is_myproc</A></I>(3stap),
+
+
+<I><A HREF="./function::cpuid.3stap.html">function::cpuid</A></I>(3stap),
+
+
+<I><A HREF="./function::cpu.3stap.html">function::cpu</A></I>(3stap),
+
+
+<I><A HREF="./function::registers_valid.3stap.html">function::registers_valid</A></I>(3stap),
+
+
+<I><A HREF="./function::user_mode.3stap.html">function::user_mode</A></I>(3stap),
+
+
+<I><A HREF="./function::is_return.3stap.html">function::is_return</A></I>(3stap),
+
+
+<I><A HREF="./function::target.3stap.html">function::target</A></I>(3stap),
+
+
+<I><A HREF="./function::module_name.3stap.html">function::module_name</A></I>(3stap),
+
+
+<I><A HREF="./function::stp_pid.3stap.html">function::stp_pid</A></I>(3stap),
+
+
+<I><A HREF="./function::remote_id.3stap.html">function::remote_id</A></I>(3stap),
+
+
+<I><A HREF="./function::remote_uri.3stap.html">function::remote_uri</A></I>(3stap),
+
+
+<I><A HREF="./function::stack_size.3stap.html">function::stack_size</A></I>(3stap),
+
+
+<I><A HREF="./function::stack_used.3stap.html">function::stack_used</A></I>(3stap),
+
+
+<I><A HREF="./function::stack_unused.3stap.html">function::stack_unused</A></I>(3stap),
+
+
+<I><A HREF="./function::addr.3stap.html">function::addr</A></I>(3stap),
+
+
+<I><A HREF="./function::uaddr.3stap.html">function::uaddr</A></I>(3stap),
+
+
+<I><A HREF="./function::cmdline_args.3stap.html">function::cmdline_args</A></I>(3stap),
+
+
+<I><A HREF="./function::cmdline_arg.3stap.html">function::cmdline_arg</A></I>(3stap),
+
+
+<I><A HREF="./function::cmdline_str.3stap.html">function::cmdline_str</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

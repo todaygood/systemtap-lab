@@ -1,0 +1,431 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>6 Statement types</TITLE>
+<META NAME="description" CONTENT="6 Statement types">
+<META NAME="keywords" CONTENT="langref">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="langref.css">
+
+<LINK REL="next" HREF="Associative_arrays.html">
+<LINK REL="previous" HREF="Language_elements.html">
+<LINK REL="up" HREF="langref.html">
+<LINK REL="next" HREF="Associative_arrays.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html427"
+  HREF="Associative_arrays.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html421"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html415"
+  HREF="Language_elements.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html423"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html425"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html428"
+  HREF="Associative_arrays.html">7 Associative arrays</A>
+<B> Up:</B> <A NAME="tex2html422"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html416"
+  HREF="Language_elements.html">5 Language elements</A>
+ &nbsp; <B>  <A NAME="tex2html424"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html426"
+  HREF="Index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html429"
+  HREF="Statement_types.html#SECTION00071000000000000000">6.1 break and continue</A>
+<LI><A NAME="tex2html430"
+  HREF="Statement_types.html#SECTION00072000000000000000">6.2 try/catch</A>
+<LI><A NAME="tex2html431"
+  HREF="Statement_types.html#SECTION00073000000000000000">6.3 delete</A>
+<LI><A NAME="tex2html432"
+  HREF="Statement_types.html#SECTION00074000000000000000">6.4 EXP (expression)</A>
+<LI><A NAME="tex2html433"
+  HREF="Statement_types.html#SECTION00075000000000000000">6.5 for</A>
+<LI><A NAME="tex2html434"
+  HREF="Statement_types.html#SECTION00076000000000000000">6.6 foreach</A>
+<LI><A NAME="tex2html435"
+  HREF="Statement_types.html#SECTION00077000000000000000">6.7 if</A>
+<LI><A NAME="tex2html436"
+  HREF="Statement_types.html#SECTION00078000000000000000">6.8 next</A>
+<LI><A NAME="tex2html437"
+  HREF="Statement_types.html#SECTION00079000000000000000">6.9 ; (null statement)</A>
+<LI><A NAME="tex2html438"
+  HREF="Statement_types.html#SECTION000710000000000000000">6.10 return</A>
+<LI><A NAME="tex2html439"
+  HREF="Statement_types.html#SECTION000711000000000000000">6.11 { } (statement block)</A>
+<LI><A NAME="tex2html440"
+  HREF="Statement_types.html#SECTION000712000000000000000">6.12 while</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00070000000000000000"></A><A NAME="sec:Statement-Types"></A>
+<BR>
+6 Statement types
+</H1>
+
+<P>
+Statements enable procedural control flow within functions and probe handlers.
+The total number of statements executed in response to any single probe event
+is limited to MAXACTION, which defaults to 1000. See Section&nbsp;<A HREF="SystemTap_overview.html#sub:SystemTap-safety"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.
+
+<P>
+
+<H2><A NAME="SECTION00071000000000000000"></A>
+<A NAME="925"></A>
+<A NAME="926"></A>
+<BR>
+6.1 break and continue
+</H2>
+Use <TT>break</TT> or <TT>continue</TT> to exit or iterate the innermost
+nesting loop statement, such as within a <TT>while, for,</TT> or <TT>foreach</TT>
+statement. The syntax and semantics are the same as those used in C.
+
+<P>
+
+<H2><A NAME="SECTION00072000000000000000"></A>
+<A NAME="932"></A>
+<A NAME="933"></A>
+<BR>
+6.2 try/catch
+</H2>
+Use <TT>try</TT>/<TT>catch</TT> to handle most kinds of run-time errors within the script
+instead of aborting the probe handler in progress.  The semantics are similar
+to C++ in that try/catch blocks may be nested.  The error string may be captured
+by optionally naming a variable which is to receive it.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+try { 
+   /* do something */
+   /* trigger error like kread(0), or divide by zero, or error("foo") */
+} catch (msg) { /* omit (msg) entirely if not interested */
+   /* println("caught error ", msg) */
+   /* handle error */
+}
+/* execution continues */
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00073000000000000000"></A><A NAME="sub:delete"></A>
+<A NAME="941"></A>
+<BR>
+6.3 delete
+</H2>
+<TT>delete</TT> removes an element.
+
+<P>
+The following statement removes from ARRAY the element specified by the index
+tuple. The value will no longer be available, and subsequent iterations will
+not report the element. It is not an error to delete an element that does
+not exist.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+delete ARRAY[INDEX1, INDEX2, ...]
+</PRE>
+</DD>
+</DL>The following syntax removes all elements from ARRAY:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+delete ARRAY
+</PRE>
+</DD>
+</DL>The following statement removes the value of SCALAR. Integers and strings
+are cleared to zero and null (&#34;&#34;) respectively, while statistics
+are reset to their initial empty state.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+delete SCALAR
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00074000000000000000"></A>
+<A NAME="958"></A>
+<BR>
+6.4 EXP (expression)
+</H2>
+An <TT>expression</TT> executes a string- or integer-valued expression and
+discards the value.
+
+<P>
+
+<H2><A NAME="SECTION00075000000000000000"></A>
+<A NAME="961"></A>
+<BR>
+6.5 for
+</H2>
+General syntax:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+for (EXP1; EXP2; EXP3) STMT
+</PRE>
+</DD>
+</DL>The <TT>for</TT> statement is similar to the <TT>for</TT> statement in C.
+The <TT>for</TT> expression executes EXP1 as initialization. While EXP2 is
+non-zero, it executes STMT, then the iteration expression EXP3.
+
+<P>
+
+<H2><A NAME="SECTION00076000000000000000"></A><A NAME="sub:foreach"></A>
+<A NAME="970"></A>
+<BR>
+6.6 foreach
+</H2>
+General syntax:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+foreach (VAR in ARRAY) STMT
+</PRE>
+</DD>
+</DL>The <TT>foreach</TT> statement loops over each element of a named global array, assigning
+the current key to VAR. The array must not be modified within the statement.
+If you add a single plus (+) or minus (-) operator after the VAR or the ARRAY
+identifier, the iteration order will be sorted by the ascending or descending
+index or value.
+
+<P>
+The following statement behaves the same as the first example, except it
+is used when an array is indexed with a tuple of keys.  Use a sorting suffix
+on at most one VAR or ARRAY identifier.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+foreach ([VAR1, VAR2, ...] in ARRAY) STMT
+</PRE>
+</DD>
+</DL>
+<P>
+You can combine the first and second syntax to capture both the full tuple
+and the keys at the same time as follows.
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+foreach (VAR = [VAR1, VAR2, ...] in ARRAY) STMT
+</PRE>
+</DD>
+</DL>
+<P>
+The following statement is the same as the first example, except that the
+<TT>limit</TT> keyword limits the number of loop iterations to EXP times.
+EXP is evaluated once at the beginning of the loop.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+foreach (VAR in ARRAY limit EXP) STMT
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00077000000000000000"></A>
+<A NAME="990"></A>
+<BR>
+6.7 if
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+if (EXP) STMT1 [ else STMT2 ]
+</PRE>
+</DD>
+</DL>The <TT>if</TT> statement compares an integer-valued EXP to zero. It executes
+the first STMT if non-zero, or the second STMT if zero.
+
+<P>
+The <TT>if</TT> command has the same syntax and semantics as used in C.
+
+<P>
+
+<H2><A NAME="SECTION00078000000000000000"></A>
+<A NAME="998"></A>
+<BR>
+6.8 next
+</H2>
+The <TT>next</TT> statement returns immediately from the enclosing probe
+handler.
+
+<P>
+
+<H2><A NAME="SECTION00079000000000000000"></A>
+<A NAME="1001"></A>
+<A NAME="1002"></A>
+<BR>
+6.9 ; (null statement)
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+statement1
+;
+statement2
+</PRE>
+</DD>
+</DL>The semicolon represents the null statement, or do nothing. It is useful
+as an optional separator between statements to improve syntax error detection
+and to handle certain grammar ambiguities.
+
+<P>
+
+<H2><A NAME="SECTION000710000000000000000"></A>
+<A NAME="1008"></A>
+<BR>
+6.10 return
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+return EXP
+</PRE>
+</DD>
+</DL>The <TT>return</TT> statement returns the EXP value from the enclosing function.
+If the value of the function is not returned, then a return statement is
+not needed, and the function will have a special <I>unknown</I> type with
+no return value.
+
+<P>
+
+<H2><A NAME="SECTION000711000000000000000"></A>
+<A NAME="1016"></A>
+<A NAME="1017"></A>
+<BR>
+6.11 { } (statement block)
+</H2>
+This is the statement block with zero or more statements enclosed within
+brackets. The following is the general syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+{ STMT1 STMT2 ... }
+</PRE>
+</DD>
+</DL>The statement block executes each statement in sequence in the block. Separators
+or terminators are generally not necessary between statements. The statement
+block uses the same syntax and semantics as in C.
+
+<P>
+
+<H2><A NAME="SECTION000712000000000000000"></A>
+<A NAME="1023"></A>
+<BR>
+6.12 while
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+while (EXP) STMT
+</PRE>
+</DD>
+</DL>The <TT>while</TT> statement uses the same syntax and semantics as in C.
+In the statement above, while the integer-valued EXP evaluates to non-zero,
+the parser will execute STMT.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html427"
+  HREF="Associative_arrays.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html421"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html415"
+  HREF="Language_elements.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html423"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html425"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html428"
+  HREF="Associative_arrays.html">7 Associative arrays</A>
+<B> Up:</B> <A NAME="tex2html422"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html416"
+  HREF="Language_elements.html">5 Language elements</A>
+ &nbsp; <B>  <A NAME="tex2html424"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html426"
+  HREF="Index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

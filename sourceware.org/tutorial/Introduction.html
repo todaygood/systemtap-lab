@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>1 Introduction</TITLE>
+<META NAME="description" CONTENT="1 Introduction">
+<META NAME="keywords" CONTENT="tutorial">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="tutorial.css">
+
+<LINK REL="next" HREF="Tracing.html">
+<LINK REL="previous" HREF="Contents.html">
+<LINK REL="up" HREF="tutorial.html">
+<LINK REL="next" HREF="Tracing.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html98"
+  HREF="Tracing.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html94"
+  HREF="tutorial.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html88"
+  HREF="Contents.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html96"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html99"
+  HREF="Tracing.html">2 Tracing</A>
+<B> Up:</B> <A NAME="tex2html95"
+  HREF="tutorial.html">tutorial</A>
+<B> Previous:</B> <A NAME="tex2html89"
+  HREF="Contents.html">Contents</A>
+ &nbsp; <B>  <A NAME="tex2html97"
+  HREF="Contents.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000">
+1 Introduction</A>
+</H1>
+
+<P>
+Systemtap is a tool that allows developers and administrators to write
+and reuse simple scripts to deeply examine the activities of a live
+Linux system.  Data may be extracted, filtered, and summarized quickly
+and safely, to enable diagnoses of complex performance or functional
+problems.
+
+<P>
+<B>NOTE:</B> This tutorial does not describe every feature available in
+systemtap.  Please see the individual <code>stap</code> manual pages for
+the most up-to-date information.  These may be available installed on
+your system, or at <code>http://sourceware.org/systemtap/man/</code>.
+
+<P>
+
+<P>
+The essential idea behind a systemtap script is to name <EM>events</EM>,
+and to give them <EM>handlers</EM>.  Whenever a specified event occurs,
+the Linux kernel runs the handler as if it were a quick subroutine,
+then resumes.  There are several kind of events, such as entering or
+exiting a function, a timer expiring, or the entire systemtap session
+starting or stopping.  A handler is a series of script language
+statements that specify the work to be done whenever the event occurs.
+This work normally includes extracting data from the event context,
+storing them into internal variables, or printing results.
+
+<P>
+
+<P>
+Systemtap works by translating the script to C, running the system C
+compiler to create a kernel module from that.  When the module is
+loaded, it activates all the probed events by hooking into the kernel.
+Then, as events occur on any processor, the compiled handlers run.
+Eventually, the session stops, the hooks are disconnected, and the
+module removed.  This entire process is driven from a single
+command-line program, <code>stap</code>.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:hello-world"></A><A NAME="53"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+A systemtap smoke test.</CAPTION>
+<TR><TD><IMG
+ WIDTH="529" HEIGHT="228" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="\begin{center}\begin{Sbox}\begin{minipage}{4.5in}
+\begin{verbatim}..."></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+This paper assumes that you have installed systemtap and its
+prerequisite kernel development tools and debugging data, so that you
+can run the scripts such as the simple one in
+Figure&nbsp;<A HREF="#fig:hello-world"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.  Log on as <code>root</code>, or even better,
+login as a user that is a member of <code>stapdev</code> group or as a
+user authorized to <code>sudo</code>, before running systemtap.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:strace-open"></A><A NAME="381"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+A taste of systemtap: a system-wide <TT>strace</TT>, just for
+the <TT>open</TT> system call.</CAPTION>
+<TR><TD><IMG
+ WIDTH="529" HEIGHT="423" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="\begin{center}\begin{Sbox}\begin{minipage}{4.5in}
+\begin{verbatim}..."></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html98"
+  HREF="Tracing.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html94"
+  HREF="tutorial.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html88"
+  HREF="Contents.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html96"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html99"
+  HREF="Tracing.html">2 Tracing</A>
+<B> Up:</B> <A NAME="tex2html95"
+  HREF="tutorial.html">tutorial</A>
+<B> Previous:</B> <A NAME="tex2html89"
+  HREF="Contents.html">Contents</A>
+ &nbsp; <B>  <A NAME="tex2html97"
+  HREF="Contents.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

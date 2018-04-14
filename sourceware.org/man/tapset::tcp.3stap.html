@@ -1,0 +1,190 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::tcp</TITLE>
+</HEAD><BODY>
+<H1>tapset::tcp</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::tcp - systemtap tcp tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;This&nbsp;family&nbsp;of&nbsp;probe&nbsp;points&nbsp;is&nbsp;used&nbsp;to&nbsp;probe&nbsp;events&nbsp;that&nbsp;occur&nbsp;in&nbsp;the&nbsp;TCP&nbsp;layer,&nbsp;
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>tcp.sendmsg </B>
+
+<DD>
+Sending a tcp message
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tcp.sendmsg.3stap.html">probe::tcp.sendmsg</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tcp.sendmsg.return </B>
+
+<DD>
+<BR>&nbsp;Sending&nbsp;TCP&nbsp;message&nbsp;is&nbsp;done
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tcp.sendmsg.return.3stap.html">probe::tcp.sendmsg.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tcp.recvmsg </B>
+
+<DD>
+Receiving TCP message
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tcp.recvmsg.3stap.html">probe::tcp.recvmsg</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tcp.recvmsg.return </B>
+
+<DD>
+Receiving TCP message complete
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tcp.recvmsg.return.3stap.html">probe::tcp.recvmsg.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tcp.disconnect </B>
+
+<DD>
+TCP socket disconnection
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tcp.disconnect.3stap.html">probe::tcp.disconnect</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tcp.disconnect.return </B>
+
+<DD>
+TCP socket disconnection complete
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tcp.disconnect.return.3stap.html">probe::tcp.disconnect.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tcp.setsockopt </B>
+
+<DD>
+Call to setsockopt()
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tcp.setsockopt.3stap.html">probe::tcp.setsockopt</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tcp.setsockopt.return </B>
+
+<DD>
+<BR>&nbsp;Return&nbsp;from&nbsp;setsockopt()
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tcp.setsockopt.return.3stap.html">probe::tcp.setsockopt.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>tcp.receive </B>
+
+<DD>
+Called when a TCP packet is received
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::tcp.receive.3stap.html">probe::tcp.receive</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./probe::tcp.sendmsg.3stap.html">probe::tcp.sendmsg</A></I>(3stap),
+
+
+<I><A HREF="./probe::tcp.sendmsg.return.3stap.html">probe::tcp.sendmsg.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::tcp.recvmsg.3stap.html">probe::tcp.recvmsg</A></I>(3stap),
+
+
+<I><A HREF="./probe::tcp.recvmsg.return.3stap.html">probe::tcp.recvmsg.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::tcp.disconnect.3stap.html">probe::tcp.disconnect</A></I>(3stap),
+
+
+<I><A HREF="./probe::tcp.disconnect.return.3stap.html">probe::tcp.disconnect.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::tcp.setsockopt.3stap.html">probe::tcp.setsockopt</A></I>(3stap),
+
+
+<I><A HREF="./probe::tcp.setsockopt.return.3stap.html">probe::tcp.setsockopt.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::tcp.receive.3stap.html">probe::tcp.receive</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

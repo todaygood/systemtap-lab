@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <title>SystemTap</title>
+  <link rel="stylesheet" href="systemtap.css" type="text/css">
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+</head>
+
+<body>
+  <table cellspacing="2" cellpadding="2" border="0" width="100%">
+    <tr>
+      <td valign="bottom" height="80"><img src="systemtaplogo.png"
+      alt="SystemTap logo" width="165" height="25"></td>
+      <td valign="bottom" class="topnavright" align="right">
+      <a href="index.html">Overview</a>&nbsp;|&nbsp;
+      Get Involved&nbsp;|&nbsp;
+      <a href="http://sourceware.org/systemtap/wiki">Wiki</a>&nbsp;|&nbsp;
+      <a href="documentation.html">Documentation</a>&nbsp;|&nbsp;
+      <a href="links.html">Links</a></td>
+    </tr>
+  </table>
+  
+  <div class="mainbackground">
+    <div class="maintextregion">
+      <img src="systemtapcorner.gif">
+
+      <table cellspacing="2" cellpadding="4" border="0" width="99%"
+      style="margin-top:17;">
+        <tr>
+          <td width="200">&nbsp;</td>
+
+          <td valign="top">
+            <h1>Get Involved</h1>
+
+            <h2>Communicate</h2>
+
+            <p>Sign up for the <a href="mailto:systemtap@sourceware.org"><tt>systemtap@sourceware.org</tt></a> mailing list here.</p>
+
+            <blockquote>
+              <form method="get" action=
+              "http://sourceware.org/cgi-bin/ml-request">
+                <select name="listname">
+                  <option value="systemtap">
+                    systemtap
+                  </option>
+                </select> Your e-mail address: <input type="text"
+                name="username" size="25"><br>
+                <input type="checkbox" name="digest">Digest version
+                <tt>&nbsp;</tt> <select name="operation">
+                  <option value="subscribe">
+                    subscribe
+                  </option>
+
+                  <option value="unsubscribe">
+                    unsubscribe
+                  </option>
+                </select> <tt>&nbsp;</tt> <input type="Submit"
+                name="submit" value="Send in the request">
+              </form>
+            </blockquote>
+
+            <p>Or just browse:</p>
+
+            <ul>
+              <li>mailing list: <a href=
+              "http://sourceware.org/ml/systemtap/">web archive</a>
+              or <a href="news://news.gmane.org/gmane.linux.systemtap">gmane newsgroup</a>
+              or <a href="http://rss.gmane.org/messages/complete/gmane.linux.systemtap">RSS</a></li>
+
+              <li>code changes: 
+                 <a href="http://sourceware.org/git/gitweb.cgi?p=systemtap.git;a=summary">gitweb</a>
+              or <a href="http://sourceware.org/git/gitweb.cgi?p=systemtap.git;a=rss">RSS</a>
+              </li>
+            </ul>
+
+            <p>Join the Systemtap discussion at <a href="irc://irc.freenode.net/systemtap">#systemtap</a> on irc.freenode.net</p>
+
+            <p>Please report suspected security vulnerabilities confidentially via email to <a href="mailto:secalert@redhat.com">secalert@redhat.com</a>; they can relay to the team.</p>
+           
+            <br><hr>
+
+            <h2>Try It Out</h2>
+
+            <p>If you are running recent Fedora, you can
+            install systemtap and its dependencies with </p>
+
+<pre>yum install systemtap kernel-devel yum-utils
+debuginfo-install kernel
+</pre>
+
+	    <p>To build and install the latest sources, follow the
+            <a href="http://sourceware.org/git/?p=systemtap.git;a=blob_plain;f=README;hb=HEAD">these directions</a>.  Your choice of sources:</p>
+	    <ul>
+	        <li>Recent releases <a href="/systemtap/ftp/releases">here</a>.</li>
+		<li><tt>git clone git://sourceware.org/git/systemtap.git</tt> (or <tt>https://sourceware.org/git/systemtap.git</tt>) (or as last resort <tt>https://gitlab.com/fche/systemtap.git</tt> which may not be up to date)</li>
+		<li>Browse the <a href="http://sourceware.org/git/gitweb.cgi?p=systemtap.git;a=summary">gitweb viewer</a></li>
+            </ul>
+
+	    <p>Once installed, try these little scripts:</p>
+<pre># stap -ve 'probe begin { log("hello world") exit () }'
+# stap -c df -e 'probe syscall.* { if (target()==pid()) log(name." ".argstr) }'
+</pre>
+            <br> <hr>
+
+   	    <h2>Contribute</h2>
+
+  	    <p>We welcome people to use, critique, test, document, and develop
+            systemtap.  We try to make it easy with minimal legal
+            bureaucracy or process constriction; one should 
+	    read the
+	    <a href="http://sourceware.org/git/?p=systemtap.git;a=blob_plain;f=HACKING;hb=HEAD">HACKING</a>
+	    file for details on contributing to systemtap.
+	    Regular contributors may earn <a
+            href="http://sourceware.org/cgi-bin/pdw/ps_form.cgi">GIT
+            write accounts</a> to directly commit their code.
+            Here is our list of <a href=
+            "http://sourceware.org/bugzilla/buglist.cgi?query_format=&amp;short_desc_type=allwordssubstr&amp;short_desc=&amp;product=systemtap&amp;long_desc_type=substring&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;gcchost_type=allwordssubstr&amp;gcchost=&amp;gcctarget_type=allwordssubstr&amp;gcctarget=&amp;gccbuild_type=allwordssubstr&amp;gccbuild=&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=SUSPENDED&amp;bug_status=WAITING&amp;bug_status=REOPENED&amp;emailassigned_to1=1&amp;emailtype1=substring&amp;email1=&amp;emailassigned_to2=1&amp;emailreporter2=1&amp;emailcc2=1&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Bug+Number&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=">
+            current bugs/pending features</a>.  You may need to create a
+            <a href=
+            "http://sourceware.org/bugzilla/createaccount.cgi">new
+            bugzilla account</a> to fully participate.</p>
+<!-- disabled on 2008-04; ohloh has been failing with pulling data updates
+            <SCRIPT type='text/javascript' language='JavaScript' src='http://www.ohloh.net/projects/4248;badge_js'></SCRIPT>
+-->
+            </td> </tr> </table> </div> </div>
+
+  <table cellspacing="2" cellpadding="2" border="0" width="100%">
+    <tr>
+      <td align="center" class="footer"><a href=
+      "http://sourceware.org/systemtap">SystemTap</a></td>
+    </tr>
+  </table>
+</body>
+</html>

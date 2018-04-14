@@ -1,0 +1,740 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3 Components of a SystemTap script</TITLE>
+<META NAME="description" CONTENT="3 Components of a SystemTap script">
+<META NAME="keywords" CONTENT="langref">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="langref.css">
+
+<LINK REL="next" HREF="Probe_points.html">
+<LINK REL="previous" HREF="Types_SystemTap_scripts.html">
+<LINK REL="up" HREF="langref.html">
+<LINK REL="next" HREF="Probe_points.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html303"
+  HREF="Probe_points.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html297"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html291"
+  HREF="Types_SystemTap_scripts.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html299"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html301"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html304"
+  HREF="Probe_points.html">4 Probe points</A>
+<B> Up:</B> <A NAME="tex2html298"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html292"
+  HREF="Types_SystemTap_scripts.html">2 Types of SystemTap</A>
+ &nbsp; <B>  <A NAME="tex2html300"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html302"
+  HREF="Index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html305"
+  HREF="Components_SystemTap_script.html#SECTION00041000000000000000">3.1 Probe definitions</A>
+<LI><A NAME="tex2html306"
+  HREF="Components_SystemTap_script.html#SECTION00042000000000000000">3.2 Probe aliases</A>
+<UL>
+<LI><A NAME="tex2html307"
+  HREF="Components_SystemTap_script.html#SECTION00042100000000000000">3.2.1 Prologue-style aliases (=)</A>
+<LI><A NAME="tex2html308"
+  HREF="Components_SystemTap_script.html#SECTION00042200000000000000">3.2.2 Epilogue-style aliases (+=)</A>
+<LI><A NAME="tex2html309"
+  HREF="Components_SystemTap_script.html#SECTION00042300000000000000">3.2.3 Probe alias usage</A>
+<LI><A NAME="tex2html310"
+  HREF="Components_SystemTap_script.html#SECTION00042400000000000000">3.2.4 Alias suffixes</A>
+<LI><A NAME="tex2html311"
+  HREF="Components_SystemTap_script.html#SECTION00042500000000000000">3.2.5 Alias suffixes and wildcards</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html312"
+  HREF="Components_SystemTap_script.html#SECTION00043000000000000000">3.3 Variables</A>
+<UL>
+<LI><A NAME="tex2html313"
+  HREF="Components_SystemTap_script.html#SECTION00043100000000000000">3.3.1 Unused variables</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html314"
+  HREF="Components_SystemTap_script.html#SECTION00044000000000000000">3.4 Auxiliary functions</A>
+<LI><A NAME="tex2html315"
+  HREF="Components_SystemTap_script.html#SECTION00045000000000000000">3.5 Embedded C</A>
+<LI><A NAME="tex2html316"
+  HREF="Components_SystemTap_script.html#SECTION00046000000000000000">3.6 Embedded C functions</A>
+<LI><A NAME="tex2html317"
+  HREF="Components_SystemTap_script.html#SECTION00047000000000000000">3.7 Embedded C pragma comments</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00040000000000000000">
+3 Components of a SystemTap script</A>
+</H1>
+
+<P>
+The main construct in the scripting language identifies probes. Probes associate
+abstract events with a statement block, or probe handler, that is to be executed
+when any of those events occur.
+
+<P>
+The following example shows how to trace entry and exit from a function using
+two probes.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe kernel.function("sys_mkdir").call { log ("enter") }
+probe kernel.function("sys_mkdir").return { log ("exit") }
+</PRE>
+</DD>
+</DL>
+<P>
+To list the probe-able functions in the kernel, use the listing option
+(<TT><B>-l</B></TT>).  For example:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+$ stap -l 'kernel.function("*")' | sort
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00041000000000000000">
+3.1 Probe definitions</A>
+</H2>
+
+<P>
+The general syntax is as follows.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe PROBEPOINT [, PROBEPOINT] { [STMT ...] }
+</PRE>
+</DD>
+</DL>Events are specified in a special syntax called <I>probe points</I>. There
+are several varieties of probe points defined by the translator, and tapset
+scripts may define others using aliases. The provided probe points are listed
+in the <TT>stapprobes(3)</TT>, <TT>tapset::*(3stap)</TT>, and
+<TT>probe::*(3stap)</TT> man pages.  The STMT statement block is executed
+whenever iany of the named PROBEPOINT events occurs.
+
+<P>
+The probe handler is interpreted relative to the context of each event. For
+events associated with kernel code, this context may include variables defined
+in the source code at that location. These <I>target variables</I><A NAME="131"></A> (or ``context variables'')
+are presented to the script as variables whose names are prefixed with a
+dollar sign ($). They may be accessed only if the compiler used to compile
+the kernel preserved them, despite optimization. This is the same constraint
+imposed by a debugger when working with optimized code. Other events may
+have very little context.
+
+<P>
+
+<H2><A NAME="SECTION00042000000000000000"></A><A NAME="sub:Probe-aliases"></A>
+<A NAME="133"></A>
+<BR>
+3.2 Probe aliases
+</H2>
+The general syntax is as follows.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe &lt;alias&gt; = &lt;probepoint&gt; { &lt;prologue_stmts&gt; }
+probe &lt;alias&gt; += &lt;probepoint&gt; { &lt;epilogue_stmts&gt; }
+</PRE>
+</DD>
+</DL>
+<P>
+New probe points may be defined using <I>aliases</I>. A probe point alias
+looks similar to probe definitions, but instead of activating a probe at
+the given point, it defines a new probe point name as an alias to an existing
+one. New probe aliases may refer to one or more existing probe aliases.
+Multiple aliases may share the same underlying probe points.
+The following is an example.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe socket.sendmsg = kernel.function ("sock_sendmsg") { ... }
+probe socket.do_write = kernel.function ("do_sock_write") { ... }
+probe socket.send = socket.sendmsg, socket.do_write { ... }
+</PRE>
+</DD>
+</DL>
+<P>
+There are two types of aliases, the prologue style and the epilogue style
+which are identified by the equal sign (<TT><B>=</B></TT>) and &#34;<TT><B>+=</B></TT>&#34;
+respectively.
+
+<P>
+A probe that uses a probe point alias will create an actual probe, with
+the handler of the alias <I>pre-pended</I>.
+
+<P>
+This pre-pending behavior serves several purposes. It allows the alias definition
+to pre-process the context of the probe before passing control to the handler
+specified by the user. This has several possible uses, demonstrated as follows.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# Skip probe unless given condition is met:
+if ($flag1 != $flag2) next
+
+# Supply values describing probes:
+name = "foo"
+
+# Extract the target variable to a plain local variable:
+var = $var
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00042100000000000000"></A>
+<A NAME="153"></A>
+<A NAME="154"></A>
+<BR>
+3.2.1 Prologue-style aliases (=)
+</H3>
+For a prologue style alias, the statement block that follows an alias definition
+is implicitly added as a prologue to any probe that refers to the alias.
+The following is an example.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# Defines a new probe point syscall.read, which expands to
+# kernel.function("sys_read"), with the given statement as
+# a prologue.
+#
+probe syscall.read = kernel.function("sys_read") {
+    fildes = $fd
+}
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00042200000000000000"></A>
+<A NAME="160"></A>
+<A NAME="161"></A>
+<BR>
+3.2.2 Epilogue-style aliases (+=)
+</H3>
+The statement block that follows an alias definition is implicitly added
+as an epilogue to any probe that refers to the alias.  It is not useful
+to define new variables there (since no subsequent code will see them), but
+rather the code can take action based upon variables set by the
+prologue or by the user code.  The following is an example:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# Defines a new probe point with the given statement as an
+# epilogue.
+#
+probe syscall.read += kernel.function("sys_read") {
+    if (traceme) println ("tracing me")
+}
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00042300000000000000">
+3.2.3 Probe alias usage</A>
+</H3>
+
+<P>
+A probe alias is used the same way as any built-in probe type, by
+naming it:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe syscall.read {
+    printf("reading fd=%d\n", fildes)
+}
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00042400000000000000">
+3.2.4 Alias suffixes</A>
+</H3>
+
+<P>
+It is possible to include a suffix with a probe alias invocation. If
+only the initial part of a probe point matches an alias, the remainder
+is treated as a suffix and attached to the underlying probe point(s) when
+the alias is expanded. For example:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+/* Define an alias: */
+probe sendrecv = tcp.sendmsg, tcp.recvmsg { ... }
+
+/* Use the alias in its basic form: */
+probe sendrecv { ... }
+
+/* Use the alias with an additional suffix: */
+probe sendrecv.return { ... }
+</PRE>
+</DD>
+</DL>
+<P>
+Here, the second use of the probe alias is equivalent to writing <code>probe tcp.sendmsg.return, tcp.recvmsg.return</code>.
+
+<P>
+As another example, the probe points <code>tcp.sendmsg.return</code> and <code>tcp.recvmsg.return</code> are actually defined as aliases in the tapset <code>tcp.stp</code>. They expand to a probe point of the form <code>kernel.function("...").return</code>, so they can also be suffixed:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe tcp.sendmsg.return.maxactive(10) {
+    printf("returning from sending %d bytes\n", size)
+}
+</PRE>
+</DD>
+</DL>
+<P>
+Here, the probe point expands to
+<code>kernel.function("tcp_sendmsg").return.maxactive(10)</code>.
+
+<P>
+
+<H3><A NAME="SECTION00042500000000000000">
+3.2.5 Alias suffixes and wildcards</A>
+</H3>
+
+<P>
+When expanding wildcards, SystemTap generally avoids considering alias
+suffixes in the expansion. The exception is when a wildcard element is
+encountered that does not have any ordinary expansions. Consider the
+following example:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe some_unrelated_probe = ... { ... }
+
+probe myprobe = syscall.read { ... }
+
+probe myprobe.test = some_unrelated_probe { ... }
+
+probe myprobe.* { ... }
+
+probe myprobe.ret* { ... }
+</PRE>
+</DD>
+</DL>
+<P>
+Here, <code>return</code> would be a valid suffix for <code>myprobe</code>. The
+wildcard <code>myprobe.*</code> matches the ordinary alias
+<code>myprobe.test</code>, and hence the suffix expansion
+<code>myprobe.return</code> is not included. Conversely, <code>myprobe.ret*</code>
+does not match any ordinary aliases, so the suffix
+<code>myprobe.return</code> is included as an expansion.
+
+<P>
+
+<H2><A NAME="SECTION00043000000000000000"></A><A NAME="sub:Variables"></A>
+<A NAME="186"></A>
+<BR>
+3.3 Variables
+</H2>
+Identifiers for variables and functions are alphanumeric sequences, and may
+include the underscore (_) and the dollar sign ($) characters. They may
+not start with a plain digit. Each variable is by default local to the probe
+or function statement block where it is mentioned, and therefore its scope
+and lifetime is limited to a particular probe or function invocation. Scalar
+variables are implicitly typed as either string or integer. Associative arrays
+also have a string or integer value, and a tuple of strings or integers serves
+as a key. Arrays must be declared as global. Local arrays<A NAME="187"></A>
+are not allowed.
+
+<P>
+The translator performs <I>type inference</I> on all identifiers, including
+array indexes and function parameters. Inconsistent type-related use of identifiers
+results in an error.
+
+<P>
+Variables may be declared global. Global variables are shared among all probes
+and remain instantiated as long as the SystemTap session. There is one namespace
+for all global variables, regardless of the script file in which they are
+found. Because of possible concurrency limits, such as multiple probe handlers,
+each global variable used by a probe is automatically read- or write-locked
+while the handler is running. A global declaration may be written at the
+outermost level anywhere in a script file, not just within a block of code.
+Global variables which are written but never read will be displayed
+automatically at session shutdown.  The following declaration marks
+<TT>var1</TT> and <TT>var2</TT> as global.
+The translator will infer a value type for each, and if the variable is used
+as an array, its key types.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+global var1[=&lt;value&gt;], var2[=&lt;value&gt;]
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00043100000000000000"></A>
+<A NAME="196"></A>
+<BR>
+3.3.1 Unused variables
+</H3>
+
+<P>
+The SystemTap translator removes unused variables. Global variable
+that are never written or read are discarded.  Every local variables
+where the variable is only written but never read are also
+discarded. This optimization prunes unused variables defined
+in the probe aliases, but never used in the probe handler.
+If desired, this optimization can disabled with the <TT>-u</TT> option.
+
+<P>
+
+<H2><A NAME="SECTION00044000000000000000"></A><A NAME="sub:Auxiliary-functions"></A>
+<A NAME="199"></A>
+<BR>
+3.4 Auxiliary functions
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+function &lt;name&gt;[:&lt;type&gt;] ( &lt;arg1&gt;[:&lt;type&gt;], ... ) { &lt;stmts&gt; }
+</PRE>
+</DD>
+</DL>SystemTap scripts may define subroutines to factor out common work. Functions
+may take any number of scalar arguments, and must return a single scalar
+value. Scalars in this context are integers or strings. For more information
+on scalars, see Section&nbsp;<A HREF="#sub:Variables"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> and Section&nbsp;<A HREF="Language_elements.html#sub:Data-types"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A><TT>.</TT>
+The following is an example function declaration.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+function thisfn (arg1, arg2) {
+    return arg1 + arg2
+}
+</PRE>
+</DD>
+</DL>
+<P>
+Note the general absence of type declarations, which are inferred by the
+translator. If desired, a function definition may include explicit type declarations
+for its return value, its arguments, or both. This is helpful for embedded-C
+functions. In the following example, the type inference engine need only
+infer the type of arg2, a string.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+function thatfn:string(arg1:long, arg2) {
+    return sprintf("%d%s", arg1, arg2)
+}
+</PRE>
+</DD>
+</DL>
+<P>
+Functions may call others or themselves recursively, up to a fixed nesting
+limit. See Section&nbsp;<A HREF="SystemTap_overview.html#sub:SystemTap-safety"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.
+
+<P>
+
+<H2><A NAME="SECTION00045000000000000000"></A><A NAME="sub:Embedded-C"></A>
+<A NAME="217"></A>
+<BR>
+3.5 Embedded C
+</H2>
+SystemTap supports a <I>guru<A NAME="218"></A> mode</I> where script
+safety features such as code and data memory reference protection are
+removed. Guru mode is set by passing the <B>-g</B> option to the
+stap command. When in guru mode, the translator accepts C code
+enclosed between ``%{'' and ``%}'' markers in the top level of
+the script file. The embedded C code is transcribed verbatim, without
+analysis, in sequence, into the top level of the generated C
+code. Thus, guru mode may be useful for adding #include instructions
+at the top level of the generated module, or providing auxiliary
+definitions for use by other embedded code.
+
+<P>
+When in guru mode, embedded C code blocks are also allowed as the body
+of a SystemTap function (as described in
+Section&nbsp;<A HREF="#sub:Embedded-C-Functions"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>), and in place of any SystemTap
+expression. In the latter case, the code block must contain a valid
+expression according to C syntax.
+
+<P>
+Here is an example of the various permitted methods of embedded C code inclusion:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+%{
+#include &lt;linux/in.h&gt;
+#include &lt;linux/ip.h&gt;
+%} /* &lt;-- top level */
+
+/* Reads the char value stored at a given address: */ 
+function __read_char:long(addr:long) %{ /* pure */
+         STAP_RETURN(kderef(sizeof(char), STAP_ARG_addr));
+         CATCH_DEREF_FAULT ();
+%} /* &lt;-- function body */
+
+/* Determines whether an IP packet is TCP, based on the iphdr: */
+function is_tcp_packet:long(iphdr) {
+         protocol = @cast(iphdr, "iphdr")-&gt;protocol
+         return (protocol == %{ IPPROTO_TCP %}) /* &lt;-- expression */
+}
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00046000000000000000"></A><A NAME="sub:Embedded-C-Functions"></A>
+<BR>
+3.6 Embedded C functions
+</H2>
+
+<P>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+function &lt;name&gt;:&lt;type&gt; ( &lt;arg1&gt;:&lt;type&gt;, ... ) %{ &lt;C_stmts&gt; %}
+</PRE>
+</DD>
+</DL>Embedded C code is permitted in a function body.
+In that case, the script language
+body is replaced entirely by a piece of C code enclosed between 
+``%{'' and ``%}'' markers.
+The enclosed code may do anything reasonable and safe as allowed
+by the C parser.
+
+<P>
+There are a number of undocumented but complex safety constraints on concurrency,
+resource consumption and runtime limits that are applied to code written
+in the SystemTap language. These constraints are not applied to embedded
+C code, so use embedded C code with extreme caution. Be especially
+careful when dereferencing pointers. Use the kread() macro to dereference
+any pointers that could potentially be invalid or dangerous. If you are unsure,
+err on the side of caution and use kread(). The kread() macro is one of the
+safety mechanisms used in code generated by embedded C. It protects against
+pointer accesses that could crash the system.
+
+<P>
+For example, to access the pointer chain <TT>name = skb-&gt;dev-&gt;name</TT> in
+embedded C, use the following code.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+struct net_device *dev;
+char *name;
+dev = kread(&amp;(skb-&gt;dev));
+name = kread(&amp;(dev-&gt;name));
+</PRE>
+</DD>
+</DL>
+<P>
+The memory locations reserved for input and output values are provided
+to a function using macros named
+<TT>STAP_ARG_foo</TT><A NAME="240"></A> (for arguments named
+<TT>foo</TT>) and <TT>STAP_RETVALUE</TT><A NAME="243"></A>.
+Errors may be signalled with <TT>STAP_ERROR</TT>. Output may be written
+with <TT>STAP_PRINTF</TT>. The function may return                       early with <TT>STAP_RETURN</TT>.  Here are some examples:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+function integer_ops:long (val) %{
+  STAP_PRINTF("%d\n", STAP_ARG_val);
+  STAP_RETVALUE = STAP_ARG_val + 1;
+  if (STAP_RETVALUE == 4)
+      STAP_ERROR("wrong guess: %d", (int) STAP_RETVALUE);
+  if (STAP_RETVALUE == 3)
+      STAP_RETURN(0);
+  STAP_RETVALUE ++;
+%}
+function string_ops:string (val) %{
+  strlcpy (STAP_RETVALUE, STAP_ARG_val, MAXSTRINGLEN);
+  strlcat (STAP_RETVALUE, "one", MAXSTRINGLEN);
+  if (strcmp (STAP_RETVALUE, "three-two-one"))
+      STAP_RETURN("parameter should be three-two-");
+%}
+function no_ops () %{
+    STAP_RETURN(); /* function inferred with no return value */
+%}
+</PRE>
+</DD>
+</DL>
+<P>
+The function argument and return value types should be stated if the
+translator cannot infer them from usage.  The translator does not
+analyze the embedded C code within the function.
+
+<P>
+You should examine C code generated for ordinary script language
+functions to write compatible embedded-C.  Usually, all SystemTap
+functions and probes run with interrupts disabled, thus you cannot
+call functions that might sleep within the embedded C.
+
+<P>
+
+<H2><A NAME="SECTION00047000000000000000">
+3.7 Embedded C pragma comments</A>
+</H2>
+
+<P>
+Embedded C blocks may contain various markers to assert optimization
+and safety properties.
+
+<P>
+
+<UL>
+<LI><code>/* pure */</code> means that the C code has no side effects and
+  may be elided entirely if its value is not used by script code.
+</LI>
+<LI><code>/* unprivileged */</code> means that the C code is so safe that
+  even unprivileged users are permitted to use it. (This is useful, in
+  particular, to define an embedded-C function inside a tapset that
+  may be used by unprivileged code.)
+</LI>
+<LI><code>/* myproc-unprivileged */</code> means that the C code is so
+  safe that even unprivileged users are permitted to use it, provided
+  that the target of the current probe is within the user's own
+  process.
+</LI>
+<LI><code>/* guru */</code> means that the C code is so unsafe that a
+  systemtap user must specify <code>-g</code> (guru mode) to use this, even
+  if the C code is being exported from a tapset.
+</LI>
+<LI><code>/* unmangled */</code>, used in an embedded-C function, means
+  that the legacy (pre-1.8) argument access syntax should be made
+  available inside the function. Hence, in addition to
+  <code>STAP_ARG_foo</code> and <code>STAP_RETVALUE</code> one can use
+  <code>THIS-&gt;foo</code> and <code>THIS-&gt;__retvalue</code> respectively inside the
+  function. This is useful for quickly migrating code written for
+  SystemTap version 1.7 and earlier.
+</LI>
+<LI><code>/* string */</code> in embedded-C expressions only, means that
+  the expression has <code>const char *</code> type and should be treated as
+  a string value, instead of the default long numeric.
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html303"
+  HREF="Probe_points.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html297"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html291"
+  HREF="Types_SystemTap_scripts.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html299"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html301"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html304"
+  HREF="Probe_points.html">4 Probe points</A>
+<B> Up:</B> <A NAME="tex2html298"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html292"
+  HREF="Types_SystemTap_scripts.html">2 Types of SystemTap</A>
+ &nbsp; <B>  <A NAME="tex2html300"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html302"
+  HREF="Index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

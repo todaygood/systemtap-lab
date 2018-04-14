@@ -1,0 +1,117 @@
+
+<HTML><HEAD><TITLE>Manpage of ERROR::BUILDID</TITLE>
+</HEAD><BODY>
+<H1>ERROR::BUILDID</H1>
+Section: Misc. Reference Manual Pages (7stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+error::buildid - build-id verification failures
+<P>
+
+
+
+<P>
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+Because systemtap's script translation / execution stages may be
+executed at different times and places, it is sometimes necessary to
+verify certain invariants.  One such invariant is that if a script
+was informed by translate-time analysis of executables, then those
+same executables need to be used at run time.  This checking
+is done based upon the build-id, a binary hash that modern (post-2007)
+compilers/toolchains add as an 
+<I>NT_GNU_BUILD_ID</I>
+
+ELF note to object files and executables.
+Use the
+<I>readelf -n</I>
+
+command to examine the build-ids of binaries, if you are interested.
+<P>
+<P>
+
+<P>
+Only scripts are sensitive to executables' build-ids: generally those
+that perform deep analysis of the binaries or their debuginfo.  For example,
+scripts that place
+<I>.function</I> or <I>.statement</I>
+
+probes, or use stack backtrace-related tapset functions may be sensitive.
+Other scripts that rely only on
+<I>process.mark</I> or <I>kernel.trace</I>
+
+probes do not require debuginfo.  See the DWARF DEBUGINFO section in the
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+man page.
+<P>
+<P>
+
+<P>
+During translation, systemtap saves a copy of the relevant files'
+build-ids within the compiled modules.  At run-time, the modules
+compare the saved ones to the actual run-time build-ids in memory.
+The error message indicates that they did not match, so the module
+will decline placing a probe that was computed based upon obsolete
+data.  This is important for safety, as placing them at an
+inappropriate address could crash the programs.  However, this is not
+necessarily a fatal error, since probes unrelated to the mismatching
+binaries may operate.
+<P>
+<P>
+
+<P>
+A build-id mismatch could be caused by a few different situations.
+The main one is where the executable versions or architecture were
+different between the systemtap translation and execution
+times/places.  For example, one may run a stap-server on a slightly
+different version of the OS distribution.  Someone may have rebuilt a
+new kernel image, but preserved the previous version numbers.  The
+kernel running on the workstation may be slightly different from the
+version being targeted - perhaps due to a pending kernel upgrade
+leaving different files on disk versus running in memory.  If your OS
+distribution uses separate debuginfo packages, the split <I>.debug</I>
+files may not exactly match the main binaries.
+<P>
+<P>
+
+<P>
+To disable build-id verification errors, if one is confident that they
+are an artefact of build accidents rather than a real mismatch, one
+might try the
+<I>-DSTP_NO_BUILDID_CHECK</I>
+
+option.
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="http://fedoraproject.org/wiki/Releases/FeatureBuildId">http://fedoraproject.org/wiki/Releases/FeatureBuildId</A></I>,
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap),
+<I><A HREF="./warning::debuginfo.7stap.html">warning::debuginfo</A></I>(7stap),
+<I><A HREF="./error::reporting.7stap.html">error::reporting</A></I>(7stap)
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

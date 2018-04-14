@@ -1,0 +1,183 @@
+This Document describes the kprobes interface in detail.
+
+Index
+
+1.Kernel Space Probes Interface.
+2.User Space Probes Interface.
+3.Kernel Watchpoint Probes Interface.
+
+1.Kernel Space Probes Interface:
+	kprobes provides two interfaces register_probe and unregister_probe.
+
+	register_probe:
+
+		Registration defines the probe location, which must be at an 
+		instruction boundary that precedes any associated opcode 
+		prefixes. It also defines three call-back addresses for the 
+		probing module:
+
+		* The probe-event handler address, which is called as the probed
+		  instruction is about to execute. On return kprobes will 
+		  single-step the probed instruction.
+		* The post-execution handler address, which is called when 
+		  single-stepping completes.
+		* The fault handler address, which is called if an exception
+		  is generated for any instruction within the fault-handler 
+		  or when kprobes single-steps the probed instruction.
+
+		register_probe passes a struct kprobe:
+
+		struct kprobe {
+			struct list_head list;
+
+			/* location of the probe point */
+			kprobe_opcode_t *addr;
+
+			/* Called before addr is executed. */
+			kprobe_pre_handler_t pre_handler;
+
+			/* Called after addr is executed, unless... */
+			kprobe_post_handler_t post_handler;
+
+			/* ... called if executing addr causes a fault 
+			 * (eg. page fault). Return 1 if it handled fault, 
+			 * otherwise kernel will see it. */
+			kprobe_fault_handler_t fault_handler;
+
+			/* Saved opcode (which has been replaced with 
+			 * breakpoint) */
+			kprobe_opcode_t opcode;
+		};
+
+		addr:
+
+		The location of the probepoint, which must be at an instruction
+		boundary including any associated opcode prefixes - referencing
+		label in C will guarantee this.
+
+		pre_handler:
+
+		The function that will be called when the probed instruction is
+		about to execute.
+
+		post_handler:
+
+		The function that will be called on completion of successful 
+		execution of the probed instruction. 
+
+		fault_handler:
+
+		The function that will be called if any software exceptions occur
+
+			* while executing inside the probe_handler
+			* when single-stepping the probed instruction
+
+		The user is required to retain this structure in resident memory
+		for as long as the probe remains active. Some of the fields are 
+		used internally by kprobes and must be initialised to NULL or 
+		ZERO. The fields the user is required to initialise are the addr
+		and the pre_handler fields. The post_handler and fault_handler 
+		are optional.
+
+	unregister_probe:
+
+		unregister_probe also requires struct kprobe. The user has to 
+		unregister explicitly all registered probes before removing 
+		the probe handling module.
+ 
+
+2.User Space Probes Interface :
+	User space probes defines four simple and lightweight interfaces :
+
+	register_kprobe_user :
+		Registration of user space probes is defined for a pair of inode
+		and offset within the executable where the probes need to be 
+		inserted. Similar to kernel space probes registration, the user
+		space registration provides three callback functions. User space
+		registration requires a kprobes structure as an argument with 
+		the following fields initialized:
+
+		pre_handler - pointer to the function that will be called when 
+		the probed instruction is about to execute.
+		post_handler - pointer to the function that will be called 
+		after the successful execution of the instruction.
+		fault_handler - pointer to the function that will be called if a 
+		software exception occurs, while executing inside the 
+		probe_handler or while single stepping.
+
+		user - pointer to the struct uprobe. The following fields within
+		this structure must be initialized:
+
+		inode -  pointer to the inode of the executable.
+		offset - offset within the executable, where probes are 
+		inserted/removed. Each unique pair of inode and offset is 
+		used as a hashing function.
+
+	User is required to retain this structure until the probes are 
+	unregistered. This routine should be called only once for a given pair 
+	of inode and offset. Only after the user space probes are registered, 
+	the user can insert and remove probes at the given address.
+
+	unregister_kprobe_user:
+		Every registered user space probe must be unregistered.
+		For unregistering, kprobes structure must be passed with
+		the following fields initialized:
+
+		user->inode -  pointer to the inode of the executable.
+		user->offset - offset within the executable, where the probe was
+				registered.
+
+		This routine must be called after all the probes for a given 
+		pair of inode and offset are removed.
+
+	insert_kprobe_userspace:
+		To insert a user space probe within a page at a given address,
+		this routine must be called with the following fields initialized:
+
+		user->inode -  pointer to the inode of the executable.
+		user->offset - offset within the executable, where we need to 
+		insert a probe.
+		user->addr - address in the user address space where probes need
+		to inserted.
+		user->page - pointer to the page containing the address.
+		user->vma - pointer to the vma containing the address.
+
+	The user space probes can be inserted into the pages existing in the 
+	memory or pages read via readpage routine of the inode's address space 
+	operations or swapping in of the process private page. User has to 
+	ensure that the page containing the specified address (user->addr) must
+	be present in the memory before calling. User has to first register user
+	space probes for a given pair of inode and offset before calling this 
+	routine to insert probes.
+
+	remove_kprobe_user:
+		For removing user space probe from a page at the given address,
+		this routine must be called with the following fields 
+		initialized:
+
+		user->inode -  pointer to the inode of the executable.
+		user->offset - offset within the executable,where we need to 
+				remove a probe.
+		user->addr - address in user address space where probes need to 
+				removed.
+		user->page - pointer to the page containing the address.
+		user->vma - pointer to the vma containing the address.
+
+	User has to ensure that the page containing the specified address 
+	(user->addr) must be present in the memory before calling this routine.
+	Before unregistering, all the probes inserted at a given inode and 
+	offset must be removed. 
+
+
+3. Kernel Watchpoint Probes Interface:
+
+	The Kernel watchpoint probes requires the debug registers patch. The 
+	simple interface provided is:
+
+	int register_kwatch(unsigned long addr, u8 length, u8 type,
+		kwatch_handler_t handler)
+
+		whose return value is the debug register number allocated/used 
+		for setting up this watch point, and
+
+	void unregister_kwatch(int debugreg)

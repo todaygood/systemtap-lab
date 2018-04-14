@@ -1,0 +1,463 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>9 Formatted output</TITLE>
+<META NAME="description" CONTENT="9 Formatted output">
+<META NAME="keywords" CONTENT="langref">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="langref.css">
+
+<LINK REL="next" HREF="Tapset_defined_functions.html">
+<LINK REL="previous" HREF="Statistics_aggregates.html">
+<LINK REL="up" HREF="langref.html">
+<LINK REL="next" HREF="Tapset_defined_functions.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html499"
+  HREF="Tapset_defined_functions.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html493"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html487"
+  HREF="Statistics_aggregates.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html495"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html497"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html500"
+  HREF="Tapset_defined_functions.html">10 Tapset-defined functions</A>
+<B> Up:</B> <A NAME="tex2html494"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html488"
+  HREF="Statistics_aggregates.html">8 Statistics (aggregates)</A>
+ &nbsp; <B>  <A NAME="tex2html496"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html498"
+  HREF="Index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html501"
+  HREF="Formatted_output.html#SECTION000101000000000000000">9.1 print</A>
+<LI><A NAME="tex2html502"
+  HREF="Formatted_output.html#SECTION000102000000000000000">9.2 printf</A>
+<LI><A NAME="tex2html503"
+  HREF="Formatted_output.html#SECTION000103000000000000000">9.3 printd</A>
+<LI><A NAME="tex2html504"
+  HREF="Formatted_output.html#SECTION000104000000000000000">9.4 printdln</A>
+<LI><A NAME="tex2html505"
+  HREF="Formatted_output.html#SECTION000105000000000000000">9.5 println</A>
+<LI><A NAME="tex2html506"
+  HREF="Formatted_output.html#SECTION000106000000000000000">9.6 sprint</A>
+<LI><A NAME="tex2html507"
+  HREF="Formatted_output.html#SECTION000107000000000000000">9.7 sprintf</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION000100000000000000000">
+9 Formatted output</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION000101000000000000000"></A>
+<A NAME="1142"></A>
+<BR>
+9.1 print
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+print ()
+</PRE>
+</DD>
+</DL>This function prints a single value of any type.
+
+<P>
+
+<H2><A NAME="SECTION000102000000000000000"></A>
+<A NAME="1148"></A>
+<BR>
+9.2 printf
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+printf (fmt:string, ...)
+</PRE>
+</DD>
+</DL>The printf function takes a formatting string as an argument, and a number
+of values of corresponding types, and prints them all. The format must be a
+literal string constant. The printf formatting directives are similar to those
+of C, except that they are fully checked for type by the translator.
+
+<P>
+The formatting string can contain tags that are defined as follows:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+%[flags][width][.precision][length]specifier
+</PRE>
+</DD>
+</DL>Where <TT>specifier</TT> is required and defines the type and the interpretation
+of the value of the corresponding argument. The following table shows the
+details of the specifier parameter:
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+
+<A NAME="1159"></A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG>Table:</STRONG>
+printf specifier values</CAPTION>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=72>
+<B>Specifier</B></TH>
+<TH ALIGN="LEFT" VALIGN="TOP" WIDTH=252>
+<B>Output</B></TH>
+<TH ALIGN="LEFT" VALIGN="TOP" WIDTH=90>
+<B>Example</B>
+<BR>
+d or i</TH>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+The tag can also contain <TT>flags</TT>, <TT>width</TT>, <TT>.precision</TT>
+and <TT>modifiers</TT> sub-specifiers, which are optional and follow these
+specifications:
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+
+<A NAME="1177"></A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG>Table:</STRONG>
+printf flag values</CAPTION>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=108>
+<B>Flags</B></TH>
+<TH ALIGN="LEFT" VALIGN="TOP" WIDTH=324>
+<B>Description</B>
+<BR>
+
+- (minus sign)</TH>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+
+<A NAME="1196"></A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG>Table:</STRONG>
+printf width values</CAPTION>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=108>
+<B>Width</B></TH>
+<TH ALIGN="LEFT" VALIGN="TOP" WIDTH=324>
+<B>Description</B>
+<BR>
+
+(number)</TH>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+
+<P>
+
+<P>
+<A NAME="1207"></A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG>Table:</STRONG>
+printf precision values</CAPTION>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=108>
+<B>Precision</B></TH>
+<TH ALIGN="LEFT" VALIGN="TOP" WIDTH=324>
+<B>Description</B>
+<BR>
+
+.number</TH>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<B>Binary Write Examples</B>
+
+<P>
+The following is an example of using the binary write functions:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe begin {
+    for (i = 97; i &lt; 110; i++)
+        printf("%3d: %1b%1b%1b\n", i, i, i-32, i-64)
+    exit()
+}
+</PRE>
+</DD>
+</DL>This prints:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+ 97: aA!
+ 98: bB"
+ 99: cC#
+100: dD$
+101: eE%
+102: fF&amp;
+103: gG'
+104: hH(
+105: iI)
+106: jJ*
+107: kK+
+108: lL,
+109: mM-
+</PRE>
+</DD>
+</DL>Another example:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+stap -e 'probe begin{printf("%b%b", 0xc0dedbad, \
+0x12345678);exit()}' | hexdump -C
+</PRE>
+</DD>
+</DL>This prints:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+00000000  ad db de c0 00 00 00 00  78 56 34 12 00 00 00 00  |........xV4.....|
+00000010
+</PRE>
+</DD>
+</DL>Another example:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe begin{
+    printf("%1b%1b%1blo %1b%1brld\n", 72,101,108,87,111)
+    exit()
+}
+</PRE>
+</DD>
+</DL>This prints:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+Hello World
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION000103000000000000000"></A>
+<A NAME="1247"></A>
+<BR>
+9.3 printd
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+printd (delimiter:string, ...)
+</PRE>
+</DD>
+</DL>This function takes a string delimiter and two or more values of any type, then
+prints the values with the delimiter interposed. The delimiter must be a
+literal string constant.
+
+<P>
+For example:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+printd("/", "one", "two", "three", 4, 5, 6)
+</PRE>
+</DD>
+</DL>prints:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+one/two/three/4/5/6
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION000104000000000000000"></A>
+<A NAME="1261"></A>
+<BR>
+9.4 printdln
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+printdln (delimiter:string, ...)
+</PRE>
+</DD>
+</DL>This function operates like <TT>printd</TT>, but also appends a newline.
+
+<P>
+
+<H2><A NAME="SECTION000105000000000000000"></A>
+<A NAME="1268"></A>
+<BR>
+9.5 println
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+println ()
+</PRE>
+</DD>
+</DL>This function prints a single value like <TT>print</TT>,
+but also appends a newline.
+
+<P>
+
+<H2><A NAME="SECTION000106000000000000000"></A>
+<A NAME="1275"></A>
+<BR>
+9.6 sprint
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+sprint:string ()
+</PRE>
+</DD>
+</DL>This function operates like <TT>print</TT>, but returns the string rather
+than printing it.
+
+<P>
+
+<H2><A NAME="SECTION000107000000000000000"></A>
+<A NAME="1282"></A>
+<BR>
+9.7 sprintf
+</H2>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+sprintf:string (fmt:string, ...)
+</PRE>
+</DD>
+</DL>This function operates like <TT>printf</TT>, but returns the formatted string
+rather than printing it.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html499"
+  HREF="Tapset_defined_functions.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html493"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html487"
+  HREF="Statistics_aggregates.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html495"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html497"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html500"
+  HREF="Tapset_defined_functions.html">10 Tapset-defined functions</A>
+<B> Up:</B> <A NAME="tex2html494"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html488"
+  HREF="Statistics_aggregates.html">8 Statistics (aggregates)</A>
+ &nbsp; <B>  <A NAME="tex2html496"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html498"
+  HREF="Index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

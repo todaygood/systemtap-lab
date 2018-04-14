@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta name="generator" content="Bluefish 1.0.4">
+  <title>SystemTap Kernel Patch Status</title>
+  <link rel="stylesheet" href="systemtap.css" type="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+  <meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css">
+body { font-family : Helvetica, Arial, sans-serif ; margin : 0em; }
+a   { color : #000000; }
+a:hover { text-decoration : underline; background : #eeeeee;}
+h1 { font-size: 18px; }
+pre { margin-left: 20px; }
+div#footer {position: absolute; width: 100%; top: 0; left: 0; top: auto; bottom: 0; font-size: 10pt;
+background: #eee; color: #111; text-align: center; line-height:150%;}
+.missing {text-align: center; background: red;}
+.designing {text-align: center; background: yellow;}
+.mm {text-align: center; background: #0f0;}
+.mainlined {text-align: center; background: #0a0;}
+</style>
+</head>
+
+<body>
+  <table cellspacing="2" cellpadding="2" border="0" width="100%">
+    <tr>
+      <td valign="bottom" height="80"><img src="systemtaplogo.png"
+      alt="SystemTap logo" width="165" height="25"></td>
+      <td valign="bottom" class="topnavright" align="right">
+      <a href="index.html">Overview</a>&nbsp;|&nbsp;
+      <a href="getinvolved.html">Get Involved</a>&nbsp;|&nbsp;
+      <a href="documentation.html">Documentation</a>&nbsp;|&nbsp;
+      <a href="links.html">Links</a></td>
+    </tr>
+  </table>
+
+  <div class="mainbackground">
+    <div class="maintextregion">
+      <img src="systemtapcorner.gif">
+
+      <table cellspacing="2" cellpadding="4" border="0" width="99%"
+      style="margin-top:17;">
+        <tr>
+          <td width="200">&nbsp;</td>
+
+          <td valign="top">
+            <h1>SystemTap Kernel Patch Status</h1>
+
+            <div style="margin: 10px;">
+              <table border="1">
+                <tr>
+                  <td colspan="7">
+                    <br>
+
+                    <center>
+                      <i>present needs</i>
+                    </center><br>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>feature</th>
+
+                  <th>x86</th>
+
+                  <th>x86-64</th>
+
+                  <th>ia64</th>
+
+                  <th>sparc64</th>
+
+                  <th>ppc64</th>
+
+                  <th>s390x</th>
+                  <!-- If adding new architectures, check/update colspan= attributes below -->
+                </tr><!--
+In each cell indicate the current state of the feature (like if it is
+mainlined, baking in mm, being actively worked, or basically missing
+in action.  Also include a link to the bugzilla entry for the feature.
+
+If the feature has been mainlined (i.e. it has been accepted into Linus'
+tree, then use <td class="mainlined"> ... </td>, and indicate which release
+the feature landed in.
+
+If the feature is currently being reviewed/tested in the mm tree, then
+use <td class="mm"> ... </td>, and indicate which mm patch the feature is
+current.
+
+If the features is actively being worked on, but has not made it into
+an MM tree yet, use <td class="designing"> ... </td> and give a hint on
+the state of the work.
+
+If there is no known work happening for the feature, then use
+<td class="missing"> No active work</td>
+-->
+
+                <tr>
+                  <td>kprobes/jprobes</td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.10.tar.bz2">
+                  2.6.10</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.11.tar.bz2">
+                  2.6.11</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.13-rc1.tar.bz2">
+                  2.6.13-rc1</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.11.tar.bz2">
+                  2.6.11</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.11.tar.bz2">
+                  2.6.11</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.19.tar.bz2">
+                  2.6.19</a></td>
+                </tr>
+
+                <tr>
+                  <td>return probes</td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.13-rc1.tar.bz2">
+                  2.6.13-rc1</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.13-rc1.tar.bz2">
+                  2.6.13-rc1</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.13-rc1.tar.bz2">
+                  2.6.13-rc1</a></td>
+
+                  <td class="missing">No active work</td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.13-rc1.tar.bz2">
+                  2.6.13-rc1</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.19.tar.bz2">
+                  2.6.19</a></td>
+                </tr>
+
+                <tr>
+                  <td>reentrancy</td>
+
+                  <td colspan="5" class="mainlined">Main-lined in
+                  <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.13-rc1.tar.bz2">
+                  2.6.13-rc1</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.19.tar.bz2">
+                  2.6.19</a></td>
+                </tr>
+
+                <tr>
+                  <td>colocated (multiple)</td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.12-rc4.tar.bz2">
+                  2.6.12-rc4</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.12-rc4.tar.bz2">
+                  2.6.12-rc4</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.13-rc1.tar.bz2">
+                  2.6.13-rc1</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.12-rc4.tar.bz2">
+                  2.6.12-rc4</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.12-rc4.tar.bz2">
+                  2.6.12-rc4</a><br>
+                  (bug <a href=
+                  "/bugzilla/show_bug.cgi?id=892">bz 892</a> fixed
+                  in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.13-rc1.tar.bz2">
+                  2.6.13-rc1</a>)</td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.19.tar.bz2">
+                  2.6.19</a></td>
+                </tr>
+
+                <tr>
+                  <td>relayfs</td>
+
+                  <td colspan="6" class="mainlined">Main-lined in
+                  <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.14-rc1.tar.bz2">
+                  2.6.14-rc1</a></td>
+                </tr>
+
+                <tr>
+                  <td>scalability (unlocked handlers)</td>
+
+                  <td colspan="5" class="mainlined">Main-lined in
+                  <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.15-rc1.tar.bz2">
+                  2.6.15-rc1</a></td>
+
+                  <td class="mainlined">Main-lined in <a href=
+                  "http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.19.tar.bz2">
+                  2.6.19</a></td>
+                </tr>
+
+                <tr>
+                  <td>user-space probes</td>
+
+                  <td colspan="3" class="designing">included in SystemTap</td>
+
+                  <td colspan="1" class="missing">No active work</td>
+
+                  <td colspan="2" class="designing">included in SystemTap</td>
+                </tr>
+
+                <tr>
+                  <td colspan="7">
+                    <br>
+
+                    <center>
+                      <i>future needs</i>
+                    </center><br>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>separate stacks</td>
+
+                  <td colspan="7" class="missing">No active work</td>
+                </tr>
+
+                <tr>
+                  <td>perfmon2</td>
+
+                  <td colspan="7" class="designing">Ports
+                  starting</td>
+                </tr>
+              </table><br>
+              <br>
+
+              <table border="1">
+                <tr>
+                  <td class="mainlined">Available in Linus' Tree</td>
+                </tr>
+
+                <tr>
+                  <td class="mm">Available in one of the MM
+                  patchsets</td>
+                </tr>
+
+                <tr>
+                  <td class="designing">Active design/implementation
+                  work (not in MM yet)</td>
+                </tr>
+
+                <tr>
+                  <td class="missing">Feature not available, with no
+                  active development effort</td>
+                </tr>
+              </table><br>
+              <tt>$Id: kprobes-status.html,v 1.19 2005/11/29
+              01:30:00 kenistoj Exp $</tt>
+
+              <p>&nbsp;</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <table cellspacing="2" cellpadding="2" border="0" width="100%">
+    <tr>
+      <td align="center" class="footer"><a href=
+      "http://sourceware.org/systemtap">SystemTap</a></td>
+    </tr>
+  </table>
+</body>
+</html>

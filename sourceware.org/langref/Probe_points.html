@@ -1,0 +1,1480 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>4 Probe points</TITLE>
+<META NAME="description" CONTENT="4 Probe points">
+<META NAME="keywords" CONTENT="langref">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="langref.css">
+
+<LINK REL="next" HREF="Language_elements.html">
+<LINK REL="previous" HREF="Components_SystemTap_script.html">
+<LINK REL="up" HREF="langref.html">
+<LINK REL="next" HREF="Language_elements.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html330"
+  HREF="Language_elements.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html324"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html318"
+  HREF="Components_SystemTap_script.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html326"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html328"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html331"
+  HREF="Language_elements.html">5 Language elements</A>
+<B> Up:</B> <A NAME="tex2html325"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html319"
+  HREF="Components_SystemTap_script.html">3 Components of a</A>
+ &nbsp; <B>  <A NAME="tex2html327"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html329"
+  HREF="Index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html332"
+  HREF="Probe_points.html#SECTION00051000000000000000">4.1 General syntax</A>
+<UL>
+<LI><A NAME="tex2html333"
+  HREF="Probe_points.html#SECTION00051100000000000000">4.1.1 Prefixes</A>
+<LI><A NAME="tex2html334"
+  HREF="Probe_points.html#SECTION00051200000000000000">4.1.2 Suffixes</A>
+<LI><A NAME="tex2html335"
+  HREF="Probe_points.html#SECTION00051300000000000000">4.1.3 Wildcarded file names, function names</A>
+<LI><A NAME="tex2html336"
+  HREF="Probe_points.html#SECTION00051400000000000000">4.1.4 Optional probe points</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html337"
+  HREF="Probe_points.html#SECTION00052000000000000000">4.2 Built-in probe point types (DWARF probes)</A>
+<UL>
+<LI><A NAME="tex2html338"
+  HREF="Probe_points.html#SECTION00052100000000000000">4.2.1 kernel.function, module().function</A>
+<LI><A NAME="tex2html339"
+  HREF="Probe_points.html#SECTION00052200000000000000">4.2.2 kernel.statement, module().statement</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html340"
+  HREF="Probe_points.html#SECTION00053000000000000000">4.3 Function return probes</A>
+<LI><A NAME="tex2html341"
+  HREF="Probe_points.html#SECTION00054000000000000000">4.4 DWARF-less probing</A>
+<LI><A NAME="tex2html342"
+  HREF="Probe_points.html#SECTION00055000000000000000">4.5 Userspace probing</A>
+<UL>
+<LI><A NAME="tex2html343"
+  HREF="Probe_points.html#SECTION00055100000000000000">4.5.1 Begin/end variants</A>
+<LI><A NAME="tex2html344"
+  HREF="Probe_points.html#SECTION00055200000000000000">4.5.2 Syscall variants</A>
+<LI><A NAME="tex2html345"
+  HREF="Probe_points.html#SECTION00055300000000000000">4.5.3 Function/statement variants</A>
+<LI><A NAME="tex2html346"
+  HREF="Probe_points.html#SECTION00055400000000000000">4.5.4 Absolute variant</A>
+<LI><A NAME="tex2html347"
+  HREF="Probe_points.html#SECTION00055500000000000000">4.5.5 Process probe paths</A>
+<LI><A NAME="tex2html348"
+  HREF="Probe_points.html#SECTION00055600000000000000">4.5.6 Target process mode</A>
+<LI><A NAME="tex2html349"
+  HREF="Probe_points.html#SECTION00055700000000000000">4.5.7 Instruction probes</A>
+<LI><A NAME="tex2html350"
+  HREF="Probe_points.html#SECTION00055800000000000000">4.5.8 Static userspace probing</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html351"
+  HREF="Probe_points.html#SECTION00056000000000000000">4.6 Java probes</A>
+<LI><A NAME="tex2html352"
+  HREF="Probe_points.html#SECTION00057000000000000000">4.7 PROCFS probes</A>
+<LI><A NAME="tex2html353"
+  HREF="Probe_points.html#SECTION00058000000000000000">4.8 Marker probes</A>
+<LI><A NAME="tex2html354"
+  HREF="Probe_points.html#SECTION00059000000000000000">4.9 Tracepoints</A>
+<LI><A NAME="tex2html355"
+  HREF="Probe_points.html#SECTION000510000000000000000">4.10 Syscall probes</A>
+<LI><A NAME="tex2html356"
+  HREF="Probe_points.html#SECTION000511000000000000000">4.11 Timer probes</A>
+<LI><A NAME="tex2html357"
+  HREF="Probe_points.html#SECTION000512000000000000000">4.12 Special probe points</A>
+<UL>
+<LI><A NAME="tex2html358"
+  HREF="Probe_points.html#SECTION000512100000000000000">4.12.1 begin</A>
+<LI><A NAME="tex2html359"
+  HREF="Probe_points.html#SECTION000512200000000000000">4.12.2 end</A>
+<LI><A NAME="tex2html360"
+  HREF="Probe_points.html#SECTION000512300000000000000">4.12.3 error</A>
+<LI><A NAME="tex2html361"
+  HREF="Probe_points.html#SECTION000512400000000000000">4.12.4 begin, end, and error probe sequence</A>
+<LI><A NAME="tex2html362"
+  HREF="Probe_points.html#SECTION000512500000000000000">4.12.5 never</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00050000000000000000"></A><A NAME="sec:Probe-Points"></A>
+<A NAME="255"></A>
+<BR>
+4 Probe points
+</H1>
+
+<H2><A NAME="SECTION00051000000000000000"></A>
+<A NAME="257"></A>
+<BR>
+4.1 General syntax
+</H2>
+The general probe point syntax is a dotted-symbol sequence. This divides
+the event namespace into parts, analogous to the style of the Domain Name
+System. Each component identifier is parameterized by a string or number
+literal, with a syntax analogous to a function call.
+
+<P>
+The following are all syntactically valid probe points.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+kernel.function("foo")
+kernel.function("foo").return
+module{"ext3"}.function("ext3_*")
+kernel.function("no_such_function") ?
+syscall.*
+end
+timer.ms(5000)
+</PRE>
+</DD>
+</DL>
+<P>
+Probes may be broadly classified into <I>synchronous</I><A NAME="263"></A>
+or <I>asynchronous</I>.<A NAME="265"></A> A synchronous event occurs when
+any processor executes an instruction matched by the specification. This
+gives these probes a reference point (instruction address) from which more
+contextual data may be available. Other families of probe points refer to
+asynchronous events such as timers, where no fixed reference point is related.
+Each probe point specification may match multiple locations, such as by using
+wildcards or aliases, and all are probed. A probe declaration may contain
+several specifications separated by commas, which are all probed.
+
+<P>
+
+<H3><A NAME="SECTION00051100000000000000"></A>
+<A NAME="267"></A>
+<BR>
+4.1.1 Prefixes
+</H3>
+Prefixes specify the probe target, such as <B>kernel</B>, <B>module</B>,
+<B>timer</B>, and so on.
+
+<P>
+
+<H3><A NAME="SECTION00051200000000000000"></A>
+<A NAME="272"></A>
+<BR>
+4.1.2 Suffixes
+</H3>
+Suffixes further qualify the point to probe, such as <B>.return</B> for the
+exit point of a probed function. The absence of a suffix implies the function
+entry point.
+
+<P>
+
+<H3><A NAME="SECTION00051300000000000000"></A>
+<A NAME="275"></A>
+<BR>
+4.1.3 Wildcarded file names, function names
+</H3>
+A component may include an asterisk (*) character, which expands to other
+matching probe points. An example follows.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+kernel.syscall.*
+kernel.function("sys_*)
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00051400000000000000"></A><A NAME="sub:Optional-probe-points"></A>
+<A NAME="282"></A>
+<BR>
+4.1.4 Optional probe points
+</H3>
+A probe point may be followed by a question mark (?) character, to indicate
+that it is optional, and that no error should result if it fails to expand.
+This effect passes down through all levels of alias or wildcard expansion.
+
+<P>
+The following is the general syntax.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+kernel.function("no_such_function") ?
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00052000000000000000"></A>
+<A NAME="288"></A>
+<A NAME="289"></A>
+<A NAME="dwarfprobes"></A>
+<BR>
+4.2 Built-in probe point types (DWARF probes)
+</H2>
+This family of probe points uses symbolic debugging information for the target
+kernel or module, as may be found in executables that have not
+been stripped, or in the separate <B>debuginfo</B> packages. They allow
+logical placement of probes into the execution path of the target
+by specifying a set of points in the source or object code. When a matching
+statement executes on any processor, the probe handler is run in that context.
+
+<P>
+Points in a kernel are identified by module, source file, line number, function
+name or some combination of these.
+
+<P>
+Here is a list of probe point specifications currently supported:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+kernel.function(PATTERN)
+kernel.function(PATTERN).call
+kernel.function(PATTERN).return
+kernel.function(PATTERN).return.maxactive(VALUE)
+kernel.function(PATTERN).inline
+kernel.function(PATTERN).label(LPATTERN)
+module(MPATTERN).function(PATTERN)
+module(MPATTERN).function(PATTERN).call
+module(MPATTERN).function(PATTERN).return.maxactive(VALUE)
+module(MPATTERN).function(PATTERN).inline
+kernel.statement(PATTERN)
+kernel.statement(ADDRESS).absolute
+module(MPATTERN).statement(PATTERN)
+</PRE>
+</DD>
+</DL>
+<P>
+The <B>.function</B> variant places a probe near the beginning of the named
+function, so that parameters are available as context variables.
+
+<P>
+The <B>.return</B> variant places a probe at the moment of return from the named
+function, so the return value is available as the $return context variable.
+The entry parameters are also available, though the function may have changed
+their values.  Return probes may be further qualified with <B>.maxactive</B>,
+which specifies how many instances of the specified function can be probed simultaneously.
+You can leave off <B>.maxactive</B> in most cases, as the default
+(<B>KRETACTIVE</B>) should be sufficient.
+However, if you notice an excessive number of skipped probes, try setting <B>.maxactive</B>
+to incrementally higher values to see if the number of skipped probes decreases.
+
+<P>
+The <B>.inline</B> modifier for <B>.function</B> filters the results to include only
+instances of inlined functions. The <B>.call</B> modifier selects the opposite subset.  
+The <B>.exported</B> modifier filters the results to include only exported functions.
+Inline functions do not have an identifiable return point, so <B>.return</B>
+is not supported on <B>.inline</B> probes.
+
+<P>
+The <B>.statement</B> variant places a probe at the exact spot, exposing those local
+variables that are visible there.
+
+<P>
+In the above probe descriptions, MPATTERN stands for a string literal
+that identifies the loaded kernel module of interest and LPATTERN
+stands for a source program label. Both MPATTERN and LPATTERN may
+include asterisk (*), square brackets &#34;[]&#34;, and
+question mark (?) wildcards.
+
+<P>
+PATTERN stands for a string literal that identifies a point in the program.
+It is composed of three parts:
+
+<P>
+
+<OL>
+<LI>The first part is the name of a function, as would appear in the nm program's
+output. This part may use the asterisk and question mark wildcard operators
+to match multiple names.
+</LI>
+<LI>The second part is optional, and begins with the ampersand (@) character.
+It is followed by the path to the source file containing the function,
+which may include a wildcard pattern, such as mm/slab*.
+In most cases, the path should be relative to the top of the
+linux source directory, although an absolute path may be necessary for some kernels.
+If a relative pathname doesn't work, try absolute.
+</LI>
+<LI>The third part is optional if the file name part was given. It identifies
+the line number in the source file, preceded by a ``:'' or ``+''.
+The line number is assumed to be an
+absolute line number if preceded by a ``:'', or relative to the entry of
+the function if preceded by a ``+''.
+All the lines in the function can be matched with ``:*''.
+A range of lines x through y can be matched with ``:x-y''.
+
+<P>
+</LI>
+</OL>
+Alternately, specify PATTERN as a numeric constant to indicate a relative
+module address or an absolute kernel address.
+
+<P>
+Some of the source-level variables, such as function parameters, locals,
+or globals visible in the compilation unit, are visible to probe handlers.
+Refer to these variables by prefixing their name with a dollar sign within
+the scripts. In addition, a special syntax allows limited traversal of
+structures, pointers, arrays, taking the address of a variable or pretty
+printing a whole structure.
+
+<P>
+<TT>$var</TT> refers to an in-scope variable var. If it is a type similar
+to an integer, it will be cast to a 64-bit integer for script use. Pointers
+similar to a string (char *) are copied to SystemTap string values by the
+<TT>kernel_string()</TT> or <TT>user_string()</TT> functions.
+
+<P>
+<TT>@var("varname")</TT> is an alternative syntax for <TT>$varname</TT>.
+It can also be used to access global variables in a particular compile
+unit (CU).  <TT>@var("varname@src/file.c")</TT> refers to the global
+(either file local or external) variable varname defined when the file
+src/file.c was compiled. The CU in which the variable is resolved is
+the first CU in the module of the probe point which matches the given
+file name at the end and has the shortest file name path (e.g. given
+<TT>@var("foo@bar/baz.c")</TT> and CUs with file name paths
+<TT>src/sub/module/bar/baz.c</TT> and <TT>src/bar/baz.c</TT> the second
+CU will be chosen to resolve <TT>foo</TT>).
+
+<P>
+<TT>$var-&gt;field</TT> or <TT>@var("var@file.c")-&gt;field</TT> traverses a
+structure's field. The indirection operator may be repeated to follow
+additional levels of pointers.
+
+<P>
+<TT>$var[N]</TT> or <TT>@var("var@file.c")[N]</TT> indexes into an
+array. The index is given with a literal number.
+
+<P>
+<TT>&amp;$var</TT> or <TT>&amp;@var("var@file.c")</TT> provides the address of
+a variable as a long. It can also be used in combination with field access
+or array indexing to provide the address of a particular field or an
+element in an array with <TT>&amp;var-&gt;field</TT>,
+<TT>&amp;@var("var@file.c")[N]</TT> or a combination of those accessors.
+
+<P>
+Using a single <TT>$</TT> or a double <TT>$$</TT> suffix provides a
+swallow or deep string representation of the variable data type. Using
+a single <TT>$</TT>, as in <TT>$var$</TT>, will provide a string that
+only includes the values of all basic type values of fields of the variable
+structure type but not any nested complex type values (which will be
+represented with <TT>{...}</TT>). Using a double <TT>$$</TT>,
+as in <TT>@var("var")$$</TT> will provide a string that also includes
+all values of nested data types.
+
+<P>
+<TT>$$vars</TT> expands to a character string that is equivalent to
+<TT>sprintf("parm1=%x ... parmN=%x var1=%x ... varN=%x", $parm1, ..., $parmN,
+$var1, ..., $varN)</TT>
+
+<P>
+<TT>$$locals</TT> expands to a character string that is equivalent to
+<TT>sprintf("var1=%x ... varN=%x", $var1, ..., $varN)</TT>
+
+<P>
+<TT>$$parms</TT> expands to a character string that is equivalent to
+<TT>sprintf("parm1=%x ... parmN=%x", $parm1, ..., $parmN)</TT>
+
+<P>
+
+<H3><A NAME="SECTION00052100000000000000"></A>
+<A NAME="349"></A>
+<A NAME="350"></A>
+<BR>
+4.2.1 kernel.function, module().function
+</H3>
+The <B>.function</B> variant places a probe near the beginning of the named function,
+so that parameters are available as context variables.
+
+<P>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+kernel.function("func[@file]")
+module("modname").function("func[@file]")
+</PRE>
+</DD>
+</DL>Examples:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# Refers to all kernel functions with "init" or "exit"
+# in the name:
+kernel.function("*init*"), kernel.function("*exit*")
+
+# Refers to any functions within the "kernel/time.c"
+# file that span line 240:
+kernel.function("*@kernel/time.c:240")
+
+# Refers to all functions in the ext3 module:
+module("ext3").function("*")
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00052200000000000000"></A>
+<A NAME="361"></A>
+<A NAME="362"></A>
+<BR>
+4.2.2 kernel.statement, module().statement
+</H3>
+The <B>.statement</B> variant places a probe at the exact spot, exposing those local
+variables that are visible there.
+
+<P>
+General syntax:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+kernel.statement("func@file:linenumber")
+module("modname").statement("func@file:linenumber")
+</PRE>
+</DD>
+</DL>Example:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# Refers to the statement at line 296 within the
+# kernel/time.c file:
+kernel.statement("*@kernel/time.c:296")
+# Refers to the statement at line bio_init+3 within the fs/bio.c file:
+kernel.statement("bio_init@fs/bio.c+3")
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00053000000000000000"></A>
+<A NAME="373"></A>
+<BR>
+4.3 Function return probes
+</H2>
+The <TT>.return</TT> variant places a probe at the moment of return from
+the named function, so that the return value is available as the $return
+context variable. The entry parameters are also accessible in the context
+of the return probe, though their values may have been changed by the function.
+Inline functions do not have an identifiable return point, so <TT>.return</TT>
+is not supported on <TT>.inline</TT> probes.
+
+<P>
+
+<H2><A NAME="SECTION00054000000000000000"></A>
+<A NAME="378"></A>
+<BR>
+4.4 DWARF-less probing
+</H2>
+
+<P>
+In the absence of debugging information, you can still use the
+<I>kprobe</I> family of probes to examine the entry and exit points of
+kernel and module functions. You cannot look up the arguments or local
+variables of a function using these probes. However, you can access
+the parameters by following this procedure:
+
+<P>
+When you're stopped at the entry to a function, you can refer to the
+function's arguments by number. For example, when probing the function
+declared:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+asmlinkage ssize_t sys_read(unsigned int fd, char __user * buf, size_t
+count)
+</PRE>
+</DD>
+</DL>
+<P>
+You can obtain the values of <TT>fd</TT>, <TT>buf</TT>, and
+<TT>count</TT>, respectively, as <TT>uint_arg(1)</TT>,
+<TT>pointer_arg(2)</TT>, and <TT>ulong_arg(3)</TT>. In this case, your
+probe code must first call <TT>asmlinkage()</TT>, because on some
+architectures the asmlinkage attribute affects how the function's
+arguments are passed.
+
+<P>
+When you're in a return probe, <TT>$return</TT> isn't supported
+without DWARF, but you can call <TT>returnval()</TT> to get the value
+of the register in which the function value is typically returned, or
+call <TT>returnstr()</TT> to get a string version of that value.
+
+<P>
+And at any code probepoint, you can call
+<TT>register("regname")</TT> to get the value of the specified CPU
+register when the probe point was hit.
+<TT>u_register("regname")</TT> is like <TT>register("regname")</TT>,
+but interprets the value as an unsigned integer.
+
+<P>
+SystemTap supports the following constructs:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+kprobe.function(FUNCTION)
+kprobe.function(FUNCTION).return
+kprobe.module(NAME).function(FUNCTION)
+kprobe.module(NAME).function(FUNCTION).return
+kprobe.statement(ADDRESS).absolute
+</PRE>
+</DD>
+</DL>
+<P>
+Use <B>.function</B> probes for kernel functions and
+<B>.module</B> probes for probing functions of a specified module.
+If you do not know the absolute address of a kernel or module
+function, use <B>.statement</B> probes. Do not use wildcards in
+<I>FUNCTION</I> and <I>MODULE</I> names. Wildcards cause the probe
+to not register. Also, statement probes are available only in guru mode.
+
+<P>
+
+<H2><A NAME="SECTION00055000000000000000"></A>
+<A NAME="407"></A>
+<A NAME="408"></A>
+<BR>
+4.5 Userspace probing
+</H2>
+Support for userspace probing is supported on kernels that are
+configured to include the utrace or uprobes extensions.
+
+<P>
+
+<H3><A NAME="SECTION00055100000000000000"></A>
+<A NAME="sec:beginendvariants"></A>
+<BR>
+4.5.1 Begin/end variants
+</H3>
+Constructs:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+process.begin
+process("PATH").begin
+process(PID).begin
+
+process.thread.begin
+process("PATH").thread.begin
+process(PID).thread.begin
+
+process.end
+process("PATH").end
+process(PID).end
+
+process.thread.end
+process("PATH").thread.end
+process(PID).thread.end
+</PRE>
+</DD>
+</DL>
+<P>
+The <TT>.begin</TT> variant is called when a new process described by
+<TT>PID</TT> or <TT>PATH</TT> is created. If no <TT>PID</TT> or
+<TT>PATH</TT> argument is specified (for example
+<TT>process.begin</TT>), the probe flags any new process being
+spawned.
+
+<P>
+The <TT>.thread.begin</TT> variant is called when a new thread
+described by <TT>PID</TT> or <TT>PATH</TT> is created.
+
+<P>
+The <TT>.end</TT> variant is called when a process described by
+<TT>PID</TT> or <TT>PATH</TT> dies.
+
+<P>
+The <TT>.thread.end</TT> variant is called when a thread described by
+<TT>PID</TT> or <TT>PATH</TT> dies.
+
+<P>
+
+<H3><A NAME="SECTION00055200000000000000"></A>
+<A NAME="sec:syscallvariants"></A>
+<BR>
+4.5.2 Syscall variants
+</H3>
+Constructs:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+process.syscall
+process("PATH").syscall
+process(PID).syscall
+
+process.syscall.return
+process("PATH").syscall.return
+process(PID).syscall.return
+</PRE>
+</DD>
+</DL>
+<P>
+The <TT>.syscall</TT> variant is called when a thread described by
+<TT>PID</TT> or <TT>PATH</TT> makes a system call.  The system call
+number is available in the <TT>$syscall</TT> context variable.  The
+first six arguments of the system call are available in the
+<TT>$argN</TT> parameter, for example <TT>$arg1</TT>,
+<TT>$arg2</TT>, and so on.
+
+<P>
+The <TT>.syscall.return</TT> variant is called when a thread described
+by <TT>PID</TT> or <TT>PATH</TT> returns from a system call.  The
+system call number is available in the <TT>$syscall</TT> context
+variable.  The return value of the system call is available in the
+<TT>$return</TT> context variable.
+
+<P>
+
+<H3><A NAME="SECTION00055300000000000000"></A>
+<A NAME="sec:function-statement"></A>
+<BR>
+4.5.3 Function/statement variants
+</H3>
+Constructs:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+process("PATH").function("NAME")
+process("PATH").statement("*@FILE.c:123")
+process("PATH").function("*").return
+process("PATH").function("myfun").label("foo")
+</PRE>
+</DD>
+</DL>
+<P>
+Full symbolic source-level probes in userspace programs and shared
+libraries are supported.  These are exactly analogous to the symbolic
+DWARF-based kernel or module probes described previously and expose
+similar contextual <TT>$-variables</TT>. See
+Section&nbsp;<A HREF="#dwarfprobes"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for more information
+
+<P>
+Here is an example of prototype symbolic userspace probing support:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# stap -e 'probe process("ls").function("*").call {
+           log (probefunc()." ".$$parms)
+           }' \
+       -c 'ls -l'
+</PRE>
+</DD>
+</DL>
+<P>
+To run, this script requires debugging information for the named
+program and utrace support in the kernel. If you see a "pass 4a-time"
+build failure, check that your kernel supports utrace.
+
+<P>
+
+<H3><A NAME="SECTION00055400000000000000"></A>
+<A NAME="sec:absolutevariant"></A>
+<BR>
+4.5.4 Absolute variant
+</H3>
+A non-symbolic probe point such as
+<TT>process(PID).statement(ADDRESS).absolute</TT> is analogous to
+<BR><TT>kernel.statement(ADDRESS).absolute</TT> in that both use
+raw, unverified virtual addresses and provide no <TT>$variables</TT>.
+The target <TT>PID</TT> parameter must identify a running process and
+<TT>ADDRESS</TT> must identify a valid instruction address.  All
+threads of the listed process will be probed.  This is a guru mode
+probe.
+
+<P>
+
+<H3><A NAME="SECTION00055500000000000000"></A>
+<A NAME="sec:paths"></A>
+<BR>
+4.5.5 Process probe paths
+</H3>
+For all process probes, <TT>PATH</TT> names refer to executables that
+are searched the same way that shells do: the explicit path specified
+if the path name begins with a slash (/) character sequence; otherwise
+<TT>$PATH</TT> is searched.  For example, the following probe syntax:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe process("ls").syscall {}
+probe process("./a.out").syscall {}
+</PRE>
+</DD>
+</DL>
+<P>
+works the same as:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe process("/bin/ls").syscall {}
+probe process("/my/directory/a.out").syscall {}
+</PRE>
+</DD>
+</DL>
+<P>
+If a process probe is specified without a <TT>PID</TT> or
+<TT>PATH</TT> parameter, all user threads are probed. However, if
+systemtap is invoked in target process mode, process probes are
+restricted to the process hierarchy associated with the target
+process. If stap is running in <TT>-unprivileged</TT> mode, only
+processes owned by the current user are selected.
+
+<P>
+
+<H3><A NAME="SECTION00055600000000000000"></A>
+<A NAME="sec:targetprocessmode"></A>
+<BR>
+4.5.6 Target process mode
+</H3>
+Target process mode (invoked with <TT>stap -c CMD</TT> or <TT>-x
+  PID</TT>) implicitly restricts all <TT>process.*</TT> probes to the
+given child process.  It does not affect <TT>kernel.*</TT> or other
+probe types.  The <TT>CMD</TT> string is normally run directly, rather
+than from a ``<TT>/bin/sh -c</TT>'' sub-shell, since utrace and uprobe
+probes receive a fairly "clean" event stream.  If meta-characters such
+as redirection operators are present in <TT>CMD</TT>, ``<TT>/bin/sh
+  -c CMD</TT>'' is still used, and utrace and uprobe probes will receive
+events from the shell. For example:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+% stap -e 'probe process.syscall, process.end {
+           printf("%s %d %s\n", execname(), pid(), pp())}' \
+       -c ls
+</PRE>
+</DD>
+</DL>
+<P>
+Here is the output from this command:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+ls 2323 process.syscall
+ls 2323 process.syscall
+ls 2323 process.end
+</PRE>
+</DD>
+</DL>
+<P>
+If <TT>PATH</TT> names a shared library, all processes that map that
+shared library can be probed.  If dwarf debugging information is
+installed, try using a command with this syntax:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe process("/lib64/libc-2.8.so").function("....") { ... }
+</PRE>
+</DD>
+</DL>This command probes all threads that call into that library.  Typing
+``<TT>stap -c CMD</TT>'' or ``<TT>stap -x PID</TT>'' restricts this to
+the target command and descendants only.  You can use
+<TT>$$vars</TT> and others. You can provide the location of debug
+information to the stap command with the <TT>-d DIRECTORY</TT> option.
+To qualify a probe point to a location in a library required by a
+particular process try using a command with this syntax:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe process("...").library("...").function("....") { ... }
+</PRE>
+</DD>
+</DL>The library name may use wildcards.
+
+<P>
+The first syntax in the following will probe the functions in the program
+linkage table of a particular process.  The second syntax will also add the
+program linkage tables of libraries required by that process.  .plt("...") can
+be specified to match particular plt entries.
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe process("...").plt { ... }
+probe process("...").plt process("...").library("...").plt { ... }
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00055700000000000000"></A>
+<A NAME="sec:insnprobes"></A>
+<BR>
+4.5.7 Instruction probes
+</H3>
+Constructs:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+process("PATH").insn
+process(PID).insn
+
+process("PATH").insn.block
+process(PID).insn.block
+</PRE>
+</DD>
+</DL>The <TT>process().insn</TT> and <TT>process().insn.block</TT> probes
+inspect the process after each instruction or block of instructions is
+executed. These probes are not implemented on all architectures. If
+they are not implemented on your system, you will receive an error
+message when the script starts.
+
+<P>
+The <TT>.insn</TT> probe is called for every single-stepped
+instruction of the process described by <TT>PID</TT> or <TT>PATH</TT>.
+
+<P>
+The <TT>.insn.block</TT> probe is called for every block-stepped
+instruction of the process described by <TT>PID</TT> or <TT>PATH</TT>.
+
+<P>
+To count the total number of instructions that a process executes,
+type a command similar to:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+$ stap -e 'global steps; probe process("/bin/ls").insn {steps++}
+           probe end {printf("Total instructions: %d\n", steps);}' \
+       -c /bin/ls
+</PRE>
+</DD>
+</DL>
+<P>
+Using this feature will significantly slow process execution.
+
+<P>
+
+<H3><A NAME="SECTION00055800000000000000"></A>
+<A NAME="sec:staticuserspace"></A>
+<BR>
+4.5.8 Static userspace probing
+</H3>
+You can probe symbolic static instrumentation compiled into programs
+and shared libraries with the following syntax:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+process("PATH").mark("LABEL")
+</PRE>
+</DD>
+</DL>
+<P>
+The <TT>.mark</TT> variant is called from a static probe defined in
+the application by
+<TT>STAP_PROBE1(handle,LABEL,arg1)</TT>. <TT>STAP_PROBE1</TT> is
+defined in the sdt.h file.  The parameters are:
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Parameter</TD>
+<TD ALIGN="RIGHT">Definition</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>handle</TT></TD>
+<TD ALIGN="RIGHT">the application handle</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>LABEL</TT></TD>
+<TD ALIGN="RIGHT">corresponds to the <TT>.mark</TT> argument</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>arg1</TT></TD>
+<TD ALIGN="RIGHT">the argument</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+Use <TT>STAP_PROBE1</TT> for probes with one argument.  Use
+<TT>STAP_PROBE2</TT> for probes with 2 arguments, and so on.  The
+arguments of the probe are available in the context variables
+<TT>$arg1</TT>, <TT>$arg2</TT>, and so on.
+
+<P>
+As an alternative to the <TT>STAP_PROBE</TT> macros, you can use the
+dtrace script to create custom macros. The sdt.h file also provides
+dtrace compatible markers through <TT>DTRACE_PROBE</TT> and an
+associated python <TT>dtrace</TT> script.  You can use these in builds
+based on dtrace that need dtrace -h or -G functionality.
+
+<P>
+
+<H2><A NAME="SECTION00056000000000000000"></A>
+<A NAME="559"></A>
+<BR>
+4.6 Java probes
+</H2>
+Support for probing Java methods is available using Byteman as a
+backend. Byteman is an instrumentation tool from the JBoss project
+which systemtap can use to monitor invocations for a specific method
+or line in a Java program.
+
+<P>
+Systemtap does so by generating a Byteman script listing the probes to
+instrument and then invoking the Byteman <TT>bminstall</TT> utility. A
+custom option <TT>-D OPTION</TT> (see the Byteman documentation for
+more details) can be passed to bminstall by invoking systemtap with
+option <TT>-J OPTION</TT>. The systemtap option <TT>-j</TT> is also
+provided as a shorthand for <TT>-J
+  org.jboss.byteman.compile.to.bytecode</TT>.
+
+<P>
+This Java instrumentation support is currently a prototype feature
+with major limitations: Java probes attach only to one Java process at
+a time; other Java processes beyond the first one to be observed are
+ignored. Moreover, Java probing currently does not work across users;
+the stap script must run (with appropriate permissions) under the same
+user as the Java process being probed. (Thus a stap script under
+root currently cannot probe Java methods in a non-root-user Java process.)
+
+<P>
+There are four probe point variants supported by the translator:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+java("PNAME").class("CLASSNAME").method("PATTERN")
+java("PNAME").class("CLASSNAME").method("PATTERN").return
+java(PID).class("CLASSNAME").method("PATTERN")
+java(PID).class("CLASSNAME").method("PATTERN").return
+</PRE>
+</DD>
+</DL>
+<P>
+The first two probe points refer to Java processes by the name of the
+Java process. The PATTERN parameter specifies the signature of the
+Java method to probe. The signature must consist of the exact name of
+the method, followed by a bracketed list of the types of the
+arguments, for instance <TT>myMethod(int,double,Foo)</TT>. Wildcards
+are not supported.
+
+<P>
+The probe can be set to trigger at a specific line within the method
+by appending a line number with colon, just as in other types of
+probes: <TT>myMethod(int,double,Foo):245</TT>.
+
+<P>
+The CLASSNAME parameter identifies the Java class the method belongs
+to, either with or without the package qualification. By default, the
+probe only triggers on descendants of the class that do not override
+the method definition of the original class. However, CLASSNAME can
+take an optional caret prefix, as in
+<code>class("^org.my.MyClass")</code>, which specifies that the probe
+should also trigger on all descendants of MyClass that override the
+original method. For instance, every method with signature foo(int) in
+program org.my.MyApp can be probed at once using
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+java("org.my.MyApp").class("^java.lang.Object").method("foo(int)")
+</PRE>
+</DD>
+</DL>
+<P>
+The last two probe points work analogously, but refer to Java
+processes by PID. (PIDs for already running processes can be obtained
+using the <TT>jps</TT> utility.)
+
+<P>
+Context variables defined within java probes include <code>$provider</code>
+(which identifies the class providing the definition of the triggered
+method) and <code>$name</code> (which gives the signature of the method).
+Arguments to the method can be accessed using context variables
+<code>$arg1$</code> through <code>$arg10</code>, for up to the first 10 arguments
+of a method.
+
+<P>
+
+<H2><A NAME="SECTION00057000000000000000"></A>
+<A NAME="577"></A>
+<BR>
+4.7 PROCFS probes
+</H2>
+These probe points allow procfs pseudo-files in
+<TT>/proc/systemtap/<I>MODNAME</I></TT> to be created, read and
+written.  Specify the name of the systemtap module as
+<TT><I>MODNAME</I></TT>.  There are four probe point variants
+supported by the translator:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+procfs("PATH").read
+procfs("PATH").write
+procfs.read
+procfs.write
+</PRE>
+</DD>
+</DL>
+<P>
+<TT>PATH</TT> is the file name to be created, relative to
+<TT>/proc/systemtap/MODNAME</TT>.  If no <TT>PATH</TT> is specified
+(as in the last two variants in the previous list), <TT>PATH</TT>
+defaults to "command".
+
+<P>
+When a user reads <TT>/proc/systemtap/MODNAME/PATH</TT>, the
+corresponding procfs read probe is triggered.  Assign the string data
+to be read to a variable named <TT>$value</TT>, as follows:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+procfs("PATH").read { $value = "100\n" }
+</PRE>
+</DD>
+</DL>
+<P>
+When a user writes into <TT>/proc/systemtap/MODNAME/PATH</TT>, the
+corresponding procfs write probe is triggered.  The data the user
+wrote is available in the string variable named <TT>$value</TT>, as
+follows:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+procfs("PATH").write { printf("User wrote: %s", $value) }
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00058000000000000000"></A>
+<A NAME="601"></A>
+<BR>
+4.8 Marker probes
+</H2>
+This family of probe points connects to static probe markers inserted
+into the kernel or a module. These markers are special macro calls in
+the kernel that make probing faster and more reliable than with
+DWARF-based probes.  DWARF debugging information is not required to
+use probe markers.
+
+<P>
+Marker probe points begin with a <TT>kernel</TT> prefix which
+identifies the source of the symbol table used for finding
+markers. The suffix names the marker itself:
+<TT>mark.("MARK")</TT>. The marker name string, which can contain
+wildcard characters, is matched against the names given to the marker
+macros when the kernel or module is compiled.  Optionally, you can
+specify <TT>format("FORMAT")</TT>.  Specifying the marker format
+string allows differentiation between two markers with the same name
+but different marker format strings.
+
+<P>
+The handler associated with a marker probe reads any optional
+parameters specified at the macro call site named <TT>$arg1</TT>
+through <TT>$argNN</TT>, where <TT>NN</TT> is the number of
+parameters supplied by the macro. Number and string parameters are
+passed in a type-safe manner.
+
+<P>
+The marker format string associated with a marker is available in
+<TT>$format</TT>. The marker name string is available in
+<TT>$name</TT>.
+
+<P>
+Here are the marker probe constructs:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+kernel.mark("MARK")
+kernel.mark("MARK").format("FORMAT")
+</PRE>
+</DD>
+</DL>
+<P>
+For more information about marker probes, see
+<TT><A NAME="tex2html4"
+  HREF="http://sourceware.org/systemtap/wiki/UsingMarkers">http://sourceware.org/systemtap/wiki/UsingMarkers</A></TT>.
+
+<P>
+
+<H2><A NAME="SECTION00059000000000000000"></A>
+<A NAME="sec:tracepoints"></A><A NAME="617"></A>
+<BR>
+4.9 Tracepoints
+</H2>
+
+<P>
+This family of probe points hooks to static probing tracepoints
+inserted into the kernel or kernel modules.  As with marker probes,
+these tracepoints are special macro calls inserted by kernel
+developers to make probing faster and more reliable than with
+DWARF-based probes.  DWARF debugging information is not required to
+probe tracepoints.  Tracepoints have more strongly-typed parameters
+than marker probes.
+
+<P>
+Tracepoint probes begin with <TT>kernel</TT>.  The next part names the
+tracepoint itself: <TT>trace("name")</TT>.  The tracepoint
+<TT>name</TT> string, which can contain wildcard characters, is
+matched against the names defined by the kernel developers in the
+tracepoint header files.
+
+<P>
+The handler associated with a tracepoint-based probe can read the
+optional parameters specified at the macro call site.  These
+parameters are named according to the declaration by the tracepoint
+author.  For example, the tracepoint probe
+<TT>kernel.trace("sched_switch")</TT> provides the parameters
+<TT>$rq</TT>, <TT>$prev</TT>, and <TT>$next</TT>.  If the parameter
+is a complex type such as a struct pointer, then a script can access
+fields with the same syntax as DWARF <TT>$target</TT> variables.
+Tracepoint parameters cannot be modified; however, in guru mode a
+script can modify fields of parameters.
+
+<P>
+The name of the tracepoint is available in <TT>$$name</TT>, and a
+string of <TT>name=value</TT> pairs for all parameters of the
+tracepoint is available in <TT>$$vars</TT> or <TT>$$parms</TT>.
+
+<P>
+
+<H2><A NAME="SECTION000510000000000000000"></A>
+<A NAME="sec:syscall"></A><A NAME="632"></A>
+<BR>
+4.10 Syscall probes
+</H2>
+The <TT>syscall.*</TT>  aliases define several hundred probes.  They
+use the following syntax:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+syscall.NAME
+syscall.NAME.return
+</PRE>
+</DD>
+</DL>
+<P>
+Generally, two probes are defined for each normal system call as
+listed in the syscalls(2) manual page: one for entry and one for
+return.   System calls that never return do not have a
+corresponding <TT>.return</TT> probe.
+
+<P>
+Each probe alias defines a variety of variables. Look at the tapset
+source code to find the most reliable source of variable definitions.
+Generally, each variable listed in the standard manual page is
+available as a script-level variable. For example,
+<TT>syscall.open</TT> exposes file name, flags, and mode.  In addition,
+a standard suite of variables is available at most aliases, as follows:
+
+<P>
+
+<UL>
+<LI><TT>argstr</TT>: A pretty-printed form of the entire argument
+  list, without parentheses.
+</LI>
+<LI><TT>name</TT>: The name of the system call.
+</LI>
+<LI><TT>retstr</TT>: For return probes, a pretty-printed form of the
+  system call result.
+</LI>
+</UL>
+
+<P>
+Not all probe aliases obey all of these general guidelines.  Please
+report exceptions that you encounter as a bug.
+
+<P>
+
+<H2><A NAME="SECTION000511000000000000000"></A>
+<A NAME="646"></A>
+<BR>
+4.11 Timer probes
+</H2>
+You can use intervals defined by the standard kernel jiffies<A NAME="647"></A>
+timer to trigger probe handlers asynchronously. A <I>jiffy</I> is a kernel-defined
+unit of time typically between 1 and 60 msec. Two probe point variants are
+supported by the translator:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+timer.jiffies(N)
+timer.jiffies(N).randomize(M)
+</PRE>
+</DD>
+</DL>The probe handler runs every N jiffies. If the <TT>randomize</TT><A NAME="654"></A>
+component is given, a linearly distributed random value in the range [-M
+... +M] is added to N every time the handler executes. N is restricted
+to a reasonable range (1 to approximately 1,000,000), and M is restricted
+to be less than N. There are no target variables provided in either context.
+Probes can be run concurrently on multiple processors.
+
+<P>
+Intervals may be specified in units of time. There are two probe point variants
+similar to the jiffies timer:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+timer.ms(N)
+timer.ms(N).randomize(M)
+</PRE>
+</DD>
+</DL>Here, N and M are specified in milliseconds<A NAME="661"></A>, but the
+full options for units are seconds (s or sec), milliseconds (ms or msec),
+microseconds (us or usec), nanoseconds (ns or nsec), and hertz (hz). Randomization
+is not supported for hertz timers.
+
+<P>
+The resolution of the timers depends on the target kernel. For kernels prior
+to 2.6.17, timers are limited to jiffies resolution, so intervals are rounded
+up to the nearest jiffies interval. After 2.6.17, the implementation uses
+hrtimers for greater precision, though the resulting resolution will be dependent
+upon architecture. In either case, if the randomize component is given, then
+the random value will be added to the interval before any rounding occurs.
+
+<P>
+Profiling timers are available to provide probes that execute on all CPUs
+at each system tick. This probe takes no parameters, as follows.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+timer.profile.tick
+</PRE>
+</DD>
+</DL>Full context information of the interrupted process is available, making
+this probe suitable for implementing a time-based sampling profiler.
+
+<P>
+It is recommended to use the tapset probe <code>timer.profile</code> rather
+than <code>timer.profile.tick</code>. This probe point behaves identically
+to <code>timer.profile.tick</code> when the underlying functionality is
+available, and falls back to using <code>perf.sw.cpu_clock</code> on some
+recent kernels which lack the corresponding profile timer facility.
+
+<P>
+The following is an example of timer usage.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# Refers to a periodic interrupt, every 1000 jiffies:
+timer.jiffies(1000)
+
+# Fires every 5 seconds:
+timer.sec(5)
+
+# Refers to a periodic interrupt, every 1000 +/- 200 jiffies:
+timer.jiffies(1000).randomize(200)
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION000512000000000000000">
+4.12 Special probe points</A>
+</H2>
+
+<P>
+The probe points <TT>begin</TT> and <TT>end</TT> are defined by the translator
+to refer to the time of session startup and shutdown. There are no target
+variables available in either context.
+
+<P>
+
+<H3><A NAME="SECTION000512100000000000000"></A>
+<A NAME="674"></A>
+<BR>
+4.12.1 begin
+</H3>
+The <TT>begin</TT> probe is the start of the SystemTap session.
+All <TT>begin</TT>
+probe handlers are run during the startup of the session.
+
+<P>
+
+<H3><A NAME="SECTION000512200000000000000"></A>
+<A NAME="678"></A>
+<BR>
+4.12.2 end
+</H3>
+The <TT>end</TT> probe is the end of the SystemTap session. All <TT>end</TT>
+probes are run during the normal shutdown of a session, such as in the aftermath
+of a SystemTap <TT>exit</TT> function call, or an interruption from the user.
+In the case of an shutdown triggered by error, <TT>end</TT> probes are not run.
+
+<P>
+
+<H3><A NAME="SECTION000512300000000000000"></A>
+<A NAME="684"></A>
+<BR>
+4.12.3 error
+</H3>
+The <I>error</I> probe point is similar to the end
+probe, except the probe handler runs when the session ends if an error
+occurred.  In this case, an <TT>end</TT> probe is skipped, but each
+<TT>error</TT> probe is still attempted.  You can use an
+<TT>error</TT> probe to clean up or perform a final action on script
+termination.
+
+<P>
+Here is a simple example:
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+probe error { println ("Oops, errors occurred. Here's a report anyway.")
+              foreach (coin in mint) { println (coin) } }
+</PRE>
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION000512400000000000000"></A>
+<A NAME="694"></A>
+<BR>
+4.12.4 begin, end, and error probe sequence
+</H3>
+<TT>begin</TT>, <TT>end</TT>, and <TT>error</TT> probes can be
+specified with an optional sequence number that controls the order in
+which they are run. If no sequence number is provided, the sequence
+number defaults to zero and probes are run in the order that they
+occur in the script file. Sequence numbers may be either positive or
+negative, and are especially useful for tapset writers who want to do
+initialization in a <TT>begin</TT> probe. The following are examples.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><PRE>
+# In a tapset file:
+probe begin(-1000) { ... }
+
+# In a user script:
+probe begin { ... }
+</PRE>
+</DD>
+</DL>The user script <TT>begin</TT> probe defaults to sequence number zero, so
+the tapset <TT>begin</TT> probe will run first.
+
+<P>
+
+<H3><A NAME="SECTION000512500000000000000"></A>
+<A NAME="706"></A>
+<BR>
+4.12.5 never
+</H3>
+The <TT>never</TT> probe point is defined by the translator to mean <I>never</I>.
+Its statements are analyzed for symbol and type correctness, but its probe
+handler is never run. This probe point may be useful in conjunction with
+optional probes. See Section&nbsp;<A HREF="#sub:Optional-probe-points"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html330"
+  HREF="Language_elements.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html324"
+  HREF="langref.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html318"
+  HREF="Components_SystemTap_script.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html326"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html328"
+  HREF="Index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html331"
+  HREF="Language_elements.html">5 Language elements</A>
+<B> Up:</B> <A NAME="tex2html325"
+  HREF="langref.html">SystemTap Language Reference</A>
+<B> Previous:</B> <A NAME="tex2html319"
+  HREF="Components_SystemTap_script.html">3 Components of a</A>
+ &nbsp; <B>  <A NAME="tex2html327"
+  HREF="Contents.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html329"
+  HREF="Index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

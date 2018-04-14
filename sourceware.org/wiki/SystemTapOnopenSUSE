@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+<title>SystemTapOnopenSUSE - Systemtap Wiki</title>
+<script type="text/javascript" src="/moin_static199/common/js/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static199/modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="/moin_static199/modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="/moin_static199/modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="/moin_static199/modern/css/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static199/modern/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Systemtap Wiki: SystemTapOnopenSUSE" href="/systemtap/wiki/SystemTapOnopenSUSE?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=SystemTapOnopenSUSE&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="/systemtap/wiki/HomePage">
+<link rel="Alternate" title="Wiki Markup" href="/systemtap/wiki/SystemTapOnopenSUSE?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/systemtap/wiki/SystemTapOnopenSUSE?action=print">
+<link rel="Search" href="/systemtap/wiki/FindPage">
+<link rel="Index" href="/systemtap/wiki/TitleIndex">
+<link rel="Glossary" href="/systemtap/wiki/WordIndex">
+<link rel="Help" href="/systemtap/wiki/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+<div id="header">
+<div id="logo"><a href="/systemtap/wiki/HomePage"><img src="/systemtap/systemtaplogo.png" alt="systemtap wiki"></a></div>
+
+<form id="searchform" method="get" action="/systemtap/wiki/SystemTapOnopenSUSE">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput">Search:</label>
+<input id="searchinput" type="text" name="value" value="" size="20"
+    onfocus="searchFocus(this)" onblur="searchBlur(this)"
+    onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search">
+<input id="titlesearch" name="titlesearch" type="submit"
+    value="Titles" alt="Search Titles">
+<input id="fullsearch" name="fullsearch" type="submit"
+    value="Text" alt="Search Full Text">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<ul id="username"><li><a href="/systemtap/wiki/SystemTapOnopenSUSE?action=login" id="login" rel="nofollow">Login</a></li></ul>
+<div id="locationline">
+<div id="interwiki"><span><a href="/systemtap/wiki/HomePage" rel="nofollow">Self</a></span></div>
+
+<ul id="pagelocation">
+<li><a href="/systemtap/wiki/SystemTapOnopenSUSE">SystemTapOnopenSUSE</a></li>
+</ul>
+
+</div>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="/systemtap/wiki/HomePage">HomePage</a></li><li class="wikilink"><a href="/systemtap/wiki/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="/systemtap/wiki/FindPage">FindPage</a></li><li class="wikilink"><a href="/systemtap/wiki/HelpContents">HelpContents</a></li><li class="current"><a href="/systemtap/wiki/SystemTapOnopenSUSE">SystemTapOnopenSUSE</a></li>
+</ul>
+
+<div id="pageline"><hr style="display:none;"></div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/systemtap/wiki/SystemTapOnopenSUSE?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/systemtap/wiki/SystemTapOnopenSUSE?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/systemtap/wiki/SystemTapOnopenSUSE">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" lang="en" dir="ltr">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line862">For openSUSE 11.0 please check this bug report: <a class="https" href="https://bugzilla.novell.com/show_bug.cgi?id=417573">https://bugzilla.novell.com/show_bug.cgi?id=417573</a> <span class="anchor" id="line-2"></span>Also check the status of the bug report about debuginfo being available (or not) for your kernel package: <a class="https" href="https://bugzilla.novell.com/show_bug.cgi?id=233122">https://bugzilla.novell.com/show_bug.cgi?id=233122</a> <span class="anchor" id="line-3"></span>If these aren't fixed yet you might be best of compiling systemtap from source (latest git) and recompiling your kernel packages to get the right debuginfo as explained below. <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><p class="line874">On 10.3 it's included, for 10.2 if you don't want to build systemtap yourself, here is the easiest set of steps I found: <span class="anchor" id="line-6"></span>
+<h2 id="Really_Easy_Instructions">Really Easy Instructions</h2>
+<span class="anchor" id="line-7"></span><p class="line867"><span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span><pre><span class="anchor" id="line-1"></span># If you do not have the default 10.2 kernel, you will need to get it:
+<span class="anchor" id="line-2"></span>wget ftp://mirrors.kernel.org/opensuse/distribution/10.2/repo/oss/suse/i586/kernel-default-2.6.18.2-34.i586.rpm
+<span class="anchor" id="line-3"></span>
+<span class="anchor" id="line-4"></span># and install it:
+<span class="anchor" id="line-5"></span>rpm -i kernel-default-2.6.18.2-34.i586.rpm</pre><span class="anchor" id="line-14"></span><p class="line862">Why the default kernel? It's because currently they are only publishing the debuginfo files for the default kernel. See <a class="https" href="https://bugzilla.novell.com/show_bug.cgi?id=233122">https://bugzilla.novell.com/show_bug.cgi?id=233122</a> <span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span><pre><span class="anchor" id="line-1-1"></span>wget ftp://mirrors.kernel.org/opensuse/distribution/10.2/repo/debug/suse/i586/kernel-default-debuginfo-2.6.18.2-34.i586.rpm
+<span class="anchor" id="line-2-1"></span>wget ftp://mirrors.kernel.org/opensuse/distribution/SL-OSS-factory/inst-source/suse/i586/systemtap-0.5.14-3.i586.rpm
+<span class="anchor" id="line-3-1"></span>
+<span class="anchor" id="line-4-1"></span>rpm -i kernel-default-debuginfo-2.6.18.2-34.i586.rpm
+<span class="anchor" id="line-5-1"></span>rpm -i systemtap-0.5.14-3.i586.rpm</pre><span class="anchor" id="line-22"></span><p class="line874">edit the file /usr/share/systemtap/runtime/transport/utt.c , change line # 94 to the following: <span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><pre><span class="anchor" id="line-1-2"></span>        filp-&gt;private_data = inode-&gt;u.generic_ip;</pre><span class="anchor" id="line-26"></span><p class="line862">Don't worry, it's for the runtime, you don't need to compile anything by hand.  The line has to change because 10.2 runs an older kernel before the inode cleanup, it was a balance between compiling from cvs or changing the line <img alt=":)" height="15" src="/moin_static199/modern/img/smile.png" title=":)" width="15" /> <span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><p class="line867">
+<h2 id="Slightly_Harder_Instructions">Slightly Harder Instructions</h2>
+<span class="anchor" id="line-29"></span><p class="line874">If running the older kernel bugs you, your best bet is to grab the kernel rpm sources and build your own kernel rpm. The build process will create the debuginfo file <span class="anchor" id="line-30"></span><span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><pre><span class="anchor" id="line-1-3"></span>wget ftp://ftp.suse.com/pub/suse/update/10.2/rpm/src/kernel-default-2.6.18.8-0.1.nosrc.rpm
+<span class="anchor" id="line-2-2"></span>wget ftp://ftp.suse.com/pub/suse/update/10.2/rpm/src/kernel-source-2.6.18.8-0.1.src.rpm
+<span class="anchor" id="line-3-2"></span>rpm -i kernel-source-2.6.18.8-0.1.src.rpm
+<span class="anchor" id="line-4-2"></span>rpm -i kernel-default-2.6.18.8-0.1.nosrc.rpm 
+<span class="anchor" id="line-5-2"></span>cd /usr/src/packages/SOURCES/SPECS/
+<span class="anchor" id="line-6"></span>rpmbuild -ba --target=i586 # this might not be perfect, going from memory</pre><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><p class="line862">You will definately want to take a moment and add to the version information in the spec file to differentiate from the distributed version. Remember, use the most current files, the file pointers here will be stale momentarily <img alt=":-)" height="15" src="/moin_static199/modern/img/smile.png" title=":-)" width="15" /> If you install systemtap from the rpm, you will still need to update the runtime file as indicated above. But you went through all the trouble to build a new kernel, you might as well try out a CVS snapshot version that has that fixed... <span class="anchor" id="line-40"></span><span class="anchor" id="bottom"></span></div><p id="pageinfo" class="info" lang="en" dir="ltr">None: SystemTapOnopenSUSE  (last edited 2009-06-08 14:42:58 by <span title="FChE @ elastic.org[69.20.226.105]"><a href="/systemtap/wiki/FChE" title="FChE @ elastic.org[69.20.226.105]">FChE</a></span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/systemtap/wiki/SystemTapOnopenSUSE?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/systemtap/wiki/SystemTapOnopenSUSE?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/systemtap/wiki/SystemTapOnopenSUSE">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+</body>
+</html>
+

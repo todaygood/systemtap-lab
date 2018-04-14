@@ -1,0 +1,105 @@
+
+<HTML><HEAD><TITLE>Manpage of FUNCTION::CTIME</TITLE>
+</HEAD><BODY>
+<H1>FUNCTION::CTIME</H1>
+Section: Time utility functions (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+function::ctime - Convert seconds since epoch into human readable date/time string
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+    ctime:string(epochsecs:long)
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>ARGUMENTS</H2>
+
+<P>
+
+<I>epochsecs</I>
+<DL COMPACT><DT><DD>
+Number of seconds since epoch (as returned by
+<B>gettimeofday_s</B>)
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+Takes an argument of seconds since the epoch as returned by
+<B>gettimeofday_s</B>. Returns a string of the form
+<P>
+
+"Wed Jun 30 21:49:08 1993"
+<P>
+
+The string will always be exactly 24 characters. If the time would be unreasonable far in the past (before what can be represented with a 32 bit offset in seconds from the epoch) an error will occur (which can be avoided with try/catch). If the time would be unreasonable far in the future, an error will also occur.
+<P>
+
+Note that the epoch (zero) corresponds to
+<P>
+
+"Thu Jan 1 00:00:00 1970"
+<P>
+
+The earliest full date given by ctime, corresponding to epochsecs -2147483648 is
+"Fri Dec 13 20:45:52 1901". The latest full date given by ctime, corresponding to epochsecs 2147483647 is
+"Tue Jan 19 03:14:07 2038".
+<P>
+
+The abbreviations for the days of the week are 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', and 'Sat'. The abbreviations for the months are 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', and 'Dec'.
+<P>
+
+Note that the real C library
+<B>ctime</B>
+function puts a newline ('\n') character at the end of the string that this function does not. Also note that since the kernel has no concept of timezones, the returned time is always in GMT.
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::ctime.3stap.html">tapset::ctime</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">ARGUMENTS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:44 GMT, October 09, 2015
+</BODY>
+</HTML>

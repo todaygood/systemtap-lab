@@ -1,0 +1,101 @@
+
+<HTML><HEAD><TITLE>Manpage of STAP-REPORT</TITLE>
+</HEAD><BODY>
+<H1>STAP-REPORT</H1>
+Section: User Commands  (1)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+stap-report - collect system information that is useful for debugging systemtap bugs
+<P>
+
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<BR>
+
+<B>stap-report</B>
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+The stap-report executable collects system information that is useful
+for debugging systemtap bugs. It is a good idea to include such a
+report in bug reports especially if you send them directly to the
+upstream. stap-report can be run either as a normal user or as
+root. The report will be more complete if stap-report is run as root.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+
+<BR>
+
+<P>
+
+<DL COMPACT><DT><DD>
+<PRE>
+$ stap-report &gt; report.txt
+$ head report.txt
+== id ==
+uid=1000(user) gid=1000(user) groups=122(stapdev),123(stapusr),129(stapsys)
+== stap -V ==
+Systemtap translator/driver (version 2.2.1/0.153, Debian version 2.2.1-1)
+Copyright (C) 2005-2013 Red Hat, Inc. and others
+This is free software; see the source for copying conditions.
+enabled features: AVAHI LIBSQLITE3 NSS TR1_UNORDERED_MAP NLS
+== which stap ==
+/usr/bin/stap
+== locate --regex '/stap(run)?$' | xargs ls -ald ==
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1)
+
+</PRE><A NAME="lbAG">&nbsp;</A>
+<H2>BUGS</H2>
+
+Use the Bugzilla link of the project web page or our mailing list.
+
+<B><A HREF="http://sourceware.org/systemtap/">http://sourceware.org/systemtap/</A></B>,<B>&lt;<A HREF="mailto:systemtap@sourceware.org">systemtap@sourceware.org</A>&gt;</B>.
+
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">EXAMPLES</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+<DT><A HREF="#lbAG">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:44 GMT, October 09, 2015
+</BODY>
+</HTML>

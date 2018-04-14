@@ -1,0 +1,128 @@
+
+<HTML><HEAD><TITLE>Manpage of ERROR::PASS4</TITLE>
+</HEAD><BODY>
+<H1>ERROR::PASS4</H1>
+Section: Misc. Reference Manual Pages (7stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+error::pass4 - systemtap pass-4 errors
+<P>
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Errors that occur during pass 4 (compilation) have generally only a few
+causes:
+<P>
+<DL COMPACT>
+<DT>kernel or OS version changes<DD>
+The systemtap runtime and embedded-C fragments in the tapset library
+are designed to be portable across a wide range of OS versions.  However,
+incompatibilities can occur when some OS changes occur, such as kernel
+modifications that change functions, types, or macros referenced 
+by systemtap.  Upstream (<A HREF="git://sourceware.org/git/systemtap.git)">git://sourceware.org/git/systemtap.git)</A> builds
+of systemtap are often quickly updated to include relevant fixes, so try
+getting or making an updated build.
+If the issue persists, report the problem to the systemtap developers.
+<P>
+<DT>buggy embedded-C code<DD>
+Embedded-C code in your own guru-mode script cannot be checked by systemtap,
+and is passed through verbatim to the compiler.  Errors in such snippets of
+code may be found during the pass-4 compiler invocation, though may be hard
+to identify by the compiler errors.
+<P>
+<DT>incompatible embedded-C code<DD>
+The interface standards between systemtap-generated code and embedded-C code
+occasionally change.  For example, before version 1.8, arguments were passed
+using macros
+<I>THIS-&gt;foo</I> and <I>THIS-&gt;__retvalue</I>
+
+but from version 1.8 onward, using
+<I>STAP_ARG_foo</I> and <I>STAP_RETVALUE</I>.
+
+Adjust your embedded-C code to current standards, or use the
+<I>stap --compatible=VERSION</I>
+
+option to make systemtap use a different one.
+<P>
+<DT>compiler bugs and mysteries<DD>
+Messages such as &quot;internal compiler error&quot; suggest compiler problems.  These
+should be reported to the compiler developers in the form of a preprocessed
+<I>.i</I>
+
+file, plus the compiler command line.  To gather relevant information, run
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+stap -k --vp 0003 -p4 ....
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+Systemtap will report the saved temporary directory, and the compiler
+command line it attempted.  Go to the directory to find he main generated
+file
+<I>stap_NNNNN_src.c</I>.
+
+Force the compiler to produce a preprocessed file with:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+make -C /lib/modules/`uname -r`/build M=`pwd` stap_NNNNN_src.i
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+(note the
+<I>.i</I>
+
+suffix), and the compiler command line should be in the file
+<I>.stap_NNNNN_src.i.cmd</I>.
+
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="./error::reporting.7stap.html">error::reporting</A></I>(7stap)
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

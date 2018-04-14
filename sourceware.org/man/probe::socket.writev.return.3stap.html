@@ -1,0 +1,136 @@
+
+<HTML><HEAD><TITLE>Manpage of PROBE::SOCKET\&.WRIT</TITLE>
+</HEAD><BODY>
+<H1>PROBE::SOCKET\&.WRIT</H1>
+Section: Socket Tapset (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+probe::socket.writev.return - Conclusion of message sent via <B>socket_writev</B>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+socket.writev.return 
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>VALUES</H2>
+
+<P>
+
+<I>size</I>
+<DL COMPACT><DT><DD>
+Size of message sent (in bytes) or error code if success = 0
+</DL>
+
+<P>
+
+<I>state</I>
+<DL COMPACT><DT><DD>
+Socket state value
+</DL>
+
+<P>
+
+<I>protocol</I>
+<DL COMPACT><DT><DD>
+Protocol value
+</DL>
+
+<P>
+
+<I>flags</I>
+<DL COMPACT><DT><DD>
+Socket flags value
+</DL>
+
+<P>
+
+<I>type</I>
+<DL COMPACT><DT><DD>
+Socket type value
+</DL>
+
+<P>
+
+<I>family</I>
+<DL COMPACT><DT><DD>
+Protocol family value
+</DL>
+
+<P>
+
+<I>success</I>
+<DL COMPACT><DT><DD>
+Was send successful? (1 = yes, 0 = no)
+</DL>
+
+<P>
+
+<I>name</I>
+<DL COMPACT><DT><DD>
+Name of this probe
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>CONTEXT</H2>
+
+<P>
+
+The message receiver.
+<A NAME="lbAF">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+Fires at the conclusion of sending a message on a socket via the
+<B>sock_writev</B>
+function
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::socket.3stap.html">tapset::socket</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">VALUES</A><DD>
+<DT><A HREF="#lbAE">CONTEXT</A><DD>
+<DT><A HREF="#lbAF">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

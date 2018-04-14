@@ -1,0 +1,81 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::guru-delay</TITLE>
+</HEAD><BODY>
+<H1>tapset::guru-delay</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::guru-delay - systemtap guru-delay tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;Functions&nbsp;in&nbsp;the&nbsp;guru-delay&nbsp;tapset&nbsp;allow&nbsp;a&nbsp;probe&nbsp;handler&nbsp;to&nbsp;insert
+<BR>&nbsp;deliberate&nbsp;delays.&nbsp;&nbsp;This&nbsp;is&nbsp;sometimes&nbsp;useful&nbsp;as&nbsp;a&nbsp;fault-injection
+<BR>&nbsp;aid.&nbsp;&nbsp;Due&nbsp;to&nbsp;its&nbsp;likelihood&nbsp;of&nbsp;interference&nbsp;with&nbsp;the&nbsp;kernel,&nbsp;guru
+<BR>&nbsp;mode&nbsp;is&nbsp;required,&nbsp;and&nbsp;overload-prevention&nbsp;is&nbsp;suppressed.
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>mdelay </B>
+
+<DD>
+millisecond delay
+<DT><DD>
+See 
+<I><A HREF="./function::mdelay.3stap.html">function::mdelay</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>udelay </B>
+
+<DD>
+microsecond delay
+<DT><DD>
+See 
+<I><A HREF="./function::udelay.3stap.html">function::udelay</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::mdelay.3stap.html">function::mdelay</A></I>(3stap),
+
+
+<I><A HREF="./function::udelay.3stap.html">function::udelay</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

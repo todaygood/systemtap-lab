@@ -1,0 +1,128 @@
+
+<HTML><HEAD><TITLE>Manpage of WARNING::PROCESS-TRACKING</TITLE>
+</HEAD><BODY>
+<H1>WARNING::PROCESS-TRACKING</H1>
+Section: Misc. Reference Manual Pages (7stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+warning::process-tracking - process-tracking facilities are not available
+<P>
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+These errors and warnings occur when the kernel systemtap is running on
+lacks support for user-space process tracking facilities.
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H3>COMPILE-TIME ERROR</H3>
+
+The error
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+ERROR: user-space process-tracking facilities not available
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+occurs when the script contains a uprobes probe point that the current
+kernel does not support.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H3>RUNTIME WARNINGS</H3>
+
+<P>
+
+The warning,
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+WARNING: process-tracking facilities are not available in this kernel
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+and the related message,
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+WARNING: cannot track target in process '...'
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+both occur at runtime when running on a kernel (generally an older
+version) that has neither utrace functionality nor an acceptable
+substitute.
+<P>
+
+The script should still load and run. However, probes that rely on
+availability of process-tracking facilities will silently fail to
+trigger.
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>RESOLVING THE ISSUE</H2>
+
+If process-tracking functionality is absolutely necessary, either a
+kernel version newer than 3.5 is needed, or an older version must be
+compiled with appropriate utrace patches.
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="./error::reporting.7stap.html">error::reporting</A></I>(7stap)
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DL>
+<DT><A HREF="#lbAD">COMPILE-TIME ERROR</A><DD>
+<DT><A HREF="#lbAE">RUNTIME WARNINGS</A><DD>
+</DL>
+<DT><A HREF="#lbAF">RESOLVING THE ISSUE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

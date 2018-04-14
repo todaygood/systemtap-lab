@@ -1,0 +1,720 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-1">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 641  (Linux)">
+	<META NAME="CREATED" CONTENT="20020422;8381900">
+	<META NAME="CHANGED" CONTENT="20020906;9083000">
+	<STYLE>
+	<!--
+		@page { margin-left: 1.75cm; margin-right: 1.75cm; margin-top: 1.14cm; margin-bottom: 1.14cm }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000">
+<DIV TYPE=HEADER>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=4><B>Dynamic Probes and
+	Linux Trace Toolkit</B></FONT></P>
+</DIV>
+<P STYLE="margin-bottom: 0cm; line-height: 100%; page-break-inside: auto">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Dynamic Probes and
+Linux Trace Toolkit are now available on zSeries (s/390) Linux.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT SIZE=4><B>Description:</B>
+</FONT>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Dynamic Probes
+(dprobes) is a tool that can be used to insert software probes,
+dynamically into executing code modules. When a probe is fired, a
+user written probe-handler is executed. The probe-handler is a
+program written in an assembly-like language, based on the Reverse
+Polish Notation (rpn). Instructions are provided to enable the
+probe-handler to access the hardware registers, system data
+structures and memory.  The data may be collected and written to klog
+or traced using the Linux Trace Toolkit, depending on options
+available and / or specified.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Linux Trace Toolkit
+(ltt) is a suite of tools designed to extract program execution
+details from the Linux operating system and interpret them.
+Specifically, it enables its user to extract processor utilization
+and allocation information for a certain period of time.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Ltt can be used in
+conjunction with dprobes as the logging component for probe data
+captured.  It provides a visualizer component which allows for easy
+viewing of the data. 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">This website
+includes information on where to obtain more information on ltt and
+dprobes for zSeries (s/390) Linux, consolidated kernel patches for
+ease of installation, and examples of how to use dprobes and ltt
+together for application debugging.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B><FONT SIZE=4>Current
+Versions:</FONT></B> dprobes 3.6.3; ltt 0.9.5</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B><FONT SIZE=4>License:</FONT>
+</B>dprobes - GPL; ltt - GPL</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B><FONT SIZE=4>Author
+of S/390 patches:</FONT></B> Michael Grundy - dprobes;Theresa
+Halloran - ltt.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B><FONT SIZE=4>Status:</FONT></B>
+Seperate kernel patches for dprobes and ltt available at websites
+below. Special patches are linked to here for ease of installation
+and support with the SuSE SLES-7 2.4.7 Linux kernel. 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT SIZE=4><B>Obtaining
+and installing dprobes and ltt for zSeries (s/390) Linux:</B> 
+</FONT>Dprobes and ltt both require a patch to the Linux kernel, in
+addition to their other components.  Each package may be obtained
+seperately from the websites below.  As part of each package, a
+kernel patch is provided.  For ease of installation a set of well
+behaved kernel patches (no conflicts or reject  resolution necessary)
+are referenced here.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Dprobes home
+page:</B>
+http://oss.software.ibm.com/developer/opensource/linux/projects/dprobes/</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Linux Trace
+Toolkit home page:</B> http://www.opersys.com/LTT/</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Things you should
+download:</B></P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT SIZE=2 STYLE="font-size: 10pt"><B>LTT
+	0.9.5 package:</B>
+	</FONT><A HREF="http://www.opersys.com/ftp/pub/LTT/TraceToolkit-0.9.5a.tgz"><FONT SIZE=2 STYLE="font-size: 10pt">http://www.opersys.com/ftp/pub/LTT/TraceToolkit-0.9.5a.tgz</FONT></A></P>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT SIZE=2 STYLE="font-size: 10pt"><B>Dprobes
+	3.6.3 package:</B>
+	</FONT><A HREF="http://oss.software.ibm.com/developer/opensource/linux/projects/dprobes/releases/dprobes-v3.6.3.tar.gz"><FONT SIZE=2 STYLE="font-size: 10pt">http://oss.software.ibm.com/developer/opensource/linux/projects/dprobes/releases/dprobes-v3.6.3.tar.gz</FONT></A></P>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT SIZE=2 STYLE="font-size: 10pt"><B>LTT
+	2.4.7-SuSE patch:</B>
+	</FONT><A HREF="http://opersys.com/ftp/pub/LTT/ExtraPatches/patch-ltt-0.9.5-linux-2.4.7-SuSE.gz"><FONT SIZE=2 STYLE="font-size: 10pt">http://opersys.com/ftp/pub/LTT/ExtraPatches/patch-ltt-0.9.5-linux-2.4.7-SuSE.gz</FONT></A></P>
+</UL>
+<P STYLE="margin-left: 2cm; margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">The extra patches
+will apply to the SuSE 2.4.7 kernel without any conflicts.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Installing the
+kernel patches:</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">The following
+procedure for installing dprobes and ltt on a SuSE kernel (SLES 7.2)
+is provided:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-left: 2cm; margin-bottom: 0cm; line-height: 100%"><I><B>Note:
+We use a FTP install configuration, details will vary slightly for
+NFS or other install media</B></I></P>
+<P STYLE="margin-left: 2cm; margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Install the SuSE
+kernel source.</B> 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%">Bring up YAST
+	(you must be logged in as root)</P>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%">Go into Package
+	Management</P>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%">Enter userid
+	and password on FTP settings screen (FTP install only)</P>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%">Choose &quot;Change
+	or create configuration&quot;</P>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%">In the Series
+	selection panel, choose series <B>d</B> (Development)</P>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%">On the package
+	selection panel, choose Kernel-Source</P>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%">Hit F10 to
+	finish; if there are package dependencies, you may have to hit F10
+	again to resolve them.</P>
+	<LI><P STYLE="margin-bottom: 0cm; line-height: 100%">When you return
+	to the Installation menu, choose &quot;Start installation&quot;.</P>
+</UL>
+<P STYLE="margin-left: 2cm; margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-left: 2cm; margin-bottom: 0cm; line-height: 100%"><I><B>Note:
+We use a fairly simple build process working in /usr/src. We've put
+in some safegaurds for you in case things don't work out as planned.
+The instructions also take into account that SLES-7 shipped with some
+OCO modules (e.g. The OSA token ring driver) and attempt to avoid any
+kernel version problems. If you run into problems, and have followed
+the instructions carefully, the recovery instructions should be able
+to bail you out quickly.</B></I></P>
+<P STYLE="margin-left: 2cm; margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Before we start
+patching, configuring and building your new kernel, let's take a
+moment and back up some important files.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Change directories
+(cd) into /lib/modules.  You will see a directory: 2.4.7-SuSE-SMP.
+This contains all the loadable kernel modules.  Since we will be
+making and installing a new set of kernel modules, we should back
+this directory up.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Type:</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cp -a
+2.4.7-SuSE-SMP 2.4.7-SuSE-SMP.save</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+Now move over to /usr/src. Expand the Dprobes package by typing:</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+<B>tar xzf </B><A HREF="http://dprobes-v3.6.3.tar.gz/"><B>dprobes-v3.6.3.tar.gz</B></A></P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+This will create a <A HREF="http://dprobes-v3.6.3/">dprobes-v3.6.3</A>
+directory tree. Then expand the LTT patch by running:</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>gunzip
+patch-ltt-0.9.5-linux-2.4.7-SuSE.gz</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Go back to
+/usr/src/linux now. You can apply the DProbes/LTT patches by running<FONT COLOR="#000000">:</FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> <B>patch -p1 &lt;
+../dprobes-v3.6.3/patches/dprobes-v3.6-247-SuSE-core-1.patch</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B> patch -p1 &lt;
+../dprobes-v3.6.3/patches/dprobes-v3.6-247-SuSE-s390-1.patch</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> <B>patch -p1 &lt;
+../patch-ltt-0.9.5-linux-2.4.7-SuSE</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">The patches should
+lay down with no warnings on a stock SuSE 2.4.7 kernel.  If you have
+added any other patches, there may be some fuzz or offset warnings. 
+If you got any reject messages, the kernel won't build correctly in
+the current state.  Rejects can be caused by other patches being
+applied prior to this patch, usually they can be resolved quickly by
+viewing the source file and the rej file.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">After the patches
+have been applied you'll need to configure and build the kernel. SuSE</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">includes a nice
+little feature in their kernels: A copy of the running kernels
+configuration</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">in /proc/config.gz. 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><I>You may have a
+different configuration you wish to use, which is fine, just copy
+that </I>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><I>into the
+/usr/src/linux directory and skip over the steps where we create the
+config file.</I></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Change directories
+(cd) to /usr/src/linux. Create a copy of the current configuration by
+running</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> <B>gzip -dc
+/proc/config.gz &gt; .config</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Then this config
+file will need to be updated with the trace and dprobes options. 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B> make oldconfig</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">All the config
+options set in that file will scroll by, you will be stopped for two
+new options:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> <B>Kernel events
+tracing support (CONFIG_TRACE) [N/y/m/?] (NEW) y</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> ...</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B> IBM Dynamic
+Probes (CONFIG_DPROBES) [N/y/?] (NEW) y</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Answer <B>y</B> to
+both options.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">The next step is to
+run</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> <B>make dep</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Then:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> <B>make</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B> make modules</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">If you have made it
+this far without any errors, you are ready to install your new
+kernel. Let's</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">start by installing
+the modules by typing: 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"> <B>make
+modules_install</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Now we will actually
+install the kernel. SuSE has a nice layout that makes it easy to
+organize 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">different kernel
+versions/configurations. We're going to keep with that theme and do
+the following</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">(as root):</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cd /boot</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>mkdir k_dp-ltt</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cd k_dp-ltt</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cp
+/usr/src/linux/arch/s390/boot/image .</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cp
+/usr/src/linux/arch/s390/boot/*.boot .</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cp
+/usr/src/linux/System.map .</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cp
+/usr/src/linux/include/linux/autoconf.h .</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cp
+/usr/src/linux/include/linux/version.h .</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cp
+/usr/src/linux/.config .</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cd ..</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>rm kernel</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>ln -s k_dp-ltt
+kernel</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>zipl</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">That's it. IPL the
+system (init 6 is a nice way). You're original kernel will still be
+in the /boot/k_deflt directory if you need to recover or go back to
+your original setup. (Reverting to your original kernel is the same
+as recovering, except you won't have to boot up the installation
+kernel to do so).</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">If you're system
+didn't boot properly jump down to the recovery section, otherwise
+it's time to build the dprobes and ltt usermode programs. Detailed
+instructions are included with the dprobes and ltt distributions, but
+we'll give you a quick note to help you along. To make the dprobes
+command line utility must have flex and bison installed. To build the
+visualizer component of LTT you need to have the GTK development
+packages installed. <FONT COLOR="#000000">( Through YaST install glib
+packages, gnome-libs, and gnome-libs-devel).</FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>When kernel mods
+attack (How to recover)</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Boot off the SuSE
+installation kernel</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">If you are running
+under VM you can complete this task from the console and don't have
+to configure networking. Choose 0) No Network. If you are on an LPAR
+or can't stand to work from the console, configure networking and
+then telnet to your machine.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Install the dasd
+driver 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>modprobe dasd
+dasd=&lt;device number that contains root&gt;</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Mount the volume you
+are going to recover, you may want to run fsck on that device first</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>mount /dev/dasda1
+/mnt</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">chroot to the dasd
+you are recovering, helps keep things straight in the mind</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>chroot /mnt</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Go into the /boot
+directory and reset the kernel symlink to the stock kernel</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cd /boot</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>rm kernel</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>ln -s k_deflt
+kernel</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Then run zipl to set
+the dasd up for booting the stock kernel</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>zipl</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">break out of the
+chroot environment (on a 3270 connection type the caret character
+separately)</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>^d</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Then just make sure
+everything is written out to disk, unmount and halt.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>cd /</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>sync</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>umount /mnt</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>halt</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">You are now ready to
+ipl the system with the stock kernel back in place.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Installing
+dprobes (non-kernel portion):</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Download the dprobes
+distribution from: (you should already have done this) 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT SIZE=2 STYLE="font-size: 10pt">
+</FONT><A HREF="http://oss.software.ibm.com/developer/opensource/linux/projects/dprobes/releases/dprobes-v3.6.3.tar.gz"><FONT SIZE=2 STYLE="font-size: 10pt">http://oss.software.ibm.com/developer/opensource/linux/projects/dprobes/releases/dprobes-v3.6.3.tar.gz</FONT></A></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Unpack the tarball,
+and go to the <FONT COLOR="#000080"><FONT SIZE=3><U>dprobes-v3.6.3/cmd</U></FONT></FONT>
+directory. Just run <B>make</B> and <B>make install</B> to get the
+dprobes command line utility and man files installed. You may have to
+install yacc and bison, if they aren't already installed on your
+machine. 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">To test out your
+newly created dprobes command line interface you will need to get the
+drpobes modules installed and the dprobes device file created. All
+commands must be run as root. To install the dprobes module run:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>modprobe dp</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+To create the dprobes device file, issue the following commands:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">r<B>m -f
+/dev/dprobes</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>MAJOR=`cat
+/proc/devices | awk '$2==&quot;dprobes&quot; {print $1}'`</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>mknod
+/dev/dprobes c $MAJOR 0</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+Then you can do a basic test by issuing:</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>dprobes -q -a -x</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">It should return the
+message:  <B>No  information returned</B>.   Any other message will
+indicate a problem.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Installing ltt
+(non-kernel portion):</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Download the
+TraceToolkit-0.9.5.tgz from:
+<A HREF="http://www.opersys.com/LTT/downloads.html"><FONT SIZE=2 STYLE="font-size: 10pt">http://www.opersys.com/LTT/downloads.html</FONT></A></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">The installation
+instructions for ltt are on-line at:
+<FONT COLOR="#000080"><FONT SIZE=3><U><FONT SIZE=2 STYLE="font-size: 10pt">http://www.opersys.com/LTT/Help/ltt-installation.html</FONT></U></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">The instructions are
+very simple and are included here.  To install the user portion of
+ltt, after un-zipping and un-tarring the package, issue:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>./configure</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>make</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>make install</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT COLOR="#000000"><B>createdev.sh</B></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT SIZE=4><B>Running
+dprobes and ltt:</B></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Description: </B>To
+run dprobes and ltt together, the basic sequence of things is: 
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">- Issue ltt command
+to start tracing of custom type traces (which is what dprobes traces
+are).</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">- Insert the probe
+point you want to trace into the code.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">- Drive the scenario
+to hit the probe point and the trace will be collected.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">- Remove the probe.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">- Turn off ltt
+tracing. <FONT COLOR="#000000">( kill the tracedaemon ).</FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">- View / analyse
+trace record using ltt visualizer and / or data dump facility.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Examples:</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">To start the
+tracedaemon to collect dprobes traces issue:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>tracedaemon
+-eCSTM -eNEWEV /dev/tracer &lt;trace-filename&gt; &lt;proc-filename&gt;</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><I>Note:
+&lt;trace-filename&gt; and &lt;proc-filename&gt; are filenames of
+where you want to put the output from the ltt trace.  </I>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Creating a test
+probe point handler and inserting it into a usermode program:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">We'll start by
+creating a probepoint definition file. Using your favorite editor
+create a file named <B>utest.probe</B> and paste the following code
+into it:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>name
+= &quot;foofoo&quot;</B></FONT></FONT></P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>modtype
+= user</B></FONT></FONT></P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>major
+= 1 </B></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>jmpmax
+= 32 </B></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>logmax
+= 100</B></FONT></FONT></P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>offset
+= funky</B></FONT></FONT></P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>opcode
+= 0x90bf </B></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>minor
+= 1 </B></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>pass_count
+= 0 </B></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>max_hits
+= 1000 </B></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>push
+w, 0x7fffffff</B></FONT></FONT></P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>push
+r, pswaddr </B></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>and</B></FONT></FONT></P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>log
+u32, 0x01</B></FONT></FONT></P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>push
+r, pswmask </B></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>log
+u32, 0x01 </B></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>exit</B></FONT></FONT></P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">This test probe
+point is set to fire on the first instruction of the function
+<I>funky()</I>. We have to specify 16 bits of the opcode and operands
+so that dprobes can double check that we are inserting the probe
+where we expected. In this case we have 0x90bf, which is the first
+halfword of a RS instruction format (STAM 11,15,...). The probe point
+handler is defined in the last section of the file. In this example
+when the probepoint fires we will push the value 0x7fffffff onto the
+stack, push the psw address value onto the stack and then and the two
+values together (the result going back on to the stack). The psw
+address with the high order bit stripped off is then logged. The psw
+mask value is then retrieved and logged. Detailed information about
+the format of a probe point definition file can be found by typing:  
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>man dprobes.lang</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+Now we need to create our test program. Again using your editor of
+choice, create a file named foofoo.c and paste in the following code:</P>
+<P STYLE="margin-bottom: 0cm; font-weight: medium; line-height: 100%">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>#include&lt;stdio.h&gt;</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>void
+funky(int i);</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>main(void)</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>{</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       int i;</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       printf(&quot;main  0x%08x\n&quot;, &amp;main);</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       printf(&quot;funky 0x%08x\n&quot;, &amp;funky);</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       getchar();</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       for (i=0; i&lt;1; i++)</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+               funky(i);</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       printf(&quot;Halt for next run 0x%08x\n&quot;, &amp;funky);</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       printf(&quot;next instruction? 0x%08x\n&quot;, *((unsigned
+long *)&amp;funky));</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       getchar();</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       for (i=0; i&lt;1; i++)</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+               funky(i);</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       return 1;</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>}</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>void
+funky(int i)</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>{</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>
+       printf(&quot;int i=%d\n&quot;,i);</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT FACE="Courier, monospace"><FONT SIZE=2><B>}</B></FONT></FONT></P>
+<P STYLE="margin-left: 2.2cm; margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>foofoo.c</B> can
+be compiled as follows:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>gcc -o foofoo
+foofoo.c</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><I><B>Note that we
+haven't compiled with the -g option, this isn't necessary for dprobes
+like it is for other debuggers</B></I></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Now we can go ahead
+and insert the probe. The following command line specifies the probe
+point definition to compile and insert (-i). We've also specified
+some additional information to collect (-l): the user id, the process
+id and the PSW. The CPU number is collected by default. Then finally
+we are indicating that logged information will go to LTT. The default
+is to log to the kernel log.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>dprobes -i
+utest.probe -l UID PID PSW --log-target LTT</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">In this case,
+running program foofoo will drive the probe to hit (Well, actually
+when you hit enter after foofoo pauses). foofoo pauses after printing
+out a hex dump of the next instruction word, hitting enter allows it
+to continue to the point where the probe will fire.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Data is collected,
+so remove the probe:</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>dprobes -r -n
+foofoo</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Turn off ltt
+tracing: ps -A, kill the pid for the tracedaemon.</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><FONT COLOR="#000000"><B>tracevisualizer</B>
+brings up the gui; select trace and proc files.  Visualizer uses
+X-Windows so you must have an x-windows server on your PC and must
+set your DISPLAY variable. 	</FONT></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><B>Document Authors:</B></P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Mike Grundy</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Theresa Halloran</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%">Karin Laeben</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; line-height: 100%"><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P ALIGN=CENTER STYLE="margin-top: 0.5cm; margin-bottom: 0cm; line-height: 100%">
+	<FONT SIZE=2>Copyright &copy; International Business Machines Corp.,
+	2002</FONT></P>
+</DIV>
+</BODY>
+</HTML>

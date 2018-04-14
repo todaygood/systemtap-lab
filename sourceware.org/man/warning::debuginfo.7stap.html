@@ -1,0 +1,186 @@
+
+<HTML><HEAD><TITLE>Manpage of WARNING::DEBUGINFO</TITLE>
+</HEAD><BODY>
+<H1>WARNING::DEBUGINFO</H1>
+Section: Misc. Reference Manual Pages (7stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+warning::debuginfo - systemtap missing-debuginfo warnings
+<P>
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+For many symbolic probing operations, systemtap needs DWARF debuginfo for
+the relevant binaries.  This often includes resolving function/statement
+probes, or $context variables in related handlers.  DWARF debuginfo may
+be found in the original binaries built during compilation, or may have
+been split into separate files.  The
+<I>SYSTEMTAP_DEBUGINFO_PATH</I>
+
+environment variable affects where systemtap looks for these files.
+<P>
+
+If your operating system came from a distributor, check with them if
+debuginfo packages or variants are available.  If your distributor does
+not have debuginfo-equipped binaries at all, you may need to rebuild it.
+<P>
+
+Systemtap uses the 
+<I>elfutils</I>
+
+library to process ELF/DWARF files.  The version of elfutils used by systemtap
+is the number after the slash in the 
+<I>-V</I>
+
+output:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+% stap -V
+Systemtap translator/driver (version 2.3/0.156, rpm 2.3-1.fc19)
+Copyright (C) 2005-2014 Red Hat, Inc. and others
+[...]
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+This indicates systemtap version 2.3 with elfutils version 0.156.
+<P>
+<DL COMPACT>
+<DT>kernel debuginfo<DD>
+For scripts that target the kernel, systemtap may search for the
+<I>vmlinux</I>
+
+file created during its original build.  This is distinct from the
+boot-loader's compressed/stripped
+<I>vmlinuz</I>
+
+file, and much larger.  If you have a hand-built kernel, make sure
+it was built with the
+<I>CONFIG_DEBUG_INFO=y</I>
+
+option.  Some Linux distributions may include several kernel variants,
+including a confusingly named <I>kernel-debug</I> (an alternative kernel,
+with its own <I>kernel-debug-debuginfo</I> package), which is not the same
+thing as the <I>kernel-debuginfo</I> (DWARF data for the base <I>kernel</I>).
+The
+<I>stap-prep</I>
+
+program can help install the right set.
+<P>
+<DT>process debuginfo<DD>
+For scripts that target user-space, systemtap may search for debuginfo.
+If you have hand-built binaries, use
+<I>CFLAGS=-g -O2</I>
+
+to compile them.
+<P>
+<DT>minidebuginfo<DD>
+On some systems, binaries may be compiled with a subset of debuginfo
+useful for function tracing and backtraces.  This 'Minidebuginfo' is
+a xz compressed section labeled .gnu_debugdata.  Support for
+minidebuginfo relies on elfutils version 0.156 or later.
+<P>
+<DT>compressed debuginfo<DD>
+On some systems, debuginfo may be available, but compressed into
+<I>.zdebug_*</I>
+
+sections.  Support for compressed debuginfo relies on elfutils
+version 0.153 or later.
+<P>
+<DT>unnecessary debuginfo<DD>
+In some cases, a script may be altered to avoid requiring debuginfo.
+For example, as script that uses
+<I>probe syscall.*</I>
+
+probes could try instead
+<I>probe nd_syscall.*</I>
+
+(for non-DWARF syscall): these work similarly, and use more intricate
+(fragile) tapset functions to extract system call arguments.  Another
+option is use of compiled-in instrumentation such as kernel tracepoints
+or user-space
+<I>&lt;<A HREF="file:///usr/include/sys/sdt.h">sys/sdt.h</A>&gt;</I>
+
+markers in libraries or executables, which do not require debuginfo.
+If debuginfo was required for resolving a complicated
+<I>$var-&gt;foo-&gt;bar</I>
+
+expression, it may be possible to use
+<I>@cast(var,foo,foo.h)-&gt;foo-&gt;bar</I>
+
+to synthesize debuginfo for that type from a header file.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>AUTOMATION</H2>
+
+<P>
+On some platforms, systemtap may advise what commands to run, in order
+to download needed debuginfo.  Another possibility is to invoke systemtap
+with the
+<I>--download-debuginfo</I>
+
+flag.
+The
+<I>stap-prep</I>
+
+script included with systemtap may be able to download the
+appropriate kernel debuginfo.  Another possibility is to install and
+use a
+<I>stap-server</I>
+
+remote-compilation instance on a machine on your network, where
+debuginfo and compilation resources can be centralized.  Try the
+<I>stap --use-server</I>
+
+option, in case such a server is already running.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="stappaths.7.html">stappaths</A></I>(7),
+<I><A HREF="stap-server.8.html">stap-server</A></I>(8),
+<I><A HREF="stap-prep.1.html">stap-prep</A></I>(1),
+<I><A HREF="strip.1.html">strip</A></I>(1),
+<I><A HREF="./warning::symbols.7stap.html">warning::symbols</A></I>(7stap),
+<I><A HREF="./error::dwarf.7stap.html">error::dwarf</A></I>(7stap),
+<I><A HREF="./error::reporting.7stap.html">error::reporting</A></I>(7stap),
+<I><A HREF="./error::contextvars.7stap.html">error::contextvars</A></I>(7stap),
+<I><A HREF="http://fedorahosted.org/elfutils">http://fedorahosted.org/elfutils</A></I>,
+<I><A HREF="http://fedoraproject.org/wiki/Features/MiniDebugInfo">http://fedoraproject.org/wiki/Features/MiniDebugInfo</A></I>
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">AUTOMATION</A><DD>
+<DT><A HREF="#lbAE">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

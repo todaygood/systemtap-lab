@@ -1,0 +1,141 @@
+
+<HTML><HEAD><TITLE>Manpage of ERROR::PASS2</TITLE>
+</HEAD><BODY>
+<H1>ERROR::PASS2</H1>
+Section: Misc. Reference Manual Pages (7stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+error::pass2 - systemtap pass-2 errors
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Errors that occur during pass 2 (elaboration) can have a variety of causes.
+Common types include:
+<P>
+<DL COMPACT>
+<DT>unavailable probe point classes<DD>
+Some types of probe points are only available on certain system versions,
+architectures, and configurations.  For example, user-space 
+<I>process.*</I>
+
+probes may require utrace or uprobes capability in the kernel for this
+architecture.
+<P>
+<DT>unavailable probe points<DD>
+Some probe points may be individually unavailable even when their class is
+fine.  For example,
+<I>kprobe.function(foobar)</I>
+
+may fail if function
+<I>foobar</I>
+
+does not exist in the kernel any more.  Debugging or symbol data may be absent for
+some types of 
+<I>.function</I> or <I>.statement</I>
+
+probes; check for availability of debuginfo.  Try the
+<I>stap-prep</I>
+
+program to download possibly-required debuginfo.
+Use a wildcard parameter such as
+<I>stap -l 'kprobe.function(*foo*)'</I>
+
+to locate still-existing variants.  Use
+<I>!</I> or <I>?</I>
+
+probe point suffixes to denote optional / preferred-alternatives, to let
+the working parts of a script continue.
+<P>
+<DT>typos<DD>
+There might be a spelling error in the probe point name (&quot;sycsall&quot; vs.
+&quot;syscall&quot;).  Wildcard probes may not find a match at all in the
+tapsets.  Recheck the names using
+<I>stap -l PROBEPOINT</I>.
+
+Another common mistake is to use the
+<I>.</I>
+
+operator instead of the correct 
+<I>-&gt;</I>
+
+when dereferencing context variable subfields or pointers:
+<I>$foo-&gt;bar-&gt;baz</I>
+
+even if in C one would say
+<I>foo-&gt;bar.baz</I>.
+
+<P>
+<DT>unavailable context variables<DD>
+Systemtap scripts often wish to refer to variables from the context of the
+probed programs using
+<I>$variable</I>
+
+notation.  These variables may not always be available, depending on versions
+of the compiler, debugging/optimization flags used, architecture, etc.  Use
+<I>stap -L PROBEPOINT</I>
+
+to list available context variables for given probes.  Use the
+<I>@defined()</I>
+
+expression to test for the resolvability of a context variable expression.
+Consider using the
+<I>stap --skip-badvars</I>
+
+option to silently replace misbehaving context variable expressions with zero.
+<P>
+<DT>module cache inconsistencies<DD>
+Occasionally, the systemtap module cache ($HOME/.systemtap/cache) might 
+contain obsolete information from a prior system configuration/version,
+and produce false results as systemtap attempts to reuse it.  Retrying
+with
+<I>stap --poison-cache ...</I>
+
+forces new information to be generated.  
+<B>Note:</B>
+
+this should not happen and likely represents a systemtap bug.  Please
+report it.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>GATHERING MORE INFORMATION</H2>
+
+Increasing the verbosity of pass-2 with an option such as
+<I>--vp 02</I>
+
+can help pinpoint the problem.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="stap-prep.1.html">stap-prep</A></I>(1),
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap),
+<I>probe::*</I>(3stap),
+<I><A HREF="./error::dwarf.7stap.html">error::dwarf</A></I>(7stap),
+<I><A HREF="./error::inode-uprobes.7stap.html">error::inode-uprobes</A></I>(7stap),
+<I><A HREF="./warning::debuginfo.7stap.html">warning::debuginfo</A></I>(7stap),
+<I><A HREF="./error::reporting.7stap.html">error::reporting</A></I>(7stap)
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">GATHERING MORE INFORMATION</A><DD>
+<DT><A HREF="#lbAE">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

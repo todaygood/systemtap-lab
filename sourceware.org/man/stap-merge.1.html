@@ -1,0 +1,185 @@
+
+<HTML><HEAD><TITLE>Manpage of STAP-MERGE</TITLE>
+</HEAD><BODY>
+<H1>STAP-MERGE</H1>
+Section: User Commands  (1)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+stap-merge - systemtap per-cpu binary merger
+<P>
+
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<BR>
+
+<B>stap-merge</B>
+
+[
+<I>OPTIONS</I>
+
+]
+[
+<I>INPUT FILENAMES</I>
+
+]
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+The stap-merge executable applies when the -b option has been used 
+while running a 
+<I>stap</I>
+
+script.  The -b option will generate files 
+per-cpu, based on the timestamp field. Then stap-merge will 
+merge and sort through the per-cpu files based on the timestamp
+field.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<P>
+The systemtap merge executable supports the following options.
+<DL COMPACT>
+<DT><B>-v</B>
+
+<DD>
+Verbose mode, displays three extra fields per set of collected data.
+
+<BR>
+
+<P>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>[cpu</B>number,<B>sequence</B>number<B>of</B>data,<B>the</B>length<B>of</B>the<B>data</B>set]
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<DT><B>-o</B><I> OUTPUT_FILENAME</I>
+
+<DD>
+<P>
+Specify the name of the file you would like the output to be 
+redirected into.  If this option is not specified than the
+output will be pushed to standard out.
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+
+<BR>
+
+<P>
+
+<DL COMPACT><DT><DD>
+<PRE>
+$ stap -v -b -e 'probe syscall.open { printf(&quot;%s(%d) open\n&quot;,
+execname(), pid()) }' 
+
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+This should result in several
+<I>stpd_cpu</I>
+
+files (each labled with a number 
+representing which cpu the file was produced from).
+<P>
+
+<BR>
+
+<P>
+
+<DL COMPACT><DT><DD>
+<PRE>
+$ stap-merge -v stpd_cpu0 stpd_cpu1
+
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+Running the stap-merge program in the same directory as the stap 
+script earlier in the example, will produce an ordered sequence of 
+packets with the three part label for each set of data.  This
+result will be pushed through the standard output.  An output file 
+could have been specified using the &quot;-o&quot; option.
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>FILES</H2>
+
+<P>
+<DL COMPACT>
+<DT>Important files and their corresponding paths can be located in the <DD>
+stappaths (7) manual page.
+<P>
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap),
+<I><A HREF="stappaths.7.html">stappaths</A></I>(7),
+<I><A HREF="staprun.8.html">staprun</A></I>(8),
+<I><A HREF="stapvars.3stap.html">stapvars</A></I>(3stap),
+<I><A HREF="stapex.3stap.html">stapex</A></I>(3stap),
+<I><A HREF="stap-server.8.html">stap-server</A></I>(8),
+<I><A HREF="gdb.1.html">gdb</A></I>(1)
+
+</PRE><A NAME="lbAI">&nbsp;</A>
+<H2>BUGS</H2>
+
+Use the Bugzilla link of the project web page or our mailing list.
+
+<B><A HREF="http://sourceware.org/systemtap/">http://sourceware.org/systemtap/</A></B>,<B>&lt;<A HREF="mailto:systemtap@sourceware.org">systemtap@sourceware.org</A>&gt;</B>.
+
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">FILES</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+<DT><A HREF="#lbAI">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:44 GMT, October 09, 2015
+</BODY>
+</HTML>

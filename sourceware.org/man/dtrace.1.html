@@ -1,0 +1,202 @@
+
+<HTML><HEAD><TITLE>Manpage of DTRACE</TITLE>
+</HEAD><BODY>
+<H1>DTRACE</H1>
+Section: User Commands  (1)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+dtrace - Dtrace compatible user application static probe generation tool.
+<P>
+
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<BR>
+
+<B>dtrace -s </B><I>file</I> [<B>OPTIONS</B>]
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+The dtrace command converts probe descriptions defined in <I>file.d</I>
+into a probe header
+file via the <B>-h</B> option
+or a probe description file via the <B>-G</B> option.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<P>
+
+<DL COMPACT>
+<DT><B>-h</B>
+
+<DD>
+generate a systemtap header file.
+<P>
+<DT><B>-G</B>
+
+<DD>
+generate a systemtap probe definition object file.
+<P>
+<DT><B>-o </B><I>file</I>
+
+<DD>
+is the name of the output file.  If the <B>-G</B> option is given then
+the output file will be called <I>file.o</I>; if the <B>-h</B> option is
+given then the output file will be called <I>file.h</I>.
+<P>
+<DT><B>-C</B>
+
+<DD>
+run the cpp preprocessor on the input file when the <B>-h</B> option
+is given.
+<P>
+<DT><B>-I </B><I>file</I>
+
+<DD>
+give this include path to cpp when the <B>-C</B> option is given.
+<P>
+<DT><B>-k</B>
+
+<DD>
+keep temporary files, for example the C language source for the
+<B>-G</B> option.
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<P>
+Systemtap is source compatible with dtrace user application static
+probe support.
+Given a file <I>test.d</I> containing:
+
+<BR>
+
+<P>
+
+<DL COMPACT><DT><DD>
+<PRE>
+provider sdt_probes 
+{
+  probe test_0 (int type);
+  probe test_1 (struct astruct node);
+};
+struct astruct {int a; int b;};
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+Then the command <I>&quot;dtrace&nbsp;-s&nbsp;test.d&nbsp;-G&quot;</I> will create the
+probe definition file <I>test.o</I> and the command <I>&quot;dtrace&nbsp;-stest.d&nbsp;-h&quot;</I> will create the probe header file <I>test.h</I>
+Subsequently the application can use the generated macros this way:
+
+<BR>
+
+<P>
+
+<DL COMPACT><DT><DD>
+<PRE>
+#include &quot;test.h&quot;
+ ...
+struct astruct s;
+ ...
+SDT_PROBES_TEST_0(value);
+ ...
+if (SDT_PROBES_TEST_1_ENABLED())
+    SDT_PROBES_TEST_1(expensive_function(s));
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEMAPHORES</H2>
+
+<P>
+Semaphores are flag variables used by probes as a way of bypassing
+potentially costly processing to prepare arguments for probes that may
+not even be active.  They are automatically set/cleared by systemtap
+when a relevant script is running, so the argument setup cost is only
+paid when necessary.  These semaphore variables are defined within the
+the <I>&quot;test.o&quot;</I> object file, which must therefore be linked into an
+application.
+<P>
+
+Sometimes, semaphore variables are not necessary nor helpful.  Skipping
+them can simplify the build process, by omitting the extra <I>&quot;test.o&quot;</I>
+file.  To skip dependence upon semaphore variables, include <I>&quot;&lt;<A HREF="file:///usr/include/sys/sdt.h">sys/sdt.h</A>&gt;&quot;</I>
+within the application before <I>&quot;test.h&quot;</I>:
+
+<BR>
+
+<P>
+
+<DL COMPACT><DT><DD>
+<PRE>
+#include &lt;<A HREF="file:///usr/include/sys/sdt.h">sys/sdt.h</A>&gt;
+#include &quot;test.h&quot;
+ ...
+struct astruct s;
+ ...
+SDT_PROBES_TEST_0(value);
+ ...
+if (SDT_PROBES_TEST_1_ENABLED())
+   SDT_PROBES_TEST_1(cheap_function(s));
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+In this mode, the ENABLED() test is fixed at 1.
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="stappaths.7.html">stappaths</A></I>(7)
+
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">SEMAPHORES</A><DD>
+<DT><A HREF="#lbAH">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:44 GMT, October 09, 2015
+</BODY>
+</HTML>

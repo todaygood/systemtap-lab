@@ -1,0 +1,132 @@
+
+<HTML><HEAD><TITLE>Manpage of ERROR::PASS5</TITLE>
+</HEAD><BODY>
+<H1>ERROR::PASS5</H1>
+Section: Misc. Reference Manual Pages (7stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+error::pass5 - systemtap pass-5 errors
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Errors that occur during pass 5 (execution) can have a variety of causes.
+<P>
+<DL COMPACT>
+<DT>exceptional events during script execution<DD>
+The systemtap translator and runtime include numerous error checks
+that aim to protect the systems and the users from mistakes or
+transient conditions.  The script may deliberately call the
+<I>error()</I>
+
+tapset function to signal a problem.  Some memory needed for
+accessing
+<I>$context</I>
+
+variables may be temporarily unavailable.  Consider using the 
+<I>try</I>/<I>catch</I>
+
+construct to wrap script fragments in exception-handling code.
+Consider using the
+<I>stap --suppress-handler-errors</I>
+
+or
+<I>stap --skip-badvars</I>
+
+option.
+<P>
+<DT>resource exhaustion<DD>
+One of several types of space or time resource limits may be
+exceeded by the script, including system overload, too many tuples
+to be stored in an array, etc.  Some of the error messages identify
+the constraint by macro name, which may be individually raised.
+Consider using the 
+<I>stap --suppress-handler-errors</I>
+
+and/or
+<I>stap -g --suppress-time-limits</I>
+
+options.  Extend or disable individual resource limits using the
+<I>stap -DSOME_LIMIT=NNNN</I>
+
+option.
+
+<P>
+<DT>remote execution server problems<DD>
+If you use the 
+<I>stap --remote</I>
+
+option to direct a systemtap script to be executed somewhere else,
+ensure that an SSH connection may be made to the remote host, and
+that it has the current systemtap runtime installed &amp; available.
+<P>
+<DT>installation/permission problems<DD>
+It is possible that your installation of systemtap was not correctly
+installed.  For example, the
+<I>/usr/bin/staprun</I>
+
+program may lack the necessary setuid permissions, or your invoking
+userid might not have sufficient privileges (root, or
+<I>stapusr</I>
+
+and related group memberships).  Environment
+variables may interfere with locating
+<I>/usr/libexec/.../stapio</I>.
+
+<P>
+<DT>errors from target program<DD>
+The program invoked by the
+<I>stap -c CMD</I>
+
+option may exit with a non-zero code.
+<P>
+<DT>uncaught exceptions in the target program<DD>
+When using
+<I>--runtime=dyninst</I>
+
+you may encounter an issue where the target program aborts with a
+message like &quot;terminate called after throwing an instance
+of 'foo_exception'&quot;.  This is unfortunately a limitation of Dyninst,
+which sometimes prevents exceptions from properly unwinding through
+instrumented code.
+<P>
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>GATHERING MORE INFORMATION</H2>
+
+Increasing the verbosity of pass-5
+with an option such as
+<I>--vp 00001</I>
+
+can help pinpoint the problem.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1),
+<I><A HREF="http://sourceware.org/systemtap/wiki/TipExhaustedResourceErrors">http://sourceware.org/systemtap/wiki/TipExhaustedResourceErrors</A></I>,
+<I><A HREF="./error::fault.7stap.html">error::fault</A></I>(7stap),
+<I><A HREF="./error::reporting.7stap.html">error::reporting</A></I>(7stap)
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">GATHERING MORE INFORMATION</A><DD>
+<DT><A HREF="#lbAE">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

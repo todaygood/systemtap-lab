@@ -1,0 +1,91 @@
+
+<HTML><HEAD><TITLE>Manpage of FUNCTION::PRINT_STAC</TITLE>
+</HEAD><BODY>
+<H1>FUNCTION::PRINT_STAC</H1>
+Section: Context Functions (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+function::print_stack - Print out kernel stack from string
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+    print_stack(stk:string)
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>ARGUMENTS</H2>
+
+<P>
+
+<I>stk</I>
+<DL COMPACT><DT><DD>
+String with list of hexadecimal addresses
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+This function performs a symbolic lookup of the addresses in the given string, which is assumed to be the result of a prior call to
+<B>backtrace</B>.
+<P>
+
+Print one line per address, including the address, the name of the function containing the address, and an estimate of its position within that function. Return nothing.
+<A NAME="lbAF">&nbsp;</A>
+<H2>NOTE</H2>
+
+<P>
+
+it is recommended to use
+<B>print_syms</B>
+instead of this function.
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::context-symbols.3stap.html">tapset::context-symbols</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">ARGUMENTS</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">NOTE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:44 GMT, October 09, 2015
+</BODY>
+</HTML>

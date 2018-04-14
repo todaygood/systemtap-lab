@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title xmlns:d="http://docbook.org/ns/docbook">6.2. Runtime Errors and Warnings</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css" /><link rel="stylesheet" media="print" href="Common_Content/css/print.css" type="text/css" /><meta xmlns:d="http://docbook.org/ns/docbook" name="generator" content="not publican" /><meta xmlns:d="http://docbook.org/ns/docbook" name="package" content="" /><link rel="home" href="index.html" title="SystemTap Beginners Guide" /><link rel="up" href="errors.html" title="Chapter 6. Understanding SystemTap Errors" /><link rel="prev" href="errors.html" title="Chapter 6. Understanding SystemTap Errors" /><link rel="next" href="references.html" title="Chapter 7. References" /></head><body><p id="title"></p><ul class="docnav top"><li class="previous"><a accesskey="p" href="errors.html"><strong>Prev</strong></a></li><li class="home">SystemTap Beginners Guide</li><li class="next"><a accesskey="n" href="references.html"><strong>Next</strong></a></li></ul><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="runtimeerror">
+      ⁠</a>6.2. Runtime Errors and Warnings</h2></div></div></div><a id="idm47006124085520" class="indexterm"></a><a id="idm47006125037312" class="indexterm"></a><a id="idm47006125035808" class="indexterm"></a><div class="para">
+		Runtime errors and warnings occur when the SystemTap
+		instrumentation has been installed and is collecting data on
+		the system.
+	</div><h3><a id="idm47006125033616">
+      ⁠</a>WARNING: Number of errors: <em class="replaceable">N</em>, skipped probes: <em class="replaceable">M</em></h3><a id="idm47006127434816" class="indexterm"></a><a id="idm47006127432832" class="indexterm"></a><a id="idm47006127430752" class="indexterm"></a><a id="idm47006125056272" class="indexterm"></a><div class="para">
+	Errors and/or skipped probes occurred during this run. Both
+	<em class="replaceable">N</em> and <em class="replaceable">M</em> are
+	the counts of the number of probes that were not executed due to
+	conditions such as too much time required to execute event handlers over
+	an interval of time.
+</div><h3><a id="idm47006125052720">
+      ⁠</a>division by 0</h3><a id="idm47006122708976" class="indexterm"></a><a id="idm47006122706896" class="indexterm"></a><a id="idm47006122704832" class="indexterm"></a><a id="idm47006127256096" class="indexterm"></a><a id="idm47006127254016" class="indexterm"></a><div class="para">
+	The script code performed an invalid division.
+</div><h3><a id="idm47006121774832">
+      ⁠</a>aggregate element not found</h3><a id="idm47006121773808" class="indexterm"></a><a id="idm47006121771712" class="indexterm"></a><a id="idm47006125211968" class="indexterm"></a><a id="idm47006125209872" class="indexterm"></a><div class="para">
+	A statistics extractor function other than <code class="command">@count</code>
+	was invoked on an aggregate that has not had any values accumulated yet.
+	This is similar to a division by zero.
+</div><h3><a id="idm47006126105856">
+      ⁠</a>aggregation overflow</h3><a id="idm47006126104848" class="indexterm"></a><a id="idm47006126102768" class="indexterm"></a><a id="idm47006129857776" class="indexterm"></a><a id="idm47006129855696" class="indexterm"></a><a id="idm47006129853616" class="indexterm"></a><div class="para">
+An array containing aggregate values contains too many distinct key pairs at this time.
+</div><h3><a id="idm47006123079392">
+      ⁠</a>MAXNESTING exceeded</h3><a id="idm47006123078672" class="indexterm"></a><a id="idm47006124083104" class="indexterm"></a><a id="idm47006124081040" class="indexterm"></a><a id="idm47006124078960" class="indexterm"></a><a id="idm47006120861584" class="indexterm"></a><div class="para">
+	Too many levels of function call nesting were attempted.
+	The default nesting of function calls allowed is 10.
+</div><h3><a id="idm47006120858960">
+      ⁠</a>MAXACTION exceeded</h3><a id="idm47006120857952" class="indexterm"></a><a id="idm47006119568448" class="indexterm"></a><a id="idm47006119566384" class="indexterm"></a><a id="idm47006122754944" class="indexterm"></a><a id="idm47006122752864" class="indexterm"></a><div class="para">
+	The probe handler attempted to execute too many statements in the
+	probe handler. The default number of actions allowed in a probe handler
+	is 1000.
+</div><h3><a id="idm47006122750208">
+      ⁠</a>kernel/user string copy fault at <em class="replaceable">ADDR</em></h3><a id="idm47006119155440" class="indexterm"></a><a id="idm47006119153360" class="indexterm"></a><a id="idm47006127055392" class="indexterm"></a><a id="idm47006127053424" class="indexterm"></a><div class="para">
+	The probe handler attempted to copy a string from kernel or
+	user space at an invalid address (<em class="replaceable">ADDR</em>).
+</div><h3><a id="idm47006127050368">
+      ⁠</a>pointer dereference fault</h3><a id="idm47006126320944" class="indexterm"></a><a id="idm47006126318960" class="indexterm"></a><a id="idm47006126316880" class="indexterm"></a><a id="idm47006119500896" class="indexterm"></a><div class="para">
+	There was a fault encountered during a pointer
+	dereference operation such as a target variable evaluation.
+</div></div><ul class="docnav"><li class="previous"><a accesskey="p" href="errors.html"><strong>Prev</strong>Chapter 6. Understanding SystemTap Errors</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="references.html"><strong>Next</strong>Chapter 7. References</a></li></ul></body></html>

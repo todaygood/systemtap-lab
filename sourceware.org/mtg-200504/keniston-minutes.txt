@@ -1,0 +1,124 @@
+SystemTap Meeting 4/20/05 at Intel, Santa Clara, CA
+Minutes of afternoon session
+
+Participants:
+Intel: Brad, Charles, Sri, Sri, Rohit, Douglas, Josh, Rusty, Anil
+Red Hat: Ulrich, Frank, Mielke (?), Martin, Will, Roland, Karen, Elena,
+	Andrew
+IBM: Vara, Hien, Jim
+(See Brad's morning minutes.  He may have a more reliable list.)
+
+Actions Required (ARs):
+All: Post presentation slides to systemtap@sources.redhat.com.
+
+Jim: Finish updating the Language Reference section of systemtap.tex.
+
+Martin: Update the Kernel-to-user Transport section.
+
+Frank: Update the Tapsets section of systemtap.tex.
+
+Jim: Write the Kprobes sections of systemtap.tex.
+
+Elena: Post her notes from the task-list review.
+
+What is a Tapset?
+Vara initiated a discussion on this.  He presented requirements he
+collected from "end users" (script writers and users) and potential
+tapset authors.  See his slides, to be posted to the mailing list.
+
+There was some discussion about the terms "synchronous" (meaning probes
+that are set at instruction addresses) and "asynchronous" (meaning
+everything else).  It was pointed out that so-called asynchronous
+events could be watchpoints (data-address breakpoints), timer events,
+or counter-based events (e.g., every 4000 TLB misses).
+
+There was much discussion on what constitutes a tapset, but there was
+little agreement on concrete details.
+
+- Is a tapset analogous to a Dtrace provider?  Yes, said Vara.  It was
+suggested that the Dtrace provider API may not be a good model for
+SystemTap.
+
+- Does a tapset map to a Linux module?  Maybe not, said Frank.
+
+- Does a tapset export named values (including values in the context of
+the probepoint) to scripts?  Yes.
+
+- Are tapsets and scripts written in the same language?  Yes, if
+you grant that the systemtap language requires underlying C runtime
+support.
+
+There was much speculation about whether and how tapsets will be
+accepted (and maintained?) by kernel maintainers.  Vara feels that
+this is essential, but several people opined that this is unrealistic,
+at least in the near term.
+
+The Systemtap Language
+Frank described the systemtap language as similar to awk and the dtrace
+scripting language.  Awk features that aren't in systemtap were deemed
+unnecessary and/or irrelevant.
+
+The intent is to keep the language as simple as possible without
+keeping it too weak to be useful in writing tapsets.  The language
+users span a spectrum of sophistication from tapset authors to
+users of canned scripts.
+
+Expert handlers can refer to variables in the probed context using $
+notation.  E.g., $fd might refer to an arg or local variable in the
+context of the probed function.  Expressions using ., ->, [], and
+the usual awk operators will be supported.  Beyond this, there is no
+Frank-approved mechanism for dropping into C to accomplish what can't
+be done in systemtap (e.g., acquiring and releasing locks, or traversing
+a linked list).
+
+How much of the time will the tapset writer need to drop into C?
+10%?  80%  Isn't even 10% too much if there's no way to do it?  Frank
+hasn't been convinced that the number isn't 0%.
+
+Is there a requirement to support any meaningful C expression
+cut-and-pasted from kernel code?  No, says Frank.  Jim had proposed
+this, pointing out that the needed expression-parsing support could
+be imported from gdb, as dpcc did.  The compromise was to make the
+systemtap parser smart enough (TBD) to handle what's really needed.
+
+Why is Frank reluctant to define a C-interface API for systemtap?
+He would consider (more) suggestions for what this would look like.
+Wouldn't it be better to define it now rather than later?  Maybe
+not.  Frank's preferred approach is to gather requirements from
+prospective tapset authors (e.g., using the tapset/script template
+he posted 4/15/05) and implement only what's plainly needed.
+
+Have we considered running SystemTap scripts in an interpreter
+-- like dtrace and dprobes?  Yes, we have.
+
+Frank will be checking in some updates in the next few days.
+
+Architecture/Design Document
+We discussed updates to archpaper/systemtap.tex.
+
+Jim has added the Language Reference section.  He needs to incorporate
+some clarifications from Frank.  What about adding...
+- $ notation for variables in the probed context?  Yes.
+- Jim's proposed syntax for exporting values to client scripts?  Not
+yet.
+
+Brad has updated the Safety section.  He has no plans to beef up
+the Security section.  It was suggested that we document hypothetical
+security restrictions/provisions.  There was some discussion regarding
+flexibility beyond the root=yes/non-root=no policy -- e.g., to allow
+non-root users to instrument their own programs, or to allow a hacker
+mode for stuff like fault injection.
+
+Martin won't update the Runtime Library section because the
+documentation
+for this is in CVS.
+
+Martin will update the Kernel-to-user Transport section.
+
+Frank will update the Tapsets section.
+
+Jim will write the Kprobes sections now that multi-probes seem to
+have settled down.
+
+Task List Review
+Elena led a review of the task list, and will post the results.

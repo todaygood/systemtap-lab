@@ -1,0 +1,302 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::memory</TITLE>
+</HEAD><BODY>
+<H1>tapset::memory</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::memory - systemtap memory tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;This&nbsp;family&nbsp;of&nbsp;probe&nbsp;points&nbsp;is&nbsp;used&nbsp;to&nbsp;probe&nbsp;memory-related&nbsp;events.&nbsp;
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>vm_fault_contains </B>
+
+<DD>
+Test return value for page fault reason
+<DT><DD>
+See 
+<I><A HREF="./function::vm_fault_contains.3stap.html">function::vm_fault_contains</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.pagefault </B>
+
+<DD>
+Records that a page fault occurred
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.pagefault.3stap.html">probe::vm.pagefault</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.pagefault.return </B>
+
+<DD>
+Indicates what type of fault occurred
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.pagefault.return.3stap.html">probe::vm.pagefault.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>addr_to_node </B>
+
+<DD>
+Returns which node a given address belongs to within a NUMA system
+<DT><DD>
+See 
+<I><A HREF="./function::addr_to_node.3stap.html">function::addr_to_node</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.write_shared </B>
+
+<DD>
+Attempts at writing to a shared page
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.write_shared.3stap.html">probe::vm.write_shared</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.write_shared_copy </B>
+
+<DD>
+Page copy for shared page write
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.write_shared_copy.3stap.html">probe::vm.write_shared_copy</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.mmap </B>
+
+<DD>
+Fires when an mmap is requested
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.mmap.3stap.html">probe::vm.mmap</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.munmap </B>
+
+<DD>
+Fires when an munmap is requested
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.munmap.3stap.html">probe::vm.munmap</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.brk </B>
+
+<DD>
+Fires when a brk is requested (i.e. the heap will be resized)
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.brk.3stap.html">probe::vm.brk</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.oom_kill </B>
+
+<DD>
+Fires when a thread is selected for termination by the OOM killer
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.oom_kill.3stap.html">probe::vm.oom_kill</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.kmalloc </B>
+
+<DD>
+Fires when kmalloc is requested
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.kmalloc.3stap.html">probe::vm.kmalloc</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.kmem_cache_alloc </B>
+
+<DD>
+Fires when kmem_cache_alloc is requested
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.kmem_cache_alloc.3stap.html">probe::vm.kmem_cache_alloc</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.kmalloc_node </B>
+
+<DD>
+Fires when kmalloc_node is requested
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.kmalloc_node.3stap.html">probe::vm.kmalloc_node</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.kmem_cache_alloc_node </B>
+
+<DD>
+Fires when kmem_cache_alloc_node is requested
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.kmem_cache_alloc_node.3stap.html">probe::vm.kmem_cache_alloc_node</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.kfree </B>
+
+<DD>
+Fires when kfree is requested
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.kfree.3stap.html">probe::vm.kfree</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>vm.kmem_cache_free </B>
+
+<DD>
+Fires when kmem_cache_free is requested
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::vm.kmem_cache_free.3stap.html">probe::vm.kmem_cache_free</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::vm_fault_contains.3stap.html">function::vm_fault_contains</A></I>(3stap),
+
+
+<I><A HREF="./function::addr_to_node.3stap.html">function::addr_to_node</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.pagefault.3stap.html">probe::vm.pagefault</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.pagefault.return.3stap.html">probe::vm.pagefault.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.write_shared.3stap.html">probe::vm.write_shared</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.write_shared_copy.3stap.html">probe::vm.write_shared_copy</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.mmap.3stap.html">probe::vm.mmap</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.munmap.3stap.html">probe::vm.munmap</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.brk.3stap.html">probe::vm.brk</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.oom_kill.3stap.html">probe::vm.oom_kill</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.kmalloc.3stap.html">probe::vm.kmalloc</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.kmem_cache_alloc.3stap.html">probe::vm.kmem_cache_alloc</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.kmalloc_node.3stap.html">probe::vm.kmalloc_node</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.kmem_cache_alloc_node.3stap.html">probe::vm.kmem_cache_alloc_node</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.kfree.3stap.html">probe::vm.kfree</A></I>(3stap),
+
+
+<I><A HREF="./probe::vm.kmem_cache_free.3stap.html">probe::vm.kmem_cache_free</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

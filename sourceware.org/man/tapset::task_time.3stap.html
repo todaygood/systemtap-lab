@@ -1,0 +1,262 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::task_time</TITLE>
+</HEAD><BODY>
+<H1>tapset::task_time</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::task_time - systemtap task_time tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;Task&nbsp;time&nbsp;query&nbsp;and&nbsp;utility&nbsp;functions&nbsp;provide&nbsp;information&nbsp;about
+<BR>&nbsp;the&nbsp;time&nbsp;resource&nbsp;usage&nbsp;of&nbsp;the&nbsp;current&nbsp;task.&nbsp;These&nbsp;functions&nbsp;provide
+<BR>&nbsp;information&nbsp;about&nbsp;the&nbsp;user&nbsp;time&nbsp;and&nbsp;system&nbsp;time&nbsp;of&nbsp;the&nbsp;current
+<BR>&nbsp;task.&nbsp;And&nbsp;provide&nbsp;utility&nbsp;functions&nbsp;to&nbsp;turn&nbsp;the&nbsp;reported&nbsp;times
+<BR>&nbsp;into&nbsp;miliseconds&nbsp;and&nbsp;create&nbsp;human&nbsp;readable&nbsp;string&nbsp;representations
+<BR>&nbsp;of&nbsp;task&nbsp;time&nbsp;used.&nbsp;The&nbsp;reported&nbsp;times&nbsp;are&nbsp;approximates&nbsp;and&nbsp;should
+<BR>&nbsp;be&nbsp;used&nbsp;for&nbsp;&quot;coarse&nbsp;grained&quot;&nbsp;measurements&nbsp;only.&nbsp;The&nbsp;reported&nbsp;user
+<BR>&nbsp;and&nbsp;system&nbsp;time&nbsp;are&nbsp;only&nbsp;for&nbsp;the&nbsp;current&nbsp;task,&nbsp;not&nbsp;for&nbsp;the&nbsp;process
+<BR>&nbsp;as&nbsp;a&nbsp;whole&nbsp;nor&nbsp;of&nbsp;any&nbsp;time&nbsp;spend&nbsp;by&nbsp;children&nbsp;of&nbsp;the&nbsp;current&nbsp;task.
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>task_utime </B>
+
+<DD>
+User time of the current task
+<DT><DD>
+See 
+<I><A HREF="./function::task_utime.3stap.html">function::task_utime</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_utime_tid </B>
+
+<DD>
+User time of the given task
+<DT><DD>
+See 
+<I><A HREF="./function::task_utime_tid.3stap.html">function::task_utime_tid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_stime </B>
+
+<DD>
+System time of the current task
+<DT><DD>
+See 
+<I><A HREF="./function::task_stime.3stap.html">function::task_stime</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_stime_tid </B>
+
+<DD>
+System time of the given task
+<DT><DD>
+See 
+<I><A HREF="./function::task_stime_tid.3stap.html">function::task_stime_tid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_start_time </B>
+
+<DD>
+Start time of the given task
+<DT><DD>
+See 
+<I><A HREF="./function::task_start_time.3stap.html">function::task_start_time</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>cputime_to_msecs </B>
+
+<DD>
+Translates the given cputime into milliseconds
+<DT><DD>
+See 
+<I><A HREF="./function::cputime_to_msecs.3stap.html">function::cputime_to_msecs</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>cputime_to_usecs </B>
+
+<DD>
+Translates the given cputime into microseconds
+<DT><DD>
+See 
+<I><A HREF="./function::cputime_to_usecs.3stap.html">function::cputime_to_usecs</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>msecs_to_string </B>
+
+<DD>
+Human readable string for given milliseconds
+<DT><DD>
+See 
+<I><A HREF="./function::msecs_to_string.3stap.html">function::msecs_to_string</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>usecs_to_string </B>
+
+<DD>
+Human readable string for given microseconds
+<DT><DD>
+See 
+<I><A HREF="./function::usecs_to_string.3stap.html">function::usecs_to_string</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>nsecs_to_string </B>
+
+<DD>
+Human readable string for given nanoseconds
+<DT><DD>
+See 
+<I><A HREF="./function::nsecs_to_string.3stap.html">function::nsecs_to_string</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>cputime_to_string </B>
+
+<DD>
+Human readable string for given cputime
+<DT><DD>
+See 
+<I><A HREF="./function::cputime_to_string.3stap.html">function::cputime_to_string</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_time_string </B>
+
+<DD>
+Human readable string of task time usage
+<DT><DD>
+See 
+<I><A HREF="./function::task_time_string.3stap.html">function::task_time_string</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>task_time_string_tid </B>
+
+<DD>
+Human readable string of task time usage
+<DT><DD>
+See 
+<I><A HREF="./function::task_time_string_tid.3stap.html">function::task_time_string_tid</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./function::task_utime.3stap.html">function::task_utime</A></I>(3stap),
+
+
+<I><A HREF="./function::task_utime_tid.3stap.html">function::task_utime_tid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_stime.3stap.html">function::task_stime</A></I>(3stap),
+
+
+<I><A HREF="./function::task_stime_tid.3stap.html">function::task_stime_tid</A></I>(3stap),
+
+
+<I><A HREF="./function::task_start_time.3stap.html">function::task_start_time</A></I>(3stap),
+
+
+<I><A HREF="./function::cputime_to_msecs.3stap.html">function::cputime_to_msecs</A></I>(3stap),
+
+
+<I><A HREF="./function::cputime_to_usecs.3stap.html">function::cputime_to_usecs</A></I>(3stap),
+
+
+<I><A HREF="./function::msecs_to_string.3stap.html">function::msecs_to_string</A></I>(3stap),
+
+
+<I><A HREF="./function::usecs_to_string.3stap.html">function::usecs_to_string</A></I>(3stap),
+
+
+<I><A HREF="./function::nsecs_to_string.3stap.html">function::nsecs_to_string</A></I>(3stap),
+
+
+<I><A HREF="./function::cputime_to_string.3stap.html">function::cputime_to_string</A></I>(3stap),
+
+
+<I><A HREF="./function::task_time_string.3stap.html">function::task_time_string</A></I>(3stap),
+
+
+<I><A HREF="./function::task_time_string_tid.3stap.html">function::task_time_string_tid</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

@@ -1,0 +1,785 @@
+
+<HTML><HEAD><TITLE>Manpage of SYSTEMTAP</TITLE>
+</HEAD><BODY>
+<H1>SYSTEMTAP</H1>
+Section: Maintenance Commands (8)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+systemtap - SystemTap initscript service
+<P>
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>service systemtap</B>
+
+<I>COMMAND</I> [<I>OPTIONS</I>] [<I>SCRIPT</I>...]
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The SystemTap initscript aims to provide a way to run scripts as a service and
+easily control them individually. Scripts can be configured to start upon manual
+request, or during system startup. On dracut-based systems, it is also possible
+to integrate scripts in the initramfs and have them start during early-boot.
+<P>
+There are various parameters and options available to modify global behaviour,
+as well as script behaviour. Dependencies between scripts can be established so
+that starting one starts others (especially convenient when using the
+-DRELAY_HOST and -DRELAY_GUEST options of <I><A HREF="stap.1.html">stap</A></I>(1)).
+<P>
+The configuration file of the initscript is located at
+<B>${prefix}/etc/systemtap/config</B>. Acceptable parameters are detailed in the
+GLOBAL PARAMETERS section.
+<P>
+Scripts must be placed in the <B>${prefix}/etc/systemtap/script.d</B> directory
+and must have a <B>.stp</B> extension. When referring to them on the
+command-line however, there in no need to include the <B>.stp</B> extension.
+Script names can only contain alphanumeric characters (and '_') and must not
+start with a number. The scripts directory may be changed by setting the
+SCRIPT_PATH parameter in the configuration file.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>COMMANDS</H2>
+
+One of the commands below must be specified:
+<P>
+<DL COMPACT>
+<DT><B>start</B>
+
+<DD>
+Start <I>SCRIPT</I>s. If no scripts are specified, start the scripts specified by
+the DEFAULT_START configuration. If DEFAULT_START is not set, start all scripts
+in the script directory. For scripts already started, the command is ignored.
+The command will fail if the scripts fail to start (see also the PASSALL
+configuration).
+<P>
+If the AUTOCOMPILE configuration is on, the command will try to compile or
+update the specified scripts when one of the below conditions is true:
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<DT>-<DD>
+The compiled cache file does not exist.
+<DT>-<DD>
+The mtime (modified timestamp) of the original script file is newer than the
+time of the compiled script cache.
+<DT>-<DD>
+The specified stap options used to compile the script has been changed (see
+also the SCRIPT PARAMETERS section).
+<DT>-<DD>
+The result of `uname -a` has been changed.
+</DL>
+</DL>
+
+<P>
+<DT><B>stop</B>
+
+<DD>
+Stop <I>SCRIPT</I>s. If no scripts are specified, stop all running scripts. For
+scripts already stopped, the command is ignored. The command will fail if the
+scripts fail to stop (see also the PASSALL configuration).
+<P>
+<DT><B>restart</B>
+
+<DD>
+Stop and start <I>SCRIPT</I>s.
+<P>
+<DT><B>status</B>
+
+<DD>
+Show the state of <I>SCRIPT</I>s and their dependencies.
+<P>
+<DT><B>compile</B>
+
+<DD>
+Compile <I>SCRIPT</I>s but do not start them. If the scripts have already been
+compiled, prompt for confirmation before overwriting cache. Compile for the
+current kernel, or the kernel release specified by the <B>-r</B> option.
+<P>
+<DT><B>onboot</B>
+
+<DD>
+Make <I>SCRIPT</I>s part of the initramfs so that they are started earlier during
+the boot process. This command is only available on dracut-based systems. If no
+scripts are specified, create a normal initramfs devoid of any SystemTap files.
+<P>
+The initramfs is created for the current kernel, or the kernel release specified
+by the <B>-r</B> option. The path of the created initramfs defaults to
+<B>/boot/initramfs-KVER.img</B>, where KVER is the output of `uname -r`. The
+bootloader is also updated (using <I><A HREF="new-kernel-pkg.8.html">new-kernel-pkg</A></I>(8)) to make the kernel
+entry use the new initramfs file. Use the <B>-o</B> option to specify a different
+path (the bootloader will not be updated).
+<P>
+If the output file already exists, it is overwritten, unless the <B>-b</B> switch
+is given, in which case the file is appended <B>.bak</B> rather than overwritten.
+However, if there is already a <B>.bak</B> version of the file, the backup will
+not be overwritten.
+<P>
+WARNING: do not use the <B>-o</B> option of <I><A HREF="stap.1.html">stap</A></I>(1) with onboot scripts
+because the script is started before the root filesystem is even mounted.
+Increase the buffer size if more space is needed.
+<P>
+<DT><B>cleanup</B>
+
+<DD>
+Delete the compiled <I>SCRIPT</I>s from cache. If no scripts are specified, then
+all compiled scripts are deleted. Only the cache for the current kernel is
+deleted, or the kernel release specified by the <B>-r</B> option. Prompt for
+confirmation before deleting.
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+Many of the commands can also take options. However, since users can't pass
+these options on boot, they are only meant for managing scripts after boot and
+for testing. Available options are:
+<P>
+<DL COMPACT>
+<DT><B>-c </B><I>CONFIG_FILE</I>
+
+<DD>
+Specify a different configuration file in place of the default one.
+<P>
+<DT><B>-R</B>
+
+<DD>
+When using the <B>start</B> and <B>stop</B> commands, also include the scripts'
+dependencies (recursively).
+<P>
+<DT><B>-r </B><I>KERNEL_RELEASE</I>
+
+<DD>
+When using the <B>compile</B>, <B>onboot</B>, and <B>cleanup</B> commands, specify
+the target kernel version rather than using the current one. Must be in the same
+format as `uname -r`.
+<P>
+<DT><B>-y</B>
+
+<DD>
+Answer yes for all prompts.
+<P>
+<DT><B>-o </B><I>PATH.IMG</I>
+
+<DD>
+When using the <B>onboot</B> command, specify the output path of the created
+initramfs. When specified, the bootloader configuration is not updated.
+<P>
+<DT><B>-b</B>
+
+<DD>
+When using the <B>onboot</B> command, backup an existing initramfs image by
+adding a <B>.bak</B> extension rather than overwriting it. Without this option,
+the initramfs is overwritten.
+<P>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>GLOBAL PARAMETERS</H2>
+
+These parameters affect the general behaviour of the SystemTap initscript
+service. They can be specified in the configuration file.
+<P>
+<DL COMPACT>
+<DT><B>SCRIPT_PATH</B>
+
+<DD>
+Specify the absolute path of the script directory. These are the scripts on
+which the initscript can operate. Scripts must have the <B>.stp</B> extension.
+The default path is <B>${prefix}/etc/systemtap/script.d</B>.
+<P>
+<DT><B>CONFIG_PATH</B>
+
+<DD>
+Specify the absolute path of the script configuration directory. These
+configuration files contain options for specific scripts. They must have the
+<B>.conf</B> extension. The default path is <B>${prefix}/etc/systemtap/conf.d</B>.
+<P>
+<DT><B>CACHE_PATH</B>
+
+<DD>
+Specify the absolute path of the cache directory. The default path is
+<B>${prefix}/var/cache/systemtap</B>.
+<P>
+<DT><B>TEMP_PATH</B>
+
+<DD>
+Specify the absolute path of the temporary directory in which SystemTap
+makes temporary directories to compile scripts. The default path is <B>/tmp</B>.
+<P>
+<DT><B>STAT_PATH</B>
+
+<DD>
+Specify the absolute path of the directory containing PID files used to track
+the status of SystemTap scripts. The default path is
+<B>${prefix}/var/run/systemtap</B>.
+<P>
+<DT><B>LOG_FILE</B>
+
+<DD>
+Specify the absolute path of the log file. All messages are sent to this file,
+including compilation and runtime errors. The default path is
+<B>${prefix}/var/log/systemtap.log</B>.
+<P>
+<DT><B>PASSALL</B>
+
+<DD>
+If this is set <B>yes</B>, initscript commands that operate on multiple scripts
+will report as failed when the action could not be performed on at least one
+script. If set to <B>no</B>, only a warning is emitted. The default is <B>yes</B>.
+<P>
+<DT><B>RECURSIVE</B>
+
+<DD>
+If this is set <B>yes</B>, the initscript will always follow script dependencies
+recursively. This means that there is no need to specify the <B>-R</B> option.
+This flag is effective only if you specify script(s) from the command-line. The
+default is <B>no</B>.
+<P>
+<DT><B>AUTOCOMPILE</B>
+
+<DD>
+If this is set <B>yes</B>, the initscript automatically tries to compile
+specified scripts when needed if there is no valid cache. Otherwise, the related
+command simply fails. The default is <B>yes</B>.
+<P>
+<DT><B>DEFAULT_START</B>
+
+<DD>
+Specify scripts which will be started by default. If omitted (or empty), all
+scripts in the script directory will be started. The default is <B>&quot;&quot;</B>.
+<P>
+<DT><B>ALLOW_CACHEONLY</B>
+
+<DD>
+If this is set <B>yes</B>, the initscript will also allow operating on scripts
+that are located in the cache directory, but not in the script directory. The
+default is <B>no</B>.
+<P>
+WARNING: the initscript may load unexpected obsolete caches with this option.
+The cache directory should be checked before enabling this option.
+<P>
+<DT><B>LOG_BOOT_ERR</B>
+
+<DD>
+Because boot-time scripts are run before the root filesystem is mounted,
+staprun's stderr cannot be logged to the LOG_FILE as usual. However, the log
+can instead be output to /var/run/systemtap/$script.log by setting LOG_BOOT_ERR
+to <B>yes</B>. If STAT_PATH is different from the default, the log files will be
+moved there upon executing any of the initscript commands. The default is
+<B>no</B>.
+<P>
+</DL>
+<P>
+
+Here is a global configuration file example:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+SCRIPT_PATH=/var/systemtap/script.d/
+PASSALL=yes
+RECURSIVE=no
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>SCRIPT PARAMETERS</H2>
+
+These parameters affect the compilation or runtime behaviour of specific
+SystemTap scripts. They must be placed in config files located in the
+CONFIG_PATH directory.
+<P>
+<DL COMPACT>
+<DT><B>&lt;SCRIPT&gt;_OPT</B>
+
+<DD>
+Specify options passed to the <I><A HREF="stap.1.html">stap</A></I>(1) command for the SCRIPT. Here, SCRIPT
+is the name of the script file without the <B>.stp</B> extension. Note that the
+<B>-F</B> option is always added.
+<P>
+The following options are ignored when compiling scripts: -p, -m, -r, -c, -x,
+-e, -s, -o, -h, -V, -k.
+<P>
+The following options are ignored when running starting scripts: -h, -V, -v, -t,
+-p, -I, -e, -R, -r, -m, -k, -g, -P, -D, -b, -u, -q, -w, -l, -d, -L, -F, and all
+long options.
+<P>
+<DT><B>&lt;SCRIPT&gt;_REQ</B>
+
+<DD>
+Specify script dependencies (i.e. which script this script requires). For
+example, if foo.stp requires (or needs to run after) bar.stp, set
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+foo_REQ=&quot;bar&quot;
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+Specify multiple scripts by separating their names by spaces.
+<P>
+</DL>
+<P>
+
+Here is a script configuration file example:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+script1_OPT=&quot;-o /var/log/script1.out -DRELAY_HOST=group1&quot;
+script2_OPT=&quot;-DRELAY_GUEST=group1&quot;
+script2_REQ=&quot;script1&quot;
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<P>
+<DL COMPACT>
+<DT><B>INSTALLING SCRIPTS</B>
+
+<DD>
+We first copy a SystemTap script (e.g. &quot;script1.stp&quot;) into the script directory:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> cp script1.stp /etc/systemtap/script.d/
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+We can then set any script options, for example:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> vi /etc/systemtap/conf.d/group1
+script1_OPT=&quot;-o /var/log/group1.out -DRELAY_HOST=group1&quot;
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+If we then install a script (e.g. &quot;script2.stp&quot;) which shares a buffer with
+script1, there is a dependency. In this case, we can do the following:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> cp script2.stp /etc/systemtap/script.d/
+<B>#</B> vi /etc/systemtap/conf.d/group1
+script2_OPT=&quot;-DRELAY_GUEST=group1&quot;
+script2_REQ=&quot;script1&quot;
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+This way, if <I><A HREF="stap.1.html">stap</A></I>(1) fails to run script1, the initscript will not even
+try to run script2.
+<P>
+<DT><B>TESTING</B>
+
+<DD>
+After installing scripts, we can test that they work by simply doing:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap start
+<B>#</B> service systemtap stop
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+We could be more specific as well, for example:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap start script1
+<B>#</B> service systemtap stop script1
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+If there were no errors, we are ready to use it.
+<P>
+<DT><B>ENABLING SERVICE</B>
+
+<DD>
+After we're satisfied with the scripts and their tests, we can enable the
+SystemTap initscript service:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> chkconfig systemtap on
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<DT><B>DELETING SCRIPTS</B>
+
+<DD>
+Scripts are deleted by simply removing them from the script directory and
+removing any configuration lines specific to them:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> rm /etc/systemtap/script.d/script2.stp
+<B>#</B> vi /etc/systemtap/conf.d/group1
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+If the script is still running, we also need to stop it:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap stop script2
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+We can then also remove the cache associated with the script:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap cleanup script2
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<DT><B>PREPARING FOR KERNEL UPDATES</B>
+
+<DD>
+Usually, there is nothing to do when booting into a new kernel. The initscript
+will see that the kernel version is different and will compile the scripts. The
+compilation can be done beforehand as well to avoid having to compile during
+boot by using the <B>-r</B> option:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap compile myscript -r &lt;NEW_KERNEL_VERSION&gt;
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<DT><B>IMPORTING COMPILED SCRIPTS</B>
+
+<DD>
+For environments which lack compilation infrastructure (e.g. no compilers or
+debuginfo), such as a production system, the scripts can be compiled on another
+(development) machine and then transferred over to the production system:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap compile myscript -r \
+<BR>
+&gt;   &lt;KERNEL_VERSION_OF_TARGET_MACHINE&gt;
+<B>#</B> tar czf stap-scripts-&lt;kernel-version&gt;.tar.gz \
+<BR>
+&gt;   /var/cache/systemtap/&lt;kernel-version&gt; \
+<BR>
+&gt;   /etc/systemtap/conf.d/&lt;configfile&gt;
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+And then copy this package to the target machine and extract it.
+<P>
+<DT><B>STARTING SCRIPTS DURING EARLY-BOOT</B>
+
+<DD>
+The initscript also allows us to start scripts earlier during the boot process
+by creating an initramfs containing the script's module. The system must be
+dracut-based for this to work. Starting a script at this stage gives access to
+information otherwise very hard to obtain.
+<P>
+We first install the script by copying it into the script directory as usual and
+setting whatever options we'd like:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> cp myscript.stp /etc/systemtap/script.d
+<B>#</B> vi /etc/systemtap/conf.d/myscript.conf
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+To add the script to the initramfs, we use the <B>onboot</B> command:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap onboot myscript
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+If the script is not already compiled and cached, it will be done at this point.
+A new initramfs will then be created at the default location. We can use the
+<B>-b</B> option to ensure that the existing initramfs is backed up. We can then
+restart the system.
+<P>
+<DT><B>USING A DIFFERENT INITRAMFS</B>
+
+<DD>
+If we would prefer to only start the script for one boot and not others, it
+might be easier to instead use the <B>-o</B> option to specify a different
+initramfs output file:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap onboot myscript \
+&gt;   -o /boot/special_initramfs.img
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+Once the initramfs is created, it's simply a matter of changing the command-line
+options at boot-time so that the new image is used rather than the usual one.
+<P>
+<DT><B>CREATING AN INITRAMFS FOR A DIFFERENT KERNEL</B>
+
+<DD>
+Just like the compile command, we can use the <B>-r</B> option to specify the
+kernel for which we want to create the initramfs. This is useful when we are
+about to upgrade and would like to prepare in advance. For example:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap onboot myscript \
+&gt;   -r 3.12.6-200.fc19.x86_64
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<DT><B>REMOVING SCRIPTS FROM THE INITRAMFS</B>
+
+<DD>
+Finally, to remove all script from the initramfs, we simple run the <B>onboot</B>
+command without specifying any scripts:
+
+<P>
+
+<BR>
+
+<DL COMPACT><DT><DD>
+<PRE>
+<B>#</B> service systemtap onboot
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+This will simply create a standard initramfs without any SystemTap modules
+inserted.
+<P>
+<DT><B>TROUBLESHOOTING EARLY-BOOT ISSUES</B>
+
+<DD>
+There can be many reasons for which the module didn't insert or did not work as
+expected. It may be useful to turn on dracut debugging by adding 'rdinitdebug'
+to the kernel command-line and checking dmesg/journalctl -ae. Also, the stderr
+output of staprun can be captured by setting the LOG_BOOT_ERR option to
+<B>yes</B>.
+<P>
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="stap.1.html">stap</A></I>(1)
+
+<I><A HREF="dracut.8.html">dracut</A></I>(8)
+
+<I><A HREF="new-kernel-pkg.8.html">new-kernel-pkg</A></I>(8)
+
+<P>
+<A NAME="lbAK">&nbsp;</A>
+<H2>BUGS</H2>
+
+Use the Bugzilla link of the project web page or our mailing list.
+
+<B><A HREF="http://sourceware.org/systemtap/">http://sourceware.org/systemtap/</A></B>, <B>&lt;<A HREF="mailto:systemtap@sourceware.org">systemtap@sourceware.org</A>&gt;</B>.
+
+
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">COMMANDS</A><DD>
+<DT><A HREF="#lbAF">OPTIONS</A><DD>
+<DT><A HREF="#lbAG">GLOBAL PARAMETERS</A><DD>
+<DT><A HREF="#lbAH">SCRIPT PARAMETERS</A><DD>
+<DT><A HREF="#lbAI">EXAMPLES</A><DD>
+<DT><A HREF="#lbAJ">SEE ALSO</A><DD>
+<DT><A HREF="#lbAK">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

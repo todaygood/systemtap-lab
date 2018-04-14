@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="noindex,nofollow">
+
+<title>HomePage - Systemtap Wiki</title>
+<script type="text/javascript" src="/moin_static199/common/js/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static199/modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="/moin_static199/modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="/moin_static199/modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="/moin_static199/modern/css/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static199/modern/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Systemtap Wiki Recent Changes" href="/systemtap/wiki/HomePage?action=rss_rc&amp;unique=1&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="/systemtap/wiki/HomePage">
+<link rel="Alternate" title="Wiki Markup" href="/systemtap/wiki/HomePage?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/systemtap/wiki/HomePage?action=print">
+<link rel="Appendix" title="FSOSS-2010" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=FSOSS-2010">
+<link rel="Appendix" title="FSOSS-2010.odp" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=FSOSS-2010.odp">
+<link rel="Appendix" title="LFCS-2009-04.pdf" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=LFCS-2009-04.pdf">
+<link rel="Appendix" title="LWESFO06.pdf" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=LWESFO06.pdf">
+<link rel="Appendix" title="Lpc2012-systemtap.pdf" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=Lpc2012-systemtap.pdf">
+<link rel="Appendix" title="SystemTap_Beginners_Guide.pdf" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=SystemTap_Beginners_Guide.pdf">
+<link rel="Appendix" title="fosdem-stap.pdf" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=fosdem-stap.pdf">
+<link rel="Appendix" title="fsoss-2013.tar.gz" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=fsoss-2013.tar.gz">
+<link rel="Appendix" title="hotspot-stap.pdf" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=hotspot-stap.pdf">
+<link rel="Appendix" title="nyc2011-end-users.pdf" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=nyc2011-end-users.pdf">
+<link rel="Search" href="/systemtap/wiki/FindPage">
+<link rel="Index" href="/systemtap/wiki/TitleIndex">
+<link rel="Glossary" href="/systemtap/wiki/WordIndex">
+<link rel="Help" href="/systemtap/wiki/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+<div id="header">
+<div id="logo"><a href="/systemtap/wiki/HomePage"><img src="/systemtap/systemtaplogo.png" alt="systemtap wiki"></a></div>
+
+<form id="searchform" method="get" action="/systemtap/wiki/HomePage">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput">Search:</label>
+<input id="searchinput" type="text" name="value" value="" size="20"
+    onfocus="searchFocus(this)" onblur="searchBlur(this)"
+    onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search">
+<input id="titlesearch" name="titlesearch" type="submit"
+    value="Titles" alt="Search Titles">
+<input id="fullsearch" name="fullsearch" type="submit"
+    value="Text" alt="Search Full Text">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<ul id="username"><li><a href="/systemtap/wiki/HomePage?action=login" id="login" rel="nofollow">Login</a></li></ul>
+<div id="locationline">
+<div id="interwiki"><span><a href="/systemtap/wiki/HomePage" rel="nofollow">Self</a></span></div>
+
+<ul id="pagelocation">
+<li><a href="/systemtap/wiki/HomePage">HomePage</a></li>
+</ul>
+
+</div>
+
+
+<ul id="navibar">
+<li class="wikilink current"><a href="/systemtap/wiki/HomePage">HomePage</a></li><li class="wikilink"><a href="/systemtap/wiki/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="/systemtap/wiki/FindPage">FindPage</a></li><li class="wikilink"><a href="/systemtap/wiki/HelpContents">HelpContents</a></li>
+</ul>
+
+<div id="pageline"><hr style="display:none;"></div>
+<div id="message">
+<p><div class="info"><strong>Redirected from page "<a href="/systemtap/wiki/SystemTap?action=show">SystemTap</a>"</strong><br></div></p><a class="clear-link" href="/systemtap/wiki/HomePage">Clear message</a>
+</div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/systemtap/wiki/HomePage?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/systemtap/wiki/HomePage?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/systemtap/wiki/HomePage">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" lang="en" dir="ltr">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line862">This is the <a class="http" href="http://sourceware.org/systemtap/">systemtap</a> wiki. <em>Good content depends on each of us.  Please help by creating a userid  on the wiki Login page, ask us on IRC to add it to the <a href="/systemtap/wiki/EditorGroup">EditorGroup</a> ACL, then edit away.</em> <span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line867"><span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span><span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span><span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><table style="float:right; font-size: ; color:#000000; text-align:left; background-image:url(); background-repeat:no-repeat; position:relative; padding:0.0em ; margin:0.0em ;" width="40.0% " border="thin" bgcolor="transparent"><tbody><tr><td style="border-style:none;"><span class="anchor" id="line-1"></span><p class="line867"><strong>In The News</strong> <span class="anchor" id="line-2"></span><ul><li><p class="line862">tracing user programs with systemtap, part <a class="https" href="https://qiita.com/t-tkd3a/items/3be2c93721fb354394bc">1</a> <a class="https" href="https://qiita.com/t-tkd3a/items/8d11dc71b9094388bf20">2</a> (japanese) <span class="anchor" id="line-3"></span></li><li><p class="line891"><a class="https" href="https://eklitzke.org/how-sytemtap-userspace-probes-work">how systemtap userspace probes work</a> <span class="anchor" id="line-4"></span></li><li><p class="line891"><a class="https" href="https://twitter.com/eklitzke/status/963546743047643136">stap/dtrace probes in bitcoin</a> <span class="anchor" id="line-5"></span></li><li><p class="line891"><a class="https" href="https://mahmoudhatem.wordpress.com/2018/01/15/from-memory-request-to-pl-sql-source-line/">from memory request to pl/sql source line</a> <span class="anchor" id="line-6"></span></li><li><p class="line891"><a class="https" href="https://laurent-leturgez.com/2017/12/22/profiling-java-application-with-systemtap/">profiling java applications (without restarting)</a> <span class="anchor" id="line-7"></span></li><li><p class="line891"><a class="https" href="https://github.com/leitao/htm_torture/tree/isolation/systemtap">systemtap tools used for finding linux kernel bug CVE-2017-1000255</a> <span class="anchor" id="line-8"></span></li><li><p class="line891"><a class="https" href="https://qiita.com/noborus/items/16ea90339a637d0f40f7">postgresql temporary tables (japanese)</a> <span class="anchor" id="line-9"></span></li><li><p class="line891"><a class="https" href="https://github.com/sthima/libstapsdt">neat dynamic sdt.h probe generator</a> <span class="anchor" id="line-10"></span></li><li><p class="line891"><a class="https" href="https://mahmoudhatem.wordpress.com/2017/11/15/enhancing-dbms_output-using-systemtap/">enhancing oracle DBMS_OUTPUT</a> <span class="anchor" id="line-11"></span></li><li><p class="line891"><a class="https" href="https://sourceware.org/ml/systemtap/2017-q4/msg00131.html">systemtap - bpf comparison</a> <span class="anchor" id="line-12"></span></li><li><p class="line891"><a class="https" href="https://blog.cloudflare.com/perfect-locality-and-three-epic-systemtap-scripts/">perfect locality and three epic systemtap scripts</a> <span class="anchor" id="line-13"></span></li><li><p class="line891"><a class="https" href="https://bdrouvot.wordpress.com/2017/11/01/systemtap-for-postgresql-toolkit/">postgresql cmdline processing with embedded-C</a> <span class="anchor" id="line-14"></span></li><li><p class="line891"><a class="https" href="https://blog.cloudflare.com/how-to-monkey-patch-the-linux-kernel/">how to monkey-patch (keyboard remap) the linux kernel</a> <span class="anchor" id="line-15"></span></li><li><p class="line891"><a class="https" href="https://bdrouvot.wordpress.com/2017/09/30/systemtap-and-oracle-rdbms-io-and-network-traffic/">systemtap on oracle rdbms, i/o and network</a> <span class="anchor" id="line-16"></span></li><li><p class="line891"><a class="http" href="http://jorgar.tumblr.com/post/165737151724/tracing-rmdir-system-calls-with-systemtap">rmdir whodunnit</a> <span class="anchor" id="line-17"></span></li><li><p class="line891"><a class="https" href="https://github.com/SSSD/sssd/pull/261">systemtap probes in SSSD</a> <span class="anchor" id="line-18"></span></li><li><p class="line891"><a class="https" href="https://kafka-summit.org/sessions/single-data-hub-services-feed-100-billion-messages-per-day/">conference talk about kafka tuning to fix</a> <a class="https" href="https://issues.apache.org/jira/browse/KAFKA-4614">this bug</a> <span class="anchor" id="line-19"></span></li><li><p class="line891"><a class="https" href="https://alexandrnikitin.github.io/blog/transparent-hugepages-measuring-the-performance-impact/">transparent hugepages - performance</a> <span class="anchor" id="line-20"></span></li><li><p class="line891"><a class="https" href="https://www.loxodata.com/post/systemtap/">tracing postgresql (french)</a> <span class="anchor" id="line-21"></span></li><li><p class="line891"><a class="https" href="https://bdrouvot.wordpress.com/2017/06/05/systemtap-aggregate-by-database/">aggregate reports by database/process name</a> <span class="anchor" id="line-22"></span></li><li><p class="line891"><a class="http" href="http://justin-stephenson.blogspot.ca/2017/05/measuring-sssd-performance-with.html">measuring SSSD performance with stap</a> <span class="anchor" id="line-23"></span></li><li><p class="line891"><a class="http" href="http://blog.bayrepo.net/post/systemtap-chastj-3-napishem-svoj-probe">signal traffic analysis with stap (russian)</a> <span class="anchor" id="line-24"></span></li><li><p class="line891"><a class="http" href="http://flightoftheunix.blogspot.ca/2017/02/linux-hunting-of-shellz-with-system-tap.html">hunting for shells/ttys using stap</a> <span class="anchor" id="line-25"></span></li><li><p class="line891"><a class="http" href="http://flightoftheunix.blogspot.ca/2017/02/linux-hunting-for-beaconing-using.html">hunting for beaconing using stap</a> <span class="anchor" id="line-26"></span></li><li><p class="line891"><a class="http" href="http://qiita.com/kentaost/items/1c749012d21fb2c8745e">uprobes api, without systemtap (japanese)</a> <span class="anchor" id="line-27"></span></li><li><p class="line891"><a class="https" href="https://docs.python.org/3.6/howto/instrumentation.html">systemtap/dtrace instrumentation merged into in cpython 3.6+</a> <span class="anchor" id="line-28"></span></li><li><p class="line891"><a class="http" href="http://blog.livedoor.jp/sonots/archives/48536396.html">copy-on-write faults in ruby vm (japanese)</a> <span class="anchor" id="line-29"></span></li><li><p class="line891"><a class="https" href="https://github.com/detailyang/systemtap-toolkit">systemtap toolkit - sample scripts</a> <span class="anchor" id="line-30"></span></li><li><p class="line891"><a class="http" href="http://2016.hroug.hr/eng/Program/Build-your-own-Database-Firewall-using-SystemTap">talk on database-firewalling with systemtap</a> <span class="anchor" id="line-31"></span></li><li><p class="line891"><a class="https" href="https://lukas.zapletalovi.com/2016/08/probing-ruby-20-apps-with-systemtap-in-rhel7.html">probing ruby 2 apps in rhel7</a> <span class="anchor" id="line-32"></span></li><li><p class="line891"><a class="https" href="https://openresty.org/posts/dynamic-tracing/">dynamic tracing - agentzh (chinese)</a> <span class="anchor" id="line-33"></span></li><li><p class="line891"><a class="https" href="https://github.com/dyninst/dyninst/issues/50#issuecomment-223466062">diagnosing glibc malloc deadlocks</a> <span class="anchor" id="line-34"></span></li><li><p class="line891"><a class="https" href="https://mahmoudhatem.wordpress.com/2016/04/18/systemtap-a-mini-oracle-db-firewall/">firewalling oracle SQL with guru mode</a> <span class="anchor" id="line-35"></span></li><li><p class="line891"><a class="http" href="http://externaltable.blogspot.ca/2016/03/systemtap-guru-mode-and-oracle-sql.html">patching oracle SQL parsing with guru mode</a> <span class="anchor" id="line-36"></span></li><li><p class="line891"><a class="http" href="http://kernhack.hatenablog.com/entry/2016/02/29/001131">current-task state peek via embedded-C (japanese)</a> <span class="anchor" id="line-37"></span></li><li><p class="line891"><a class="https" href="https://fosdem.org/2016/schedule/event/systemtap/">systemtap security band-aids</a> <a class="http" href="http://video.fosdem.org/2016/k1105/applying-band-aids-over-security-wounds-with-systemtap.mp4">video</a> <span class="anchor" id="line-38"></span></li><li><p class="line891"><a class="https" href="https://tecnocode.co.uk/2016/01/29/instrumenting-the-glib-main-loop-with-dunfell/">instrumenting the GLib main loop with Dunfell</a> <span class="anchor" id="line-39"></span></li><li><p class="line891"><a class="http" href="http://www.erlang-factory.com/static/upload/media/1399288388410589dtrace.pdf">dynamic tracing in erlang (pdf)</a> <span class="anchor" id="line-40"></span></li><li><p class="line891"><a class="https" href="https://mahmoudhatem.wordpress.com/2016/01/25/assessing-impact-of-major-page-fault-on-oracle-database-systemtap-in-action/">major page faults</a> <span class="anchor" id="line-41"></span></li><li><p class="line891"><a href="/systemtap/wiki/OlderNews">OlderNews</a> </li></ul></td></tr></tbody></table><span class="anchor" id="line-46"></span><p class="line867">
+<h1 id="Overview">Overview</h1>
+<span class="anchor" id="line-47"></span><p class="line867"><a href="/systemtap/wiki/SystemTap">SystemTap</a> provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system. This assists diagnosis of a performance or functional problem. <a href="/systemtap/wiki/SystemTap">SystemTap</a> eliminates the need for the developer to go through the tedious and disruptive instrument, recompile, install, and reboot sequence that may be otherwise required to collect data. <span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span><p class="line867"><a href="/systemtap/wiki/SystemTap">SystemTap</a> provides a simple command line interface and scripting language for writing instrumentation for a live running system. We are publishing samples, as well as enlarging the internal &quot;tapset&quot; script library to aid reuse and abstraction. <span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><p class="line867"><a href="/systemtap/wiki/SystemTapReleases">Archive of SystemTap releases</a>  <strong>The current release is 3.2, 2017-10-18.</strong> <span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><p class="line867">
+<h1 id="Installation">Installation</h1>
+<span class="anchor" id="line-54"></span><p class="line867"><a class="http" href="http://sourceware.org/git/?p=systemtap.git;a=blob_plain;f=README;hb=HEAD">Build your own</a> | <a href="/systemtap/wiki/SystemtapOnDebian">Debian GNU/Linux</a> | <a href="/systemtap/wiki/SystemtapOnUbuntu">Ubuntu Gutsy+</a> | <a href="/systemtap/wiki/SystemtapOnFedora">Fedora</a> | <a href="/systemtap/wiki/SystemtapOnFedoraArm">Fedora ARM</a> | <a href="/systemtap/wiki/SystemTapOnRHEL5">Red Hat Enterprise Linux 5</a> | <a href="/systemtap/wiki/SystemTapOnCentOS">CentOS 5</a> | <a href="/systemtap/wiki/SystemTapOnopenSUSE">openSUSE 10.2</a> | <a href="/systemtap/wiki/SystemTapOnopenSUSE11">openSUSE 11</a> | <a href="/systemtap/wiki/SystemTapOnMandriva">Mandriva</a> | <a href="/systemtap/wiki/SystemtapOnArch">Arch</a> | <a href="/systemtap/wiki/SystemtapMaemo">Maemo</a> | <a href="/systemtap/wiki/SystemTapWithSelfBuiltKernel">with a self-built kernel</a> | <a class="http" href="http://omappedia.org/wiki/Systemtap">OMAP ARM</a> | <a href="/systemtap/wiki/SystemTapOnAndroidARM">SystemTap4Android</a> <span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><p class="line867"><a class="ftp" href="ftp://sourceware.redhat.com/pub/systemtap/livecds/">LiveCD/LiveUSB</a> <span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><p class="line867">
+<h1 id="Documentation">Documentation</h1>
+<span class="anchor" id="line-59"></span><ul><li><p class="line891"><a class="http" href="http://sourceware.org/systemtap/documentation.html">all documentation included in systemtap packages</a> <span class="anchor" id="line-60"></span></li><li><p class="line891">SystemTap Beginner's Guide (<a class="http" href="http://sourceware.org/systemtap/SystemTap_Beginners_Guide/">html</a> <a class="http" href="http://sourceware.org/systemtap//SystemTap_Beginners_Guide.pdf">pdf</a>) <span class="anchor" id="line-61"></span></li><li><p class="line862">Language Reference (<a class="http" href="http://sourceware.org/systemtap/langref/">html</a>, <a class="http" href="http://sourceware.org/systemtap/langref.pdf">pdf</a>): A compendium of SystemTap scripting language elements <span class="anchor" id="line-62"></span></li><li><p class="line862">Tutorial (<a class="http" href="http://sourceware.org/systemtap/tutorial/">html</a>, <a class="http" href="http://sourceware.org/systemtap/tutorial.pdf">pdf</a>): A walk-through that give a taste of SystemTap. <span class="anchor" id="line-63"></span></li><li><p class="line891"><a href="/systemtap/wiki/VIMSyntaxHighlightingForSystemtap">VIM Syntax Highlighting for SystemTap</a>: A short tutorial <span class="anchor" id="line-64"></span></li><li><p class="line891"><a href="/systemtap/wiki/SystemTapFAQ">SystemTap FAQ</a>: Frequently Asked Questions on SystemTap. <span class="anchor" id="line-65"></span></li><li><p class="line891"><a href="/systemtap/wiki/Tips">Tips</a>: A collection of FAQs / advice <span class="anchor" id="line-66"></span></li><li><p class="line891"><a href="/systemtap/wiki/PortingDTracetoSystemTap">Porting Dtrace Scripts to SystemTap</a>: Example conversions of DTrace scripts into SystemTap scripts <span class="anchor" id="line-67"></span></li><li><p class="line891"><a href="/systemtap/wiki/HowToReportBugs">How to report bugs</a>: How to collect important information to let developers help you <span class="anchor" id="line-68"></span></li><li><p class="line891"><a href="/systemtap/wiki/WishList">Wishlist</a>: Frequently requested features <span class="anchor" id="line-69"></span></li><li><p class="line891"><a href="/systemtap/wiki/SnapshotTesting">Test Results</a>: Look-up weekly SystemTap test reports. <span class="anchor" id="line-70"></span></li><li><p class="line891"><a href="/systemtap/wiki/TestSuites">Test Suites</a>: How to test SystemTap <span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span></li></ul><p class="line867">
+<h1 id="Applications">Applications</h1>
+<span class="anchor" id="line-73"></span><ul><li><p class="line891"><a class="http" href="http://sourceware.org/systemtap/examples/">Examples in Code Repository</a>: Examples sorted by name and keywords. <span class="anchor" id="line-74"></span></li><li><p class="line891"><a href="/systemtap/wiki/WarStories">War Stories</a>: A collection of systemtap demos and usage stories <span class="anchor" id="line-75"></span></li><li><p class="line891"><a href="/systemtap/wiki/ScriptsTools">Scripts &amp; Tools</a>: A repository of useful scripts and script ideas <span class="anchor" id="line-76"></span></li><li><p class="line891"><a class="https" href="https://github.com/sosreport/sosreport">Sosreport</a> -- A unified tool for collecting system logs and other debug information includes a SystemTap plugin, <a class="https" href="https://github.com/sosreport/sosreport/blob/master/sos/plugins/systemtap.py">systemtap.py</a> <span class="anchor" id="line-77"></span></li><li><p class="line891"><a class="http" href="http://sourceforge.net/projects/scsifaultinjtst">SCSI fault injection</a> <span class="anchor" id="line-78"></span></li><li><p class="line891"><a class="http" href="http://people.redhat.com/berrange/systemtap/bootprobe/">Boot time process profiling</a> <span class="anchor" id="line-79"></span></li><li><p class="line891"><a class="http" href="http://code.google.com/p/bootlimn/">bootlimn</a> - A visualization and analysis tool for the Linux boot process using SystemTap <span class="anchor" id="line-80"></span></li><li><p class="line891"><a class="http" href="http://gitorious.org/mortadelo">Mortadelo</a> - A graphical viewer for all the file-related system calls that happen in your Linux system. (<a class="http" href="http://lwn.net/Articles/271796/">LWN article</a>) <span class="anchor" id="line-81"></span></li><li><p class="line891"><a class="http" href="http://sourceware.org/ml/systemtap/2008-q4/msg00205.html">Systemtap generator for simple timings collection</a> (includes an example of tracing NFS performance) <span class="anchor" id="line-82"></span></li><li><p class="line891"><a href="/systemtap/wiki/MakeDoWithoutDebugInfo">Making Do without Debugging Information</a>: Using SystemTap when your kernel lacks debugging information. <span class="anchor" id="line-83"></span></li><li><p class="line891"><a href="/systemtap/wiki/UsingMarkers">Using Markers</a>: A description of how to use kernel markers with SystemTap. <span class="anchor" id="line-84"></span></li><li><p class="line891"><a href="/systemtap/wiki/UsingStaticUserMarkers">Using Static User Markers</a>: A description of how to build postgres so that SystemTap static user markers are enabled. <span class="anchor" id="line-85"></span></li><li><p class="line891"><a href="/systemtap/wiki/AddingUserSpaceProbingToApps">Adding User Space Probing to an Application</a>: A simple example adding markers to a user-space application with SystemTap. <span class="anchor" id="line-86"></span></li><li><p class="line891"><a href="/systemtap/wiki/UserSpaceProbeImplementation">User-Space Probe Implementation</a>: A tool-writer's guide to the implementation of user-space probes. <span class="anchor" id="line-87"></span></li><li>Applications with built-in User-Space Markers: <span class="anchor" id="line-88"></span><ul><li><p class="line891"><a href="/systemtap/wiki/PostgresqlMarkers">Postgresql</a> <span class="anchor" id="line-89"></span></li><li><p class="line891"><a href="/systemtap/wiki/MysqlMarkers">Mysql</a> <span class="anchor" id="line-90"></span></li><li><p class="line891"><a class="nonexistent" href="/systemtap/wiki/MozillaMarkers">Mozilla</a> <span class="anchor" id="line-91"></span></li><li><p class="line891"><a href="/systemtap/wiki/PerlMarkers">Perl</a> <span class="anchor" id="line-92"></span></li><li><p class="line891"><a href="/systemtap/wiki/PythonMarkers">Python</a> <span class="anchor" id="line-93"></span></li><li><p class="line891"><a href="/systemtap/wiki/JavaMarkers">Java</a> <span class="anchor" id="line-94"></span></li><li><p class="line891"><a href="/systemtap/wiki/RubyMarker">Ruby</a> <span class="anchor" id="line-95"></span></li><li><p class="line891"><a class="nonexistent" href="/systemtap/wiki/LibVirtMarkers">libvirt</a> <span class="anchor" id="line-96"></span></li><li><p class="line891"><a class="nonexistent" href="/systemtap/wiki/QemuMarkers">QEMU</a> <span class="anchor" id="line-97"></span></li><li><p class="line891"><a class="nonexistent" href="/systemtap/wiki/Glib2Markers">glib</a> <span class="anchor" id="line-98"></span></li></ul></li><li><p class="line891"><a class="https" href="https://sourceforge.net/projects/stapgui/">SystemTap GUI Sourceforge</a>: A GUI built for editing and running/graphing SystemTap scripts <span class="anchor" id="line-99"></span></li><li><p class="line891"><a class="http" href="http://sourceware.org/systemtap/wiki/systemtapstarters">SystemTap Starters</a>: A collection of simple scripts to help beginners. <span class="anchor" id="line-100"></span><span class="anchor" id="line-101"></span></li></ul><p class="line867">
+<h1 id="Development">Development</h1>
+<span class="anchor" id="line-102"></span><ul><li><p class="line891"><a class="http" href="http://sourceware.org/git/?p=systemtap.git;a=blob_plain;f=tapset/DEVGUIDE">Tapset Developer's Guide</a>: guidelines for tapset writers <span class="anchor" id="line-103"></span></li><li><p class="line891"><a href="/systemtap/wiki/TapsetStatus">TapsetStatus</a>: maintenance status of tapsets <span class="anchor" id="line-104"></span></li><li><p class="line891"><a href="/systemtap/wiki/utrace">utrace</a>: <strong>utrace</strong> resources <span class="anchor" id="line-105"></span></li><li><p class="line891"><a href="/systemtap/wiki/TaskFinder">TaskFinder</a>: Information on the 'task_finder' layer. <span class="anchor" id="line-106"></span></li><li><p class="line891"><a href="/systemtap/wiki/DeveloperSetupTips">Developer Setup Tips</a>: Contains information on setting up a network console <span class="anchor" id="line-107"></span></li><li><p class="line891"><a href="/systemtap/wiki/SystemTapReleaseGuide">SystemTap Release Guide</a>: Instructions for creating a new release <span class="anchor" id="line-108"></span></li><li><p class="line891"><a href="/systemtap/wiki/SystemTapDocUpdates">SystemTap Documentation Updates</a>: Instructions for updating the web documentation <span class="anchor" id="line-109"></span></li><li><p class="line891"><a href="/systemtap/wiki/SecureBoot">SecureBoot</a>: Information on Systemtap's UEFI Secure Boot support <span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span></li></ul><p class="line867">
+<h1 id="Comparisons.2BAC8-Reviews.2BAC8-Critiques">Comparisons/Reviews/Critiques</h1>
+<span class="anchor" id="line-112"></span><ul><li><p class="line891"><a href="/systemtap/wiki/Myths">Myths</a>: Myths about systemtap <span class="anchor" id="line-113"></span></li><li><p class="line891"><a href="/systemtap/wiki/SystemtapDtraceComparison">SystemTap/Dtrace Comparison</a>: Frequently requested impressions <span class="anchor" id="line-114"></span></li><li><p class="line891"><a href="/systemtap/wiki/SystemtapGUIChimeComparison">SystemTap GUI/Chime Comparison</a>: GUIs. <span class="anchor" id="line-115"></span></li><li><p class="line891"><a href="/systemtap/wiki/stapstapbpfComparison">stap/stapbpf Comparison</a>: Comparison between stap and stapbpf. <span class="anchor" id="line-116"></span><span class="anchor" id="line-117"></span></li></ul><p class="line867">
+<h1 id="Talks.2BAC8-Papers">Talks/Papers</h1>
+<span class="anchor" id="line-118"></span><ul><li><p class="line891"><a href="/systemtap/wiki/OLS2006Talks">OLS2006 Talks</a>:Systemtap-related talks given at OLS2006. <span class="anchor" id="line-119"></span></li><li><p class="line891"><a href="/systemtap/wiki/OSSRHDD2006Talks">OSS/RHDD2006 Talks</a>: Talks/files given at Open Source Symposium/Red Hat Developer Day 2006 (Asia Pacific). <span class="anchor" id="line-120"></span></li><li><p class="line891"><a class="attachment" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=LWESFO06.pdf" title="">LWESFO06.pdf</a> :SystemTap High-level presentation from Linux World San Francisco August 2006. <span class="anchor" id="line-121"></span></li><li><p class="line891"><a href="/systemtap/wiki/LCA2007">LCA2007</a>: Profiling Desktop Applications, given at Linux Conference Australia 2007 (Sydney). <span class="anchor" id="line-122"></span></li><li><p class="line891"><a href="/systemtap/wiki/RedHatSummit2007">Red Hat Summit 2007</a>: Problem Solving with SystemTap, given at Red Hat Summit 2007 (San Diego). <span class="anchor" id="line-123"></span></li><li><p class="line891"><a href="/systemtap/wiki/OLS2007SystemTapTutorial">OLS 2007 SystemTap Tutorial</a>: Using SystemTap for Dynamic Tracing and Performance Analysis (with examples and live CD) <span class="anchor" id="line-124"></span></li><li><p class="line891"><a class="http" href="http://www.linuxconf.eu/2007/index.shtml">LinuxConf.eu</a>: <a class="http" href="http://www.linuxconf.eu/2007/programme/abstract-RJMoore-1.shtml">SystemTap and kdump workshop</a> (updating/creating page) <span class="anchor" id="line-125"></span></li><li><p class="line891"><a class="http" href="http://fedoraproject.org/wiki/LCA/Melbourne2008">Fedora Mini-Conf at Linux Conference Australia 2008 (Melbourne)</a>: Writing <a href="/systemtap/wiki/SystemTap">SystemTap</a> Scripts. <span class="anchor" id="line-126"></span></li><li><p class="line891"><a href="/systemtap/wiki/LW2008SystemTapTutorial">LinuxWorld Conference 2008 SystemTap Tutorial</a> <span class="anchor" id="line-127"></span></li><li><p class="line891"><a href="/systemtap/wiki/LPC2008SystemTapTutorial">Linux Plumbers Conference 2008 SystemTap Tutorial</a> <span class="anchor" id="line-128"></span></li><li><p class="line891"><a href="/systemtap/wiki/ScriptFest">ScriptFest</a>: Ideas for Systemtap Scriptfest  at OLS 2008 <span class="anchor" id="line-129"></span></li><li><p class="line891"><a class="http" href="http://gnome.asia/en/schedule/event/26/">GNOME.Asia Summit 2008 (Beijing)</a>: Writing <a href="/systemtap/wiki/SystemTap">SystemTap</a> Scripts (different from my Melbourne talk). <span class="anchor" id="line-130"></span></li><li><p class="line891"><a class="http" href="http://www.redbooks.ibm.com/abstracts/redp4469.html">SystemTap: Instrumenting the Linux Kernel for Analyzing Performance and Functional Problems</a> <span class="anchor" id="line-131"></span></li><li><p class="line891"><a class="attachment" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=LFCS-2009-04.pdf" title="">LFCS-2009-04.pdf</a>: Linux Foundation Collaboration Summit 2009, San Francisco.  Systemtap status &amp; community issues. <span class="anchor" id="line-132"></span></li><li><p class="line891"><a class="http" href="http://www.vimeo.com/4579806">Investigando o Kernel com SystemTap</a>: an introductory talk in portuguese given at <a class="http" href="http://www.tchelinux.org/2009/scs/">TcheLinux 2009 - Santa Cruz do Sul</a>. <a class="http" href="http://www.tchelinux.org/2009/scs/slides/16-Investigando_o_Kernel_com_SystemTap.pdf">Slides in pt_BR</a>. <span class="anchor" id="line-133"></span></li><li><p class="line891"><a href="/systemtap/wiki/RH2010Webinar">Red Hat January 27, 2010 Webinar</a>: An introductory talk showing applications of the <a href="/systemtap/wiki/SystemTap">SystemTap</a> examples scripts. <span class="anchor" id="line-134"></span></li><li><p class="line891"><a class="attachment" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=fosdem-stap.pdf" title="Fosdem 2010 SystemTap presentation">Fosdem 2010 SystemTap presentation</a> <span class="anchor" id="line-135"></span></li><li><p class="line891"><a class="http" href="http://2010.rmll.info/SystemTap-Full-System-Observability-for-Linux.html">RMLL 2010</a>: <a href="/systemtap/wiki/SystemTap">SystemTap</a>: Full System Observability for Linux (general introduction for system people) <span class="anchor" id="line-136"></span></li><li><p class="line891"><a class="http" href="http://events.hackerspace.lu/camp/2010/schedule/events/12.en.html">HaxoGreen 2010</a>: <a href="/systemtap/wiki/SystemTap">SystemTap</a>: Full System Observability for Linux (general introduction for security people) <span class="anchor" id="line-137"></span></li><li><p class="line891"><a class="http" href="http://act.osdc.fr/osdc2010fr/talk/3034">Open Source Developers' Conference / France 2010</a>: Tracing and profiling production code with <a href="/systemtap/wiki/SystemTap">SystemTap</a> (general introduction for application people) <span class="anchor" id="line-138"></span></li><li><p class="line891"><a class="http" href="http://fsoss.senecac.on.ca/2010/">Free Software and Open Source Symposium / Seneca 1010</a>: <a href="/systemtap/wiki/SystemTap">SystemTap</a>: System wide probing on linux focusing on user space ( <a class="attachment" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=FSOSS-2010.odp" title="Slides">Slides</a>, <a class="http" href="http://www.fosslc.org/drupal/content/systemtap-system-wide-probing-linux-focus-user-space">Presentation</a> ) <span class="anchor" id="line-139"></span></li><li><p class="line891"><a class="attachment" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=hotspot-stap.pdf" title="Observing HotSpot with SystemTap">Observing HotSpot with SystemTap</a> <span class="anchor" id="line-140"></span></li><li><p class="line891"><a class="attachment" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=nyc2011-end-users.pdf" title="Linux Foundation End User Summit 2011 NYC">Linux Foundation End User Summit 2011 NYC</a> <span class="anchor" id="line-141"></span></li><li><p class="line862">Solutions Linux / Open Source 2011, Paris, France <a class="http" href="http://fruli.krunch.be/~krunch/systemtap-sl-2011051201.pdf">SystemTap : observabilité intégrale des systèmes Linux</a> <span class="anchor" id="line-142"></span></li><li><p class="line891"><a class="attachment" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=Lpc2012-systemtap.pdf" title="Linux Plumbers Conference 2012">Linux Plumbers Conference 2012</a> <span class="anchor" id="line-143"></span></li><li><p class="line891"><a class="attachment" href="/systemtap/wiki/HomePage?action=AttachFile&amp;do=view&amp;target=fsoss-2013.tar.gz" title="FSOSS 2013">FSOSS 2013</a> <span class="anchor" id="line-144"></span></li></ul><span class="anchor" id="bottom"></span></div><p id="pageinfo" class="info" lang="en" dir="ltr">None: HomePage  (last edited 2018-04-03 16:03:06 by <span title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]"><a href="/systemtap/wiki/FChE" title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]">FChE</a></span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/systemtap/wiki/HomePage?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/systemtap/wiki/HomePage?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/systemtap/wiki/HomePage">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+</body>
+</html>
+

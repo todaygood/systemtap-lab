@@ -1,0 +1,142 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::scsi</TITLE>
+</HEAD><BODY>
+<H1>tapset::scsi</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::scsi - systemtap scsi tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+<BR>&nbsp;This&nbsp;family&nbsp;of&nbsp;probe&nbsp;points&nbsp;is&nbsp;used&nbsp;to&nbsp;probe&nbsp;SCSI&nbsp;activities.
+<P>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>scsi.ioentry </B>
+
+<DD>
+Prepares a SCSI mid-layer request
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scsi.ioentry.3stap.html">probe::scsi.ioentry</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scsi.iodispatching </B>
+
+<DD>
+SCSI mid-layer dispatched low-level SCSI command
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scsi.iodispatching.3stap.html">probe::scsi.iodispatching</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scsi.iodone </B>
+
+<DD>
+SCSI command completed by low level driver and enqueued into the done queue.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scsi.iodone.3stap.html">probe::scsi.iodone</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scsi.iocompleted </B>
+
+<DD>
+SCSI mid-layer running the completion processing for block device I/O requests
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scsi.iocompleted.3stap.html">probe::scsi.iocompleted</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scsi.ioexecute </B>
+
+<DD>
+Create mid-layer SCSI request and wait for the result
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scsi.ioexecute.3stap.html">probe::scsi.ioexecute</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scsi.set_state </B>
+
+<DD>
+Order SCSI device state change
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scsi.set_state.3stap.html">probe::scsi.set_state</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./probe::scsi.ioentry.3stap.html">probe::scsi.ioentry</A></I>(3stap),
+
+
+<I><A HREF="./probe::scsi.iodispatching.3stap.html">probe::scsi.iodispatching</A></I>(3stap),
+
+
+<I><A HREF="./probe::scsi.iodone.3stap.html">probe::scsi.iodone</A></I>(3stap),
+
+
+<I><A HREF="./probe::scsi.iocompleted.3stap.html">probe::scsi.iocompleted</A></I>(3stap),
+
+
+<I><A HREF="./probe::scsi.ioexecute.3stap.html">probe::scsi.ioexecute</A></I>(3stap),
+
+
+<I><A HREF="./probe::scsi.set_state.3stap.html">probe::scsi.set_state</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

@@ -1,0 +1,299 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::scheduler</TITLE>
+</HEAD><BODY>
+<H1>tapset::scheduler</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::scheduler - systemtap scheduler tapset
+<BR>&nbsp;
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>scheduler.cpu_off </B>
+
+<DD>
+Process is about to stop running on a cpu
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.cpu_off.3stap.html">probe::scheduler.cpu_off</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.cpu_on </B>
+
+<DD>
+Process is beginning execution on a cpu
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.cpu_on.3stap.html">probe::scheduler.cpu_on</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.tick </B>
+
+<DD>
+Schedulers internal tick, a processes timeslice accounting is updated
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.tick.3stap.html">probe::scheduler.tick</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.balance </B>
+
+<DD>
+A cpu attempting to find more work.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.balance.3stap.html">probe::scheduler.balance</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.ctxswitch </B>
+
+<DD>
+A context switch is occuring.
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.ctxswitch.3stap.html">probe::scheduler.ctxswitch</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.kthread_stop </B>
+
+<DD>
+A thread created by kthread_create is being stopped
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.kthread_stop.3stap.html">probe::scheduler.kthread_stop</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.kthread_stop.return </B>
+
+<DD>
+A kthread is stopped and gets the return value
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.kthread_stop.return.3stap.html">probe::scheduler.kthread_stop.return</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.wait_task </B>
+
+<DD>
+Waiting on a task to unschedule (become inactive)
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.wait_task.3stap.html">probe::scheduler.wait_task</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.wakeup </B>
+
+<DD>
+Task is woken up 
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.wakeup.3stap.html">probe::scheduler.wakeup</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.wakeup_new </B>
+
+<DD>
+Newly created task is woken up for the first time
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.wakeup_new.3stap.html">probe::scheduler.wakeup_new</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.migrate </B>
+
+<DD>
+Task migrating across cpus
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.migrate.3stap.html">probe::scheduler.migrate</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.process_free </B>
+
+<DD>
+Scheduler freeing a data structure for a process
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.process_free.3stap.html">probe::scheduler.process_free</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.process_exit </B>
+
+<DD>
+Process exiting
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.process_exit.3stap.html">probe::scheduler.process_exit</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.process_wait </B>
+
+<DD>
+Scheduler starting to wait on a process
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.process_wait.3stap.html">probe::scheduler.process_wait</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.process_fork </B>
+
+<DD>
+Process forked
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.process_fork.3stap.html">probe::scheduler.process_fork</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>scheduler.signal_send </B>
+
+<DD>
+Sending a signal
+<DT><DD>
+<BR>&nbsp;See&nbsp;
+<I><A HREF="./probe::scheduler.signal_send.3stap.html">probe::scheduler.signal_send</A></I>(3stap)
+
+<BR>&nbsp;for&nbsp;details.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="./probe::scheduler.cpu_off.3stap.html">probe::scheduler.cpu_off</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.cpu_on.3stap.html">probe::scheduler.cpu_on</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.tick.3stap.html">probe::scheduler.tick</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.balance.3stap.html">probe::scheduler.balance</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.ctxswitch.3stap.html">probe::scheduler.ctxswitch</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.kthread_stop.3stap.html">probe::scheduler.kthread_stop</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.kthread_stop.return.3stap.html">probe::scheduler.kthread_stop.return</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.wait_task.3stap.html">probe::scheduler.wait_task</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.wakeup.3stap.html">probe::scheduler.wakeup</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.wakeup_new.3stap.html">probe::scheduler.wakeup_new</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.migrate.3stap.html">probe::scheduler.migrate</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.process_free.3stap.html">probe::scheduler.process_free</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.process_exit.3stap.html">probe::scheduler.process_exit</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.process_wait.3stap.html">probe::scheduler.process_wait</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.process_fork.3stap.html">probe::scheduler.process_fork</A></I>(3stap),
+
+
+<I><A HREF="./probe::scheduler.signal_send.3stap.html">probe::scheduler.signal_send</A></I>(3stap),
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,follow">
+
+<title>RecentChanges - Systemtap Wiki</title>
+<script type="text/javascript" src="/moin_static199/common/js/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static199/modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="/moin_static199/modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="/moin_static199/modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="/moin_static199/modern/css/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin_static199/modern/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Systemtap Wiki Recent Changes" href="/systemtap/wiki/RecentChanges?action=rss_rc&amp;unique=1&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="/systemtap/wiki/HomePage">
+<link rel="Alternate" title="Wiki Markup" href="/systemtap/wiki/RecentChanges?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/systemtap/wiki/RecentChanges?action=print">
+<link rel="Search" href="/systemtap/wiki/FindPage">
+<link rel="Index" href="/systemtap/wiki/TitleIndex">
+<link rel="Glossary" href="/systemtap/wiki/WordIndex">
+<link rel="Help" href="/systemtap/wiki/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+<div id="header">
+<div id="logo"><a href="/systemtap/wiki/HomePage"><img src="/systemtap/systemtaplogo.png" alt="systemtap wiki"></a></div>
+
+<form id="searchform" method="get" action="/systemtap/wiki/RecentChanges">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput">Search:</label>
+<input id="searchinput" type="text" name="value" value="" size="20"
+    onfocus="searchFocus(this)" onblur="searchBlur(this)"
+    onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search">
+<input id="titlesearch" name="titlesearch" type="submit"
+    value="Titles" alt="Search Titles">
+<input id="fullsearch" name="fullsearch" type="submit"
+    value="Text" alt="Search Full Text">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<ul id="username"><li><a href="/systemtap/wiki/RecentChanges?action=login" id="login" rel="nofollow">Login</a></li></ul>
+<div id="locationline">
+<div id="interwiki"><span><a href="/systemtap/wiki/HomePage" rel="nofollow">Self</a></span></div>
+
+<ul id="pagelocation">
+<li><a href="/systemtap/wiki/RecentChanges">RecentChanges</a></li>
+</ul>
+
+</div>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="/systemtap/wiki/HomePage">HomePage</a></li><li class="wikilink current"><a href="/systemtap/wiki/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="/systemtap/wiki/FindPage">FindPage</a></li><li class="wikilink"><a href="/systemtap/wiki/HelpContents">HelpContents</a></li>
+</ul>
+
+<div id="pageline"><hr style="display:none;"></div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/systemtap/wiki/RecentChanges?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/systemtap/wiki/RecentChanges?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/systemtap/wiki/RecentChanges">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" lang="en" dir="ltr">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span><span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><p class="line867"><span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span><div class="blue condensed"><span class="anchor" id="line-1-1"></span><p class="line867"><em><div dir="ltr" id="WikiTipOfTheDay.RandomQuote" lang="en"><span class="anchor" id="WikiTipOfTheDay.top"></span>
+<span class="anchor" id="WikiTipOfTheDay.line-1"></span><p class="line874">You can create or edit the list of your quick links in your user preferences. <span class="anchor" id="WikiTipOfTheDay.bottom"></span></div></em> </div><span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span><p class="line867"><div class="recentchanges" lang="en" dir="ltr">
+<div>
+<div class="rcrss"><a href="/systemtap/wiki/RecentChanges?action=rss_rc&amp;unique=1&amp;ddiffs=1"><img alt="[RSS]" height="24" src="/moin_static199/modern/img/moin-rss.png" title="[RSS]" width="24" /></a></div><p></p>
+</div>
+<table>
+<tr class="rcdaybreak"><td colspan="6"><strong>2018-04-03</strong></td></tr>
+<tr>
+<td class="rcicon1"><a href="/systemtap/wiki/HomePage?action=diff" rel="nofollow"><img alt="[DIFF]" height="11" src="/moin_static199/modern/img/moin-diff.png" title="[DIFF]" width="15" /></a></td>
+<td class="rcpagelink"><a href="/systemtap/wiki/HomePage">HomePage</a></td>
+<td class="rctime">16:03</td>
+<td class="rcicon2"><a href="/systemtap/wiki/HomePage?action=info" rel="nofollow"><img alt="Info" height="11" src="/moin_static199/modern/img/moin-info.png" title="Info" width="12" /></a></td>
+<td class="rceditor"><span title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]"><a href="/systemtap/wiki/FChE" title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]">FChE</a></span>&nbsp;[1-2]</td>
+<td class="rccomment"></td>
+</tr>
+<tr class="rcdaybreak"><td colspan="6"><strong>2017-10-31</strong></td></tr>
+<tr>
+<td class="rcicon1"><a href="/systemtap/wiki/stapstapbpfComparison?action=diff" rel="nofollow"><img alt="[DIFF]" height="11" src="/moin_static199/modern/img/moin-diff.png" title="[DIFF]" width="15" /></a></td>
+<td class="rcpagelink"><a href="/systemtap/wiki/stapstapbpfComparison">stapstapbpf Comparison</a></td>
+<td class="rctime">16:25</td>
+<td class="rcicon2"><a href="/systemtap/wiki/stapstapbpfComparison?action=info" rel="nofollow"><img alt="Info" height="11" src="/moin_static199/modern/img/moin-info.png" title="Info" width="12" /></a></td>
+<td class="rceditor"><span title="AaronMerey @ 38.104.156.250[38.104.156.250]"><a class="nonexistent" href="/systemtap/wiki/AaronMerey" title="AaronMerey @ 38.104.156.250[38.104.156.250]">AaronMerey</a></span></td>
+<td class="rccomment"></td>
+</tr>
+<tr class="rcdaybreak"><td colspan="6"><strong>2017-10-30</strong></td></tr>
+<tr>
+<td class="rcicon1"><a href="/systemtap/wiki/EditorGroup?action=diff" rel="nofollow"><img alt="[DIFF]" height="11" src="/moin_static199/modern/img/moin-diff.png" title="[DIFF]" width="15" /></a></td>
+<td class="rcpagelink"><a href="/systemtap/wiki/EditorGroup">EditorGroup</a></td>
+<td class="rctime">20:47</td>
+<td class="rcicon2"><a href="/systemtap/wiki/EditorGroup?action=info" rel="nofollow"><img alt="Info" height="11" src="/moin_static199/modern/img/moin-info.png" title="Info" width="12" /></a></td>
+<td class="rceditor"><span title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]"><a href="/systemtap/wiki/FChE" title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]">FChE</a></span></td>
+<td class="rccomment"></td>
+</tr>
+<tr class="rcdaybreak"><td colspan="6"><strong>2017-10-18</strong></td></tr>
+<tr>
+<td class="rcicon1"><a href="/systemtap/wiki/SystemtapDtraceComparison?action=diff" rel="nofollow"><img alt="[DIFF]" height="11" src="/moin_static199/modern/img/moin-diff.png" title="[DIFF]" width="15" /></a></td>
+<td class="rcpagelink"><a href="/systemtap/wiki/SystemtapDtraceComparison">Systemtap Dtrace Comparison</a></td>
+<td class="rctime">22:08</td>
+<td class="rcicon2"><a href="/systemtap/wiki/SystemtapDtraceComparison?action=info" rel="nofollow"><img alt="Info" height="11" src="/moin_static199/modern/img/moin-info.png" title="Info" width="12" /></a></td>
+<td class="rceditor"><span title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]"><a href="/systemtap/wiki/FChE" title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]">FChE</a></span></td>
+<td class="rccomment"></td>
+</tr>
+<tr>
+<td class="rcicon1"><a href="/systemtap/wiki/SystemTapReleases?action=diff" rel="nofollow"><img alt="[DIFF]" height="11" src="/moin_static199/modern/img/moin-diff.png" title="[DIFF]" width="15" /></a></td>
+<td class="rcpagelink"><a href="/systemtap/wiki/SystemTapReleases">System Tap Releases</a></td>
+<td class="rctime">19:12</td>
+<td class="rcicon2"><a href="/systemtap/wiki/SystemTapReleases?action=info" rel="nofollow"><img alt="Info" height="11" src="/moin_static199/modern/img/moin-info.png" title="Info" width="12" /></a></td>
+<td class="rceditor"><span title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]"><a href="/systemtap/wiki/FChE" title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]">FChE</a></span></td>
+<td class="rccomment"></td>
+</tr>
+<tr class="rcdaybreak"><td colspan="6"><strong>2017-05-22</strong></td></tr>
+<tr>
+<td class="rcicon1"><a href="/systemtap/wiki/SystemTapOnAndroidARM?action=diff" rel="nofollow"><img alt="[DIFF]" height="11" src="/moin_static199/modern/img/moin-diff.png" title="[DIFF]" width="15" /></a></td>
+<td class="rcpagelink"><a href="/systemtap/wiki/SystemTapOnAndroidARM">System Tap On Android ARM</a></td>
+<td class="rctime">10:04</td>
+<td class="rcicon2"><a href="/systemtap/wiki/SystemTapOnAndroidARM?action=info" rel="nofollow"><img alt="Info" height="11" src="/moin_static199/modern/img/moin-info.png" title="Info" width="12" /></a></td>
+<td class="rceditor"><span title="AlexanderLochmann @ ios.cs.uni-dortmund.de[129.217.43.100]"><a class="nonexistent" href="/systemtap/wiki/AlexanderLochmann" title="AlexanderLochmann @ ios.cs.uni-dortmund.de[129.217.43.100]">AlexanderLochmann</a></span></td>
+<td class="rccomment">Updated repo url</td>
+</tr>
+<tr class="rcdaybreak"><td colspan="6"><strong>2017-02-18</strong></td></tr>
+<tr>
+<td class="rcicon1"><a href="/systemtap/wiki/SystemTapReleaseGuide?action=diff" rel="nofollow"><img alt="[DIFF]" height="11" src="/moin_static199/modern/img/moin-diff.png" title="[DIFF]" width="15" /></a></td>
+<td class="rcpagelink"><a href="/systemtap/wiki/SystemTapReleaseGuide">System Tap Release Guide</a></td>
+<td class="rctime">00:31</td>
+<td class="rcicon2"><a href="/systemtap/wiki/SystemTapReleaseGuide?action=info" rel="nofollow"><img alt="Info" height="11" src="/moin_static199/modern/img/moin-info.png" title="Info" width="12" /></a></td>
+<td class="rceditor"><span title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]"><a href="/systemtap/wiki/FChE" title="FChE @ CPE0024016896b5-CM84948c864b60.cpe.net.cable.rogers.com[99.255.254.252]">FChE</a></span></td>
+<td class="rccomment"></td>
+</tr>
+<tr class="rcdaybreak"><td colspan="6"><strong>2016-07-15</strong></td></tr>
+<tr>
+<td class="rcicon1"><a href="/systemtap/wiki/SystemTapWithSelfBuiltKernel?action=diff" rel="nofollow"><img alt="[DIFF]" height="11" src="/moin_static199/modern/img/moin-diff.png" title="[DIFF]" width="15" /></a></td>
+<td class="rcpagelink"><a href="/systemtap/wiki/SystemTapWithSelfBuiltKernel">System Tap With Self Built Kernel</a></td>
+<td class="rctime">13:56</td>
+<td class="rcicon2"><a href="/systemtap/wiki/SystemTapWithSelfBuiltKernel?action=info" rel="nofollow"><img alt="Info" height="11" src="/moin_static199/modern/img/moin-info.png" title="Info" width="12" /></a></td>
+<td class="rceditor"><span title="DavidSmith @ 108-221-37-82.lightspeed.brhmal.sbcglobal.net[108.221.37.82]"><a class="nonexistent" href="/systemtap/wiki/DavidSmith" title="DavidSmith @ 108-221-37-82.lightspeed.brhmal.sbcglobal.net[108.221.37.82]">DavidSmith</a></span></td>
+<td class="rccomment"></td>
+</tr>
+</table>
+</div>
+ <span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span><p class="line867"><span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span><div><table><tbody><tr>  <td style="text-align: center"><p class="line862"> <img alt="[DIFF]" height="11" src="/moin_static199/modern/img/moin-diff.png" title="[DIFF]" width="15" /> </td>
+  <td><p class="line862"> marks older pages that have at least one backup version stored (click for an author diff)</td>
+</tr>
+<tr>  <td style="text-align: center"><span class="anchor" id="line-18"></span><p class="line862"> <img alt="[UPDATED]" height="12" src="/moin_static199/modern/img/moin-updated.png" title="[UPDATED]" width="60" /> </td>
+  <td><p class="line862"> marks pages edited since you set your bookmark (click for a bookmark diff)</td>
+</tr>
+<tr>  <td style="text-align: center"><span class="anchor" id="line-19"></span><p class="line862"> <img alt="[NEW]" height="12" src="/moin_static199/modern/img/moin-new.png" title="[NEW]" width="31" /> </td>
+  <td><p class="line862"> marks pages created since you set your bookmark, and were not edited after creation</td>
+</tr>
+<tr>  <td style="text-align: center"><span class="anchor" id="line-20"></span><p class="line862"> <img alt="[DELETED]" height="12" src="/moin_static199/modern/img/moin-deleted.png" title="[DELETED]" width="60" /> </td>
+  <td><p class="line862"> marks page deletions</td>
+</tr>
+<tr>  <td style="text-align: center"><span class="anchor" id="line-21"></span><p class="line862"> <img alt="[RENAMED]" height="12" src="/moin_static199/modern/img/moin-renamed.png" title="[RENAMED]" width="60" /> </td>
+  <td><p class="line862"> marks page renames</td>
+</tr>
+<tr>  <td style="text-align: center"><span class="anchor" id="line-22"></span><p class="line862"> <img alt="[CONFLICT]" height="12" src="/moin_static199/modern/img/moin-conflict.png" title="[CONFLICT]" width="60" /> </td>
+  <td><p class="line862"> An editing conflict happened, please resolve it by merging both versions of the problematic paragraphs together. </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-23"></span><span class="anchor" id="bottom"></span></div>
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/systemtap/wiki/RecentChanges?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/systemtap/wiki/RecentChanges?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/systemtap/wiki/RecentChanges">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+</body>
+</html>
+

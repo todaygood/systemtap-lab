@@ -1,0 +1,130 @@
+
+<HTML><HEAD><TITLE>Manpage of PROBE::NFS\&.AOP\&.W</TITLE>
+</HEAD><BODY>
+<H1>PROBE::NFS\&.AOP\&.W</H1>
+Section: Network File Storage Tapsets (3stap)<BR>Updated: October 2015<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+probe::nfs.aop.writepages - NFS client writing several dirty pages to the NFS server
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<PRE>
+nfs.aop.writepages 
+</PRE>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>VALUES</H2>
+
+<P>
+
+<I>nr_to_write</I>
+<DL COMPACT><DT><DD>
+number of pages attempted to be written in this execution
+</DL>
+
+<P>
+
+<I>for_kupdate</I>
+<DL COMPACT><DT><DD>
+a flag of writeback_control, indicates if it's a kupdate writeback
+</DL>
+
+<P>
+
+<I>wsize</I>
+<DL COMPACT><DT><DD>
+write size
+</DL>
+
+<P>
+
+<I>for_reclaim</I>
+<DL COMPACT><DT><DD>
+a flag of writeback_control, indicates if it's invoked from the page allocator
+</DL>
+
+<P>
+
+<I>size</I>
+<DL COMPACT><DT><DD>
+number of pages attempted to be written in this execution
+</DL>
+
+<P>
+
+<I>wpages</I>
+<DL COMPACT><DT><DD>
+write size (in pages)
+</DL>
+
+<P>
+
+<I>dev</I>
+<DL COMPACT><DT><DD>
+device identifier
+</DL>
+
+<P>
+
+<I>ino</I>
+<DL COMPACT><DT><DD>
+inode number
+</DL>
+
+<A NAME="lbAE">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+
+The priority of wb is decided by the flags
+<I>for_reclaim</I>
+and
+<I>for_kupdate</I>.
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<I><A HREF="./tapset::nfs.3stap.html">tapset::nfs</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">VALUES</A><DD>
+<DT><A HREF="#lbAE">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:45 GMT, October 09, 2015
+</BODY>
+</HTML>

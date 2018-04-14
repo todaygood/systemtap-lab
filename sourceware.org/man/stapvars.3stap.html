@@ -1,0 +1,95 @@
+
+<HTML><HEAD><TITLE>Manpage of STAPVARS</TITLE>
+</HEAD><BODY>
+<H1>STAPVARS</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+stapvars - systemtap variables
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The following sections enumerate the public variables provided by
+standard tapsets installed, (the installation path is show in the
+stappaths (7) manual page).  Each variable is described with a
+type, and its behavior/restrictions.
+The syntax is the same as printed with the 
+<I>stap</I> option <I>-p2</I>.
+
+Examples:
+<P>
+<DL COMPACT>
+<DT>example1:long<DD>
+Variable &quot;example1&quot; contains an integer.
+<P>
+<DT>example2:string [long]<DD>
+Variable &quot;example2&quot; is an array of strings, indexed by integers.
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H3>ARGV</H3>
+
+<P>
+<DL COMPACT>
+<DT>argc:long<DD>
+Contains the value of the
+
+$#
+value: the number of command line arguments passed to the systemtap script.
+It is initialized with an implicit begin(-1) probe.
+<P>
+<DT>argv:string [long]<DD>
+Contains each command line argument as a string.  argv[1] will equal @1 if
+there was at least one command line argument.  Arguments beyond #32 are not
+transcribed, and produce a warning message within the begin(-1) probe that
+initializes this array.
+<P>
+</DL>
+<A NAME="lbAE">&nbsp;</A>
+<H3>NULL</H3>
+
+<P>
+<DL COMPACT>
+<DT>NULL:long<DD>
+Simply defined as the number 0.
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>FILES</H2>
+
+<DL COMPACT>
+<DT>More files and their corresponding paths can be found in the stappaths (7) manual page.<DD>
+<P>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1)
+<I><A HREF="stappaths.7.html">stappaths</A></I>(7)
+
+</PRE>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DL>
+<DT><A HREF="#lbAD">ARGV</A><DD>
+<DT><A HREF="#lbAE">NULL</A><DD>
+</DL>
+<DT><A HREF="#lbAF">FILES</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:46 GMT, October 09, 2015
+</BODY>
+</HTML>

@@ -1,0 +1,3013 @@
+
+<HTML><HEAD><TITLE>Manpage of tapset::task</TITLE>
+</HEAD><BODY>
+<H1>tapset::task</H1>
+Section: Misc. Reference Manual Pages (3stap)<BR>Updated: ---<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+tapset::syscalls - systemtap syscall tapset
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+Following is an overview of available syscall probes and
+convenience variables they offer. By default, each syscall probe has name and
+argstr convenience variables, which are not included in the overview in order
+to keep it short. Non dwarf-based nd_syscall probes are supposed to have the
+same convenience variables. 
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT></DL>
+<P>
+
+<DD>
+<DL COMPACT>
+<DT><B>syscall.accept</B>
+
+<DD>
+addr_uaddr, addrlen_uaddr, sockfd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.accept4</B>
+
+<DD>
+addr_uaddr, addrlen_uaddr, flags, flags_str, sockfd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.access</B>
+
+<DD>
+mode, mode_str, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.acct</B>
+
+<DD>
+filename
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.add_key</B>
+
+<DD>
+description_uaddr, payload_uaddr, plen, ringid, type_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.adjtimex</B>
+
+<DD>
+buf_str, buf_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.alarm</B>
+
+<DD>
+seconds
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.arch_prctl</B>
+
+<DD>
+addr, code, code_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.bdflush</B>
+
+<DD>
+data, data_str, func
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.bind</B>
+
+<DD>
+addrlen, my_addr_uaddr, sockfd, uaddr_af, uaddr_ip, uaddr_ip_port, uaddr_ipv6_flowinfo, uaddr_ipv6_scope_id
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.bpf</B>
+
+<DD>
+attr_uaddr, cmd, cmd_str, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.brk</B>
+
+<DD>
+brk
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.capget</B>
+
+<DD>
+data_uaddr, header_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.capset</B>
+
+<DD>
+data_uaddr, header_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.chdir</B>
+
+<DD>
+path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.chmod</B>
+
+<DD>
+mode, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.chown</B>
+
+<DD>
+group, owner, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.chown16</B>
+
+<DD>
+group, owner, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.chroot</B>
+
+<DD>
+path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.clock_adjtime</B>
+
+<DD>
+clk_id, clk_id_str, tx_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.clock_getres</B>
+
+<DD>
+clk_id, clk_id_str, res_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.clock_gettime</B>
+
+<DD>
+clk_id, clk_id_str, tp_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.clock_nanosleep</B>
+
+<DD>
+clk_id, clk_id_str, flags, flags_str, rem_uaddr, req_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.clock_settime</B>
+
+<DD>
+clk_id, clk_id_str, tp_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.clone</B>
+
+<DD>
+child_tid_uaddr, clone_flags, parent_tid_uaddr, stack_start
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.close</B>
+
+<DD>
+fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_adjtimex</B>
+
+<DD>
+buf_str, buf_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_clock_nanosleep</B>
+
+<DD>
+clk_id, clk_id_str, flags, flags_str, rem_uaddr, req_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_execve</B>
+
+<DD>
+args, env_str, filename
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_execveat</B>
+
+<DD>
+args, dirfd, dirfd_str, env_str, filename, flags, flags_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_fadvise64</B>
+
+<DD>
+advice, fd, len, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_fadvise64_64</B>
+
+<DD>
+advice, fd, len, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_fallocate</B>
+
+<DD>
+fd, len, mode, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_ftruncate64</B>
+
+<DD>
+fd, length
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_futex</B>
+
+<DD>
+futex_uaddr, op, uaddr2_uaddr, utime_uaddr, val3, val
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_futimesat</B>
+
+<DD>
+dirfd, dirfd_str, filename, filename_uaddr, tvp_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_getitimer</B>
+
+<DD>
+value_uaddr, which
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_lookup_dcookie</B>
+
+<DD>
+buffer_uaddr, cookie, len
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_nanosleep</B>
+
+<DD>
+rem_uaddr, req_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_ppoll</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_pselect6</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_readahead</B>
+
+<DD>
+count, fd, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_recvmmsg</B>
+
+<DD>
+flags, flags_str, mmsg_uaddr, s, timeout_uaddr, vlen
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_rt_sigprocmask</B>
+
+<DD>
+how, how_str, oldset_uaddr, set_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_select</B>
+
+<DD>
+exceptfds_uaddr, n, readfds_uaddr, timeout_uaddr, writefds_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_setitimer</B>
+
+<DD>
+ovalue_uaddr, value_uaddr, which
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_signalfd</B>
+
+<DD>
+flags
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_msgctl</B>
+
+<DD>
+buf_uaddr, cmd, cmd_str, msqid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_msgrcv</B>
+
+<DD>
+msgflg, msgflg_str, msgp_uaddr, msgsz, msgtyp, msqid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_msgsnd</B>
+
+<DD>
+msgflg, msgflg_str, msgp_uaddr, msgsz, msqid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_recvmsg</B>
+
+<DD>
+flags, flags_str, msg_uaddr, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_semctl</B>
+
+<DD>
+arg, cmd, cmdstr, semid, semnum
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_semtimedop</B>
+
+<DD>
+nsops, semid, sops_uaddr, timeout_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_sendmsg</B>
+
+<DD>
+flags, flags_str, msg_uaddr, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_shmat</B>
+
+<DD>
+shmaddr_uaddr, shmflg, shmid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_shmctl</B>
+
+<DD>
+buf_uaddr, cmd, cmd_str, shmid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_sys_utimes</B>
+
+<DD>
+filename
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_truncate64</B>
+
+<DD>
+length, path, path_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_utime</B>
+
+<DD>
+actime, buf_uaddr, filename, filename_uaddr, modtime
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_utimensat</B>
+
+<DD>
+dfd, dfd_str, filename, filename_uaddr, flags, flags_str, tsp_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.compat_vmsplice</B>
+
+<DD>
+fd, flags, flags_str, iov, nr_segs
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.connect</B>
+
+<DD>
+addrlen, serv_addr_uaddr, sockfd, uaddr_af, uaddr_ip, uaddr_ip_port, uaddr_ipv6_flowinfo, uaddr_ipv6_scope_id
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.creat</B>
+
+<DD>
+mode, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.delete_module</B>
+
+<DD>
+flags, flags_str, name_user
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.dup</B>
+
+<DD>
+oldfd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.dup2</B>
+
+<DD>
+flags, newfd, oldfd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.dup3</B>
+
+<DD>
+flags, newfd, oldfd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.epoll_create</B>
+
+<DD>
+flags, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.epoll_ctl</B>
+
+<DD>
+epfd, event_uaddr, fd, op, op_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.epoll_pwait</B>
+
+<DD>
+epfd, events_uaddr, maxevents, sigmask_uaddr, sigsetsize, timeout
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.epoll_wait</B>
+
+<DD>
+epfd, events_uaddr, maxevents, timeout
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.eventfd</B>
+
+<DD>
+count, flags, flags_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.execve</B>
+
+<DD>
+args, env_str, filename
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.execveat</B>
+
+<DD>
+args, dirfd, dirfd_str, env_str, filename, flags, flags_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.exit</B>
+
+<DD>
+status
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.exit_group</B>
+
+<DD>
+status
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.faccessat</B>
+
+<DD>
+dirfd, dirfd_str, mode, mode_str, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fadvise64</B>
+
+<DD>
+advice, fd, len, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fadvise64_64</B>
+
+<DD>
+advice, fd, len, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fallocate</B>
+
+<DD>
+fd, len, mode, mode_str, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fanotify_init</B>
+
+<DD>
+event_f_flags, event_f_flags_str, flags, flags_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fanotify_mark</B>
+
+<DD>
+dirfd, dirfd_str, fanotify_fd, flags, flags_str, mask, mask_str, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fchdir</B>
+
+<DD>
+fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fchmod</B>
+
+<DD>
+fildes, mode
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fchmodat</B>
+
+<DD>
+dirfd, dirfd_str, mode, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fchown</B>
+
+<DD>
+fd, group, owner
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fchown16</B>
+
+<DD>
+fd, group, owner
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fchownat</B>
+
+<DD>
+dirfd, dirfd_str, flags, flags_str, group, owner, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fcntl</B>
+
+<DD>
+arg, cmd, cmd_str, fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fdatasync</B>
+
+<DD>
+fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fgetxattr</B>
+
+<DD>
+filedes, name_str, size, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.finit_module</B>
+
+<DD>
+fd, flags, flags_str, uargs
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.flistxattr</B>
+
+<DD>
+filedes, list_uaddr, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.flock</B>
+
+<DD>
+fd, operation
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fork</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fremovexattr</B>
+
+<DD>
+filedes, name_str, name_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fsetxattr</B>
+
+<DD>
+filedes, flags, flags_str, name_str, name_uaddr, size, value_str, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fstat</B>
+
+<DD>
+buf_uaddr, filedes
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fstatat</B>
+
+<DD>
+buf_uaddr, dirfd, dirfd_str, flags, flags_str, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fstatfs</B>
+
+<DD>
+buf_uaddr, fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fstatfs64</B>
+
+<DD>
+buf_uaddr, fd, sz
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.fsync</B>
+
+<DD>
+fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ftruncate</B>
+
+<DD>
+fd, length
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.futex</B>
+
+<DD>
+futex_uaddr, op, uaddr2_uaddr, utime_uaddr, val3, val
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.futimesat</B>
+
+<DD>
+dirfd, dirfd_str, filename, filename_uaddr, tvp_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.get_mempolicy</B>
+
+<DD>
+addr, flags, flags_str, maxnode, nmask_uaddr, policy_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.get_robust_list</B>
+
+<DD>
+len_uaddr, list_head_uaddr, pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.get_thread_area</B>
+
+<DD>
+u_info_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getcpu</B>
+
+<DD>
+cpu_uaddr, node_uaddr, tcache_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getcwd</B>
+
+<DD>
+buf_uaddr, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getdents</B>
+
+<DD>
+count, dirp_uaddr, fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getegid</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.geteuid</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getgid</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getgroups</B>
+
+<DD>
+list_uaddr, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.gethostname</B>
+
+<DD>
+len, name_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getitimer</B>
+
+<DD>
+value_uaddr, which
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getpeername</B>
+
+<DD>
+name_uaddr, namelen_uaddr, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getpgid</B>
+
+<DD>
+pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getpgrp</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getpid</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getppid</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getpriority</B>
+
+<DD>
+which, who
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getrandom</B>
+
+<DD>
+buf, count, flags, flags_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getresgid</B>
+
+<DD>
+egid_uaddr, rgid_uaddr, sgid_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getresuid</B>
+
+<DD>
+euid_uaddr, ruid_uaddr, suid_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getrlimit</B>
+
+<DD>
+resource, rlim_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getrusage</B>
+
+<DD>
+usage_uaddr, who, who_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getsid</B>
+
+<DD>
+pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getsockname</B>
+
+<DD>
+name_uaddr, namelen_uaddr, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getsockopt</B>
+
+<DD>
+fd, level, level_str, optlen_uaddr, optname, optname_str, optval_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.gettid</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.gettimeofday</B>
+
+<DD>
+tv_uaddr, tz_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getuid</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.getxattr</B>
+
+<DD>
+name_str, path, size, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.init_module</B>
+
+<DD>
+len, uargs, umod_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.inotify_add_watch</B>
+
+<DD>
+fd, mask, path, path_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.inotify_init</B>
+
+<DD>
+flags
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.inotify_rm_watch</B>
+
+<DD>
+fd, wd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.io_cancel</B>
+
+<DD>
+ctx_id, iocb_uaddr, result_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.io_destroy</B>
+
+<DD>
+ctx
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.io_getevents</B>
+
+<DD>
+ctx_id, events_uaddr, min_nr, nr, timeout_uaddr, timestr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.io_setup</B>
+
+<DD>
+ctxp_uaddr, maxevents
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.io_submit</B>
+
+<DD>
+ctx_id, iocbpp_uaddr, nr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ioctl</B>
+
+<DD>
+argp, fd, request
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ioperm</B>
+
+<DD>
+from, num, turn_on
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.iopl</B>
+
+<DD>
+level
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ioprio_get</B>
+
+<DD>
+which, which_str, who
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ioprio_set</B>
+
+<DD>
+ioprio, ioprio_str, which, which_str, who
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.kcmp</B>
+
+<DD>
+idx1, idx2, pid1, pid2, type, type_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.kexec_file_load</B>
+
+<DD>
+cmdline, cmdline_len, flags, flags_str, initrd_fd, kernel_fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.kexec_load</B>
+
+<DD>
+entry, flags, flags_str, nr_segments, segments_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.keyctl</B>
+
+<DD>
+arg2, arg3, arg4, arg5, option
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.kill</B>
+
+<DD>
+pid, sig
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.lchown</B>
+
+<DD>
+group, owner, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.lchown16</B>
+
+<DD>
+group, owner, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.lgetxattr</B>
+
+<DD>
+name_str, path, size, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.link</B>
+
+<DD>
+newpath, oldpath
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.linkat</B>
+
+<DD>
+flags, flags_str, newdirfd, newdirfd_str, newpath, olddirfd, olddirfd_str, oldpath
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.listen</B>
+
+<DD>
+backlog, sockfd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.listxattr</B>
+
+<DD>
+list_uaddr, path, path_uaddr, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.llistxattr</B>
+
+<DD>
+list_uaddr, path, path_uaddr, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.llseek</B>
+
+<DD>
+fd, offset_high, offset_low, result_uaddr, whence, whence_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.lookup_dcookie</B>
+
+<DD>
+buffer_uaddr, cookie, len
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.lremovexattr</B>
+
+<DD>
+name_str, name_uaddr, path, path_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.lseek</B>
+
+<DD>
+fildes, offset, whence, whence_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.lsetxattr</B>
+
+<DD>
+flags, flags_str, name_str, name_uaddr, path, path_uaddr, size, value_str, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.lstat</B>
+
+<DD>
+buf_uaddr, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.madvise</B>
+
+<DD>
+advice, advice_str, length, start
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mbind</B>
+
+<DD>
+flags, flags_str, len, maxnode, mode, mode_str, nmask_uaddr, start
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.memfd_create</B>
+
+<DD>
+flags, flags_str, uname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.migrate_pages</B>
+
+<DD>
+maxnode, new_nodes, old_nodes, pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mincore</B>
+
+<DD>
+length, start, vec_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mkdir</B>
+
+<DD>
+mode, pathname, pathname_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mkdirat</B>
+
+<DD>
+dirfd, dirfd_str, mode, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mknod</B>
+
+<DD>
+dev, mode, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mknodat</B>
+
+<DD>
+dev, dirfd, dirfd_str, mode, mode_str, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mlock</B>
+
+<DD>
+addr, len
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mlockall</B>
+
+<DD>
+flags
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mmap2</B>
+
+<DD>
+fd, flags, length, pgoffset, prot, start
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.modify_ldt</B>
+
+<DD>
+bytecount, func, ptr_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mount</B>
+
+<DD>
+data, filesystemtype, mountflags, mountflags_str, source, target
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.move_pages</B>
+
+<DD>
+flags, flags_str, nodes, nr_pages, pages, pid, status
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mprotect</B>
+
+<DD>
+addr, len, prot, prot_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mq_getsetattr</B>
+
+<DD>
+mqdes, u_mqstat_uaddr, u_omqstat_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mq_notify</B>
+
+<DD>
+mqdes, notification_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mq_open</B>
+
+<DD>
+filename, mode, name_uaddr, oflag, u_attr_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mq_timedreceive</B>
+
+<DD>
+abs_timeout_uaddr, mqdes, msg_len, msg_prio_uaddr, msg_ptr_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mq_timedsend</B>
+
+<DD>
+abs_timeout_uaddr, mqdes, msg_len, msg_prio, msg_ptr_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mq_unlink</B>
+
+<DD>
+u_name, u_name_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.mremap</B>
+
+<DD>
+flags, new_address, new_size, old_address, old_size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.msgctl</B>
+
+<DD>
+buf_uaddr, cmd, cmd_str, msqid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.msgget</B>
+
+<DD>
+key, key_str, msgflg, msgflg_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.msgrcv</B>
+
+<DD>
+msgflg, msgflg_str, msgp_uaddr, msgsz, msgtyp, msqid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.msgsnd</B>
+
+<DD>
+msgflg, msgflg_str, msgp_uaddr, msgsz, msqid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.msync</B>
+
+<DD>
+flags, length, start
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.munlock</B>
+
+<DD>
+addr, len
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.munlockall</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.munmap</B>
+
+<DD>
+length, start
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.name_to_handle_at</B>
+
+<DD>
+dfd, dfd_str, flags, flags_str, handle_uaddr, mnt_id_uaddr, pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.nanosleep</B>
+
+<DD>
+rem_uaddr, req_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ni_syscall</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.nice</B>
+
+<DD>
+inc
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.open</B>
+
+<DD>
+filename, flags, mode
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.open_by_handle_at</B>
+
+<DD>
+flags, flags_str, handle_uaddr, mount_dfd, mount_dfd_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.openat</B>
+
+<DD>
+dfd, dfd_str, filename, flags, mode
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.pause</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.perf_event_open</B>
+
+<DD>
+attr_uaddr, cpu, flags, flags_str, group_fd, pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.personality</B>
+
+<DD>
+persona
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.pipe</B>
+
+<DD>
+fildes_uaddr, flag_str, flags, pipe0, pipe1
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.pivot_root</B>
+
+<DD>
+new_root_str, old_root_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.poll</B>
+
+<DD>
+nfds, timeout, ufds_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ppoll</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.prctl</B>
+
+<DD>
+arg2, arg3, arg4, arg5, option
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.pread</B>
+
+<DD>
+buf_uaddr, count, fd, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.preadv</B>
+
+<DD>
+count, fd, offset, vector_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.prlimit64</B>
+
+<DD>
+new_rlim_uaddr, old_rlim_uaddr, pid, resource
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.process_vm_readv</B>
+
+<DD>
+flags, liovcnt, local_iov_uaddr, pid, remote_iov_uaddr, riovcnt
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.process_vm_writev</B>
+
+<DD>
+flags, liovcnt, local_iov_uaddr, pid, remote_iov_uaddr, riovcnt
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.pselect6</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ptrace</B>
+
+<DD>
+addr, data, pid, request
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.pwrite</B>
+
+<DD>
+buf_uaddr, count, fd, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.pwritev</B>
+
+<DD>
+count, fd, offset, vector_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.quotactl</B>
+
+<DD>
+addr_uaddr, cmd, cmd_str, id, special, special_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.read</B>
+
+<DD>
+buf_uaddr, count, fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.readahead</B>
+
+<DD>
+count, fd, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.readdir</B>
+
+<DD>
+count, dirent, fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.readlink</B>
+
+<DD>
+buf_uaddr, bufsiz, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.readlinkat</B>
+
+<DD>
+buf_uaddr, bufsiz, dfd, dfd_str, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.readv</B>
+
+<DD>
+count, fd, vector_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.reboot</B>
+
+<DD>
+arg_uaddr, flag, flag_str, magic2, magic2_str, magic, magic_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.recv</B>
+
+<DD>
+buf_uaddr, flags, flags_str, len, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.recvfrom</B>
+
+<DD>
+addr_uaddr, addrlen_uaddr, buf_uaddr, flags, flags_str, len, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.recvmmsg</B>
+
+<DD>
+flags, flags_str, mmsg_uaddr, s, timeout_uaddr, vlen
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.recvmsg</B>
+
+<DD>
+flags, flags_str, msg_uaddr, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.remap_file_pages</B>
+
+<DD>
+flags, pgoff, prot, size, start
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.removexattr</B>
+
+<DD>
+name_str, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rename</B>
+
+<DD>
+newpath, oldpath
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.renameat</B>
+
+<DD>
+newdfd, newdfd_str, newname, newname_str, olddfd, olddfd_str, oldname, oldname_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.renameat2</B>
+
+<DD>
+flags, flags_str, newdfd, newdfd_str, newname, newname_str, olddfd, olddfd_str, oldname, oldname_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.request_key</B>
+
+<DD>
+callout_info_uaddr, description_uaddr, destringid, type_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.restart_syscall</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rmdir</B>
+
+<DD>
+pathname
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rt_sigaction</B>
+
+<DD>
+act_uaddr, oact_uaddr, sig, sigsetsize
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rt_sigaction32</B>
+
+<DD>
+act_uaddr, oact_uaddr, sig, sigsetsize
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rt_sigpending</B>
+
+<DD>
+set_uaddr, sigsetsize
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rt_sigprocmask</B>
+
+<DD>
+how, how_str, oldset_uaddr, set_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rt_sigqueueinfo</B>
+
+<DD>
+pid, sig, uinfo_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rt_sigreturn</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rt_sigsuspend</B>
+
+<DD>
+set_uaddr, sigsetsize
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rt_sigtimedwait</B>
+
+<DD>
+sigsetsize, uinfo_uaddr, uthese_uaddr, uts_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.rt_tgsigqueueinfo</B>
+
+<DD>
+sig, tgid, tid, uinfo_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_get_priority_max</B>
+
+<DD>
+policy
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_get_priority_min</B>
+
+<DD>
+policy
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_getaffinity</B>
+
+<DD>
+len, mask_uaddr, pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_getattr</B>
+
+<DD>
+flags, pid, sched_attr_str, sched_attr_uaddr, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_getparam</B>
+
+<DD>
+p_uaddr, pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_getscheduler</B>
+
+<DD>
+pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_rr_get_interval</B>
+
+<DD>
+pid, tp_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_setaffinity</B>
+
+<DD>
+len, mask_uaddr, pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_setattr</B>
+
+<DD>
+flags, pid, sched_attr_str, sched_attr_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_setparam</B>
+
+<DD>
+p_uaddr, pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_setscheduler</B>
+
+<DD>
+p_uaddr, pid, policy, policy_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sched_yield</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.seccomp</B>
+
+<DD>
+flags, flags_str, op, op_str, uargs, uargs_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.select</B>
+
+<DD>
+exceptfds_uaddr, n, readfds_uaddr, timeout_uaddr, writefds_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.semctl</B>
+
+<DD>
+arg, cmd, cmdstr, semid, semnum
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.semget</B>
+
+<DD>
+key, key_str, nsems, semflg, semflg_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.semop</B>
+
+<DD>
+nsops, semid, sops_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.semtimedop</B>
+
+<DD>
+nsops, semid, sops_uaddr, timeout_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.send</B>
+
+<DD>
+buf_uaddr, flags, flags_str, len, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sendfile</B>
+
+<DD>
+count, in_fd, offset_uaddr, out_fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sendmmsg</B>
+
+<DD>
+flags, flags_str, mmsg_uaddr, s, vlen
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sendmsg</B>
+
+<DD>
+flags, flags_str, msg_uaddr, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sendto</B>
+
+<DD>
+buf_uaddr, flags, flags_str, len, s, to_uaddr, tolen
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.set_mempolicy</B>
+
+<DD>
+maxnode, mode, mode_str, nmask_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.set_robust_list</B>
+
+<DD>
+len, list_head_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.set_thread_area</B>
+
+<DD>
+u_info_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.set_tid_address</B>
+
+<DD>
+tidptr_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setdomainname</B>
+
+<DD>
+domainname_str, domainname_uaddr, len
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setfsgid</B>
+
+<DD>
+fsgid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setfsuid</B>
+
+<DD>
+fsuid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setgid</B>
+
+<DD>
+gid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setgroups</B>
+
+<DD>
+list_uaddr, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sethostname</B>
+
+<DD>
+hostname_uaddr, len, name_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setitimer</B>
+
+<DD>
+ovalue_uaddr, value_uaddr, which
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setns</B>
+
+<DD>
+fd, nstype
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setpgid</B>
+
+<DD>
+pgid, pid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setpriority</B>
+
+<DD>
+prio, which, which_str, who
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setregid</B>
+
+<DD>
+egid, rgid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setregid16</B>
+
+<DD>
+egid, rgid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setresgid</B>
+
+<DD>
+egid, rgid, sgid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setresgid16</B>
+
+<DD>
+egid, rgid, sgid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setresuid</B>
+
+<DD>
+euid, ruid, suid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setresuid16</B>
+
+<DD>
+euid, ruid, suid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setreuid</B>
+
+<DD>
+euid, ruid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setreuid16</B>
+
+<DD>
+euid, ruid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setrlimit</B>
+
+<DD>
+resource, rlim_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setsid</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setsockopt</B>
+
+<DD>
+fd, level, level_str, optlen, optname, optname_str, optval_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.settimeofday</B>
+
+<DD>
+tv_uaddr, tz_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.settimeofday32</B>
+
+<DD>
+tv_uaddr, tz_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setuid</B>
+
+<DD>
+uid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.setxattr</B>
+
+<DD>
+flags, flags_str, name_str, name_uaddr, path, path_uaddr, size, value_str, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sgetmask</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.shmat</B>
+
+<DD>
+shmaddr_uaddr, shmflg, shmid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.shmctl</B>
+
+<DD>
+buf_uaddr, cmd, cmd_str, shmid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.shmdt</B>
+
+<DD>
+shmaddr_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.shmget</B>
+
+<DD>
+key, shmflg, shmflg_str, size
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.shutdown</B>
+
+<DD>
+how, how_str, s
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sigaction32</B>
+
+<DD>
+act_uaddr, oact_uaddr, sig
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sigaltstack</B>
+
+<DD>
+uoss_uaddr, uss_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.signal</B>
+
+<DD>
+handler, sig
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.signalfd</B>
+
+<DD>
+flags
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sigpending</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sigprocmask</B>
+
+<DD>
+how, how_str, oldset_uaddr, set_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sigreturn</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sigsuspend</B>
+
+<DD>
+mask
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.socket</B>
+
+<DD>
+family, protocol, type
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.socketpair</B>
+
+<DD>
+family, protocol, sv_uaddr, type
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.splice</B>
+
+<DD>
+fd_in, fd_out, flags, flags_str, len, off_in, off_out
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ssetmask</B>
+
+<DD>
+newmask, newmask_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.stat</B>
+
+<DD>
+buf_uaddr, filename, filename_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.statfs</B>
+
+<DD>
+buf_uaddr, path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.statfs64</B>
+
+<DD>
+buf_uaddr, path, sz
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.stime</B>
+
+<DD>
+t_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.swapoff</B>
+
+<DD>
+path
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.swapon</B>
+
+<DD>
+path, swapflags, swapflags_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.symlink</B>
+
+<DD>
+newpath, oldpath
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.symlinkat</B>
+
+<DD>
+newdfd, newdfd_str, newname, newname_str, oldname, oldname_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sync</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sync_file_range</B>
+
+<DD>
+fd, flags, flags_str, nbytes, offset
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.syncfs</B>
+
+<DD>
+fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sysctl</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sysfs</B>
+
+<DD>
+arg1, arg2, option
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.sysinfo</B>
+
+<DD>
+info_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.syslog</B>
+
+<DD>
+bufp_uaddr, len, type
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.tee</B>
+
+<DD>
+fdin, fdout, flags, len
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.tgkill</B>
+
+<DD>
+pid, sig, tgid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.time</B>
+
+<DD>
+t_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.timer_create</B>
+
+<DD>
+clockid, clockid_str, evp_uaddr, timerid_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.timer_delete</B>
+
+<DD>
+timerid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.timer_getoverrun</B>
+
+<DD>
+timerid
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.timer_gettime</B>
+
+<DD>
+timerid, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.timer_settime</B>
+
+<DD>
+flags, ovalue_uaddr, timerid, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.timerfd_create</B>
+
+<DD>
+clockid, clockid_str, flags, flags_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.timerfd_gettime</B>
+
+<DD>
+fd, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.timerfd_settime</B>
+
+<DD>
+fd, flags, flags_str, ovalue_uaddr, value_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.times</B>
+
+<DD>
+buf_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.tkill</B>
+
+<DD>
+pid, sig
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.truncate</B>
+
+<DD>
+length, path, path_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.umask</B>
+
+<DD>
+mask
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.umount</B>
+
+<DD>
+flags, flags_str, target
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.uname</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.unlink</B>
+
+<DD>
+pathname, pathname_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.unlinkat</B>
+
+<DD>
+dfd, dfd_str, flag, flag_str, pathname, pathname_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.unshare</B>
+
+<DD>
+unshare_flags
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ustat</B>
+
+<DD>
+dev, ubuf_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.ustat32</B>
+
+<DD>
+dev, ubuf_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.utime</B>
+
+<DD>
+actime, buf_uaddr, filename, filename_uaddr, modtime
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.utimensat</B>
+
+<DD>
+dfd, dfd_str, filename, filename_uaddr, flags, flags_str, tsp_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.utimes</B>
+
+<DD>
+filename, filename_uaddr, tvp_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.vfork</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.vhangup</B>
+
+<DD>
+<P>
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.vmsplice</B>
+
+<DD>
+fd, flags, flags_str, iov, nr_segs
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.wait4</B>
+
+<DD>
+options, options_str, pid, rusage_uaddr, status_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.waitid</B>
+
+<DD>
+infop_uaddr, options, options_str, pid, rusage_uaddr, which, which_str
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.waitpid</B>
+
+<DD>
+options, options_str, pid, status_uaddr
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.write</B>
+
+<DD>
+buf_uaddr, count, fd
+</DL>
+<P>
+
+<DL COMPACT>
+<DT><B>syscall.writev</B>
+
+<DD>
+count, fd, vector_uaddr
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<I><A HREF="stap.1.html">stap</A></I>(1),
+
+<I><A HREF="stapprobes.3stap.html">stapprobes</A></I>(3stap)
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAD">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:47 GMT, October 09, 2015
+</BODY>
+</HTML>

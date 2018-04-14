@@ -1,0 +1,596 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2012 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3 Analysis</TITLE>
+<META NAME="description" CONTENT="3 Analysis">
+<META NAME="keywords" CONTENT="tutorial">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2012">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="tutorial.css">
+
+<LINK REL="next" HREF="Tapsets.html">
+<LINK REL="previous" HREF="Tracing.html">
+<LINK REL="up" HREF="tutorial.html">
+<LINK REL="next" HREF="Tapsets.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html125"
+  HREF="Tapsets.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html121"
+  HREF="tutorial.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html115"
+  HREF="Tracing.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html123"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html126"
+  HREF="Tapsets.html">4 Tapsets</A>
+<B> Up:</B> <A NAME="tex2html122"
+  HREF="tutorial.html">tutorial</A>
+<B> Previous:</B> <A NAME="tex2html116"
+  HREF="Tracing.html">2 Tracing</A>
+ &nbsp; <B>  <A NAME="tex2html124"
+  HREF="Contents.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html127"
+  HREF="Analysis.html#SECTION00041000000000000000">3.1 Basic constructs</A>
+<LI><A NAME="tex2html128"
+  HREF="Analysis.html#SECTION00042000000000000000">3.2 Target variables</A>
+<LI><A NAME="tex2html129"
+  HREF="Analysis.html#SECTION00043000000000000000">3.3 Functions</A>
+<LI><A NAME="tex2html130"
+  HREF="Analysis.html#SECTION00044000000000000000">3.4 Arrays</A>
+<LI><A NAME="tex2html131"
+  HREF="Analysis.html#SECTION00045000000000000000">3.5 Aggregates</A>
+<LI><A NAME="tex2html132"
+  HREF="Analysis.html#SECTION00046000000000000000">3.6 Safety</A>
+<LI><A NAME="tex2html133"
+  HREF="Analysis.html#SECTION00047000000000000000">3.7 Exercises</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00040000000000000000">
+3 Analysis</A>
+</H1>
+
+<P>
+Pages of generic tracing text may give you enough information for
+exploring a system.  With systemtap, it is possible to analyze that
+data, to filter, aggregate, transform, and summarize it.  Different
+probes can work together to share data.  Probe handlers can use a rich
+set of control constructs to describe algorithms, with a syntax taken
+roughly from <code>awk</code>.  With these tools, systemtap scripts can
+focus on a specific question and provide a compact response: no
+<code>grep</code> needed.
+
+<P>
+
+<H2><A NAME="SECTION00041000000000000000">
+3.1 Basic constructs</A>
+</H2>
+
+<P>
+Most systemtap scripts include conditionals, to limit tracing or other
+logic to those processes or users or <EM>whatever</EM> of interest.  The
+syntax is simple:
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="RIGHT"><code>if (</code><EM>EXPR</EM><code>)</code> <EM>STATEMENT</EM> [<code>else</code> <EM>STATEMENT</EM><code>]</code></TD>
+<TD ALIGN="LEFT">if/else statement</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>while (</code><EM>EXPR</EM><code>)</code> <EM>STATEMENT</EM></TD>
+<TD ALIGN="LEFT">while loop</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>for (</code><EM>A</EM><code>;</code> <EM>B</EM><code>;</code> <EM>C</EM><code>)</code> <EM>STATEMENT</EM></TD>
+<TD ALIGN="LEFT">for loop</TD>
+</TR>
+</TABLE>
+
+<P>
+Scripts may use <code>break</code>/<code>continue</code> as in C.
+Probe handlers can return early using <code>next</code> as in <code>awk</code>.
+Blocks of statements are enclosed in <code>{</code> and <code>}</code>.  In
+systemtap, the semicolon (<code>;</code>) is accepted as a null statement
+rather than as a statement terminator, so is only rarely<A NAME="tex2html5"
+  HREF="footnode.html#foot385"><SUP>2</SUP></A>necessary.  Shell-style (<code>#</code>), C-style (<code>/* */</code>), and
+C++-style (<code>//</code>) comments are all accepted.
+
+<P>
+Expressions look like C or <code>awk</code>, and support the usual
+operators, precedences, and numeric literals.  Strings are treated as
+atomic values rather than arrays of characters.  String concatenation
+is done with the dot (<code>"a" . "b"</code>).  Some examples:
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="RIGHT"><code>(uid() &gt; 100)</code></TD>
+<TD ALIGN="LEFT">probably an ordinary user</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>(execname() == "sed")</code></TD>
+<TD ALIGN="LEFT">current process is sed</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>(cpu() == 0 &amp;&amp; gettimeofday_s() &gt; 1140498000)</code></TD>
+<TD ALIGN="LEFT">after Feb. 21, 2006, on CPU 0</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>"hello" . " " . "world"</code></TD>
+<TD ALIGN="LEFT">a string in three easy pieces</TD>
+</TR>
+</TABLE>
+
+<P>
+Variables may be used as well.  Just pick a name, assign to it, and
+use it in expressions.  They are automatically initialized and
+declared.  The type of each identifier - string vs. number - is
+automatically inferred by systemtap from the kinds of operators and
+literals used on it.  Any inconsistencies will be reported as errors.
+Conversion between string and number types is done through explicit
+function calls.
+
+<P>
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="RIGHT"><code>foo = gettimeofday_s()</code></TD>
+<TD ALIGN="LEFT">foo is a number</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>bar = "/usr/bin/" . execname()</code></TD>
+<TD ALIGN="LEFT">bar is a string</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>c++</code></TD>
+<TD ALIGN="LEFT">c is a number</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>s = sprint(2345)</code></TD>
+<TD ALIGN="LEFT">s becomes the string "2345"</TD>
+</TR>
+</TABLE>
+
+<P>
+By default, variables are local to the probe they are used in.  That
+is, they are initialized, used, and disposed of at each probe handler
+invocation.  To share variables between probes, declare them global
+anywhere in the script.  Because of possible concurrency (multiple
+probe handlers running on different CPUs), each global variable used
+by a probe is automatically read- or write-locked while the handler is
+running.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:timer-jiffies"></A><A NAME="386"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+Experimentally measuring <TT>CONFIG_HZ</TT>.</CAPTION>
+<TR><TD><IMG
+ WIDTH="529" HEIGHT="327" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="\begin{center}\begin{Sbox}\begin{minipage}{4.5in}
+\begin{verbatim}..."></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<H2><A NAME="SECTION00042000000000000000">
+3.2 Target variables</A>
+</H2>
+
+<P>
+A class of special ``target variables'' allow access to the probe
+point context.    In a symbolic
+debugger, when you're stopped at a breakpoint, you can print values
+from the program's context.  In systemtap scripts, for those probe
+points that match with specific executable point (rather than an
+asynchronous event like a timer), you can do the same.
+
+<P>
+In addition, you can take their address (the <code>&amp;</code> operator),
+pretty-print structures (the <code>$</code> and <code>$$</code> suffix),
+pretty-print multiple variables in scope (the <code>$$vars</code> and
+related variables), or cast pointers to their types (the <code>@cast</code>
+operator), or test their existence / resolvability (the
+<code>@defined</code> operator).  Read about these in the manual pages.
+
+<P>
+To know which variables are likely to be available, you will need to
+be familiar with the kernel source you are probing.  In addition, you
+will need to check that the compiler has not optimized those values
+into unreachable nonexistence.  You can use
+<code>stap -L PROBEPOINT</code> to enumerate the variables available there.
+
+<P>
+Let's say that you are trying to trace filesystem reads/writes to a
+particular device/inode.  From your knowledge of the kernel, you know
+that two functions of interest could be <code>vfs_read</code> and
+<code>vfs_write</code>.  Each takes a <code>struct file *</code> argument, inside
+there is either a <code>struct dentry *</code> or <code>struct path *</code> which
+has a <code>struct dentry *</code>.
+The <code>struct dentry *</code> contains a <code>struct inode *</code>, and
+so on.
+Systemtap allows limited dereferencing of such pointer chains.
+Two functions, <code>user_string</code> and <code>kernel_string</code>, can copy
+<code>char *</code> target variables into systemtap strings.
+Figure&nbsp;<A HREF="#fig:inode-watch"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> demonstrates one way to monitor a
+particular file (identified by device number and inode number).
+The script selects the appropriate variants of <code>dev_nr</code>
+and<code>inode_nr</code> based on the kernel version.
+This example also demonstrates passing numeric command-line arguments
+(<code>$1</code> etc.) into scripts.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:inode-watch"></A><A NAME="166"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+Watching for reads/writes to a particular file.</CAPTION>
+<TR><TD><IMG
+ WIDTH="529" HEIGHT="478" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="\begin{center}\begin{Sbox}\begin{minipage}{4.5in}
+\begin{verbatim}..."></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<H2><A NAME="SECTION00043000000000000000">
+3.3 Functions</A>
+</H2>
+
+<P>
+Functions are conveniently packaged reusable software: it would be a
+shame to have to duplicate a complex condition expression or logging
+directive in every placed it's used.  So, systemtap lets you define
+functions of your own.  Like global variables, systemtap functions may
+be defined anywhere in the script.  They may take any number of string
+or numeric arguments (by value), and may return a single string or
+number.  The parameter types are inferred as for ordinary variables,
+and must be consistent throughout the program.  Local and global
+script variables are available, but target variables are <EM>not</EM>.
+That's because there is no specific debugging-level context associated
+with a function.
+
+<P>
+A function is defined with the keyword <code>function</code> followed by a
+name.  Then comes a comma-separated formal argument list (just a list
+of variable names).  The <code>{ }</code>-enclosed body consists of any list
+of statements, including expressions that call functions.  Recursion
+is possible, up to a nesting depth limit.  Figure&nbsp;<A HREF="#fig:functions"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>
+displays function syntax.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:functions"></A><A NAME="180"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+Some functions of dubious utility.</CAPTION>
+<TR><TD><IMG
+ WIDTH="529" HEIGHT="402" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="\begin{center}\begin{Sbox}\begin{minipage}{4.5in}
+\begin{verbatim}..."></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<H2><A NAME="SECTION00044000000000000000">
+3.4 Arrays</A>
+</H2>
+
+<P>
+Often, probes will want to share data that cannot be represented as a
+simple scalar value.  Much data is naturally tabular in nature,
+indexed by some tuple of thread numbers, processor ids, names, time,
+and so on.  Systemtap offers associative arrays for this purpose.
+These arrays are implemented as hash tables with a maximum size that
+is fixed at startup.  Because they are too large to be created
+dynamically for individual probes handler runs, they must be declared
+as global.  
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="RIGHT"><code>global a</code></TD>
+<TD ALIGN="LEFT">declare global scalar or array variable</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>global b[400]</code></TD>
+<TD ALIGN="LEFT">declare array, reserving space for up to 400 tuples</TD>
+</TR>
+</TABLE>
+
+<P>
+The basic operations for arrays are setting and looking up elements.
+These are expressed in <code>awk</code> syntax: the array name followed by
+an opening <code>[</code> bracket, a comma-separated list of index
+expressions, and a closing <code>]</code> bracket.  Each index expression
+may be string or numeric, as long as it is consistently typed
+throughout the script.
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="RIGHT"><code>foo [4,"hello"] ++ </code></TD>
+<TD ALIGN="LEFT">increment the named array slot</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>processusage [uid(),execname()] ++</code></TD>
+<TD ALIGN="LEFT">update a statistic</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>times [tid()] = get_cycles()</code></TD>
+<TD ALIGN="LEFT">set a timestamp reference point</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>delta = get_cycles() - times [tid()]</code></TD>
+<TD ALIGN="LEFT">compute a timestamp delta</TD>
+</TR>
+</TABLE>
+
+<P>
+Array elements that have not been set <EM>may</EM> be fetched, and return
+a dummy null value (zero or an empty string) as appropriate.  However,
+assigning a null value does not delete the element: an explicit
+<code>delete</code> statement is required.    Systemtap provides syntactic sugar
+for these operations, in the form of explicit membership testing and
+deletion.
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="RIGHT"><code>if ([4,"hello"] in foo) { }</code></TD>
+<TD ALIGN="LEFT">membership test</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>delete times[tid()]</code></TD>
+<TD ALIGN="LEFT">deletion of a single element</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>delete times</code></TD>
+<TD ALIGN="LEFT">deletion of all elements</TD>
+</TR>
+</TABLE>
+
+<P>
+One final and important operation is iteration over arrays.  This uses
+the keyword <code>foreach</code>.  Like <code>awk</code>, this creates a loop that
+<EM>iterates over key tuples</EM> of an array, not just <EM>values</EM>.  In
+addition, the iteration may be <EM>sorted</EM> by any single key or the
+value by adding an extra <code>+</code> or <code>-</code> code.
+
+<P>
+The <code>break</code> and <code>continue</code> statements work inside
+<code>foreach</code> loops, too.  Since arrays can be large but probe
+handlers must not run for long, it is a good idea to exit iteration
+early if possible.  The <code>limit</code> option in the <code>foreach</code>
+expression is one way.  For simplicity, systemtap forbids any <EM>modification</EM> of an array while it is being iterated using a
+<code>foreach</code>.
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="RIGHT"><code>foreach (x = [a,b] in foo) { fuss_with(x) }</code></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=200>simple loop in arbitrary sequence</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>foreach ([a,b] in foo+ limit 5) { }</code></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=200>loop in increasing sequence of value, stop after 5</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>foreach ([a-,b] in foo) { }</code></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=200>loop in decreasing sequence of first key</TD>
+</TR>
+</TABLE>
+
+<P>
+
+<H2><A NAME="SECTION00045000000000000000">
+3.5 Aggregates</A>
+</H2>
+
+<P>
+When we said above that values can only be strings or numbers, we lied
+a little.  There is a third type: statistics aggregates, or aggregates
+for short.  Instances of this type are used to collect statistics on
+numerical values, where it is important to accumulate new data quickly
+(<EM>without</EM> exclusive locks) and in large volume (storing only
+aggregated stream statistics).  This type only makes sense for global
+variables, and may be stored individually or as elements of an array.
+
+<P>
+To add a value to a statistics aggregate, systemtap uses the special
+operator <code>&lt;&lt;&lt;</code>.  Think of it like C++'s <code>&lt;&lt;</code> output
+streamer: the left hand side object accumulates the data sample given
+on the right hand side.  This operation is efficient (taking a shared
+lock) because the aggregate values are kept separately on each
+processor, and are only aggregated across processors on request.
+
+<P>
+<PRE>
+a &lt;&lt;&lt; delta_timestamp
+writes[execname()] &lt;&lt;&lt; count
+</PRE>
+
+<P>
+To read the aggregate value, special functions are available to
+extract a selected statistical function. <EM>The aggregate value
+cannot be read by simply naming it as if it were an ordinary
+variable.</EM>  These operations take an exclusive lock on the respective
+globals, and should therefore be relatively rare.  The simple ones
+are: <code>@min</code>, <code>@max</code>, <code>@count</code>, <code>@avg</code>, and
+<code>@sum</code>, and evaluate to a single number.  In addition, histograms
+of the data stream may be extracted using the <code>@hist_log</code> and
+<code>@hist_linear</code>.  These evaluate to a special sort of array that
+may at present<A NAME="tex2html9"
+  HREF="footnode.html#foot388"><SUP>3</SUP></A> only be printed.
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="RIGHT"><code>@avg(a)</code></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=250>the average of all the values accumulated
+                        into <code>a</code></TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>print(@hist_linear(a,0,100,10))</code></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=250>print an ``ascii art'' linear
+                  histogram of the same data stream,
+     bounds <IMG
+ WIDTH="60" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$0 \ldots 100$">, bucket width is <IMG
+ WIDTH="20" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img8.png"
+ ALT="$10$"></TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>@count(writes["zsh"])</code></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=250>the number of times ``zsh''
+                ran the probe handler</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><code>print(@hist_log(writes["zsh"]))</code></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=250>print an ``ascii art'' logarithmic
+                  histogram of the same data stream</TD>
+</TR>
+</TABLE>
+
+<P>
+
+<H2><A NAME="SECTION00046000000000000000"></A>
+<A NAME="sec:safety"></A>
+<BR>
+3.6 Safety
+</H2>
+
+<P>
+The full expressivity of the scripting language raises good questions
+of safety.  Here is a set of Q&amp;A:
+
+<P>
+<DL>
+<DT></DT>
+<DD><B>What about infinite loops?  recursion?</B> A probe handler is
+bounded in time.  The C code generated by systemtap includes explicit
+checks that limit the total number of statements executed to a small
+number.  A similar limit is imposed on the nesting depth of function
+calls.  When either limit is exceeded, that probe handler cleanly
+aborts and signals an error.  The systemtap session is normally
+configured to abort as a whole at that time.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>What about running out of memory?</B>  No dynamic memory
+allocation whatsoever takes place during the execution of probe
+handlers.  Arrays, function contexts, and buffers are allocated during
+initialization.  These resources may run out during a session, and
+generally result in errors.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>What about locking?</B>  If multiple probes seek conflicting
+locks on the same global variables, one or more of them will time out,
+and be aborted.  Such events are tallied as ``skipped'' probes, and a
+count is displayed at session end.  A configurable number of skipped
+probes can trigger an abort of the session.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>What about null pointers? division by zero?</B>  The C code
+generated by systemtap translates potentially dangerous operations to
+routines that check their arguments at run time.  These signal errors
+if they are invalid.  Many arithmetic and string operations silently
+overflow if the results exceed representation limits.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>What about bugs in the translator?  compiler?</B>  While bugs
+in the translator, or the runtime layer certainly exist<A NAME="tex2html10"
+  HREF="footnode.html#foot228"><SUP>4</SUP></A>, our test suite gives some
+assurance.  Plus, the entire generated C code may be inspected (try
+the <code>-p3</code> option).  Compiler bugs are unlikely to be of any
+greater concern for systemtap than for the kernel as a whole.  In
+other words, if it was reliable enough to build the kernel, it will
+build the systemtap modules properly too.
+
+<P>
+</DD>
+<DT></DT>
+<DD><B>Is that the whole truth?</B>  In practice, there are several
+weak points in systemtap and the underlying kprobes system at the time
+of writing.  Putting probes indiscriminately into unusually sensitive
+parts of the kernel (low level context switching, interrupt
+dispatching) has reportedly caused crashes in the past.  We are
+fixing these bugs as they are found, and
+constructing a probe point ``blacklist'', but it is not complete.
+
+<P>
+</DD>
+</DL>
+
+<P>
+
+<H2><A NAME="SECTION00047000000000000000">
+3.7 Exercises</A>
+</H2>
+
+<OL>
+<LI>Alter the last probe in <code>timer-jiffies.stp</code> to reset the
+counters and continue reporting instead of exiting.
+
+<P>
+</LI>
+<LI>Write a script that, every ten seconds, displays the top five
+most frequent users of <code>open</code> system call during that interval.
+
+<P>
+</LI>
+<LI>Write a script that experimentally measures the speed of the
+<code>get_cycles()</code> counter on each processor.
+
+<P>
+</LI>
+<LI>Use any suitable probe point to get an approximate profile of
+process CPU usage: which processes/users use how much of each CPU.
+</LI>
+</OL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html125"
+  HREF="Tapsets.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html121"
+  HREF="tutorial.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html115"
+  HREF="Tracing.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html123"
+  HREF="Contents.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html126"
+  HREF="Tapsets.html">4 Tapsets</A>
+<B> Up:</B> <A NAME="tex2html122"
+  HREF="tutorial.html">tutorial</A>
+<B> Previous:</B> <A NAME="tex2html116"
+  HREF="Tracing.html">2 Tracing</A>
+ &nbsp; <B>  <A NAME="tex2html124"
+  HREF="Contents.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

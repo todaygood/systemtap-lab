@@ -1,0 +1,22 @@
+Generalised Kernel Hooks Interface - A High Speed Call-back Mechanism for
+the Linux Kernel
+
+Generalised Kernel Hooks Interface (GKHI) is a generalised facility for
+placing hooks in arbitrary kernel (or kernel module) locations. A hook a
+location in the
+kernel that calls out of the kernel to a kernel module routine - a hook
+exit. It enables many kernel enhancements, which are otherwise
+self-contained, to become
+loadable kernel modules and retain a substantial degree of independence
+from the kernel source. This affords advantages for maintenance and
+co-existence with
+other kernel enhancements.
+
+The hooks are implemented as fast and slim-line insertions to kernel code
+when not active, with practically no overhead to the kernel.
+
+The hook interface allows multiple kernel modules to register their exits
+for a given hook, in order to receive control at that given hook location.
+
+A particularly interesting application of GKHI is in dynamic assertion
+checking and First Failure System Technology (FFST).

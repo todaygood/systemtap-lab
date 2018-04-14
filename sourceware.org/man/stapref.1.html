@@ -1,0 +1,449 @@
+
+<HTML><HEAD><TITLE>Manpage of STAPREF</TITLE>
+</HEAD><BODY>
+<H1>STAPREF</H1>
+Section: User Commands  (1)<BR><A HREF="#index">Index</A>
+<A HREF="index.html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+stapref - systemtap language reference
+<P>
+
+
+
+
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<P>
+<BR>
+
+<B>stapref</B>
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<P>
+The reference for the systemtap scripting language.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>LANGUAGE</H2>
+
+Keywords
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+&bull; <B>break</B>
+&bull; <B>continue</B>
+&bull; <B>delete</B>
+&bull; <B>else</B>
+&bull; <B>exit</B>
+&bull; <B>foreach</B>
+&bull; <B>for</B>
+&bull; <B>function</B>
+&bull; <B>global</B>
+&bull; <B>if</B>
+&bull; <B>in</B>
+&bull; <B>next</B>
+&bull; <B>probe</B>
+&bull; <B>return</B>
+&bull; <B>try/catch</B>
+&bull; <B>while</B>
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+Data Types and Operators
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Integers
+&bull; var1 = 5
+&bull; <B>global</B> var2 = 10
+
+Strings
+&bull; var1 = &quot;string1&quot;
+&bull; <B>global</B> var2 = &quot;string2&quot;
+
+Associative Arrays
+&bull; <B>global</B> array1[]
+&bull; <B>global</B> array2[SIZE]
+&bull; array[index] = 5
+
+Context Variables
+&bull; <B>$</B>var
+&bull; <B>$</B>var<B>$</B> (pretty printed string form)
+
+Binary numeric operators
+&bull; <B>* / % + - &lt;&lt; &gt;&gt; &amp; ^ | &amp;&amp; ||</B>
+
+Binary string operators
+&bull; <B>.</B> (string concatenation)
+
+Numeric assignment operators
+&bull; <B>= += -= *= /= %= &gt;&gt;= &lt;&lt;= &amp;= ^= |= </B>
+
+String assignment operators
+&bull; <B>= .= </B>
+
+Unary numeric operators
+&bull; <B>+ - ! ~ ++ -- </B>
+
+Numeric &amp; string comparison operators
+&bull; <B>&lt; &gt; &lt;= &gt;= == != </B>
+
+Regular expression matching operators
+&bull; <B>=~ !~ </B>
+
+Ternary operator
+&bull; cond <B>?</B> exp1 <B>:</B> exp2
+
+Grouping operator
+&bull; <B>(</B> expression <B>)</B>
+
+Array operators
+&bull; array<B>[</B>index<B>]</B> (array read/write)
+&bull; [index] <B>in</B> array
+
+Aggregation operator
+&bull; var <B>&lt;&lt;&lt;</B> value
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+Statements
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Jump Statements
+&bull; <B>continue</B>
+&bull; <B>break</B>
+&bull; <B>next</B>
+&bull; <B>return</B> expression
+&bull; <B>try</B> statement <B>catch</B> (message)
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Selection Statements
+&bull; <B>if</B> (expression) statement 
+&bull; <B>else</B> statement
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Iteration Statements
+&bull; <B>foreach</B> (variable <B>in</B> array) statement
+&bull; <B>foreach</B> ([var1,var2,...] <B>in</B> array) statement
+&bull; <B>for</B> (expression; expression; expression) statement
+&bull; <B>while</B> (expression) statement
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Declaration Statements
+&bull; <B>function</B> name (variable : type, ...) { statement }
+&bull; <B>function</B> name : type (variable : type, ...) { statement }
+&bull; <B>function</B> name : type (variable : type, ...) %{ c_statement %}
+&bull; <B>probe</B> probepoint { statement }
+&bull; <B>probe</B> label = probepoint { statement }
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+Lexical Structure
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Comments
+&bull; <B>#</B> ... comment
+&bull; <B>//</B> ... comment
+&bull; <B>/*</B> ... comment ... <B>*/</B>
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Preprocessor
+&bull; <B>%(</B> expression <B>%?</B> true_tokens <B>%:</B> false_tokens <B>%)</B>
+&bull; <B>@define</B> label (variable, ...) %{ statement %}
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+Builtin Functions
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Aggregation Builtin Functions
+&bull; <B>@avg</B> (variable)
+&bull; <B>@count</B> (variable)
+&bull; <B>@hist_linear</B> (variable, N, N, N)
+&bull; <B>@hist_log</B> (variable)
+&bull; <B>@max</B> (variable)
+&bull; <B>@min</B> (variable)
+&bull; <B>@sum</B> (variable)
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Output Builtin Functions
+&bull; <B>print</B> (variable)
+&bull; <B>printf</B> (format:string, variable, ...) 
+ &nbsp;where format is of the form: %[flags][width][.precision][length]specifier
+&bull; <B>printd</B> (delimiter:string, variable, ...)
+&bull; <B>printdln</B> (delimiter:string, variable, ...)
+&bull; <B>println</B> ()
+&bull; <B>sprint</B>:string (variable)
+&bull; <B>sprintf</B>:string (format:string, variable, ...)
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Variable Access Builtin Functions
+&bull; <B>@cast</B> (variable, &quot;type_name&quot;[, &quot;module&quot;])
+&bull; <B>@defined</B> (variable)
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+Probepoints
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Some of the more commonly used probepoints
+&bull; kernel.function(PATTERN) kernel.function(PATTERN).call
+&bull; kernel.function(PATTERN).return
+&bull; kernel.FUNCTION (PATTERN).return.maxactive(VALUE)
+&bull; kernel.FUNCTION (PATTERN).inline
+&bull; kernel.FUNCTION (PATTERN).label(LPATTERN)
+&bull; module(MPATTERN).FUNCTION (PATTERN)
+&bull; module(MPATTERN).FUNCTION (PATTERN).call
+&bull; module(MPATTERN).FUNCTION (PATTERN).return.maxactive(VALUE)
+&bull; module(MPATTERN).FUNCTION (PATTERN).inline
+&bull; kernel.statement(PATTERN)
+&bull; kernel.statement(ADDRESS).absolute
+&bull; module(MPATTERN).statement(PATTERN)
+&bull; kprobe.FUNCTION (FUNCTION)
+&bull; kprobe.FUNCTION (FUNCTION).return
+&bull; kprobe.module(NAME).FUNCTION (FUNCTION)
+&bull; kprobe.module(NAME).FUNCTION (FUNCTION).return
+&bull; kprobe.statement(ADDRESS).absolute
+&bull; process.begin process(&quot;PATH&quot;).begin
+&bull; process(PID).begin process.thread.begin
+&bull; process(&quot;PATH&quot;).thread.begin
+&bull; process(PID).thread.begin
+&bull; process.end
+&bull; process(&quot;PATH&quot;).end
+&bull; process(PID).end
+&bull; process.thread.end
+&bull; process(&quot;PATH&quot;).thread.end
+&bull; process(PID).thread.end
+&bull; process(&quot;PATH&quot;).syscall
+&bull; process(PID).syscall
+&bull; process.syscall.return
+&bull; process(&quot;PATH&quot;).syscall.return
+&bull; process(PID).syscall.return
+&bull; process(&quot;PATH&quot;).FUNCTION (&quot;NAME&quot;)
+&bull; process(&quot;PATH&quot;).statement(&quot;*@FILE.c:123&quot;)
+&bull; process(&quot;PATH&quot;).FUNCTION (&quot;*&quot;).return
+&bull; process(&quot;PATH&quot;).FUNCTION (&quot;myfun&quot;).label(&quot;foo&quot;)
+&bull; process(&quot;PATH&quot;).mark(&quot;LABEL&quot;)
+&bull; java(&quot;PNAME&quot;).class(&quot;CLASSNAME&quot;).method(&quot;PATTERN&quot;)
+&bull; java(&quot;PNAME&quot;).class(&quot;CLASSNAME&quot;).method(&quot;PATTERN&quot;).return
+&bull; java(PID).class(&quot;CLASSNAME&quot;).method(&quot;PATTERN&quot;)
+&bull; java(PID).class(&quot;CLASSNAME&quot;).method(&quot;PATTERN&quot;).return
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+Tapset Functions
+
+<BR>
+
+
+<DL COMPACT><DT><DD>
+<PRE>
+Some of the more commonly used tapset functions
+&bull; addr:long ()
+&bull; backtrace:string ()
+&bull; caller:string ()
+&bull; caller_addr:long ()
+&bull; cmdline_arg:string (N:long)
+&bull; cmdline_args:string (N:long,m:long,delim:string)
+&bull; cmdline_str:string ()
+&bull; env_var:string (name:string)
+&bull; execname:string ()
+&bull; int_arg:long (N:long)
+&bull; isinstr:long(s1:string,s2:string)
+&bull; long_arg:long (N:long)
+&bull; modname:string ()
+&bull; module_name:string ()
+&bull; pid:long ()
+&bull; pn:string ()
+&bull; pointer_arg:string (N:long)
+&bull; pp:string ()
+&bull; print_backtrace ()
+&bull; probefunc:string ()
+&bull; register:long(name:string)
+&bull; str_replace:string(prnt_str:string,srch_str:string,rplc_str:string)
+&bull; stringat:long(str:string,pos:long)
+&bull; strlen:long(str:string)
+&bull; strtol:long(str:string,base:long)
+&bull; substr:string(str:string,start:long,length:long)
+&bull; user_long:long(addr:long)
+&bull; user_string:string(addr:long)
+
+</PRE>
+
+</DL>
+
+
+<P>
+
+<P>
+<A NAME="lbAF">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+
+<PRE>
+<I><A HREF="stap.1.html">stap</A></I>(1)
+
+</PRE><A NAME="lbAG">&nbsp;</A>
+<H2>BUGS</H2>
+
+Use the Bugzilla link of the project web page or our mailing list.
+
+<B><A HREF="http://sourceware.org/systemtap/">http://sourceware.org/systemtap/</A></B>,<B>&lt;<A HREF="mailto:systemtap@sourceware.org">systemtap@sourceware.org</A>&gt;</B>.
+
+
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">LANGUAGE</A><DD>
+<DT><A HREF="#lbAF">SEE ALSO</A><DD>
+<DT><A HREF="#lbAG">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREFhttp://www.kapiti.co.nz/michael/vhman2html.html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:25:44 GMT, October 09, 2015
+</BODY>
+</HTML>
