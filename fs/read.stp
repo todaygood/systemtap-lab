@@ -1,0 +1,7 @@
+
+
+probe vfs.read {
+
+	printf("%s\n",argstr);
+	printf("devname=%s,ino=%d\n",devname,ino);
+}
