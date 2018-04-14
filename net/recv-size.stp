@@ -1,0 +1,11 @@
+
+global reads
+
+probe netdev.receive{
+reads <<< length 
+}
+
+probe end{
+print (@hist_log(reads))
+
+}
