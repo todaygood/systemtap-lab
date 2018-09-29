@@ -48,3 +48,13 @@ function convert_protocol (proto_n){
 
   return proto_s
 }
+
+
+
+/*
+ *
+ * [root@cloud-sz-kolla-b13-01 network]# stap -g netfilter_drop.stp TCP 10 -T 10 
+ * Dropping packets! Ctrl-C to exit.
+ * 10 TCP packets dropped, 585 total bytes
+ *
+ */

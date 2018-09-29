@@ -14,8 +14,15 @@ https://taozj.net/201703/systemtap-intro.html
 
 https://github.com/jav/systemtap/tree/master/tapset
 
+https://sourceware.org/systemtap/langref/Contents.html
+
+https://sourceware.org/systemtap/tapsets/index.html
+
+
+
 # Example 
 
 https://sourceware.org/systemtap/examples/
 
+https://taozj.net/201703/systemtap-intro.html
 

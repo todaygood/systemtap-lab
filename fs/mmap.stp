@@ -1,0 +1,7 @@
+#!/usr/bin/stap
+
+probe kernel.statement("fb_mmap@drivers/video/fbmem.c:1357")
+{
+	p = @cast($info->par, "struct psb_fbdev")->pfb
+	printf("%s(%d) %d\n",execname(),pid(),p)
+}

@@ -1,0 +1,36 @@
+#! /usr/bin/env stap
+
+# 
+# from http://lisux.me/ops/?p=123
+# https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/commit/?id=ead2ceb0ec9f85cff19c43b5cdb2f8a054484431
+#
+
+%{
+#include <linux/version.h>
+#include <net/sock.h>
+#include <net/tcp.h>
+#include <net/ip.h>
+#include <linux/skbuff.h>
+#include <linux/icmp.h>
+%}
+
+
+# Note when we turn the monitor on and off
+probe begin { printf("Monitoring for dropped packets\n") }
+probe end { printf("Stopping dropped packet monitor\n") }
+
+probe kernel.statement("kfree_skb") {
+        iphdr = __get_skb_iphdr($skb)
+        //family = %{ AF_INET %}
+        saddr = format_ipaddr(__ip_skb_saddr(iphdr), %{ AF_INET %})
+        daddr = format_ipaddr(__ip_skb_daddr(iphdr), %{ AF_INET %})
+        protocol = __ip_skb_proto(iphdr)
+
+       
+	printf("%s->%s,protocol=%d,",saddr,daddr,protocol)
+	if (protocol == 1 ) {  // ICMP
+		icmph = &@cast($skb+416,"struct icmphdr")
+	        printf("ICMP type=%d",icmph->type)
+	}
+	printf("\n")
+}
